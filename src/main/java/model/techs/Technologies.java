@@ -2,7 +2,6 @@ package model.techs;
 
 public class Technologies {
 
-/*
     public Technology agriculture = new Technology("Agriculture", 20, "None", "Pottery, Animal Husbandry, Archery, Mining", "farm");
     public Technology animalHusbandry = new Technology("Animal Husbandry", 35, "Agriculture", "Trapping, The Wheel", "horse, Pasture");
     public Technology archery = new Technology("Archery", 35, "Agriculture", "Mathematics", "Archer");
@@ -59,7 +58,6 @@ public class Technologies {
     public Technology telegraph =new Technology("Telegraph", 2200, "Electricity", "", "Military Base");
 
     public Technology education = new Technology("Education", 440, "Theology", "Acoustics, Banking", "University");
-*/
 
 
 }
