@@ -8,6 +8,7 @@ public class MainMenuController {
     int sl;
     public void newOne() {
         System.out.println("every thing is ok!");
+        int end;
     }
 
 }
