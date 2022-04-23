@@ -9,14 +9,16 @@ public class Resources {
     private Integer gold;
     private ArrayList<String> canBeFound = new ArrayList<>();
     private String improvementNeeded;
+    private String type;
 
-    public Resources(String name, Integer food, Integer production, Integer gold, String canBeFound, String improvementNeeded) {
+    public Resources(String name, Integer food, Integer production, Integer gold, String canBeFound, String improvementNeeded, String type) {
         this.name = name;
         this.food = food;
         this.production = production;
         this.gold = gold;
         this.canBeFound.add(canBeFound);
         this.improvementNeeded = improvementNeeded;
+        this.type = type;
     }
 
     public void setName(String name) {
@@ -65,5 +67,13 @@ public class Resources {
 
     public String getImprovementNeeded() {
         return improvementNeeded;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getType() {
+        return type;
     }
 }
