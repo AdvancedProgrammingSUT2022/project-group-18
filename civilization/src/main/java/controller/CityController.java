@@ -7,18 +7,8 @@ import java.util.ArrayList;
 
 public class CityController {
 
-    private String cityName;
-    private int cityPopulation;
-    private int cityFood;
-    private int cityGold;
-    private int cityProduction;
-    private int cityScience;
-    private int cityStrength;
-    private User owner;
-    private ArrayList<Citizen> = new ArrayList<Citizen>;
-    private Unit unit;
 
-    public City() {}
+
     public void lockCitizen(){}
     public void unlockCitizen(){}
     public void show(){}

@@ -16,6 +16,5 @@ public class Units {
     protected boolean isAttacking = false;
     protected boolean hasTerrainCost = true;
 
-
-        }
+}
 

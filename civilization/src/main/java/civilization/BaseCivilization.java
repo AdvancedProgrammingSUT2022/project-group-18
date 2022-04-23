@@ -1,5 +1,5 @@
 package civilization;
-import controller.CityController;
+import model.City;
 import model.unit.Unit;
 
 import java.util.List;
@@ -17,12 +17,11 @@ public class BaseCivilization {
   private int happiness = 0;
   private List<Unit> units;
   private String[] cityNames;
-  private List<CityController> cities;
+  private List<City> cities;
 
   private List<Unit> units;
   private String[] cityNames;
-
-  private List<CityController> cities;
+  private List<City> cities;
 
 
 
