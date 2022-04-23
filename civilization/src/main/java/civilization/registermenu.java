@@ -25,7 +25,6 @@ public class registermenu {
     private static Admin admin = null;
 
     @Override
-
     public void run() {
         String choice = this.getInput();
         if (choice.equals("Exit")) {
@@ -49,7 +48,7 @@ public class registermenu {
             String regex = "^remove\\s+account\\s+(?<username>\\S*)\\s+(?<password>\\S*)$";
             this.deletaccount(choice, regex);
         } else {
-            System.out.println(Message.Invalid);
+            System.out.println(Message.INVALID);
             this.run();
         }
     }
@@ -69,7 +68,7 @@ public class registermenu {
     }
 
     public void adminRegister(Matcher matcher) {
-        if (matcher == null) System.out.println(Message.Invalid);
+        if (matcher == null) System.out.println(Message.INVALID);
         else {
             if (admin != null) System.out.println("admin user already created");
             else {
