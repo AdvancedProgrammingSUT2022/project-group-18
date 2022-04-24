@@ -1,15 +1,11 @@
 package model.Resource;
 
-
-import model.Resource.BonusResources;
-import model.Resource.LuxuryResources;
-import model.Resource.StrategicResources;
 import model.techs.Technologies;
+import model.techs.Technology;
 
 public class AllResources {
-/*
-    Technologies technologies = new Technologies();
-    BonusResources banana = new BonusResources("Banana", 1, 0, 0, "farest", "farming");
+/*    Technologies technologies = new Technologies();
+    Resources banana = new Resources("Banana", 1, 0, 0, "farest", "farming", "BonusResources", "");
     BonusResources cow = new BonusResources("Cow", 1, 0, 0, "Grassland", "Pasture");
     BonusResources gazelle = new BonusResources("Gazelle", 1, 0, 0, "Farest, Tundra,Hill", "camp");
     BonusResources sheep = new BonusResources("Sheep", 2, 0, 0, "Flat, meadow, desert, hill", "Pasture");
@@ -33,7 +29,6 @@ public class AllResources {
     LuxuryResources marble = new LuxuryResources("Marble",  0, 0, 2, "Tundra, flat, desert, meadow, hill", "Stone mine");
     LuxuryResources silk = new LuxuryResources("Silk", 0, 0, 2, "farest", "farming");
     LuxuryResources silver = new LuxuryResources("Silver", 0, 0, 2, "Tundra, desert, hill", "mine");
-    LuxuryResources sugar = new LuxuryResources("Sugar", 0, 0, 2, "Plain, swamp", "farming");
-*/
+    LuxuryResources sugar = new LuxuryResources("Sugar", 0, 0, 2, "Plain, swamp", "farming");*/
 
 }

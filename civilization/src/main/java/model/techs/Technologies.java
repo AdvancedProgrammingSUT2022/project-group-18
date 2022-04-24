@@ -1,8 +1,18 @@
 package model.techs;
 
-public class Technologies {
+import java.util.ArrayList;
 
-/*
+public class Technologies {
+    ArrayList<Technology> techs = new ArrayList<>();
+
+    public void setTechs(Technology techs) {
+        this.techs.add(techs);
+    }
+
+    public ArrayList<Technology> getTechs() {
+        return techs;
+    }
+    /*
     public Technology agriculture = new Technology("Agriculture", 20, "None", "Pottery, Animal Husbandry, Archery, Mining", "farm");
     public Technology animalHusbandry = new Technology("Animal Husbandry", 35, "Agriculture", "Trapping, The Wheel", "horse, Pasture");
     public Technology archery = new Technology("Archery", 35, "Agriculture", "Mathematics", "Archer");

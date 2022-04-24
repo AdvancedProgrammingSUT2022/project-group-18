@@ -6,8 +6,9 @@ public class Technology {
     private String prerequisiteTechs;
     private String leadsToTechs;
     private String unlocks;
+    String  type;
 
-    public Technology(String name, Integer cast, String prerequisiteTechs, String leadsToTechs, String unlocks) {
+    public Technology(String name, Integer cast, String prerequisiteTechs, String leadsToTechs, String unlocks, String type, String note) {
         this.name = name;
         this.cast = cast;
         this.prerequisiteTechs = prerequisiteTechs;

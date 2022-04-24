@@ -1,7 +1,8 @@
 package enums;
 
 public enum Message {
-        INVALID("it is invalid");
+        INVALID("invalid command"),
+        IVALIDENTERMENU("menu navigation is not possible");
 
     private String regex;
 

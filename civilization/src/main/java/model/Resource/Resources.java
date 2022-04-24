@@ -10,8 +10,9 @@ public class Resources {
     private ArrayList<String> canBeFound = new ArrayList<>();
     private String improvementNeeded;
     private String type;
+    private String note; // just for strategic resources
 
-    public Resources(String name, Integer food, Integer production, Integer gold, String canBeFound, String improvementNeeded, String type) {
+    public Resources(String name, Integer food, Integer production, Integer gold, String canBeFound, String improvementNeeded, String type, String note) {
         this.name = name;
         this.food = food;
         this.production = production;
@@ -19,6 +20,7 @@ public class Resources {
         this.canBeFound.add(canBeFound);
         this.improvementNeeded = improvementNeeded;
         this.type = type;
+        this.note = note;
     }
 
     public void setName(String name) {
