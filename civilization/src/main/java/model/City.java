@@ -13,7 +13,7 @@ public class City {
     private int cityScience;
     private int cityStrength;
     private User owner;
-    private ArrayList<Citizen> = new ArrayList<Citizen>;
+    private ArrayList<Unit> units = new ArrayList<>();
     private Unit unit;
 
     public City() {}

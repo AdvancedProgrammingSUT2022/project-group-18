@@ -15,7 +15,7 @@ public class Improvement {
     this.gold = gold;
     this.technologieRequired = technologieRequired;
   }
-  public void newCamp(){new Improvement(0,0,0 , Technologies.trapping);}
+  public Improvement newCamp(){return new Improvement(0,0,0 , Technologies.trapping);}
   public void newFarm(){new Improvement(1, 0, 0 , Technologies.Farming);}
   public void newLumberMill(){new Improvement(0, 1, 0, Technologies.SakhtOSaz);}
   public void newMine(){new Improvement(0, 1,  0, Technologies.Mining);}

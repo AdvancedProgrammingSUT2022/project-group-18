@@ -7,8 +7,6 @@ import java.util.ArrayList;
 
 public class CityController {
 
-
-
     public void lockCitizen(){}
     public void unlockCitizen(){}
     public void show(){}

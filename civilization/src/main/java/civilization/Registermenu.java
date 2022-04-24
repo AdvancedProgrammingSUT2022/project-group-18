@@ -1,30 +1,26 @@
 package civilization;
 
-import messages.Message;
+import enums.Message;
 import model.User;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class registermenu {
-    private static registermenu instance = null;
+public class Registermenu extends Controller{
+    private static Registermenu instance = null;
 
-    public static void setInstance(registermenu instance) {
-        registermenu.instance = instance;
+    public static void setInstance(Registermenu instance) {
+        Registermenu.instance = instance;
     }
 
-    public static registermenu getInstance() {
-        if (registermenu.instance == null) {
-            registermenu.setInstance(new registermenu());
+    public static Registermenu getInstance() {
+        if (Registermenu.instance == null) {
+            Registermenu.setInstance(new Registermenu());
         }
 
-        return registermenu.instance;
+        return Registermenu.instance;
     }
 
-    private registerController controller = new registerController();
-    private static Admin admin = null;
-
-    @Override
     public void run() {
         String choice = this.getInput();
         if (choice.equals("Exit")) {

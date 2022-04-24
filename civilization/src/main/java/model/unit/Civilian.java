@@ -7,24 +7,32 @@ public class Civilian extends Unit {
     }
     String settler = "Settler";
     String worker = "Worker";
-    boolean  x =name.equals(settler);
-    boolean y=name.equals(worker);
-//    public void equals(String s1,String s2 ){
+    private boolean x=name.equals(settler);
+    private boolean y=name.equals(worker);
+
+    public void setX(boolean x) {
+        this.x = name.equals(settler);
+    }
+
+    public boolean isX() {
+        return x;
+    }
+    //    public void equals(String s1,String s2 ){
 //        if
    // }
-    if(x){
+    if(){
         public void foundCity(){
 
-    }
+    }}
+
     if(y)
     {
-        public void creatLand(){
+        public void creatLand () {
     }
 
-    }
         public void repaireLand () {
 
     }
-
     }
+
 }

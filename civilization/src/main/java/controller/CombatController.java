@@ -1,7 +1,7 @@
 package controller;
 
 
-import messages.Message;
+import enums.Message;
 
 public class CombatController {
     public Message AnnouncementCombat(){}
