@@ -9,6 +9,7 @@ public class User {
     private String password;
     private String nickname;
     private static ArrayList<User> users = new ArrayList<>();
+    private static ArrayList<User> players = new ArrayList<>();// it should not save it is just for doing changes on users;
     public static ArrayList<User> dataBaseUsers = new ArrayList<>();
 
     public User(String username , String password, String nickname){
@@ -36,6 +37,8 @@ public class User {
     public String getNickname() {return nickname;}
     public void passChange(String newPass){this.password = newPass;}
     public static void removeAccount(User user){users.remove(user);}
+    public static void setPlayers(User players) {User.players.add(players);}
+    public static ArrayList<User> getPlayers() {return players;}
 
     public static ArrayList<User> getUsers() {
         return users;

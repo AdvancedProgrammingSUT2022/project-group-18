@@ -3,10 +3,6 @@ package controller;
 
 import enums.Message;
 import model.User;
-import view.GameMenuView;
-import view.LoginMenuView;
-import view.View;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,7 +16,9 @@ public class MainMenuController extends Controller{
             String username = matcher.group("username");
             if(User.getUserByUsernameOrNickname(username, "username") == null)
                 return Message.USER_NOT_EXIST;
+            User.setPlayers(User.getUserByUsernameOrNickname(username, "username"));
         }
+
         return Message.PLAY_GAME;
     }
 

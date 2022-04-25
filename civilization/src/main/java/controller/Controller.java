@@ -40,7 +40,6 @@ public abstract class Controller {
         GameMenuView view = new GameMenuView();
         view.run();
         hex.printmap();
-        //TODO print map for checkpoint
     }
 
 
