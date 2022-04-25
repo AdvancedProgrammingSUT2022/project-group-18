@@ -1,5 +1,7 @@
 package model;
 
+import controller.DataBase;
+
 import java.util.ArrayList;
 
 public class User {
@@ -7,6 +9,7 @@ public class User {
     private String password;
     private String nickname;
     private static ArrayList<User> users = new ArrayList<>();
+    public static ArrayList<User> dataBaseUsers = new ArrayList<>();
 
     public User(String username , String password, String nickname){
         this.username=username;
@@ -36,5 +39,11 @@ public class User {
 
     public static ArrayList<User> getUsers() {
         return users;
+    }
+    public static void getUsersFromDataBase(){
+        int n = DataBase.numberOfUsers();
+        for (int i=0 ; i<n ; i++){
+            dataBaseUsers.add(DataBase.getUserFromDataBase(i));
+        }
     }
 }

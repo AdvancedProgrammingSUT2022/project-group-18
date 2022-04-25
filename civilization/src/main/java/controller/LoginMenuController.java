@@ -1,9 +1,13 @@
 package controller;
 
+import com.google.gson.Gson;
 import enums.Message;
 import enums.Regexes;
 import model.User;
 import view.View;
+
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Locale;
 import java.util.regex.Matcher;
 
@@ -66,7 +70,16 @@ public class LoginMenuController extends Controller {
         else
             return Message.LOGIN_USER;
     }
-
-
+    public void addNewUserToDataBase(User user ){
+        int n = DataBase.numberOfUsers();
+        String fileName = "user" + n + ".json";
+        try {
+            FileWriter myWriter = new FileWriter(fileName);
+            myWriter.write(new Gson().toJson(user));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        DataBase.setNumOfUsers();
+    }
 
 }
