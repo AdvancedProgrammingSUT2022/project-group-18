@@ -1,5 +1,6 @@
 package controller;
 
+import model.hex;
 import model.techs.Technology;
 import view.*;
 
@@ -38,6 +39,7 @@ public abstract class Controller {
         View.setInMenu("Game Menu");
         GameMenuView view = new GameMenuView();
         view.run();
+        hex.printmap();
         //TODO print map for checkpoint
     }
 
