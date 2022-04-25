@@ -1,11 +1,6 @@
 package controller;
 
-import model.User;
-import model.unit.Unit;
-
-import java.util.ArrayList;
-
-public class CityController {
+public class CityController extends Controller{
 
     public void lockCitizen(){}
     public void unlockCitizen(){}

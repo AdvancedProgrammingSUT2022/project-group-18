@@ -1,6 +1,7 @@
 package enums;
 
 public enum Message {
+        LOGINERROR("please login first"),
         INVALID("invalid command"),
         IVALIDENTERMENU("menu navigation is not possible");
 

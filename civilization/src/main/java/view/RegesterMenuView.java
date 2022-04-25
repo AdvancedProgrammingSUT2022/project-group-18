@@ -14,6 +14,16 @@ public class RegesterMenuView extends View{
         if((matcher = Regexes.getCommand(input, Regexes.MENUENTER)) != null)
             controller.enterMenu(matcher);
 
+        else if((matcher = Regexes.getCommand(input, Regexes.EXITMENU)) != null)
+            controller.
+
+
+
+
+
+
+            this.run();
+
 
 
     }

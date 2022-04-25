@@ -1,8 +1,5 @@
 package model.Resource;
 
-import model.techs.Technologies;
-import model.techs.Technology;
-
 public class AllResources {
 /*    Technologies technologies = new Technologies();
     Resources banana = new Resources("Banana", 1, 0, 0, "farest", "farming", "BonusResources", "");

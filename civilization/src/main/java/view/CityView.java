@@ -1,6 +1,6 @@
 package view;
 
-public class CityView {
+public class CityView extends View{
     public void showBikar(){}//view
     public void showBuldingDetails(){}
     public void showProductionMenu(){}

@@ -1,7 +1,5 @@
 package model.trrain;
 
-import java.util.ArrayList;
-
 public enum Landscape {
 
 	DESERT (new Terrain(0, 0,-0.33,0, 1,true), "Desert"),

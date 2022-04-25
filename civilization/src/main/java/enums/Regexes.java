@@ -4,7 +4,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public enum Regexes {
-    MENUENTER("^menue\\s+nter\\s+(?<menuName>\\S+)$");
+    MENUENTER("^menue\\s+nter\\s+(?<menuName>\\S+)$"),
+    EXITMENU("^menu\\s+exit$");
 
 
     private String regex;

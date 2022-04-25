@@ -3,7 +3,7 @@ package controller;
 
 import enums.Message;
 
-public class CombatController {
+public class CombatController extends Controller{
     public Message AnnouncementCombat(){}
     public Message Combat(){}
     public void ColdWar(){}
