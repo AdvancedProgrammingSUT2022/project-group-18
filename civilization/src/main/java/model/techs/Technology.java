@@ -9,7 +9,7 @@ public class Technology {
     private String leadsToTechs;
     private String unlocks;
     private String type;
-    private ArrayList <Technology> technologies = new ArrayList<>();
+    private static ArrayList <Technology> technologies = new ArrayList<>();
 
     public Technology(String name, Integer cast, String prerequisiteTechs, String leadsToTechs, String unlocks, String type, String note) {
         this.name = name;
@@ -18,7 +18,7 @@ public class Technology {
         this.leadsToTechs = leadsToTechs;
         this.unlocks = unlocks;
 
-        this.technologies.add(this);
+        Technology.technologies.add(this);
     }
 
     public void setName(String name) {
@@ -45,7 +45,7 @@ public class Technology {
         return name;
     }
 
-    public ArrayList<Technology> getTechnologies() {
+    public static ArrayList<Technology> getTechnologies() {
         return technologies;
     }
 

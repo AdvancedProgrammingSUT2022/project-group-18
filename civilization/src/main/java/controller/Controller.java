@@ -6,18 +6,9 @@ import model.techs.Technology;
 import java.util.Locale;
 
 public abstract class Controller {
-    private Technology technologies = new Technology();
-
-    public void setTechnologies(Technologies technologies) {
-        this.technologies = technologies;
-    }
-
-    public Technologies getTechnologies() {
-        return technologies;
-    }
 
     public Technology findTechnologyByName(String nameOfTech) {
-        for (Technology tech : technologies.getTechnologies()) {
+        for (Technology tech : Technology.getTechnologies()) {
             if (tech.getName().equals(nameOfTech))
                 return tech;
         }
@@ -25,9 +16,9 @@ public abstract class Controller {
     }
 
     public void goToMenu(String menuName) {
-        if(menuName.toLowerCase(Locale.ROOT).equals("login"))
+        if(menuName.toLowerCase(Locale.ROOT).equals("login menu"))
             //TODO;
-        else if(menuName.toLowerCase(Locale.ROOT).equals("main"))
+        else if(menuName.toLowerCase(Locale.ROOT).equals("main menu"))
             //TODO
         else if(menuName.toLowerCase(Locale.ROOT).equals("play game"))
             //TODO

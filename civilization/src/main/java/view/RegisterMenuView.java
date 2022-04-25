@@ -6,7 +6,7 @@ import enums.Regexes;
 
 import java.util.regex.Matcher;
 
-public class RegesterMenuView extends View{
+public class RegisterMenuView extends View{
     RegisterMenuController controller = new RegisterMenuController();
 
     @Override

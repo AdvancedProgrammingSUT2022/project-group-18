@@ -26,14 +26,7 @@ public class RegisterMenuController extends Controller {
     }
 
     public void exitMenu() {
-        String menuName = View.getInMenu().toLowerCase(Locale.ROOT);
-        if (menuName.equals("login menu"))
             View.getScanner().close();
-        else if (menuName.equals("main menu"))
-        //TODO go to login
-        else
-        //TODO go to main menu
-
     }
 
     public Message showCurrentMenu() {
