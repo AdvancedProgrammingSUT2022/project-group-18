@@ -1,9 +1,8 @@
 package controller;
 
-import model.techs.Technologies;
 import model.techs.Technology;
+import view.*;
 
-import java.util.Locale;
 
 public abstract class Controller {
 
@@ -15,14 +14,32 @@ public abstract class Controller {
         return null;
     }
 
-    public void goToMenu(String menuName) {
-        if(menuName.toLowerCase(Locale.ROOT).equals("login menu"))
-            //TODO;
-        else if(menuName.toLowerCase(Locale.ROOT).equals("main menu"))
-            //TODO
-        else if(menuName.toLowerCase(Locale.ROOT).equals("play game"))
-            //TODO
-        else
-            //TODO profile menu
+    public void goToMainMenu() {
+        MainMenuView view = new MainMenuView();
+        View.setInMenu("Main Menu");
+        view.run();
     }
+
+    public String showCurrentMenu() {
+        return View.getInMenu();
+    }
+    public void logout() {
+        View.setIsLogedIn(null);
+        LoginMenuView view = new LoginMenuView();
+        view.run();
+    }
+
+    public void goToProfile() {
+        ProfileView view = new ProfileView();
+        view.run();
+    }
+
+    public void startGame() {
+        View.setInMenu("Game Menu");
+        GameMenuView view = new GameMenuView();
+        view.run();
+        //TODO print map for checkpoint
+    }
+
+
 }

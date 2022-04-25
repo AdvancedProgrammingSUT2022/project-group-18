@@ -1,40 +1,38 @@
 package controller;
 
 import enums.Message;
+import enums.Regexes;
 import model.User;
-import view.MainMenuView;
-import view.ProfileView;
 import view.View;
-
-import javax.swing.*;
 import java.util.Locale;
 import java.util.regex.Matcher;
 
-public class RegisterMenuController extends Controller {
+public class LoginMenuController extends Controller {
 
     public Message enterMenu(Matcher matcher) {
         String menuName = matcher.group("menuName");
-        if (View.getIsLogedIn() == null) //TODO in shartay bishtari vase error dadan bayad dashte bashe
+        if (View.getIsLogedIn() == null)
             return Message.LOGINERROR;
-        if (View.getInMenu() != null)
+        else if (View.getInMenu().toLowerCase(Locale.ROOT).equals("game menu") || View.getInMenu().toLowerCase(Locale.ROOT).equals("profile menu"))
             return Message.IVALIDENTERMENU;
 
-        View.setInMenu(menuName.toLowerCase(Locale.ROOT));
-        goToMenu(menuName.toLowerCase(Locale.ROOT));
+        View.setInMenu(menuName);
+        if(menuName.toLowerCase(Locale.ROOT).equals("main menu"))
+            goToMainMenu();
+        else if(menuName.toLowerCase(Locale.ROOT).equals("login menu"))
+            logout();
+        else if(menuName.toLowerCase(Locale.ROOT).equals("profile menu"))
+            goToProfile();
+        else if(menuName.toLowerCase(Locale.ROOT).equals("game menu"))
+            startGame();
+        else
+            return Message.INVALID_MENU_NAME;
 
         return null;
     }
 
     public void exitMenu() {
             View.getScanner().close();
-    }
-
-    public Message showCurrentMenu() {
-        if(View.getInMenu().equals("main menu"))
-            return Message.MAINMENU;
-        else if(View.getInMenu().equals("login menu"))
-            return Message.LOGINMENU;
-        return null;
     }
 
     public String creatUser(Matcher matcher) {
@@ -51,6 +49,13 @@ public class RegisterMenuController extends Controller {
             return Message.USERCREAT.toString();
     }
 
+    public Matcher matchLogin(String input) {
+        Matcher matcher;
+        if((matcher = Regexes.getCommand(input, Regexes.USER_LOGIN)) != null)
+            return matcher;
+        
+        return null;
+    }
     public Message loginUser(Matcher matcher) {
         String username = matcher.group("username");
         String password = matcher.group("password");
@@ -62,9 +67,6 @@ public class RegisterMenuController extends Controller {
             return Message.LOGIN_USER;
     }
 
-    public void goToMainMenu() {
-        MainMenuView view = new MainMenuView();
-        view.run();
-    }
+
 
 }

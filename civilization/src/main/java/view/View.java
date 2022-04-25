@@ -7,12 +7,12 @@ import java.util.Scanner;
 
 public abstract class View {
     private static final Scanner scanner = new Scanner(System.in);
-    private static String inMenu = null;
-    private static User isLogedIn = null;
+    private static String inMenu = "Login Menu";
+    private static User isLoggedIn = null;
 
-    public static void setIsLogedIn(User isLogedIn) {View.isLogedIn = isLogedIn;}
-    public static User getIsLogedIn() {return isLogedIn;}
-    public void removeIsLogedIn() { View.isLogedIn = null;}
+    public static void setIsLogedIn(User isLogedIn) {View.isLoggedIn = isLogedIn;}
+    public static User getIsLogedIn() {return isLoggedIn;}
+    public void removeIsLogedIn() { View.isLoggedIn = null;}
     public static Scanner getScanner() {
         return View.scanner;
     }
