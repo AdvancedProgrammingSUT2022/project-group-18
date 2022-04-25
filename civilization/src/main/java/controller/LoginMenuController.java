@@ -53,7 +53,7 @@ public class LoginMenuController extends Controller {
         Matcher matcher;
         if((matcher = Regexes.getCommand(input, Regexes.USER_LOGIN)) != null)
             return matcher;
-        
+
         return null;
     }
     public Message loginUser(Matcher matcher) {
