@@ -14,6 +14,7 @@ public class ProfileController extends Controller{
             String oldPass = matcher.group("oldpassword");
             String newPass = matcher.group("newpassword");
             System.out.println(controller.passChange(username, oldPass, newPass));
+            int x;
         }
 
         this.run();
