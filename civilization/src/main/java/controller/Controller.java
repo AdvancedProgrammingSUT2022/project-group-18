@@ -6,7 +6,7 @@ import model.techs.Technology;
 import java.util.Locale;
 
 public abstract class Controller {
-    private Technologies technologies = new Technologies();
+    private Technology technologies = new Technology();
 
     public void setTechnologies(Technologies technologies) {
         this.technologies = technologies;
@@ -17,7 +17,7 @@ public abstract class Controller {
     }
 
     public Technology findTechnologyByName(String nameOfTech) {
-        for (Technology tech : technologies.getTechs()) {
+        for (Technology tech : technologies.getTechnologies()) {
             if (tech.getName().equals(nameOfTech))
                 return tech;
         }

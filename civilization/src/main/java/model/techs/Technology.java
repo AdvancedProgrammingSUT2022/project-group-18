@@ -45,6 +45,10 @@ public class Technology {
         return name;
     }
 
+    public ArrayList<Technology> getTechnologies() {
+        return technologies;
+    }
+
     public Integer getCast() {
         return cast;
     }
