@@ -3,6 +3,8 @@ package controller;
 import model.techs.Technologies;
 import model.techs.Technology;
 
+import java.util.Locale;
+
 public abstract class Controller {
     private Technologies technologies = new Technologies();
 
@@ -20,5 +22,16 @@ public abstract class Controller {
                 return tech;
         }
         return null;
+    }
+
+    public void goToMenu(String menuName) {
+        if(menuName.toLowerCase(Locale.ROOT).equals("login"))
+            //TODO;
+        else if(menuName.toLowerCase(Locale.ROOT).equals("main"))
+            //TODO
+        else if(menuName.toLowerCase(Locale.ROOT).equals("play game"))
+            //TODO
+        else
+            //TODO profile menu
     }
 }

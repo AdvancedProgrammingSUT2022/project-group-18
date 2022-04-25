@@ -1,12 +1,15 @@
 package model.techs;
 
+import java.util.ArrayList;
+
 public class Technology {
     private String name;
     private Integer cast;
     private String prerequisiteTechs;
     private String leadsToTechs;
     private String unlocks;
-    String  type;
+    private String type;
+    private ArrayList <Technology> technologies = new ArrayList<>();
 
     public Technology(String name, Integer cast, String prerequisiteTechs, String leadsToTechs, String unlocks, String type, String note) {
         this.name = name;
@@ -14,6 +17,8 @@ public class Technology {
         this.prerequisiteTechs = prerequisiteTechs;
         this.leadsToTechs = leadsToTechs;
         this.unlocks = unlocks;
+
+        this.technologies.add(this);
     }
 
     public void setName(String name) {
