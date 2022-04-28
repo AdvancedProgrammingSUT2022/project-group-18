@@ -11,7 +11,6 @@ public abstract class Controller {
         for (Technology tech : Technology.getTechnologies()) {
             if (tech.getName().equals(nameOfTech))
                 return tech;
-            int i = 10;
         }
         return null;
     }
