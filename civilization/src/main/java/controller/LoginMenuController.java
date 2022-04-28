@@ -53,11 +53,36 @@ public class LoginMenuController extends Controller {
             return Message.USERCREAT.toString();
     }
 
-    public Matcher matchLogin(String input) {
+    public Matcher matchCreateUser(String input) {
         Matcher matcher;
-        if((matcher = Regexes.getCommand(input, Regexes.USER_LOGIN)) != null)
+        if((matcher = Regexes.getCommand(input, Regexes.CREAT_USER1)) != null)
+            return matcher;
+        else if((matcher = Regexes.getCommand(input, Regexes.CREAT_USER2)) != null)
+            return matcher;
+        else if((matcher = Regexes.getCommand(input, Regexes.CREAT_USER3)) != null)
+            return matcher;
+        else if((matcher = Regexes.getCommand(input, Regexes.CREAT_USER4)) != null)
+            return matcher;
+        else if((matcher = Regexes.getCommand(input, Regexes.CREAT_USER5)) != null)
+            return matcher;
+        else if((matcher = Regexes.getCommand(input, Regexes.CREAT_USER6)) != null)
+            return matcher;
+        else if((matcher = Regexes.getCommand(input, Regexes.CREAT_USER7)) != null)
             return matcher;
 
+        return null;
+    }
+
+    public Matcher matchLogin(String input) {
+        Matcher matcher;
+        if((matcher = Regexes.getCommand(input, Regexes.USER_LOGIN1)) != null)
+            return matcher;
+        else if((matcher = Regexes.getCommand(input, Regexes.USER_LOGIN2)) != null)
+            return matcher;
+        else if((matcher = Regexes.getCommand(input, Regexes.USER_LOGIN3)) != null)
+            return matcher;
+        else if((matcher = Regexes.getCommand(input, Regexes.USER_LOGIN4)) != null)
+            return matcher;
         return null;
     }
     public Message loginUser(Matcher matcher) {
@@ -70,6 +95,7 @@ public class LoginMenuController extends Controller {
         else
             return Message.LOGIN_USER;
     }
+
     public void addNewUserToDataBase(User user ){
         int n = DataBase.numberOfUsers();
         String fileName = "user" + n + ".json";

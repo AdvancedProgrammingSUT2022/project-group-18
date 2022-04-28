@@ -20,7 +20,7 @@ public class LoginMenuView extends View{
             controller.exitMenu();
         else if(Regexes.getCommand(input, Regexes.SHOW_CURRENT_MENU) != null)
             System.out.println(controller.showCurrentMenu());
-        else if((matcher = Regexes.getCommand(input, Regexes.CREAT_NEW_USER)) != null)
+        else if((matcher = controller.matchCreateUser(input)) != null)
             System.out.println(controller.creatUser(matcher));
         else if((matcher = controller.matchLogin(input)) != null) {
             Message message = controller.loginUser(matcher);
