@@ -14,6 +14,7 @@ public class City {
     private int cityStrength;
     private User owner;
     private ArrayList<Unit> units = new ArrayList<>();
+    private ArrayList<Building> buildings = new ArrayList<>();
     private Unit unit;
 
     public City() {}
@@ -90,5 +91,13 @@ public class City {
 
     public Unit getUnit() {
         return unit;
+    }
+
+    public void setBuildings(Building buildings) {
+        this.buildings.add(buildings);
+    }
+
+    public ArrayList<Building> getBuildings() {
+        return buildings;
     }
 }

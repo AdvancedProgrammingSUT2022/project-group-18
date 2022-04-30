@@ -3,7 +3,7 @@ package model.unit;
 import enums.UnitEnum;
 
 public class Units {
-    public static Unit get(UnitEnum regex) {
+    public static Unit getUnits(UnitEnum regex) {
         switch (regex) {
             case ARCHER:
                 if (UnitsCheckRequireds.archeryCheck())

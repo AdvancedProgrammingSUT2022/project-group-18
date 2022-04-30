@@ -16,8 +16,8 @@ public class Improvement {
     this.technologieRequired = technologieRequired;
   }
   public Improvement newCamp(){return new Improvement(0,0,0 , Technologies.trapping);}
-  public void newFarm() {new Improvement(1, 0, 0 , Technologies.Farming);}
-  public void newLumberMill(){new Improvement(0, 1, 0, Technologies.SakhtOSaz);}
+  public Improvement newFarm() {return new Improvement(1, 0, 0 , Technologies.Farming);}
+  public Improvement newLumberMill(){return new Improvement(0, 1, 0, Technologies.SakhtOSaz);}
   public void newMine(){new Improvement(0, 1,  0, Technologies.Mining);}
   public void newPasture(){new Improvement(0, 0 , 0 , Technologies.DamParvari);}
   public void newWorkandFarm(){new Improvement(0,0,0, Technologies.Calender);}
