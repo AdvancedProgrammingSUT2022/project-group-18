@@ -2,7 +2,6 @@ package enums;
 
 import model.techs.Technology;
 
-import java.util.Locale;
 
 public enum TechsEnum {
     AGRI_CULTURE("Agriculture"),
@@ -63,7 +62,7 @@ public enum TechsEnum {
         return this.regex;
     }
 
-    public static boolean technologyCheck(TechsEnum name) {
+    private static boolean technologyCheck(TechsEnum name) {
         for (Technology techs : Technology.technologies) {
             if (techs.getName().equals(name.toString()))
                 return true;
