@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public enum Regexes {
-    MENUENTER("^menue\\s+nter\\s+(?<menuName>.*)$"),
+    MENUENTER("^menu\\s+enter\\s+(?<menuName>.*)$"),
     EXITMENU("^menu\\s+exit$"),
     SHOW_CURRENT_MENU("^menu show-current$"),
     CREAT_USER1("^user create --username (?<username>.*) --nickname (?<nickname>.*) --password (?<password>.*)$"),
@@ -22,7 +22,12 @@ public enum Regexes {
 
     //profile menu
     CHANGE_NICKNAME("^profile change [-][-]nickname (?<nickname>.*)$"),
-    CHANGE_PASSWORD("^profile change [-][-]password [-][-]current (?<currentPass>.*) --new (?<newPass>.*)$"),
+    CHANGE_PASSWORD1("^profile change [-][-]password [-][-]current (?<currentPass>.*) --new (?<newPass>.*)$"),
+    CHANGE_PASSWORD2("^profile change [-][-]password [-][-]new (?<newPass>.*) --current (?<currentPass>.*)$"),
+    CHANGE_PASSWORD3("^profile change [-][-]current (?<currentPass>.*) [-][-]password --new (?<newPass>.*)$"),
+    CHANGE_PASSWORD4("^profile change [-][-]current (?<currentPass>.*) [-][-]new (?<newPass>.*) --password$"),
+    CHANGE_PASSWORD5("^profile change [-][-]new (?<newPass>.*) [-][-]current (?<currentPass>.*) --password$"),
+    CHANGE_PASSWORD6("^profile change [-][-]new (?<newPass>.*) [-][-]password --current (?<currentPass>.*)$"),
 
 
 
