@@ -13,28 +13,6 @@ import java.util.regex.Matcher;
 
 public class LoginMenuController extends Controller {
 
-    public Message enterMenu(Matcher matcher) {
-        String menuName = matcher.group("menuName");
-        if (View.getIsLogedIn() == null)
-            return Message.LOGINERROR;
-        else if (View.getInMenu().toLowerCase(Locale.ROOT).equals("game menu") || View.getInMenu().toLowerCase(Locale.ROOT).equals("profile menu"))
-            return Message.IVALIDENTERMENU;
-
-        View.setInMenu(menuName);
-        if(menuName.toLowerCase(Locale.ROOT).equals("main menu"))
-            goToMainMenu();
-        else if(menuName.toLowerCase(Locale.ROOT).equals("login menu"))
-            logout();
-        else if(menuName.toLowerCase(Locale.ROOT).equals("profile menu"))
-            goToProfile();
-        else if(menuName.toLowerCase(Locale.ROOT).equals("game menu"))
-            startGame();
-        else
-            return Message.INVALID_MENU_NAME;
-
-        return null;
-    }
-
     public void exitMenu() {
             View.getScanner().close();
     }
@@ -93,6 +71,7 @@ public class LoginMenuController extends Controller {
         else if(!User.getUserByUsernameOrNickname(username, "username").getPassword().equals(password))
             return Message.NOT_MATCH;
         else
+            View.setIsLogedIn(User.getUserByUsernameOrNickname(username, "username"));
             return Message.LOGIN_USER;
     }
 

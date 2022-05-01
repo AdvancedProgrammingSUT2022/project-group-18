@@ -2,8 +2,8 @@ package controller;
 
 
 import enums.Message;
+import enums.Regexes;
 import model.User;
-import view.MainMenuView;
 import view.View;
 
 import java.util.regex.Matcher;
@@ -20,6 +20,22 @@ public class ProfileController extends Controller{
         }
     }
 
+    public Matcher changePassRegexes(String input) {
+        Matcher matcher;
+        if((matcher = Regexes.getCommand(input, Regexes.CHANGE_PASSWORD1)) != null)
+            return matcher;
+        else if((matcher = Regexes.getCommand(input, Regexes.CHANGE_PASSWORD2)) != null)
+            return matcher;
+        else if((matcher = Regexes.getCommand(input, Regexes.CHANGE_PASSWORD3)) != null)
+            return matcher;
+        else if((matcher = Regexes.getCommand(input, Regexes.CHANGE_PASSWORD4)) != null)
+            return matcher;
+        else if((matcher = Regexes.getCommand(input, Regexes.CHANGE_PASSWORD5)) != null)
+            return matcher;
+        else if((matcher = Regexes.getCommand(input, Regexes.CHANGE_PASSWORD6)) != null)
+            return matcher;
+        return null;
+    }
     public Message changePassword(Matcher matcher) {
         String currentPass= matcher.group("currentPass");
         String newPass = matcher.group("newPass");
