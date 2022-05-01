@@ -3,15 +3,19 @@ package model;
 
 import enums.TechsEnum;
 
+import java.util.ArrayList;
+
 public class Improvement {
     private int food;
     private int production;
     private int gold;
+    public static ArrayList<Improvement> improvements = new ArrayList<>();
 
     public Improvement(int food, int production, int gold) {
         this.food = food;
         this.production = production;
         this.gold = gold;
+        improvements.add(this);
     }
 
     public Improvement newCamp() {
