@@ -12,10 +12,11 @@ public class ProfileView extends View{
     public void run() {
         String input = getInput();
         Matcher matcher;
-
-        if((matcher = Regexes.getCommand(input, Regexes.CHANGE_NICKNAME)) != null)
+        if((matcher = Regexes.getCommand(input, Regexes.MENUENTER)) != null)
+            System.out.println(controller.enterMenu(matcher).toString());
+        else if((matcher = Regexes.getCommand(input, Regexes.CHANGE_NICKNAME)) != null)
             System.out.println(controller.changeNickname(matcher));
-        else if((matcher = Regexes.getCommand(input, Regexes.CHANGE_PASSWORD)) != null)
+        else if(controller.changePassRegexes(input) != null)
             System.out.println(controller.changePassword(matcher));
         else if(Regexes.getCommand(input, Regexes.EXITMENU) != null)
             controller.goToMainMenu();
@@ -24,6 +25,6 @@ public class ProfileView extends View{
         else
             System.out.println(Message.INVALID);
 
-
+        this.run();
     }
 }
