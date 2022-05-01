@@ -11,7 +11,7 @@ public class CityView {
         ArrayList<Citizen> unemployeds = city.getUnemployedCitizen();
         System.out.println(unemployeds);
         //TODO get citizen number by click & enter here
-        Citizen citizen = unemployeds.get();
+        Citizen citizen = unemployeds.get(2);//fix it
         return citizen;
     }
     public void show(City city){
