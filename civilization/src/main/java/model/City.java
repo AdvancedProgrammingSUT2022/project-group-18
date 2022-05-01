@@ -19,6 +19,7 @@ public class City {
     private ArrayList<Citizen> unemployedCitizen;
     private HashMap<Tile, Citizen> citizenWorkers;
     private ArrayList<Unit> units = new ArrayList<>();
+    private ArrayList<Building> buildings = new ArrayList<>();
     private Unit unit;
     private CityView cityView = new CityView();
 
@@ -99,6 +100,7 @@ public class City {
         return unit;
     }
 
+<<<<<<< HEAD
     public ArrayList<Citizen> getUnemployedCitizen() {
         return unemployedCitizen;
     }
@@ -128,5 +130,13 @@ public class City {
     }
     public void returnToMap(){
         return;
+=======
+    public void setBuildings(Building buildings) {
+        this.buildings.add(buildings);
+    }
+
+    public ArrayList<Building> getBuildings() {
+        return buildings;
+>>>>>>> origin
     }
 }

@@ -5,7 +5,10 @@ public class CityController extends Controller{
     public void backToMainMap(){}
     public void changeMaking(){}
     public void makeUnits(){}
-    public void makeBuldings(){}
+    public void makeBuldings(){
+        //TODO get building's name and build it
+        //city.setBuilding;
+    }
     public void citizenToDo(){}
     public void ImprovementPlace(){}
     public void AppointSpecialists () {}
