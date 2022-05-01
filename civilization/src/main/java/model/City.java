@@ -100,7 +100,6 @@ public class City {
         return unit;
     }
 
-<<<<<<< HEAD
     public ArrayList<Citizen> getUnemployedCitizen() {
         return unemployedCitizen;
     }
@@ -125,18 +124,17 @@ public class City {
     }
     public void buyTile(Tile tile){
         cityView.showCostOfTile(tile);
-        tile.incraerseCost(100);//TODO check the amount
-        this.cityGold-=100;
+        tile.incraerseCost(10);//TODO check the amount
+        this.cityGold-=10;
     }
     public void returnToMap(){
         return;
-=======
+    }
     public void setBuildings(Building buildings) {
         this.buildings.add(buildings);
     }
 
     public ArrayList<Building> getBuildings() {
         return buildings;
->>>>>>> origin
     }
 }
