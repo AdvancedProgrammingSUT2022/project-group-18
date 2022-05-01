@@ -1,10 +1,13 @@
 package model;
 
 import model.unit.Unit;
+import view.CityView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class City {
+    private Tile originTile;
     private String cityName;
     private int cityPopulation;
     private int cityFood;
@@ -13,12 +16,16 @@ public class City {
     private int cityScience;
     private int cityStrength;
     private User owner;
+    private ArrayList<Citizen> unemployedCitizen;
+    private HashMap<Tile, Citizen> citizenWorkers;
     private ArrayList<Unit> units = new ArrayList<>();
     private Unit unit;
+    private CityView cityView = new CityView();
 
-    public City() {}
-
-
+    public City() {
+        this.unemployedCitizen = new ArrayList<>();
+        this.citizenWorkers = new HashMap<>();
+    }
 
     public void setCityName(String cityName) {
         this.cityName = cityName;
@@ -90,5 +97,36 @@ public class City {
 
     public Unit getUnit() {
         return unit;
+    }
+
+    public ArrayList<Citizen> getUnemployedCitizen() {
+        return unemployedCitizen;
+    }
+
+    public void lockCitizen(Citizen citizen){
+        Tile tile = this.originTile;
+        citizenWorkers.put(tile, citizen);
+        tile.isUnderWork = true;
+    }
+    public void unemployedMenu(String choice){
+        //TODO specialist choice
+        if (this.unemployedCitizen.size()!=0){
+            Citizen citizen = cityView.showUnemployed(this);
+            unemployedCitizen.remove(citizen);
+            lockCitizen(citizen);
+        }else return;
+    }
+    public void unlockCitizen(Citizen citizen){
+        unemployedCitizen.add(citizen);
+        citizenWorkers.remove(this.originTile);
+        this.originTile.isUnderWork=false;
+    }
+    public void buyTile(Tile tile){
+        cityView.showCostOfTile(tile);
+        tile.incraerseCost(100);//TODO check the amount
+        this.cityGold-=100;
+    }
+    public void returnToMap(){
+        return;
     }
 }
