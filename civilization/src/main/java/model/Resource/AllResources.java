@@ -1,7 +1,7 @@
 package model.Resource;
 
 public class AllResources {
-/*    Technologies technologies = new Technologies();
+/*
     Resources banana = new Resources("Banana", 1, 0, 0, "farest", "farming", "BonusResources", "");
     BonusResources cow = new BonusResources("Cow", 1, 0, 0, "Grassland", "Pasture");
     BonusResources gazelle = new BonusResources("Gazelle", 1, 0, 0, "Farest, Tundra,Hill", "camp");

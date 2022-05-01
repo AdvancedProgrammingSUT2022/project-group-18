@@ -1,34 +1,83 @@
 package model;
 
 
-import model.techs.Technologies;
-import model.techs.Technology;
+import enums.TechsEnum;
 
 public class Improvement {
-  private int food;
-  private int production;
-  private int gold;
-  private Technology technologieRequired;
-  public Improvement(int food, int production, int gold , Technology technologieRequired) {
-    this.food = food;
-    this.production = production;
-    this.gold = gold;
-    this.technologieRequired = technologieRequired;
-  }
-  public Improvement newCamp(){return new Improvement(0,0,0 , Technologies.trapping);}
-  public Improvement newFarm() {return new Improvement(1, 0, 0 , Technologies.Farming);}
-  public Improvement newLumberMill(){return new Improvement(0, 1, 0, Technologies.SakhtOSaz);}
-  public void newMine(){new Improvement(0, 1,  0, Technologies.Mining);}
-  public void newPasture(){new Improvement(0, 0 , 0 , Technologies.DamParvari);}
-  public void newWorkandFarm(){new Improvement(0,0,0, Technologies.Calender);}
-  public void newStoneMine(){new Improvement(0,0,0, Technologies.SangTarashi);}
-  public void newTradingPost(){new Improvement(0, 0, 1, Technologies.trapping);}
-  public void newFactory(){new Improvement(0 , 2 , 0, Technologies.Mohandesi);}
+    private int food;
+    private int production;
+    private int gold;
+
+    public Improvement(int food, int production, int gold) {
+        this.food = food;
+        this.production = production;
+        this.gold = gold;
+    }
+
+    public Improvement newCamp() {
+        if (TechsEnum.technologyCheck(TechsEnum.TRAPPING))
+            return new Improvement(0, 0, 0);
+        return null;
+    }
+
+    public Improvement newFarm() {
+        if (TechsEnum.technologyCheck(TechsEnum.AGRI_CULTURE))
+            return new Improvement(1, 0, 0);
+        return null;
+    }
+
+    public Improvement newLumberMill() {
+        if (TechsEnum.technologyCheck(TechsEnum.CONSTRUCTION))
+            return new Improvement(0, 1, 0);
+        return null;
+    }
+
+    public Improvement newMine() {
+        if (TechsEnum.technologyCheck(TechsEnum.MINING))
+            new Improvement(0, 1, 0);
+        return null;
+    }
+
+    public Improvement newPasture() {
+        if (TechsEnum.technologyCheck(TechsEnum.ANIMAL_HUSBANDRY))
+            new Improvement(0, 0, 0);
+        return null;
+    }
+
+    public Improvement newWorkandFarm() {
+        if (TechsEnum.technologyCheck(TechsEnum.CALENDAR))
+            new Improvement(0, 0, 0);
+        return null;
+    }
+
+    public Improvement newStoneMine() {
+        if (TechsEnum.technologyCheck(TechsEnum.MASONRY))
+            new Improvement(0, 0, 0);
+        return null;
+    }
+
+    public Improvement newTradingPost() {
+        if (TechsEnum.technologyCheck(TechsEnum.TRAPPING))
+            new Improvement(0, 0, 1);
+        return null;
+    }
+
+    public Improvement newFactory() {
+        if (TechsEnum.technologyCheck(TechsEnum.ENGINEERING))
+            new Improvement(0, 2, 0);
+        return null;
+    }
 
 
-  public int getFood() {return this.food;}
+    public int getFood() {
+        return this.food;
+    }
 
-  public int getProduction() {return this.production;}
+    public int getProduction() {
+        return this.production;
+    }
 
-  public int getGold() {return this.gold;}
+    public int getGold() {
+        return this.gold;
+    }
 }

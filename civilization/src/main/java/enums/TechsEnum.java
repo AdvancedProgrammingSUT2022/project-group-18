@@ -62,7 +62,7 @@ public enum TechsEnum {
         return this.regex;
     }
 
-    private static boolean technologyCheck(TechsEnum name) {
+    public static boolean technologyCheck(TechsEnum name) {
         for (Technology techs : Technology.technologies) {
             if (techs.getName().equals(name.toString()))
                 return true;

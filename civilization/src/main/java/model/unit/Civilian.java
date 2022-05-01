@@ -17,22 +17,20 @@ public class Civilian extends Unit {
     public boolean isX() {
         return x;
     }
-    //    public void equals(String s1,String s2 ){
-//        if
-   // }
-    if(){
-        public void foundCity(){
 
-    }}
+    public void setter() {
+        if(x){
+           foundCity();
+        }
 
-    if(y)
-    {
-        public void creatLand () {
+        if(y)
+        {
+            creatLand();
+            repaireLand();
+        }
     }
-
-        public void repaireLand () {
-
-    }
-    }
+    public void foundCity(){}
+    public void creatLand() {}
+    public void repaireLand() {}
 
 }
