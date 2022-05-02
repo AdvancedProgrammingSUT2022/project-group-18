@@ -9,5 +9,4 @@ module civilization {
         opens view to javafx.fxml;
         opens civilization to javafx.fxml;
         exports civilization;
-
 }
