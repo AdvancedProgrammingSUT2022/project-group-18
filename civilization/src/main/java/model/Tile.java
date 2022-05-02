@@ -18,6 +18,16 @@ public class Tile {
 	private City city;
 	private ArrayList<Unit> units;
 	private int cost;
+	private static ArrayList<Improvement> improvements = new ArrayList<>();
+
+	public static void setImprovements(Improvement improvements) {
+		Tile.improvements.add(improvements);
+	}
+
+	public static ArrayList<Improvement> getImprovements() {
+		return improvements;
+	}
+
 	public String getTileType() {
 			return tileType;
 		}

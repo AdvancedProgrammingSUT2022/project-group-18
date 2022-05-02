@@ -30,7 +30,7 @@ public abstract class Controller {
             return Message.IVALIDENTERMENU;
 
         switch (menuName.toLowerCase(Locale.ROOT)) {
-            case "main menu":
+            case "civilization.main menu":
                 goToMainMenu();
                 break;
             case "login menu":

@@ -23,6 +23,7 @@ public class City {
     private Unit unit;
     private CityView cityView = new CityView();
 
+
     public City() {
         this.unemployedCitizen = new ArrayList<>();
         this.citizenWorkers = new HashMap<>();
