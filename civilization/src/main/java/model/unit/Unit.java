@@ -2,6 +2,7 @@ package model.unit;
 
 public class Unit {
 
+
     //protected String combatType;
     protected String name;
     protected int movement;
@@ -18,7 +19,7 @@ public class Unit {
     protected boolean hasTerrainCost = true;
 
 
-
+/*
     public boolean getIsMilitary() {
         return isMilitary;
     }
@@ -349,6 +350,7 @@ public class Unit {
         return finalPath;
     }
 
+*/
 
 
 

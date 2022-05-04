@@ -1,5 +1,6 @@
 package model.unit;
 public class Civilian extends Unit {
+
     public Civilian(String name, int movement, int productionCost) {
         this.name = name;
         this.movement = movement;
@@ -21,24 +22,27 @@ public class Civilian extends Unit {
     }
 
 
+    public void settlerOrWorker(boolean x , boolean y) {
         if(x){
             foundCity();
-                }
+        }
 
 
 
         if(y)
         {
             creatLand();
-            repaireLand();
+            repairLand();
         }
+    }
+
 
 public void foundCity(){
-        if(civs.get(0).createCity(curPos)){
+/*        if(civs.get(0).createCity(curPos)){
         currentUnit.deleteFromMapAndCiv();
-        ui.resetFocusData();}
+        ui.resetFocusData();}*/ //for running code
         }
     public void creatLand() {}
-    public void repaireLand() {}
+    public void repairLand() {}
 
 }
