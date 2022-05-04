@@ -3,6 +3,8 @@ public class Civilian extends Unit {
     public Civilian(String name, int movement, int productionCost) {
         this.name = name;
         this.movement = movement;
+        this.movementTemp = movement;
+        this.movementPotential = movement;
         this.productionCost = productionCost;
     }
     String settler = "Settler";
@@ -18,18 +20,24 @@ public class Civilian extends Unit {
         return x;
     }
 
-    public void setter() {
+
         if(x){
-           foundCity();
-        }
+            foundCity();
+                }
+
+
 
         if(y)
         {
             creatLand();
             repaireLand();
         }
-    }
-    public void foundCity(){}
+
+public void foundCity(){
+        if(civs.get(0).createCity(curPos)){
+        currentUnit.deleteFromMapAndCiv();
+        ui.resetFocusData();}
+        }
     public void creatLand() {}
     public void repaireLand() {}
 
