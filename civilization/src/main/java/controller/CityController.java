@@ -21,16 +21,6 @@ public class CityController extends Controller{
         if( tile.getX() <= city.getOriginTile().getX() + 2)
             city.unemployedMenu(choice);//90% it is not true
     }
-    public void ImprovementPlace(){}
-    public void AppointSpecialists (City city) {
-       // city.unlockCitizen();
 
-    }
-    public void effectsOfAppointSpecialists() {}
-    public void attackingCity() {}
-    public void attackingWithMelee() {}
-    public void DestroyCity() {}
-    public void appendixCity() {}
-    public void dependingCity() {}
 
 }

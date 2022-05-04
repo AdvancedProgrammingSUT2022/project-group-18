@@ -1,5 +1,7 @@
 package model;
 
+import enums.Message;
+import model.unit.Civilian;
 import model.unit.Unit;
 import view.CityView;
 
@@ -16,11 +18,12 @@ public class City {
     private int cityScience;
     private int cityStrength;
     private User owner;
-    private ArrayList<Citizen> unemployedCitizen;
-    private HashMap<Tile, Citizen> citizenWorkers;
+    private ArrayList<Civilian> unemployedCitizen;
+    private HashMap<Tile, Civilian> citizenWorkers;
     private ArrayList<Unit> units = new ArrayList<>();
     private ArrayList<Building> buildings = new ArrayList<>();
-    private Unit unit ;
+    private Unit militaryUnit;
+    private Unit civilianUnit;
     private CityView cityView = new CityView();
 
 
@@ -61,8 +64,19 @@ public class City {
         this.owner = owner;
     }
 
-    public void setUnit(Unit unit) {
-        this.unit = unit;
+    public boolean setMilitaryUnit(Unit militaryUnit){
+        if (militaryUnit!=null){
+            this.militaryUnit = militaryUnit;
+            return true;
+        }
+        else return false;//transport unit to out of city
+    }
+    public boolean setCivilianUnit (Unit militaryUnit){
+        if (civilianUnit!=null){
+            this.civilianUnit = militaryUnit;
+            return true;
+        }
+        else return false;//transport unit to out of city
     }
 
     public String getCityName() {
@@ -97,15 +111,19 @@ public class City {
         return owner;
     }
 
-    public Unit getUnit() {
-        return unit;
+    public Unit getMilitaryUnit() {
+        return militaryUnit;
     }
 
-    public ArrayList<Citizen> getUnemployedCitizen() {
+    public Unit getCivilianUnit() {
+        return civilianUnit;
+    }
+
+    public ArrayList<Civilian> getUnemployedCitizen() {
         return unemployedCitizen;
     }
 
-    public void lockCitizen(Citizen citizen){
+    public void lockCitizen(Civilian citizen){
         Tile tile = this.originTile;
         citizenWorkers.put(tile, citizen);
         tile.isUnderWork = true;
@@ -113,12 +131,12 @@ public class City {
     public void unemployedMenu(String choice){
         //TODO specialist choice
         if (this.unemployedCitizen.size()!=0){
-            Citizen citizen = cityView.showUnemployed(this);
+            Civilian citizen = cityView.showUnemployed(this);
             unemployedCitizen.remove(citizen);
             lockCitizen(citizen);
         }else return;
     }
-    public void unlockCitizen(Citizen citizen){
+    public void unlockCitizen(Civilian citizen){
         unemployedCitizen.add(citizen);
         citizenWorkers.remove(this.originTile);
         this.originTile.isUnderWork=false;
@@ -129,7 +147,7 @@ public class City {
         this.cityGold-=10;
     }
 
-    public void returnToMap(){}
+    public void returnToMap(){return;}
     public void setBuildings(Building buildings) {
         this.buildings.add(buildings);
     }
@@ -140,5 +158,16 @@ public class City {
 
     public Tile getOriginTile() {
         return originTile;
+    }
+
+    public void workOnTile(){
+        this.cityFood++;
+        this.cityGold++;
+        this.cityProduction++;
+        this.cityScience++;
+        //TODO set the proper amount
+    }
+    public void setSpecialist(){
+        //TODO complete after completing buldings
     }
 }

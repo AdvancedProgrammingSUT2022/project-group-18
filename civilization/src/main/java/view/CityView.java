@@ -1,17 +1,17 @@
 package view;
 
-import model.Citizen;
 import model.City;
 import model.Tile;
+import model.unit.Civilian;
 
 import java.util.ArrayList;
 
 public class CityView {
-    public Citizen showUnemployed(City city){
-        ArrayList<Citizen> unemployeds = city.getUnemployedCitizen();
+    public Civilian showUnemployed(City city){
+        ArrayList<Civilian> unemployeds = city.getUnemployedCitizen();
         System.out.println(unemployeds);
         //TODO get citizen number by click & enter here
-        Citizen citizen = unemployeds.get(2);//fix it
+        Civilian citizen = unemployeds.get(2);//fix it
         return citizen;
     }
     public void show(City city){
@@ -33,9 +33,8 @@ public class CityView {
         //System.out.println(Items);
         //TODO complete after completing buldings
     }
-    public void showMakeCityMenu(){}
-    public void AppointSpecialists () {}
-    public void DestroyCity() {}
-    public void appendixCity() {}
-    public void dependingCity() {}
+    public void buildMenu(){
+        //TODO complete after completing buldings
+    }
+
 }
