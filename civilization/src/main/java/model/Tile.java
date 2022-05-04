@@ -41,4 +41,20 @@ public class Tile {
 	public void incraerseCost(int amount){
 		cost+=amount;
 	}
+
+	public float getX() {
+		return x;
+	}
+
+	public float getY() {
+		return y;
+	}
+
+	public float getWidth() {
+		return width;
+	}
+
+	public float getHeight() {
+		return height;
+	}
 }//TODO Tile

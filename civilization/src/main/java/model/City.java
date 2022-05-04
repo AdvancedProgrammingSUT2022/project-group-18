@@ -20,7 +20,7 @@ public class City {
     private HashMap<Tile, Citizen> citizenWorkers;
     private ArrayList<Unit> units = new ArrayList<>();
     private ArrayList<Building> buildings = new ArrayList<>();
-    private Unit unit;
+    private Unit unit ;
     private CityView cityView = new CityView();
 
 
@@ -128,14 +128,17 @@ public class City {
         tile.incraerseCost(10);//TODO check the amount
         this.cityGold-=10;
     }
-    public void returnToMap(){
-        return;
-    }
+
+    public void returnToMap(){}
     public void setBuildings(Building buildings) {
         this.buildings.add(buildings);
     }
 
     public ArrayList<Building> getBuildings() {
         return buildings;
+    }
+
+    public Tile getOriginTile() {
+        return originTile;
     }
 }
