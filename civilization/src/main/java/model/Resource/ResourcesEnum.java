@@ -1,8 +1,10 @@
 package enums;
 
-import model.Improvement;
+import model.improvements.Improvement;
 import model.Resource.Resources;
 import model.Tile;
+import model.improvements.ImprovementsEnum;
+
 // inke can be found on ye jaye khas bashan hanuz anjam nashode
 public enum ResourcesEnum {
     BANANA("Banana"),
