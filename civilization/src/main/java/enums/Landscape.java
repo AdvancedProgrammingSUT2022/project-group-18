@@ -1,4 +1,6 @@
-package model.trrain;
+package enums;
+
+import model.trrain.Terrain;
 
 public enum Landscape {
 
