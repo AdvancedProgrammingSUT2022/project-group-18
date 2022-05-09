@@ -34,6 +34,18 @@ public class ProfileController extends Controller{
             return matcher;
         else if((matcher = Regexes.getCommand(input, Regexes.CHANGE_PASSWORD6)) != null)
             return matcher;
+        else if((matcher = Regexes.getCommand(input, Regexes.CHANGE_PASSWORD11)) != null)
+            return matcher;
+        else if((matcher = Regexes.getCommand(input, Regexes.CHANGE_PASSWORD12)) != null)
+            return matcher;
+        else if((matcher = Regexes.getCommand(input, Regexes.CHANGE_PASSWORD13)) != null)
+            return matcher;
+        else if((matcher = Regexes.getCommand(input, Regexes.CHANGE_PASSWORD14)) != null)
+            return matcher;
+        else if((matcher = Regexes.getCommand(input, Regexes.CHANGE_PASSWORD15)) != null)
+            return matcher;
+        else if((matcher = Regexes.getCommand(input, Regexes.CHANGE_PASSWORD16)) != null)
+            return matcher;
         return null;
     }
     public Message changePassword(Matcher matcher) {

@@ -1,11 +1,8 @@
 package controller;
 
 import enums.Message;
-import enums.UnitEnum;
 import model.hex;
 import model.techs.Technology;
-import model.unit.Unit;
-import model.unit.Units;
 import view.*;
 
 import java.util.Locale;

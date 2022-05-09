@@ -1,6 +1,4 @@
-package enums;
-
-import model.unit.*;
+package model.unit;
 
 public enum UnitEnum {
     ARCHER("Archer"),
@@ -15,7 +13,7 @@ public enum UnitEnum {
     SWORDSMAN("Swordsman"),
     CROSSBOWMAN("Crossbowman"),
     KNIGHT("Knight"),
-    LONGSWORDSMAN("Longswordsman"),
+    LONGSWORDSMAN("Longwordsman"),
     PIKEMAN("Pikeman"),
     TREBUCHET("Trebuchet"),
     CANON("Canon"),

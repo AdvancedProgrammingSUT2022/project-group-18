@@ -1,6 +1,6 @@
 package controller;
 
-import enums.UnitEnum;
+import model.unit.UnitEnum;
 import model.City;
 import model.Tile;
 

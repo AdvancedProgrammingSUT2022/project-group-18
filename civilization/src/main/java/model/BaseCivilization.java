@@ -1,5 +1,5 @@
 package model;
-import enums.UnitEnum;
+import model.unit.UnitEnum;
 import model.unit.Unit;
 
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ public class BaseCivilization {
   private Integer cultureTotal = 0;
   private Integer cultureRequired = 0;
   private Integer culturePT = 0;
-  private Integer happiness = 0;
+  private static Integer happiness = 0;
   private ArrayList<Unit> units;
   private String[] cityNames;
   private ArrayList<City> cities;
@@ -40,6 +40,7 @@ public class BaseCivilization {
 
   }
 
+  public static void setHappiness(Integer happiness) {BaseCivilization.happiness = happiness;}
   public Integer getHappiness() {
     return happiness;
   }

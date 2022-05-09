@@ -1,14 +1,9 @@
 package model;
 
-import model.City;
+import model.improvements.Improvement;
 import model.unit.Unit;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.Random;
-import java.util.TreeSet;
 
 
 public class Tile {

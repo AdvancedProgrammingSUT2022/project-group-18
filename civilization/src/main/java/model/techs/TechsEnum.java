@@ -1,6 +1,4 @@
-package enums;
-
-import model.techs.Technology;
+package model.techs;
 
 
 public enum TechsEnum {

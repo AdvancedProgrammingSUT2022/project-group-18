@@ -24,11 +24,11 @@ public class Unit {
         return isMilitary;
     }
 
-    public int getcombatStrength() {
+    public int getCombatStrength() {
         return combatStrength;
     }
 
-    public int getcombatStrengthRanged(){
+    public int getCombatStrengthRanged(){
         return combatStrengthRanged;
     }
 
@@ -93,7 +93,7 @@ public class Unit {
     public void moveUnit() {
 
     }
-    public void checksSameLocstion(){
+    public void checksSameLocation(){
 
     }
     public void addToMapAndCiv() {

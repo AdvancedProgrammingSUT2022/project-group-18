@@ -1,7 +1,6 @@
-package enums;
+package model.Resource;
 
 import model.improvements.Improvement;
-import model.Resource.Resources;
 import model.Tile;
 import model.improvements.ImprovementsEnum;
 

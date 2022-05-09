@@ -1,5 +1,7 @@
-package model;
+package model.improvements;
 
+
+import model.Tile;
 
 public class Improvement {
     private String name;

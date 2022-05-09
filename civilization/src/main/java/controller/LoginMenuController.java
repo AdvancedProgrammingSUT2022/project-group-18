@@ -14,7 +14,8 @@ import java.util.regex.Matcher;
 public class LoginMenuController extends Controller {
 
     public void exitMenu() {
-            View.getScanner().close();
+            System.exit(0);
+            // or View.getScanner().close;
     }
 
     public String creatUser(Matcher matcher) {
@@ -45,7 +46,17 @@ public class LoginMenuController extends Controller {
             return matcher;
         else if((matcher = Regexes.getCommand(input, Regexes.CREAT_USER6)) != null)
             return matcher;
-        else if((matcher = Regexes.getCommand(input, Regexes.CREAT_USER7)) != null)
+        else if((matcher = Regexes.getCommand(input, Regexes.CREAT_USER11)) != null)
+            return matcher;
+        else if((matcher = Regexes.getCommand(input, Regexes.CREAT_USER12)) != null)
+            return matcher;
+        else if((matcher = Regexes.getCommand(input, Regexes.CREAT_USER13)) != null)
+            return matcher;
+        else if((matcher = Regexes.getCommand(input, Regexes.CREAT_USER14)) != null)
+            return matcher;
+        else if((matcher = Regexes.getCommand(input, Regexes.CREAT_USER15)) != null)
+            return matcher;
+        else if((matcher = Regexes.getCommand(input, Regexes.CREAT_USER16)) != null)
             return matcher;
 
         return null;
