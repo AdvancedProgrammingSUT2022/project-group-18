@@ -2,7 +2,7 @@ package enums;
 
 public enum Events {
 
-    FOUNDCITY() {
+    FOUND_CITY() {
 
     },
 
@@ -10,7 +10,7 @@ public enum Events {
 
     },
 
-    MELEEATTACK (){
+    MELEE_ATTACK (){
 
     },
 
@@ -30,7 +30,7 @@ public enum Events {
 
     },
 
-    READYMOOD(){
+    READY_MOOD(){
 
     },
 
@@ -38,15 +38,15 @@ public enum Events {
 
     },
 
-    FORTIFYUNTILHEALED(){
+    FORTIFY_UNTIL_HEALED(){
 
     },
 
-    READYFORRANGEDATTACK() {
+    READY_FOR_RANGED_ATTACK() {
 
     },
 
-    RANGEDATTACK(){
+    RANGED_ATTACK(){
 
     },
 
