@@ -52,15 +52,5 @@ public class User {
             dataBaseUsers.add(DataBase.getUserFromDataBase(i));
         }
     }
-    public void addUserToGson(){
-        int n = DataBase.numberOfUsers();
-        String fileName = "user" + n + ".json";
-        try {
-            FileWriter myWriter = new FileWriter(fileName);
-            myWriter.write(new Gson().toJson(this));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        DataBase.setNumOfUsers();
-    }
+
 }
