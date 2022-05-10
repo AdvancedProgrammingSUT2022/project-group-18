@@ -1,18 +1,10 @@
 package controller;
 
-import com.google.gson.Gson;
 import enums.Message;
 import enums.Regexes;
 import model.User;
 import view.View;
 
-import java.io.FileWriter;
-import java.io.IOException;
-<<<<<<< HEAD
-=======
-import java.util.ArrayList;
-import java.util.Locale;
->>>>>>> 8b583f00e88c1671b4f46f507d4f2f79d11e1f1a
 import java.util.regex.Matcher;
 
 public class LoginMenuController extends Controller {
@@ -35,14 +27,11 @@ public class LoginMenuController extends Controller {
         else if(User.getUserByUsernameOrNickname(nickname, "nickname") != null)
             return Message.USER_EXIST_NICKNAME_ONE + nickname + Message.USER_EXIST_USERNAME_TWO;
         else
-<<<<<<< HEAD
-            View.setIsLoggedIn(new User(username,password,nickname));
-=======
         {
+            View.setIsLoggedIn(new User(username,password,nickname));
             User user = new User(username,password,nickname);
-            View.setIsLogedIn(user);
+            View.setIsLoggedIn(user);
             addNewUserToDataBase(user);
->>>>>>> 8b583f00e88c1671b4f46f507d4f2f79d11e1f1a
             return Message.USERCREAT.toString();
         }
     }
