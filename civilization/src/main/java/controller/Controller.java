@@ -21,7 +21,7 @@ public abstract class Controller {
 
     public Message enterMenu(Matcher matcher) {
         String menuName = matcher.group("menuName");
-        if (View.getIsLogedIn() == null)
+        if (View.getIsLoggedIn() == null)
             return Message.LOGINERROR;
         else if (View.getInMenu().toLowerCase(Locale.ROOT).equals("game menu") || View.getInMenu().toLowerCase(Locale.ROOT).equals("profile menu"))
             return Message.IVALIDENTERMENU;
@@ -56,7 +56,7 @@ public abstract class Controller {
         return View.getInMenu();
     }
     public void logout() {
-        View.setIsLogedIn(null);
+        View.setIsLoggedIn(null);
         View.setInMenu("Login Menu");
         LoginMenuView view = new LoginMenuView();
         view.run();

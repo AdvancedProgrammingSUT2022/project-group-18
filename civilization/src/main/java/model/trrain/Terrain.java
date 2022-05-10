@@ -5,7 +5,7 @@ public class Terrain {
   private int production;
   private double combatModifires;
   private int gold;
-  private int movmentCost;
+  private int movementCost;
   private boolean passable;
 
   public Terrain(int food, int production, double combatModifires, int gold, int movmentCost, boolean passable) {
@@ -13,7 +13,7 @@ public class Terrain {
     this.production = production;
     this.combatModifires = combatModifires;
     this.gold = gold;
-    this.movmentCost=movmentCost;
+    this.movementCost =movmentCost;
     this.passable=passable;
   }
 
@@ -25,14 +25,14 @@ public class Terrain {
     return this.production;
   }
 
-  public double getCombatModifires() {
+  public double getCombatModifiers() {
     return this.combatModifires;
   }
 
   public int getGold() {
     return this.gold;
   }
-  public int getMovmentCost() {
-    return this.movmentCost;
+  public int getMovementCost() {
+    return this.movementCost;
   }
 }

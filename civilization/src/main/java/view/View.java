@@ -10,9 +10,9 @@ public abstract class View {
     private static String inMenu = "Login Menu";
     private static User isLoggedIn = null;
 
-    public static void setIsLogedIn(User isLogedIn) {View.isLoggedIn = isLogedIn;}
-    public static User getIsLogedIn() {return isLoggedIn;}
-    public void removeIsLogedIn() { View.isLoggedIn = null;}
+    public static void setIsLoggedIn(User isLoggedIn) {View.isLoggedIn = isLoggedIn;}
+    public static User getIsLoggedIn() {return isLoggedIn;}
+    public void removeIsLoggedIn() { View.isLoggedIn = null;}
     public static Scanner getScanner() {
         return View.scanner;
     }

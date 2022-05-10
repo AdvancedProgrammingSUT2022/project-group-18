@@ -41,7 +41,7 @@ public enum Feature {
   }
 
   public int getMovementcost() {
-    return this.y.getMovmentCost();
+    return this.y.getMovementCost();
   }
 
 

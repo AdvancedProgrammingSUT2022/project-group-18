@@ -14,9 +14,9 @@ public class GameMenuView extends View {
         String input = getInput();
         Matcher matcher;
 
-        if (Regexes.getCommand(input, Regexes.EXITMENU) != null)
+        if (Regexes.getCommand(input, Regexes.EXIT_MENU) != null)
             controller.goToMainMenu();
-        else if ((matcher = Regexes.getCommand(input, Regexes.MENUENTER)) != null)
+        else if ((matcher = Regexes.getCommand(input, Regexes.MENU_ENTER)) != null)
             System.out.println(controller.enterMenu(matcher).toString());
         else if (Regexes.getCommand(input, Regexes.SHOW_CURRENT_MENU) != null)
             System.out.println(controller.showCurrentMenu());

@@ -4,8 +4,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public enum Regexes {
-    MENUENTER("^menu\\s+enter\\s+(?<menuName>.*)$"),
-    EXITMENU("^menu\\s+exit$"),
+    MENU_ENTER("^menu\\s+enter\\s+(?<menuName>.*)$"),
+    EXIT_MENU("^menu\\s+exit$"),
     SHOW_CURRENT_MENU("^menu show-current$"),
     CREAT_USER1("^user create --username (?<username>.*) --nickname (?<nickname>.*) --password (?<password>.*)$"),
     CREAT_USER2("^user create --username (?<username>.*) --password (?<password>.*) --nickname (?<nickname>.*)$"),
@@ -62,18 +62,18 @@ public enum Regexes {
     ECONOMIC("economics"),
     DIPLOMATIC("diplomatic"),//what is differences between diplomatic and diplomacy?
     DEALS("deals"),
-    UNIT_COMBAT_POSITION("unit combat position \\d[,]\\d{2}"),
-    UNIT_NONCOMBAT_POSITION("unit noncombat position \\d[,]\\d{2}"),
+    UNIT_COMBAT_POSITION("unit combat position (?<amount>\\d[,]\\d{2})"),
+    UNIT_NONCOMBAT_POSITION("unit noncombat position (?<amount>\\d[,]\\d{2})"),
     CITY_NAME("city (?<name>\\S+)"),
-    CITY_POSITION("city position \\d[,]\\d{2}"),
-    MOVETO_POSITION("move to position \\d[,]\\d{2}"),
+    CITY_POSITION("city position (?<amount>\\d[,]\\d{2})"),
+    MOVETO_POSITION("move to position (?<amount>\\d[,]\\d{2})"),
     SLEEP("sleep"),
     ALERT("alert"),
     FORTIFY("fortify"),
     FORTIFY_HEAL("fortify heal"),
     GARRISON("garrison"),
     SETUP_RANGED("setup ranged"),
-    ATTACK_POSITION("attack position \\d[,]\\d{2}"),
+    ATTACK_POSITION("attack position (?<amount>\\d[,]\\d{2})"),
     FOUND_CITY("found city"),
     CANCEL_MISSION("cancel mission"),
     WAKE("wake"),
@@ -106,8 +106,8 @@ public enum Regexes {
     Regexes(String regex) {
         this.regex = regex;
     }
-    public static Matcher getCommand (String input, Regexes comand) {
-        Matcher matcher = Pattern.compile(comand.regex).matcher(input);
+    public static Matcher getCommand (String input, Regexes command) {
+        Matcher matcher = Pattern.compile(command.regex).matcher(input);
         if (matcher.matches()) {
             return matcher;
         }

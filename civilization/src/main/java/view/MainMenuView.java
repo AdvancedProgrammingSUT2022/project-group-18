@@ -14,7 +14,7 @@ public class MainMenuView extends View{
         String input = getInput();
         Matcher matcher;
 
-        if((matcher = Regexes.getCommand(input, Regexes.MENUENTER)) != null)
+        if((matcher = Regexes.getCommand(input, Regexes.MENU_ENTER)) != null)
             System.out.println(controller.enterMenu(matcher).toString());
         else if(Regexes.getCommand(input, Regexes.PLAY_GAME) != null) {
             Message message =controller.goToGame(input);
@@ -23,7 +23,7 @@ public class MainMenuView extends View{
                 controller.startGame();
         } else if(Regexes.getCommand(input, Regexes.USER_LOGOUT) != null)
             controller.logout();
-        else if(Regexes.getCommand(input, Regexes.EXITMENU) != null)
+        else if(Regexes.getCommand(input, Regexes.EXIT_MENU) != null)
             controller.logout();
         else if(Regexes.getCommand(input, Regexes.SHOW_CURRENT_MENU) != null)
             System.out.println(controller.showCurrentMenu());

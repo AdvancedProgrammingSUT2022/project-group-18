@@ -9,6 +9,11 @@ module civilization {
         opens view to javafx.fxml;
         opens civilization to javafx.fxml;
         exports civilization;
+        exports controller;
+        exports enums;
+        exports model;
+        exports view;
+        exports model.trrain;
         opens model.improvements to javafx.fxml;
         opens model.unit to javafx.fxml;
         opens model.techs to javafx.fxml;

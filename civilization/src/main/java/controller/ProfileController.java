@@ -15,7 +15,7 @@ public class ProfileController extends Controller{
         if(User.getUserByUsernameOrNickname(nickname, "nickname") != null)
             return Message.USER_EXIST_NICKNAME_ONE + nickname + Message.USER_EXIST_USERNAME_TWO;
         else {
-            View.getIsLogedIn().setNickname(nickname);
+            View.getIsLoggedIn().setNickname(nickname);
             return Message.CHANGE_NICKNAME.toString();
         }
     }
@@ -51,12 +51,12 @@ public class ProfileController extends Controller{
     public Message changePassword(Matcher matcher) {
         String currentPass= matcher.group("currentPass");
         String newPass = matcher.group("newPass");
-        if(!View.getIsLogedIn().getPassword().equals(currentPass))
+        if(!View.getIsLoggedIn().getPassword().equals(currentPass))
             return Message.PASS_INVALID;
-        else if(View.getIsLogedIn().getPassword().equals(newPass))
+        else if(View.getIsLoggedIn().getPassword().equals(newPass))
             return Message.SAME_PASS;
         else {
-            View.getIsLogedIn().passChange(newPass);
+            View.getIsLoggedIn().passChange(newPass);
             return Message.CHANGE_PASSWORD;
         }
     }

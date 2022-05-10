@@ -13,9 +13,9 @@ public class LoginMenuView extends View{
     public void run() {
         String input = getInput();
         Matcher matcher;
-        if((matcher = Regexes.getCommand(input, Regexes.MENUENTER)) != null)
+        if((matcher = Regexes.getCommand(input, Regexes.MENU_ENTER)) != null)
             System.out.println(controller.enterMenu(matcher).toString());
-        else if( Regexes.getCommand(input, Regexes.EXITMENU) != null)
+        else if( Regexes.getCommand(input, Regexes.EXIT_MENU) != null)
             controller.exitMenu();
         else if(Regexes.getCommand(input, Regexes.SHOW_CURRENT_MENU) != null)
             System.out.println(controller.showCurrentMenu());

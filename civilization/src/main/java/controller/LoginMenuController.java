@@ -8,10 +8,12 @@ import view.View;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Locale;
 import java.util.regex.Matcher;
 
 public class LoginMenuController extends Controller {
+    public LoginMenuController() {
+
+    }
 
     public void exitMenu() {
             System.exit(0);
@@ -28,7 +30,7 @@ public class LoginMenuController extends Controller {
         else if(User.getUserByUsernameOrNickname(nickname, "nickname") != null)
             return Message.USER_EXIST_NICKNAME_ONE + nickname + Message.USER_EXIST_USERNAME_TWO;
         else
-            View.setIsLogedIn(new User(username,password,nickname));
+            View.setIsLoggedIn(new User(username,password,nickname));
             return Message.USERCREAT.toString();
     }
 
@@ -82,7 +84,7 @@ public class LoginMenuController extends Controller {
         else if(!User.getUserByUsernameOrNickname(username, "username").getPassword().equals(password))
             return Message.NOT_MATCH;
         else
-            View.setIsLogedIn(User.getUserByUsernameOrNickname(username, "username"));
+            View.setIsLoggedIn(User.getUserByUsernameOrNickname(username, "username"));
             return Message.LOGIN_USER;
     }
 
