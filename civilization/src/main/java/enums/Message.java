@@ -26,7 +26,11 @@ public enum Message {
     UNIT_NOT_EXIST(""),
     CITY_NOT_EXIST_WITH_NAME(""),
     CITY_NOT_EXIST_IN_POSITION("");
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 8b583f00e88c1671b4f46f507d4f2f79d11e1f1a
 
 
 
