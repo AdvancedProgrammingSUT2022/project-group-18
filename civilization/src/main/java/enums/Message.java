@@ -25,7 +25,7 @@ public enum Message {
     NONCOMBAT_UNIT_DONT_EXIST(""),
     UNIT_NOT_EXIST(""),
     CITY_NOT_EXIST_WITH_NAME(""),
-    CITY_NOT_EXIST_IN_POSITION(""),
+    CITY_NOT_EXIST_IN_POSITION("");
     
 
 

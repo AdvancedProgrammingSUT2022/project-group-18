@@ -1,7 +1,10 @@
 package model;
 
+import com.google.gson.Gson;
 import controller.DataBase;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class User {
@@ -48,5 +51,16 @@ public class User {
         for (int i=0 ; i<n ; i++){
             dataBaseUsers.add(DataBase.getUserFromDataBase(i));
         }
+    }
+    public void addUserToGson(){
+        int n = DataBase.numberOfUsers();
+        String fileName = "user" + n + ".json";
+        try {
+            FileWriter myWriter = new FileWriter(fileName);
+            myWriter.write(new Gson().toJson(this));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        DataBase.setNumOfUsers();
     }
 }
