@@ -28,7 +28,6 @@ public class LoginMenuController extends Controller {
             return Message.USER_EXIST_NICKNAME_ONE + nickname + Message.USER_EXIST_USERNAME_TWO;
         else
         {
-            View.setIsLoggedIn(new User(username,password,nickname));
             User user = new User(username,password,nickname);
             View.setIsLoggedIn(user);
             addNewUserToDataBase(user);
