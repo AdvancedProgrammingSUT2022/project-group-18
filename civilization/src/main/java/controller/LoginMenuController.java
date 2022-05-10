@@ -90,6 +90,14 @@ public class LoginMenuController extends Controller {
     }
 
     public void addNewUserToDataBase(User user){
-        user.addUserToGson();
+        int n = DataBase.numberOfUsers();
+        String fileName = "user" + n + ".json";
+        try {
+            FileWriter myWriter = new FileWriter(fileName);
+            myWriter.write(new Gson().toJson(user));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        DataBase.setNumOfUsers();
     }
 }
