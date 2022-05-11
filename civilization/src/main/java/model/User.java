@@ -19,12 +19,12 @@ public class User {
         this.username=username;
         this.password=password;
         this.nickname = nickname;
-
-        User.users.add(this);
+        addNewUserToDataBase(this);
     }
 
     public static User getUserByUsernameOrNickname(String name, String identifier) {
-        for (User user : User.users) {
+        ArrayList<User> savedUsers = getUsersFromDataBase();
+        for (User user : savedUsers) {
             if (identifier.equals("username") && user.username.equals(name)) {
                 return user;
             } else if(identifier.equals("nickname") && user.nickname.equals(name))
@@ -35,7 +35,6 @@ public class User {
 
     public String getPassword(){return password;}
     public String getUsername(){return username;}
-    public static void addUser(User user){users.add(user);}
     public void setNickname(String nickname) {this.nickname = nickname;}
     public String getNickname() {return nickname;}
     public void passChange(String newPass){this.password = newPass;}
@@ -46,7 +45,7 @@ public class User {
     public static ArrayList<User> getUsers() {
         return users;
     }
-    public static void getUsersFromDataBase(){
+    public static ArrayList<User> getUsersFromDataBase(){
         int n = 0;
         try {
             n = DataBase.numberOfUsers();
@@ -56,6 +55,23 @@ public class User {
         for (int i=0 ; i<n ; i++){
             dataBaseUsers.add(DataBase.getUserFromDataBase(i));
         }
+        return dataBaseUsers;
     }
-
+    public void addNewUserToDataBase(User user){
+        int n = 0;
+        try {
+            n = DataBase.numberOfUsers();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String fileName = "user" + n + ".json";
+        try {
+            FileWriter myWriter = new FileWriter(fileName);
+            myWriter.write(new Gson().toJson(user));
+            myWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        DataBase.setNumOfUsers();
+    }
 }
