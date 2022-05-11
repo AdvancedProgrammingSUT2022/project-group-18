@@ -103,6 +103,7 @@ public class LoginMenuController extends Controller {
         try {
             FileWriter myWriter = new FileWriter(fileName);
             myWriter.write(new Gson().toJson(user));
+            myWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

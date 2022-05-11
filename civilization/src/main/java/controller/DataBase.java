@@ -12,10 +12,14 @@ public class DataBase {
 
     public static int numberOfUsers()throws IOException{
         File file = new File("numberOfUsers.txt");
-        FileInputStream inputStream = new FileInputStream(file);
-        String num = new String(inputStream.readAllBytes());
-        inputStream.close();
-        int n = Integer.parseInt(num);
+        int n = 0;
+        if(file.length() != 0) {
+            FileInputStream inputStream = new FileInputStream(file);
+            String num = new String(inputStream.readAllBytes());
+            inputStream.close();
+            n = Integer.parseInt(num);
+        }
+
 
         return n;
     }
