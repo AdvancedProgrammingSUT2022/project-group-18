@@ -33,7 +33,6 @@ public class LoginMenuController extends Controller {
         {
             User user = new User(username,password,nickname);
             View.setIsLoggedIn(user);
-            addNewUserToDataBase(user);
             return Message.USERCREAT.toString();
         }
     }
@@ -92,6 +91,7 @@ public class LoginMenuController extends Controller {
             return Message.LOGIN_USER;
     }
 
+<<<<<<< HEAD
     public void addNewUserToDataBase(User user){
         int n = 0;
         try {
@@ -109,4 +109,7 @@ public class LoginMenuController extends Controller {
         }
         DataBase.setNumOfUsers();
     }
+=======
+
+>>>>>>> origin
 }
