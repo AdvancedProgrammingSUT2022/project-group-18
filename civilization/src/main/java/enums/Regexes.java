@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public enum Regexes {
     MENU_ENTER("^menu\\s+enter\\s+(?<menuName>.*)$"),
-    EXIT_MENU("^menu\\s+exit$"),
+    EXIT_MENU("^exit$"),
     SHOW_CURRENT_MENU("^menu show-current$"),
     CREAT_USER1("^user create --username (?<username>.*) --nickname (?<nickname>.*) --password (?<password>.*)$"),
     CREAT_USER2("^user create --username (?<username>.*) --password (?<password>.*) --nickname (?<nickname>.*)$"),
