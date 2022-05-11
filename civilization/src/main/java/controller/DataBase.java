@@ -20,7 +20,6 @@ public class DataBase {
             n = Integer.parseInt(num);
         }
 
-
         return n;
     }
 
