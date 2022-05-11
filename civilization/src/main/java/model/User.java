@@ -23,12 +23,7 @@ public class User {
     }
 
     public static User getUserByUsernameOrNickname(String name, String identifier) {
-<<<<<<< HEAD
         for (User user : dataBaseUsers) {
-=======
-        ArrayList<User> savedUsers = getUsersFromDataBase();
-        for (User user : savedUsers) {
->>>>>>> origin
             if (identifier.equals("username") && user.username.equals(name)) {
                 return user;
             } else if(identifier.equals("nickname") && user.nickname.equals(name))
