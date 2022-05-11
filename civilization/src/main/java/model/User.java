@@ -22,13 +22,10 @@ public class User {
         addNewUserToDataBase(this);
     }
 
-    public static User getUserByUsernameOrNickname(String name, String identifier) {
-<<<<<<< HEAD
+    public static ArrayList<User> getUserByUsernameOrNickname(String name, String identifier) {
         for (User user : dataBaseUsers) {
-=======
         ArrayList<User> savedUsers = getUsersFromDataBase();
         for (User user : savedUsers) {
->>>>>>> origin
             if (identifier.equals("username") && user.username.equals(name)) {
                 return user;
             } else if(identifier.equals("nickname") && user.nickname.equals(name))
@@ -61,21 +58,21 @@ public class User {
         }
         return dataBaseUsers;
     }
-    public void addNewUserToDataBase(User user){
-        int n = 0;
-        try {
-            n = DataBase.numberOfUsers();
-        } catch (IOException e) {
-            e.printStackTrace();
+        public void addNewUserToDataBase(User user){
+            int n = 0;
+            try {
+                n = DataBase.numberOfUsers();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            String fileName = "user" + n + ".json";
+            try {
+                FileWriter myWriter = new FileWriter(fileName);
+                myWriter.write(new Gson().toJson(user));
+                myWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            DataBase.setNumOfUsers();
         }
-        String fileName = "user" + n + ".json";
-        try {
-            FileWriter myWriter = new FileWriter(fileName);
-            myWriter.write(new Gson().toJson(user));
-            myWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        DataBase.setNumOfUsers();
-    }
 }

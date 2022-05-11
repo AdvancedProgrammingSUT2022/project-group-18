@@ -19,11 +19,7 @@ public class DataBase {
             inputStream.close();
             n = Integer.parseInt(num);
         }
-<<<<<<< HEAD
-=======
 
-
->>>>>>> origin
         return n;
     }
 

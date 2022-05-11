@@ -91,25 +91,4 @@ public class LoginMenuController extends Controller {
             return Message.LOGIN_USER;
     }
 
-<<<<<<< HEAD
-    public void addNewUserToDataBase(User user){
-        int n = 0;
-        try {
-            n = DataBase.numberOfUsers();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        String fileName = "user" + n + ".json";
-        try {
-            FileWriter myWriter = new FileWriter(fileName);
-            myWriter.write(new Gson().toJson(user));
-            myWriter.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        DataBase.setNumOfUsers();
-    }
-=======
-
->>>>>>> origin
 }
