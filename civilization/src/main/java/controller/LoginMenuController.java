@@ -91,7 +91,6 @@ public class LoginMenuController extends Controller {
             return Message.LOGIN_USER;
     }
 
-<<<<<<< HEAD
     public void addNewUserToDataBase(User user){
         int n = 0;
         try {
@@ -110,6 +109,4 @@ public class LoginMenuController extends Controller {
         DataBase.setNumOfUsers();
     }
 
-=======
->>>>>>> origin
 }
