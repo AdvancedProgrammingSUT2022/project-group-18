@@ -1,10 +1,13 @@
 package controller;
 
+import com.google.gson.Gson;
 import enums.Message;
 import enums.Regexes;
 import model.User;
 import view.View;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.regex.Matcher;
 
 public class LoginMenuController extends Controller {
@@ -90,7 +93,12 @@ public class LoginMenuController extends Controller {
     }
 
     public void addNewUserToDataBase(User user){
-        int n = DataBase.numberOfUsers();
+        int n = 0;
+        try {
+            n = DataBase.numberOfUsers();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         String fileName = "user" + n + ".json";
         try {
             FileWriter myWriter = new FileWriter(fileName);

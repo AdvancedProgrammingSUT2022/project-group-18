@@ -1,6 +1,9 @@
 package civilization;
 
+import controller.DataBase;
 import view.LoginMenuView;
+
+import java.io.IOException;
 
 public class main {
     public static void main(String[] args) {

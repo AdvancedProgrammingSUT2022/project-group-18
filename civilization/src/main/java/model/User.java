@@ -47,7 +47,12 @@ public class User {
         return users;
     }
     public static void getUsersFromDataBase(){
-        int n = DataBase.numberOfUsers();
+        int n = 0;
+        try {
+            n = DataBase.numberOfUsers();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         for (int i=0 ; i<n ; i++){
             dataBaseUsers.add(DataBase.getUserFromDataBase(i));
         }

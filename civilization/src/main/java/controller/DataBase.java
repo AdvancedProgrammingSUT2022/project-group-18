@@ -3,34 +3,31 @@ package controller;
 import com.google.gson.Gson;
 import model.User;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class DataBase {
-    public static int numberOfUsers(){
-        int n = 0;
+
+    public static int numberOfUsers()throws IOException{
         File file = new File("numberOfUsers.txt");
-        try {
-            Scanner scanner = new Scanner(file);
-            String num = scanner.nextLine();
-            n = Integer.parseInt(num);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
+        FileInputStream inputStream = new FileInputStream(file);
+        String num = new String(inputStream.readAllBytes());
+        inputStream.close();
+        int n = Integer.parseInt(num);
+
         return n;
     }
 
     public static void setNumOfUsers(){
         try {
-            FileWriter writer = new FileWriter("numberOfUsers.txt");
+            File file = new File("numberOfUsers.txt");
             int n=numberOfUsers()+1;
-            writer.write(n);
-            writer.close();
+            PrintWriter printWriter = new PrintWriter(file);
+            printWriter.write(Integer.toString(n));
+            printWriter.flush();
+            printWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -48,3 +45,4 @@ public class DataBase {
     }
 }
 
+//user create --username fsl --nickname fdd --password 99
