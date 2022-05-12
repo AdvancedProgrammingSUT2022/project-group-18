@@ -16,12 +16,14 @@ public class ProfileView extends View{
             System.out.println(controller.enterMenu(matcher).toString());
         else if((matcher = Regexes.getCommand(input, Regexes.CHANGE_NICKNAME)) != null)
             System.out.println(controller.changeNickname(matcher));
-        else if(controller.changePassRegexes(input) != null)
+        else if((matcher = controller.changePassRegexes(input)) != null)
             System.out.println(controller.changePassword(matcher));
         else if(Regexes.getCommand(input, Regexes.EXIT_MENU) != null)
             controller.goToMainMenu();
         else if(Regexes.getCommand(input, Regexes.SHOW_CURRENT_MENU) != null)
             System.out.println(controller.showCurrentMenu());
+        else if(Regexes.getCommand(input, Regexes.CHANGE_USERNAME) != null)
+            System.out.println(Message.CANT_CHANG_USERNAME);
         else
             System.out.println(Message.INVALID);
 

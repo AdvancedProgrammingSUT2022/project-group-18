@@ -24,7 +24,7 @@ public class CityView {
     public void showCostOfTile(Tile tile){
         System.out.println(tile.getCost());
     }
-    public void showBuldingDetails(){}
+    public void showBuildingDetails(){}
     public void showProductionMenu(){
         //System.out.println(Item + neededTurns);
         //TODO complete after completing buildings

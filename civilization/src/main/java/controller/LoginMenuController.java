@@ -33,7 +33,7 @@ public class LoginMenuController extends Controller {
         {
             User user = new User(username,password,nickname);
             View.setIsLoggedIn(user);
-            return Message.USERCREAT.toString();
+            return Message.USER_CREAT.toString();
         }
     }
 

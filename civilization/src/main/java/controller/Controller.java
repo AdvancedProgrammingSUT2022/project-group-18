@@ -27,7 +27,7 @@ public abstract class Controller {
             return Message.IVALIDENTERMENU;
 
         switch (menuName.toLowerCase(Locale.ROOT)) {
-            case "civilization.main menu":
+            case "main menu":
                 goToMainMenu();
                 break;
             case "login menu":
@@ -37,8 +37,7 @@ public abstract class Controller {
                 goToProfile();
                 break;
             case "game menu":
-                startGame();
-                break;
+                return Message.GAME_WITH_NO_PLAYER;
             default:
                 return Message.INVALID_MENU_NAME;
         }
