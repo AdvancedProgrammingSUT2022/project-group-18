@@ -22,44 +22,24 @@ public class User {
         addNewUserToDataBase(this);
     }
 
-
     public static User getUserByUsernameOrNickname(String name, String identifier) {
-        for (User user : dataBaseUsers) {
             ArrayList<User> savedUsers = getUsersFromDataBase();
-            for (User users : savedUsers) {
-                if (identifier.equals("username") && users.username.equals(name)) {
-                    return users;
-                } else if (identifier.equals("nickname") && users.nickname.equals(name))
-                    return users;
+            for (User user : savedUsers) {
+                if (identifier.equals("username") && user.username.equals(name)) {
+                    return user;
+                } else if (identifier.equals("nickname") && user.nickname.equals(name))
+                    return user;
             }
-        }
-            return null;
-        }
-
-        public String getPassword () {
-            return password;
-        }
-        public String getUsername () {
-            return username;
-        }
-        public void setNickname (String nickname){
-            this.nickname = nickname;
-        }
-        public String getNickname () {
-            return nickname;
-        }
-        public void passChange (String newPass){
-            this.password = newPass;
-        }
-        public static void removeAccount (User user){
-            users.remove(user);
-        }
-        public static void setPlayers (User players){
-            User.players.add(players);
-        }
-        public static ArrayList<User> getPlayers () {
-            return players;
-        }
+        return null;
+    }
+    public String getPassword(){return password;}
+    public String getUsername(){return username;}
+    public void setNickname(String nickname) {this.nickname = nickname;}
+    public String getNickname() {return nickname;}
+    public void passChange(String newPass){this.password = newPass;}
+    public static void removeAccount(User user){users.remove(user);}
+    public static void setPlayers(User players) {User.players.add(players);}
+    public static ArrayList<User> getPlayers() {return players;}
 
         public static ArrayList<User> getUsers () {
             return users;

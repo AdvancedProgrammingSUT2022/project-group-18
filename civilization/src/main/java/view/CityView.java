@@ -27,14 +27,14 @@ public class CityView {
     public void showBuldingDetails(){}
     public void showProductionMenu(){
         //System.out.println(Item + neededTurns);
-        //TODO complete after completing buldings
+        //TODO complete after completing buildings
     }
     public void purchaceMenu(){
         //System.out.println(Items);
-        //TODO complete after completing buldings
+        //TODO complete after completing buildings
     }
     public void buildMenu(){
-        //TODO complete after completing buldings
+        //TODO complete after completing buildings
     }
 
 }

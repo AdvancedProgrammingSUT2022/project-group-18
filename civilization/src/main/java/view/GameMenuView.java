@@ -20,6 +20,13 @@ public class GameMenuView extends View {
             System.out.println(controller.enterMenu(matcher).toString());
         else if (Regexes.getCommand(input, Regexes.SHOW_CURRENT_MENU) != null)
             System.out.println(controller.showCurrentMenu());
+        else if((matcher = Regexes.getCommand(input, Regexes.INCREASE_TURN)) != null) {
+
+        } else if ((matcher = Regexes.getCommand(input, Regexes.INCREASE_GOLD)) != null) {
+
+        } else if ((matcher = Regexes.getCommand(input, Regexes.INCREASE_BEAKERS)) != null) {
+
+        }
         else if (Regexes.getCommand(input, Regexes.RESEARCH) != null) {
         } else if (Regexes.getCommand(input, Regexes.UNITS) != null) {
         } else if (Regexes.getCommand(input, Regexes.CITIES) != null) {

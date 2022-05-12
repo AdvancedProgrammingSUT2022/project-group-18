@@ -49,6 +49,7 @@ public enum Regexes {
     //kod haye taghalob
     INCREASE_TURN("^increase --turn (?<amount>\\d+)$"),
     INCREASE_GOLD("^increase --gold (?<amount>\\d+)$"),
+    INCREASE_BEAKERS("^increase --beakers (?<amount>\\d+)$"),
 
     //dastourat bazi
     RESEARCH("research"),
