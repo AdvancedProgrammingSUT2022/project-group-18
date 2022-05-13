@@ -11,6 +11,10 @@ import java.util.regex.Matcher;
 
 public abstract class Controller {
 
+    public void exitMenu() {
+        System.exit(0);
+    }
+
     public Technology findTechnologyByName(String nameOfTech) {
         for (Technology tech : Technology.getTechnologies()) {
             if (tech.getName().equals(nameOfTech))
@@ -27,7 +31,7 @@ public abstract class Controller {
             return Message.IVALIDENTERMENU;
 
         switch (menuName.toLowerCase(Locale.ROOT)) {
-            case "civilization.main menu":
+            case "main menu":
                 goToMainMenu();
                 break;
             case "login menu":
@@ -37,8 +41,7 @@ public abstract class Controller {
                 goToProfile();
                 break;
             case "game menu":
-                startGame();
-                break;
+                return Message.GAME_WITH_NO_PLAYER;
             default:
                 return Message.INVALID_MENU_NAME;
         }
@@ -55,6 +58,7 @@ public abstract class Controller {
     public String showCurrentMenu() {
         return View.getInMenu();
     }
+
     public void logout() {
         View.setIsLoggedIn(null);
         View.setInMenu("Login Menu");
@@ -71,7 +75,13 @@ public abstract class Controller {
     public void startGame() {
         View.setInMenu("Game Menu");
         GameMenuView view = new GameMenuView();
-        hex.printmap();
+
+        hex.cc(hex.Unit, hex.City);
+        for (int i = 0; i < 18; i++) {
+            hex.getInfo(hex.Unit, hex.City, i);
+            hex.printMap(hex.Unit, hex.City, i, hex.randFeature, hex.randLend, hex.featuresType);
+            System.out.println(hex.getFeature());
+        }
         view.run();
     }
 

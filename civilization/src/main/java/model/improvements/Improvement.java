@@ -24,15 +24,15 @@ public class Improvement {
     public String getName() {return name;}
 
     public int getFood() {
-        return this.food;
+        return food;
     }
 
     public int getProduction() {
-        return this.production;
+        return production;
     }
 
     public int getGold() {
-        return this.gold;
+        return gold;
     }
 
     public boolean canMakeImprovementHere(Tile tile){

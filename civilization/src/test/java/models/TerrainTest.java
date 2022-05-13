@@ -1,3 +1,5 @@
+package models;
+
 import model.trrain.Terrain;
 import org.junit.Test;
 

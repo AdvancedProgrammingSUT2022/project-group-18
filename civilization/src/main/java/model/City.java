@@ -15,7 +15,7 @@ public class City {
     private int cityFood;
     private int cityGold;
     private int cityProduction;
-    private int cityScience;
+    private int cityBeakers;
     private int cityStrength;
     private User owner;
     private ArrayList<Civilian> unemployedCitizen;
@@ -52,8 +52,8 @@ public class City {
         this.cityProduction = cityProduction;
     }
 
-    public void setCityScience(int cityScience) {
-        this.cityScience = cityScience;
+    public void setCityBeakers(int cityScience) {
+        this.cityBeakers = cityScience;
     }
 
     public void setCityStrength(int cityStrength) {
@@ -99,8 +99,8 @@ public class City {
         return cityProduction;
     }
 
-    public int getCityScience() {
-        return cityScience;
+    public int getCityBeakers() {
+        return cityBeakers;
     }
 
     public int getCityStrength() {
@@ -164,7 +164,7 @@ public class City {
         this.cityFood++;
         this.cityGold++;
         this.cityProduction++;
-        this.cityScience++;
+        this.cityBeakers++;
         //TODO set the proper amount
     }
     public void setSpecialist(){

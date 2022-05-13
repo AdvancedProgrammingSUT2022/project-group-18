@@ -1,6 +1,6 @@
-package model.improvements;
+package enums;
 
-import model.techs.TechsEnum;
+import model.improvements.Improvement;
 
 public enum ImprovementsEnum {
     CAMP("Camp"),

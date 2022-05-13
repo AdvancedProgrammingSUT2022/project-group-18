@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public enum Regexes {
     MENU_ENTER("^menu\\s+enter\\s+(?<menuName>.*)$"),
-    EXIT_MENU("^exit$"),
+    EXIT_MENU("^exit menu$"),
     SHOW_CURRENT_MENU("^menu show-current$"),
     CREAT_USER1("^user create --username (?<username>.*) --nickname (?<nickname>.*) --password (?<password>.*)$"),
     CREAT_USER2("^user create --username (?<username>.*) --password (?<password>.*) --nickname (?<nickname>.*)$"),
@@ -26,19 +26,20 @@ public enum Regexes {
     USER_LOGOUT("^user logout$"),
 
     //profile menu
-    CHANGE_NICKNAME("^profile change [-][-]nickname (?<nickname>.*)$"),
-    CHANGE_PASSWORD1("^profile change [-][-]password [-][-]current (?<currentPass>.*) --new (?<newPass>.*)$"),
-    CHANGE_PASSWORD2("^profile change [-][-]password [-][-]new (?<newPass>.*) --current (?<currentPass>.*)$"),
-    CHANGE_PASSWORD3("^profile change [-][-]current (?<currentPass>.*) [-][-]password --new (?<newPass>.*)$"),
-    CHANGE_PASSWORD4("^profile change [-][-]current (?<currentPass>.*) [-][-]new (?<newPass>.*) --password$"),
-    CHANGE_PASSWORD5("^profile change [-][-]new (?<newPass>.*) [-][-]current (?<currentPass>.*) --password$"),
-    CHANGE_PASSWORD6("^profile change [-][-]new (?<newPass>.*) [-][-]password --current (?<currentPass>.*)$"),
-    CHANGE_PASSWORD11("^profile change -p -c (?<currentPass>.*) -n (?<newPass>.*)$"),
-    CHANGE_PASSWORD12("^profile change -p -n (?<newPass>.*) -c (?<currentPass>.*)$"),
-    CHANGE_PASSWORD13("^profile change -c (?<currentPass>.*) -p -n (?<newPass>.*)$"),
-    CHANGE_PASSWORD14("^profile change -c (?<currentPass>.*) -n (?<newPass>.*) -p$"),
-    CHANGE_PASSWORD15("^profile change -n (?<newPass>.*) -c (?<currentPass>.*) -p$"),
-    CHANGE_PASSWORD16("^profile change -n (?<newPass>.*) -p -c (?<currentPass>.*)$"),
+    CHANGE_NICKNAME("^change [-][-]nickname (?<nickname>.*)$"),
+    CHANGE_USERNAME("^change --username (?<username>.*)$"),
+    CHANGE_PASSWORD1("^change [-][-]password [-][-]current (?<currentPass>.*) --new (?<newPass>.*)$"),
+    CHANGE_PASSWORD2("^change [-][-]password [-][-]new (?<newPass>.*) --current (?<currentPass>.*)$"),
+    CHANGE_PASSWORD3("^change [-][-]current (?<currentPass>.*) [-][-]password --new (?<newPass>.*)$"),
+    CHANGE_PASSWORD4("^change [-][-]current (?<currentPass>.*) [-][-]new (?<newPass>.*) --password$"),
+    CHANGE_PASSWORD5("^change [-][-]new (?<newPass>.*) [-][-]current (?<currentPass>.*) --password$"),
+    CHANGE_PASSWORD6("^change [-][-]new (?<newPass>.*) [-][-]password --current (?<currentPass>.*)$"),
+    CHANGE_PASSWORD11("^change -p -c (?<currentPass>.*) -n (?<newPass>.*)$"),
+    CHANGE_PASSWORD12("^change -p -n (?<newPass>.*) -c (?<currentPass>.*)$"),
+    CHANGE_PASSWORD13("^change -c (?<currentPass>.*) -p -n (?<newPass>.*)$"),
+    CHANGE_PASSWORD14("^change -c (?<currentPass>.*) -n (?<newPass>.*) -p$"),
+    CHANGE_PASSWORD15("^change -n (?<newPass>.*) -c (?<currentPass>.*) -p$"),
+    CHANGE_PASSWORD16("^change -n (?<newPass>.*) -p -c (?<currentPass>.*)$"),
 
 
 
@@ -46,12 +47,14 @@ public enum Regexes {
 
     //game menu regexes
     PLAY_GAME("^play game [([-][-]player[0-9] \\S+)]+$"),
+    EXIT_GAME("^exit game$"),
     //kod haye taghalob
     INCREASE_TURN("^increase --turn (?<amount>\\d+)$"),
     INCREASE_GOLD("^increase --gold (?<amount>\\d+)$"),
+    INCREASE_BEAKERS("^increase --beakers (?<amount>\\d+)$"),
 
     //dastourat bazi
-    RESEARCH("research"),
+    RESEARCH("^research$"),
     UNITS("units"),
     CITIES("cities"),
     DIPLOMACY("diplomacy"),

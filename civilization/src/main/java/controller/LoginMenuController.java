@@ -15,10 +15,6 @@ public class LoginMenuController extends Controller {
 
     }
 
-    public void exitMenu() {
-            System.exit(0);
-            // or View.getScanner().close;
-    }
 
     public String creatUser(Matcher matcher) {
         String username = matcher.group("username");
@@ -33,7 +29,7 @@ public class LoginMenuController extends Controller {
         {
             User user = new User(username,password,nickname);
             View.setIsLoggedIn(user);
-            return Message.USERCREAT.toString();
+            return Message.USER_CREAT.toString();
         }
     }
 
@@ -89,6 +85,24 @@ public class LoginMenuController extends Controller {
         else
             View.setIsLoggedIn(User.getUserByUsernameOrNickname(username, "username"));
             return Message.LOGIN_USER;
+    }
+
+    public void addNewUserToDataBase(User user){
+        int n = 0;
+        try {
+            n = DataBase.numberOfUsers();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String fileName = "user" + n + ".json";
+        try {
+            FileWriter myWriter = new FileWriter(fileName);
+            myWriter.write(new Gson().toJson(user));
+            myWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        DataBase.setNumOfUsers();
     }
 
 }

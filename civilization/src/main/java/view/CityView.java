@@ -18,23 +18,23 @@ public class CityView {
         System.out.println(city.getCityFood()+
                 city.getCityProduction()+
                 city.getCityGold()+
-                city.getCityScience());
+                city.getCityBeakers());
 //TODO + show the num of turns that cost to increase boundry & population
     }
     public void showCostOfTile(Tile tile){
         System.out.println(tile.getCost());
     }
-    public void showBuldingDetails(){}
+    public void showBuildingDetails(){}
     public void showProductionMenu(){
         //System.out.println(Item + neededTurns);
-        //TODO complete after completing buldings
+        //TODO complete after completing buildings
     }
     public void purchaceMenu(){
         //System.out.println(Items);
-        //TODO complete after completing buldings
+        //TODO complete after completing buildings
     }
     public void buildMenu(){
-        //TODO complete after completing buldings
+        //TODO complete after completing buildings
     }
 
 }

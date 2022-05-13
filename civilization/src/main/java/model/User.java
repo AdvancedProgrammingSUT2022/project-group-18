@@ -15,9 +15,9 @@ public class User {
     private static ArrayList<User> players = new ArrayList<>();// it should not save it is just for doing changes on users;
     public static ArrayList<User> dataBaseUsers = new ArrayList<>();
 
-    public User(String username , String password, String nickname){
-        this.username=username;
-        this.password=password;
+    public User(String username, String password, String nickname) {
+        this.username = username;
+        this.password = password;
         this.nickname = nickname;
         addNewUserToDataBase(this);
     }
@@ -41,22 +41,22 @@ public class User {
     public static void setPlayers(User players) {User.players.add(players);}
     public static ArrayList<User> getPlayers() {return players;}
 
-    public static ArrayList<User> getUsers() {
-        return users;
-    }
-    public static ArrayList<User> getUsersFromDataBase(){
-        int n = 0;
-        try {
-            n = DataBase.numberOfUsers();
-        } catch (IOException e) {
-            e.printStackTrace();
+        public static ArrayList<User> getUsers () {
+            return users;
         }
-        for (int i=0 ; i<n ; i++){
-            dataBaseUsers.add(DataBase.getUserFromDataBase(i));
+        public static ArrayList<User> getUsersFromDataBase () {
+            int n = 0;
+            try {
+                n = DataBase.numberOfUsers();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            for (int i = 0; i < n; i++) {
+                dataBaseUsers.add(DataBase.getUserFromDataBase(i));
+            }
+            return dataBaseUsers;
         }
-        return dataBaseUsers;
-    }
-        public void addNewUserToDataBase(User user){
+        public void addNewUserToDataBase (User user){
             int n = 0;
             try {
                 n = DataBase.numberOfUsers();
@@ -73,4 +73,4 @@ public class User {
             }
             DataBase.setNumOfUsers();
         }
-}
+    }
