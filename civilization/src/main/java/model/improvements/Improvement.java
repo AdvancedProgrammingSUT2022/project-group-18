@@ -74,7 +74,7 @@ public class Improvement {
         tile.foodOutput++;
     }
     public void miningImprovement(Tile tile){
-        //TODO open accesibelity of coal & al & ...
+        //TODO open accessibility of coal & al & ...
     }
     public void 
 }
