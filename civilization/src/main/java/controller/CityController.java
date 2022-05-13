@@ -18,10 +18,5 @@ public class CityController extends Controller{
         //TODO get building's name and build it
         //city.setBuilding;
     }
-    public void citizenToDo(City city, Tile tile, String choice){
-        if( tile.getX() <= city.getOriginTile().getX() + 2)
-            city.unemployedMenu(choice);//90% it is not true
-    }
-
 
 }

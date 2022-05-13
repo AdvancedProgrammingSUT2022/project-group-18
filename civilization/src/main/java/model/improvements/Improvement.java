@@ -1,6 +1,7 @@
 package model.improvements;
 
 
+import enums.ImprovementsEnum;
 import model.Tile;
 import model.unit.Civilian;
 
@@ -57,17 +58,15 @@ public class Improvement {
     }
 
     public boolean canMakeImprovementHere(Improvement improvement , Tile tile){
-        switch (improvement.name){
-            case ImprovementsEnum.FARM:
-                if (tile.getTileType().equals("ice"))
+        if (improvement.name.equals(ImprovementsEnum.FARM.toString()))
+            if (tile.getTileType().equals("ice"))
                     return false;
-                else return true;
-            case ImprovementsEnum.MINE:
+            else return true;
+        if (improvement.name.equals(ImprovementsEnum.MINE.toString()))
                 if (tile.getTileType().equals("Hills")||tile.getTileType().equals("Resource"))
                     return false;
                 else return true;
-            default: return false;
-        }
+                return false;
     }
     public void farmImprovement(Tile tile){
         tile.goldOutput++;
@@ -76,5 +75,5 @@ public class Improvement {
     public void miningImprovement(Tile tile){
         //TODO open accessibility of coal & al & ...
     }
-    public void 
+    public void oo(){}
 }
