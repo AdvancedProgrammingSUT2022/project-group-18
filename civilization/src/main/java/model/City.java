@@ -1,6 +1,7 @@
 package model;
 
 import enums.Message;
+import model.Resource.Resources;
 import model.unit.Civilian;
 import model.unit.Unit;
 import view.CityView;
@@ -25,6 +26,7 @@ public class City {
     private Unit militaryUnit;
     private Unit civilianUnit;
     private CityView cityView = new CityView();
+    private static ArrayList<Resources> resources = new ArrayList<>();
 
 
     public City() {
@@ -169,5 +171,13 @@ public class City {
     }
     public void setSpecialist(){
         //TODO complete after completing buldings
+    }
+
+    public static void setResources(Resources resources) {
+        City.resources.add(resources);
+    }
+
+    public static ArrayList<Resources> getResources() {
+        return resources;
     }
 }
