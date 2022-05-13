@@ -14,6 +14,8 @@ public enum ImprovementsEnum {
     FACTORY("Factory");
     private String regex;
 
+    public String toString(){return this.regex;}
+
     ImprovementsEnum(String regex) {
         this.regex = regex;
     }

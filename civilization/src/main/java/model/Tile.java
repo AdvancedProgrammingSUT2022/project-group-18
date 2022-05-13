@@ -1,5 +1,6 @@
 package model;
 
+import model.Resource.Resources;
 import model.improvements.Improvement;
 import model.unit.Unit;
 
@@ -13,6 +14,9 @@ public class Tile {
 	private City city;
 	private ArrayList<Unit> units;
 	private int cost;
+	private Resources resources = null;
+	public int goldOutput;
+	public int foodOutput;
 	private static ArrayList<Improvement> improvements = new ArrayList<>();
 
 	public static void setImprovements(Improvement improvements) {
@@ -52,4 +56,7 @@ public class Tile {
 	public float getHeight() {
 		return height;
 	}
-}//TODO Tile
+
+	public void setResources(Resources resources){this.resources = resources;}
+	public Resources getResources(){return resources;}
+}
