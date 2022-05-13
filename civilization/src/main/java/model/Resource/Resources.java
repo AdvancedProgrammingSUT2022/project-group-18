@@ -1,6 +1,10 @@
 package model.Resource;
 
+import model.BaseCivilization;
+import model.City;
+
 import java.util.ArrayList;
+import java.util.Base64;
 
 public class Resources {
     private String name;
@@ -21,6 +25,8 @@ public class Resources {
         this.improvementNeeded = improvementNeeded;
         this.type = type;
         this.note = note;
+        BaseCivilization.addResource(this);
+        City.setResources(this);
     }
 
     public void setName(String name) {

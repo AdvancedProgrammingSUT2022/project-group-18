@@ -218,9 +218,9 @@ public class hex {
         indexFeature = randFeature[index];
         indexLand = randLand[index];
     }
-/*    public static int getFeature(int index){
+    public static int getFeature(int index){
        return featuresType[index];
-    }*/
+    }
     public static int getFeature(){
         return indexFeature;
     }

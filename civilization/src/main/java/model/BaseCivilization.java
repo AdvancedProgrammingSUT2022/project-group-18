@@ -1,6 +1,7 @@
 package model;
 import enums.Message;
 import enums.UnitEnum;
+import model.Resource.Resources;
 import model.unit.Unit;
 
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class BaseCivilization {
   private ArrayList<Unit> units;
   private String[] cityNames;
   private ArrayList<City> cities;
+  private static ArrayList<Resources> resources = new ArrayList<>();
   public static ArrayList<String> notifications = new ArrayList<>();
 
 
@@ -134,5 +136,11 @@ public class BaseCivilization {
 
   public static ArrayList<String> getNotifications() {
     return notifications;
+  }
+
+  public static void addResource(Resources resources) {BaseCivilization.resources.add(resources);}
+
+  public static ArrayList<Resources> getResources() {
+    return resources;
   }
 }
