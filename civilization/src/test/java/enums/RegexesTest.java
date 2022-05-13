@@ -1,3 +1,5 @@
+package enums;
+
 import enums.Regexes;
 import org.junit.Test;
 

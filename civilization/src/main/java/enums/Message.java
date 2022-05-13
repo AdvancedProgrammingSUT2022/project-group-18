@@ -14,7 +14,9 @@ public enum Message {
     LOGIN_USER("user logged in successfully!"),
     NOT_MATCH("Username and password didn't match!"),
     USER_NOT_EXIST("one of players username dose not exists!"),
-    PLAY_GAME("finally welcome to the game!"),
+    PLAY_GAME("finally welcome to the game!\n" +
+            "We will recommend you that do not play this game " +
+            "because this is the useless less less less game you ever saw:)"),
     USER_LOGOUT("user logged out successfully!"),
     CHANGE_NICKNAME("nickname changed successfully!"),
     CHANGE_PASSWORD("password changed successfully!"),
@@ -22,6 +24,7 @@ public enum Message {
     SAME_PASS("your new password shouldn't be the same with current pass"),
     CANT_CHANG_USERNAME("you can't chang your username!"),
     GAME_WITH_NO_PLAYER("you don't choose any player to play game!"),
+    NO_NOTIFICATIONS("no notifications yet..."),
     POSITION_INVALID(""),
     COMBAT_UNIT_DONT_EXIST(""),
     NONCOMBAT_UNIT_DONT_EXIST(""),

@@ -1,8 +1,9 @@
-package model.Resource;
+package enums;
 
+import model.Resource.Resources;
+import model.hex;
 import model.improvements.Improvement;
 import model.Tile;
-import model.improvements.ImprovementsEnum;
 
 // inke can be found on ye jaye khas bashan hanuz anjam nashode
 public enum ResourcesEnum {
@@ -41,6 +42,7 @@ public enum ResourcesEnum {
         return false;
     }
 
+
     public String toString() {
         return this.regex;
     }
@@ -48,16 +50,20 @@ public enum ResourcesEnum {
     public static Resources getResources(ResourcesEnum resource) {
         switch (resource) {
             case BANANA:
-                if (checkImprovementExists(ImprovementsEnum.PLANTATION))
+                if (checkImprovementExists(ImprovementsEnum.PLANTATION) &&
+                        hex.getFeature() == 5)
                     return new Resources("Banana", 1, 0, 0, "farest", "farming", "BonusResources", "");
             case CATTLE:
-                if (checkImprovementExists(ImprovementsEnum.PASTURE))
+                if (checkImprovementExists(ImprovementsEnum.PASTURE) &&
+                        hex.getRandLand() == 1)
                     return new Resources("Cattle", 1, 0, 0, "Grassland", "Pasture", "BonusResources", "");
             case DEER:
-                if (checkImprovementExists(ImprovementsEnum.CAMP))
+                if (checkImprovementExists(ImprovementsEnum.CAMP) &&
+                        (hex.getFeature() == 4 || hex.getRandLand() == 6 || hex.getRandLand() == 2))
                     return new Resources("Deer", 1, 0, 0, "Farest, Tundra,Hill", "camp", "BonusResources", "");
             case SHEEP:
-                if (checkImprovementExists(ImprovementsEnum.PASTURE))
+                if (checkImprovementExists(ImprovementsEnum.PASTURE) &&
+                (hex.getRandLand() == 1))
                     return new Resources("Sheep", 2, 0, 0, "Flat, meadow, desert, hill", "Pasture", "BonusResources", "");
             case WHEAT:
                 if (checkImprovementExists(ImprovementsEnum.FARM))

@@ -20,6 +20,8 @@ public class GameMenuView extends View {
             System.out.println(controller.enterMenu(matcher).toString());
         else if (Regexes.getCommand(input, Regexes.SHOW_CURRENT_MENU) != null)
             System.out.println(controller.showCurrentMenu());
+        else if(Regexes.getCommand(input, Regexes.EXIT_GAME) != null)
+            controller.exitMenu();
         else if((matcher = Regexes.getCommand(input, Regexes.INCREASE_TURN)) != null) {
 
         } else if ((matcher = Regexes.getCommand(input, Regexes.INCREASE_GOLD)) != null) {
@@ -34,6 +36,8 @@ public class GameMenuView extends View {
         } else if (Regexes.getCommand(input, Regexes.VICTORY) != null) {
         } else if (Regexes.getCommand(input, Regexes.DEMOGRAPHICS) != null) {
         } else if (Regexes.getCommand(input, Regexes.NOTIFICATIONS) != null) {
+            for (String message : controller.showNotificationsHistory())
+                System.out.println(message);
         } else if (Regexes.getCommand(input, Regexes.MILITARY) != null) {
         } else if (Regexes.getCommand(input, Regexes.ECONOMIC) != null) {
         } else if (Regexes.getCommand(input, Regexes.DIPLOMATIC) != null) {

@@ -1,5 +1,7 @@
-package model.techs;
+package enums;
 
+
+import model.techs.Technology;
 
 public enum TechsEnum {
     AGRI_CULTURE("Agriculture"),

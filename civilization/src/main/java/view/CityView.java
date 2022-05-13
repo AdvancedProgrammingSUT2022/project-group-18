@@ -18,7 +18,7 @@ public class CityView {
         System.out.println(city.getCityFood()+
                 city.getCityProduction()+
                 city.getCityGold()+
-                city.getCityScience());
+                city.getCityBeakers());
 //TODO + show the num of turns that cost to increase boundry & population
     }
     public void showCostOfTile(Tile tile){

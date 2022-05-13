@@ -47,6 +47,7 @@ public enum Regexes {
 
     //game menu regexes
     PLAY_GAME("^play game [([-][-]player[0-9] \\S+)]+$"),
+    EXIT_GAME("^exit game$"),
     //kod haye taghalob
     INCREASE_TURN("^increase --turn (?<amount>\\d+)$"),
     INCREASE_GOLD("^increase --gold (?<amount>\\d+)$"),

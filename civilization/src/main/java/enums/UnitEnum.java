@@ -1,4 +1,6 @@
-package model.unit;
+package enums;
+
+import model.unit.*;
 
 public enum UnitEnum {
     ARCHER("Archer"),

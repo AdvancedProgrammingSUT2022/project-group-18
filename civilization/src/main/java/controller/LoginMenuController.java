@@ -15,10 +15,6 @@ public class LoginMenuController extends Controller {
 
     }
 
-    public void exitMenu() {
-            System.exit(0);
-            // or View.getScanner().close;
-    }
 
     public String creatUser(Matcher matcher) {
         String username = matcher.group("username");
