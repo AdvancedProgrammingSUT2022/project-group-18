@@ -1,5 +1,8 @@
 package model.unit;
 
+import model.BaseCivilization;
+import model.City;
+
 public class Unit {
 
 
@@ -15,10 +18,25 @@ public class Unit {
     protected int productionCost=0;
     protected boolean isMilitary = false;
     protected boolean isMoving = false;
-    protected boolean isAttacking = false;
+    public boolean isAttacking = false;
     protected boolean hasTerrainCost = true;
+    public int hitPoints = 10;
+    protected float x , y;
 
+    public static void attack(City city, Unit unit, BaseCivilization civilization){
+        unit.isAttacking = true;
+        while (unit.hitPoints!=0&&city.hitPoints!=0){
+            unit.hitPoints--;
+            city.hitPoints--;
+        }
+        if(unit.hitPoints==0) civilization.deleteUnit(unit);
+        if (city.hitPoints==0) city.destroy();
+    }
 
+    public static void farAttack(City city, Unit unit, BaseCivilization civilization){
+        unit.hitPoints--;
+        city.hitPoints--;
+    }
 /*
     public boolean getIsMilitary() {
         return isMilitary;

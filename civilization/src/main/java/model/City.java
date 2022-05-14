@@ -28,6 +28,7 @@ public class City {
     private CityView cityView = new CityView();
     private boolean isCapital;
     private BaseCivilization Creator;
+    public int hitPoints =10;
     private static ArrayList<Resources> resources = new ArrayList<>();
 
 
@@ -111,7 +112,7 @@ public class City {
         return cityStrength;
     }
 
-    public User getOwner() {
+    public BaseCivilization getOwner() {
         return owner;
     }
 
@@ -145,7 +146,8 @@ public class City {
         citizenWorkers.remove(this.originTile);
         this.originTile.isUnderWork=false;
     }
-    public void buyTile(Tile tile){
+    public void buyTile(Tile tile ){
+        owner.decreaseGold();
         cityView.showCostOfTile(tile);
         tile.incraerseCost(10);//TODO check the amount
         this.cityGold-=10;
@@ -194,6 +196,19 @@ public class City {
             unemployedCitizen.clear();
             citizenWorkers.clear();
             units.clear();
+        }
+    }
+
+    public void winCombat(BaseCivilization owner){
+        switch (cityView.afterWinInCombat()){
+            case 1:
+                destroy();
+            case 2:
+                owner.increaseGold();
+                appendixCity(owner);
+            case 3:
+                owner.increaseGold();
+                puppetCity(owner);
         }
     }
     public void appendixCity(BaseCivilization owner){

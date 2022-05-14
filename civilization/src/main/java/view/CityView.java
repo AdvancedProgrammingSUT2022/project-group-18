@@ -36,5 +36,10 @@ public class CityView {
     public void buildMenu(){
         //TODO complete after completing buildings
     }
-
+    public int afterWinInCombat(){
+        System.out.println("enter 1 to destroy city");
+        System.out.println("enter 2 to appendix city");
+        System.out.println("enter 3 to puupet city");
+        return Integer.parseInt(View.getInput());
+    }
 }

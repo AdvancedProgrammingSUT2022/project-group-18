@@ -114,12 +114,10 @@ public class BaseCivilization {
 
   }
 
-  public void deleteUnit() {
-
+  public void deleteUnit(Unit unit) {
+    units.remove(unit);
   }
   
-
-
 
   public ArrayList<UnitEnum> getAvailableUnits() {
       //WE DONT KNOW
@@ -151,4 +149,12 @@ public class BaseCivilization {
   public void increaseHappiness(){
     happiness+=10;
   }
+
+  public void increaseGold(){
+    goldTotal+=10;
+  }
+  public void decreaseGold(){
+    goldTotal-=10;
+  }
+
 }

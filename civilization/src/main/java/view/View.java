@@ -16,7 +16,7 @@ public abstract class View {
     public static Scanner getScanner() {
         return View.scanner;
     }
-    protected String getInput() {
+    protected static String getInput() {
         return View.getScanner().nextLine().trim().toLowerCase(Locale.ROOT);
     }
     public static void setInMenu(String inMenu) {
