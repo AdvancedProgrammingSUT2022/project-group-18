@@ -1,35 +1,68 @@
-package model.unit;
+package Model.unit;
+
+import model.BaseCivilization;
+import model.City;
 
 public class Unit {
 
-
     //protected String combatType;
+    public boolean sleepmood=false;
+    public Settler City;
+    public int target;
+    public int tileId;
+    public int curTileId;
     protected String name;
     protected int movement;
     protected int movementTemp;
     protected int movementPotential;
-    protected int combatStrength = 0;
-    protected int combatStrengthRanged = 0;
+    public int combatStrength = 0;
+    public int combatStrengthRanged = 0;
     protected int ranged = 1;
-    protected int health = 10;
+    public int health = 10;
     protected int productionCost=0;
     protected boolean isMilitary = false;
     protected boolean isMoving = false;
-    protected boolean isAttacking = false;
+    public boolean isAttacking = false;
     protected boolean hasTerrainCost = true;
+<<<<<<< HEAD
     
+=======
+<<<<<<< HEAD
+    public int hitPoints = 10;
+    protected float x , y;
+=======
+   public boolean getCommand=true;
+>>>>>>> d79b208b91c85a4a00bdf9052493a78527d11933
 
+>>>>>>> origin
 
+    public static void attack(City city, Unit unit, BaseCivilization civilization){
+        unit.isAttacking = true;
+        while (unit.hitPoints!=0&&city.hitPoints!=0){
+            unit.hitPoints--;
+            city.hitPoints--;
+        }
+        if(unit.hitPoints==0) civilization.deleteUnit(unit);
+        if (city.hitPoints==0) city.destroy();
+    }
+
+<<<<<<< HEAD
+    public static void farAttack(City city, Unit unit, BaseCivilization civilization){
+        unit.hitPoints--;
+        city.hitPoints--;
+    }
 /*
+=======
+>>>>>>> origin
     public boolean getIsMilitary() {
         return isMilitary;
     }
 
-    public int getCombatStrength() {
+    public int getcombatStrength() {
         return combatStrength;
     }
 
-    public int getCombatStrengthRanged(){
+    public int getcombatStrengthRanged(){
         return combatStrengthRanged;
     }
 
@@ -94,7 +127,7 @@ public class Unit {
     public void moveUnit() {
 
     }
-    public void checksSameLocation(){
+    public void checksSameLocstion(){
 
     }
     public void addToMapAndCiv() {
@@ -351,7 +384,6 @@ public class Unit {
         return finalPath;
     }
 
-*/
 
 
 

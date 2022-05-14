@@ -19,7 +19,7 @@ public class City {
     private int cityProduction;
     private int cityBeakers;
     private int cityStrength;
-    private User owner;
+    private BaseCivilization owner;
     private ArrayList<Civilian> unemployedCitizen;
     private HashMap<Tile, Civilian> citizenWorkers;
     private ArrayList<Unit> units = new ArrayList<>();
@@ -27,6 +27,9 @@ public class City {
     private Unit militaryUnit;
     private Unit civilianUnit;
     private CityView cityView = new CityView();
+    private boolean isCapital;
+    private BaseCivilization Creator;
+    public int hitPoints =10;
     private static ArrayList<Resources> resources = new ArrayList<>();
 
 
@@ -64,7 +67,7 @@ public class City {
         this.cityStrength = cityStrength;
     }
 
-    public void setOwner(User owner) {
+    public void setOwner(BaseCivilization owner) {
         this.owner = owner;
     }
 
@@ -111,7 +114,7 @@ public class City {
         return cityStrength;
     }
 
-    public User getOwner() {
+    public BaseCivilization getOwner() {
         return owner;
     }
 
@@ -145,7 +148,8 @@ public class City {
         citizenWorkers.remove(this.originTile);
         this.originTile.isUnderWork=false;
     }
-    public void buyTile(Tile tile){
+    public void buyTile(Tile tile ){
+        owner.decreaseGold();
         cityView.showCostOfTile(tile);
         tile.incraerseCost(10);//TODO check the amount
         this.cityGold-=10;
@@ -183,10 +187,46 @@ public class City {
         return resources;
     }
 
+<<<<<<< HEAD
     public ArrayList<Unit> getUnits() {
         return units;
     }
     public void removeUnit(int index) {
         units.remove(index);
+=======
+    public void destroy(){
+        if (Creator!=owner&&!isCapital){
+            buildings.clear();
+            cityProduction=0;
+            cityGold=0;
+            cityFood=0;
+            citizenWorkers.clear();
+            cityPopulation=0;
+            unemployedCitizen.clear();
+            citizenWorkers.clear();
+            units.clear();
+        }
+    }
+
+    public void winCombat(BaseCivilization owner){
+        switch (cityView.afterWinInCombat()){
+            case 1:
+                destroy();
+            case 2:
+                owner.increaseGold();
+                appendixCity(owner);
+            case 3:
+                owner.increaseGold();
+                puppetCity(owner);
+        }
+    }
+    public void appendixCity(BaseCivilization owner){
+        this.owner = owner;
+        owner.decreaseHappiness();
+    }
+    public void puppetCity(BaseCivilization owner){
+        this.owner = owner;
+        owner.increaseHappiness();
+>>>>>>> d79b208b91c85a4a00bdf9052493a78527d11933
     }
 }
