@@ -219,4 +219,8 @@ public class City {
         this.owner = owner;
         owner.increaseHappiness();
     }
+
+    public void unitPurchase(Model.unit.Unit u){
+
+    }
 }
