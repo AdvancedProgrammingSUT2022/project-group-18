@@ -13,7 +13,11 @@ public enum ImprovementsEnum {
     TRADING_POST("TradingPost"),
     FACTORY("Factory");
     private String regex;
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> origin
     public String toString() {
         return this.regex;
     }
