@@ -5,6 +5,7 @@ import model.Resource.Resources;
 import model.unit.Civilian;
 import model.unit.Unit;
 import view.CityView;
+import view.View;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,6 +33,7 @@ public class City {
     public City() {
         this.unemployedCitizen = new ArrayList<>();
         this.citizenWorkers = new HashMap<>();
+        View.setInCity(this);
     }
 
     public void setCityName(String cityName) {
@@ -179,5 +181,12 @@ public class City {
 
     public static ArrayList<Resources> getResources() {
         return resources;
+    }
+
+    public ArrayList<Unit> getUnits() {
+        return units;
+    }
+    public void removeUnit(int index) {
+        units.remove(index);
     }
 }

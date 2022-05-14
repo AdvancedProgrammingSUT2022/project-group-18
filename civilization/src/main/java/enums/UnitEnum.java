@@ -43,6 +43,14 @@ public enum UnitEnum {
         return this.regex;
     }
 
+    public static UnitEnum findUnitEnumByName (String unitName) {
+        for (UnitEnum unitEnum : UnitEnum.values()) {
+            if(unitName.equals(unitEnum.toString()))
+                return unitEnum;
+        }
+        return null;
+    }
+
     private static boolean checkResourceExist(ResourcesEnum resourcesEnum) {
         for (Resources resources : City.getResources()) {
             if (resources.getName().toLowerCase(Locale.ROOT).equals(resourcesEnum.toString()))

@@ -35,6 +35,7 @@ public class ControllerTest {
     @Test
     public void enterMenuTest1() {
         LoginMenuController controller = new LoginMenuController();
+        View.setIsLoggedIn(null);
         assertEquals(controller.enterMenu(Regexes.getCommand("menu enter game menu", Regexes.MENU_ENTER)), Message.LOGINERROR);
     }
 
@@ -93,17 +94,8 @@ public class ControllerTest {
         assertEquals(controller.showCurrentMenu(), "Game Menu");
     }
 
-    @Mock
-    LoginMenuView view;
 
-/*    @Test
-    public void goToProfileTest() {
-        doThrow().when(view).run();
-        doNothing().when(view).run();
-        LoginMenuController controller = new LoginMenuController();
-        controller.goToProfile();
-        assertEquals(View.getInMenu(), "Profile Menu");
-    }*/
+
 
 
 }

@@ -20,25 +20,23 @@ public class GameMenuView extends View {
             System.out.println(controller.enterMenu(matcher).toString());
         else if (Regexes.getCommand(input, Regexes.SHOW_CURRENT_MENU) != null)
             System.out.println(controller.showCurrentMenu());
-        else if(Regexes.getCommand(input, Regexes.EXIT_GAME) != null)
+        else if (Regexes.getCommand(input, Regexes.EXIT_GAME) != null)
             controller.exitMenu();
-        else if((matcher = Regexes.getCommand(input, Regexes.INCREASE_TURN)) != null) {
+        else if ((matcher = Regexes.getCommand(input, Regexes.INCREASE_TURN)) != null) {
 
         } else if ((matcher = Regexes.getCommand(input, Regexes.INCREASE_GOLD)) != null) {
 
         } else if ((matcher = Regexes.getCommand(input, Regexes.INCREASE_BEAKERS)) != null) {
 
-        }
-        else if (Regexes.getCommand(input, Regexes.RESEARCH) != null) {
+        } else if (Regexes.getCommand(input, Regexes.RESEARCH) != null) {
         } else if (Regexes.getCommand(input, Regexes.UNITS) != null) {
         } else if (Regexes.getCommand(input, Regexes.CITIES) != null) {
         } else if (Regexes.getCommand(input, Regexes.DIPLOMACY) != null) {
         } else if (Regexes.getCommand(input, Regexes.VICTORY) != null) {
         } else if (Regexes.getCommand(input, Regexes.DEMOGRAPHICS) != null) {
-        } else if (Regexes.getCommand(input, Regexes.NOTIFICATIONS) != null) {
-            for (String message : controller.showNotificationsHistory())
-                System.out.println(message);
-        } else if (Regexes.getCommand(input, Regexes.MILITARY) != null) {
+        } else if (Regexes.getCommand(input, Regexes.NOTIFICATIONS) != null)
+            System.out.println(controller.showNotificationsHistory());
+        else if (Regexes.getCommand(input, Regexes.MILITARY) != null) {
         } else if (Regexes.getCommand(input, Regexes.ECONOMIC) != null) {
         } else if (Regexes.getCommand(input, Regexes.DIPLOMATIC) != null) {
         } else if (Regexes.getCommand(input, Regexes.DEALS) != null) {
@@ -73,13 +71,12 @@ public class GameMenuView extends View {
         } else if (Regexes.getCommand(input, Regexes.REPAIR) != null) {
         } else if ((matcher = Regexes.getCommand(input, Regexes.SHOW_POSITION)) != null) {
         } else if ((matcher = Regexes.getCommand(input, Regexes.SHOW_CITY_NAME)) != null) {
-        } else if((matcher = Regexes.getCommand(input, Regexes.MOVE_RIGHT)) != null) {
-        } else if((matcher = Regexes.getCommand(input, Regexes.MOVE_LEFT)) != null) {
-        } else if((matcher = Regexes.getCommand(input, Regexes.MOVE_UP)) != null) {
-        } else if((matcher = Regexes.getCommand(input, Regexes.MOVE_DOWN)) != null) {
-        }
-        else
-        System.out.println(Message.INVALID);
+        } else if ((matcher = Regexes.getCommand(input, Regexes.MOVE_RIGHT)) != null) {
+        } else if ((matcher = Regexes.getCommand(input, Regexes.MOVE_LEFT)) != null) {
+        } else if ((matcher = Regexes.getCommand(input, Regexes.MOVE_UP)) != null) {
+        } else if ((matcher = Regexes.getCommand(input, Regexes.MOVE_DOWN)) != null) {
+        } else
+            System.out.println(Message.INVALID);
         this.run();
     }
 }
