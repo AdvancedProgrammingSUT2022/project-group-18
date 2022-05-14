@@ -14,14 +14,10 @@ public enum ImprovementsEnum {
     FACTORY("Factory");
     private String regex;
 
-<<<<<<< HEAD
     public String toString() {
         return this.regex;
     }
-=======
-    public String toString(){return this.regex;}
 
->>>>>>> origin
     ImprovementsEnum(String regex) {
         this.regex = regex;
     }

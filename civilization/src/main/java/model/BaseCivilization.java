@@ -143,4 +143,12 @@ public class BaseCivilization {
   public static ArrayList<Resources> getResources() {
     return resources;
   }
+
+  public void decreaseHappiness(){
+    happiness -= 10;
+  }
+
+  public void increaseHappiness(){
+    happiness+=10;
+  }
 }

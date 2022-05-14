@@ -18,7 +18,7 @@ public class City {
     private int cityProduction;
     private int cityBeakers;
     private int cityStrength;
-    private User owner;
+    private BaseCivilization owner;
     private ArrayList<Civilian> unemployedCitizen;
     private HashMap<Tile, Civilian> citizenWorkers;
     private ArrayList<Unit> units = new ArrayList<>();
@@ -26,6 +26,8 @@ public class City {
     private Unit militaryUnit;
     private Unit civilianUnit;
     private CityView cityView = new CityView();
+    private boolean isCapital;
+    private BaseCivilization Creator;
     private static ArrayList<Resources> resources = new ArrayList<>();
 
 
@@ -62,7 +64,7 @@ public class City {
         this.cityStrength = cityStrength;
     }
 
-    public void setOwner(User owner) {
+    public void setOwner(BaseCivilization owner) {
         this.owner = owner;
     }
 
@@ -179,5 +181,27 @@ public class City {
 
     public static ArrayList<Resources> getResources() {
         return resources;
+    }
+
+    public void destroy(){
+        if (Creator!=owner&&!isCapital){
+            buildings.clear();
+            cityProduction=0;
+            cityGold=0;
+            cityFood=0;
+            citizenWorkers.clear();
+            cityPopulation=0;
+            unemployedCitizen.clear();
+            citizenWorkers.clear();
+            units.clear();
+        }
+    }
+    public void appendixCity(BaseCivilization owner){
+        this.owner = owner;
+        owner.decreaseHappiness();
+    }
+    public void puppetCity(BaseCivilization owner){
+        this.owner = owner;
+        owner.increaseHappiness();
     }
 }
