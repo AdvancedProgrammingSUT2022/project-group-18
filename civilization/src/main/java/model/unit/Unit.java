@@ -1,12 +1,11 @@
-package Model.unit;
-
 import model.BaseCivilization;
 import model.City;
+import model.unit.Settler;
 
 public class Unit {
 
     //protected String combatType;
-    public boolean sleepmood=false;
+    public boolean sleepmood = false;
     public Settler City;
     public int target;
     public int tileId;
@@ -19,34 +18,30 @@ public class Unit {
     public int combatStrengthRanged = 0;
     protected int ranged = 1;
     public int health = 10;
-    protected int productionCost=0;
+    protected int productionCost = 0;
     protected boolean isMilitary = false;
     protected boolean isMoving = false;
     public boolean isAttacking = false;
     protected boolean hasTerrainCost = true;
-<<<<<<< HEAD
     public int hitPoints = 10;
-    protected float x , y;
-=======
-   public boolean getCommand=true;
+    protected float x, y;
+    public boolean getCommand = true;
 
->>>>>>> origin
-
-    public static void attack(City city, Unit unit, BaseCivilization civilization){
+    public static void attack(City city, Unit unit, BaseCivilization civilization) {
         unit.isAttacking = true;
-        while (unit.hitPoints!=0&&city.hitPoints!=0){
+        while (unit.hitPoints != 0 && city.hitPoints != 0) {
             unit.hitPoints--;
             city.hitPoints--;
         }
-        if(unit.hitPoints==0) civilization.deleteUnit(unit);
-        if (city.hitPoints==0) city.destroy();
+        if (unit.hitPoints == 0) civilization.deleteUnit(unit);
+        if (city.hitPoints == 0) city.destroy();
     }
 
-<<<<<<< HEAD
-    public static void farAttack(City city, Unit unit, BaseCivilization civilization){
+    public static void farAttack(City city, Unit unit, BaseCivilization civilization) {
         unit.hitPoints--;
         city.hitPoints--;
     }
+}
 /*
 =======
 >>>>>>> origin
