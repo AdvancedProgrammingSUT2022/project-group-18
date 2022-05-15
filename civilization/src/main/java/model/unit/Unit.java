@@ -226,9 +226,10 @@ public class Unit {
         }
     }
 
-/*    public void moveUnit(Hex hh) {
+   public void moveUnit() {
+   }
 
-            Hex toHex = hexMap.getHex(h);
+           /* Hex toHex = hexMap.getHex(h);
 
             Unit cu = fromHex.getCivilianUnit();
             Unit mu = fromHex.getMilitaryUnit();
