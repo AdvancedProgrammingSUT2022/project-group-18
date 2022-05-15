@@ -132,9 +132,17 @@ public class GameMenuView extends View {
         } else if ((matcher = Regexes.getCommand(input, Regexes.SHOW_CITY_NAME)) != null) {
             controller.getCityByName(matcher.group("name"));
         } else if ((matcher = Regexes.getCommand(input, Regexes.MOVE_RIGHT)) != null) {
+            Unit.moveUnit();
+            System.out.println("move to right");
         } else if ((matcher = Regexes.getCommand(input, Regexes.MOVE_LEFT)) != null) {
+             Unit.moveUnit();
+            System.out.println("move to right");
         } else if ((matcher = Regexes.getCommand(input, Regexes.MOVE_UP)) != null) {
+             Unit.moveUnit();
+            System.out.println("move to right");
         } else if ((matcher = Regexes.getCommand(input, Regexes.MOVE_DOWN)) != null) {
+             Unit.moveUnit();
+            System.out.println("move to right");
         } else
             System.out.println(Message.INVALID);
         this.run();
