@@ -4,13 +4,9 @@ import controller.unitactoins.Delete;
 import enums.Message;
 import model.BaseCivilization;
 import model.City;
-<<<<<<< HEAD
-import model.unit.Unit;
-=======
 import model.hex;
 import model.unit.*;
 import view.View;
->>>>>>> origin
 
 import java.util.regex.Matcher;
 

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package model.unit;
 
 import model.BaseCivilization;
