@@ -34,6 +34,8 @@ public enum Message {
     COMBAT_SUCCESSFUL("combat was successful!"),
     DESTROYED_CITY("you destroyed the city!"),
     KILL_UNIT("you killed a unit!"),
+    STRENGTHS("strengths on until you don't move"),
+    UNIT_CANT_STRENGTHS("strengths isn't for this kind of units!"),
     CITY_NOT_EXIST_IN_POSITION("");
 
 

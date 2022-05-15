@@ -4,6 +4,7 @@ import controller.unitactoins.Delete;
 import enums.Message;
 import model.BaseCivilization;
 import model.City;
+import model.hex;
 import model.unit.*;
 import view.View;
 
@@ -30,7 +31,7 @@ public class CombatController extends Controller {
         else if (unit == null)
             return Message.UNIT_NOT_EXIST;
         else {
-            city.decreaseHealth(unit.getcombatStrength());
+            effectModifiersForUnitInAttackToCity(unit, city);
             if (cityIsDead(city) != null) {
                 safeDeleteCity();
                 return Message.DESTROYED_CITY;
@@ -49,7 +50,7 @@ public class CombatController extends Controller {
         else if (unit == null)
             return Message.UNIT_NOT_EXIST;
         else {
-            unit.decreaseHealth(city.getCityStrength());
+            effectModifiersForCityInAttackToUnit(unit, city);
             if (unitIsDead(unit) != null) {
                 safeDeleteUnits();
                 return Message.KILL_UNIT;
@@ -57,6 +58,97 @@ public class CombatController extends Controller {
             return Message.COMBAT_SUCCESSFUL;
         }
     }
+
+    public void effectModifiersForUnitInAttackToCity(Unit unit, City city) {
+        switch (hex.getRandLand()) {
+            case 0:
+            case 1:
+            case 2:
+            case 4:
+            case 5:
+            case 6:
+                city.decreaseHealth((int) (unit.getcombatStrength() * 1.33));
+                break;
+            case 3:
+            case 7:
+                city.decreaseHealth((int) (unit.getcombatStrength() * 0.75));
+                break;
+            default:
+                city.decreaseHealth(unit.getcombatStrength());
+                break;
+        }
+        switch (hex.getFeature()) {
+            case 0:
+            case 2:
+            case 3:
+                city.decreaseHealth((int) (unit.getcombatStrength() * 1.33));
+                break;
+            case 1:
+            case 6:
+            default:
+                city.decreaseHealth(unit.getcombatStrength());
+                break;
+            case 4:
+            case 5:
+                city.decreaseHealth((int) (unit.getcombatStrength() * 0.75));
+                break;
+
+        }
+    }
+    public void effectModifiersForCityInAttackToUnit(Unit unit, City city) {
+        switch (hex.getRandLand()) {
+            case 0:
+            case 1:
+            case 2:
+            case 4:
+            case 5:
+            case 6:
+                unit.decreaseHealth((int)(city.getCityStrength() * 1.33));
+                break;
+            case 3:
+            case 7:
+                unit.decreaseHealth((int)(city.getCityStrength() * 0.75));
+                break;
+            default:
+                unit.decreaseHealth(city.getCityStrength());
+                break;
+        }
+        switch (hex.getFeature()) {
+            case 0:
+            case 2:
+            case 3:
+                unit.decreaseHealth((int)(city.getCityStrength() * 1.33));
+                break;
+            case 1:
+            case 6:
+            default:
+                unit.decreaseHealth(city.getCityStrength());
+                break;
+            case 4:
+            case 5:
+                unit.decreaseHealth((int)(city.getCityStrength() * 0.75));
+                break;
+
+        }
+    }
+
+    public Message setStrength(Unit unit) {
+        //when this method calls for a unit, unit go's to sleep
+        if(unit instanceof Ranged || unit instanceof Melee) {
+            if(!unit.getStrengths()) {
+                unit.setStrengths(true);
+                unit.increaseHitPoints((int)(0.25 * unit.getHitPoints()));
+                return Message.STRENGTHS;
+            }
+            else {
+                unit.increaseHitPoints((int)(0.5 * unit.getHitPoints()));
+                return Message.STRENGTHS;
+            }
+        }
+        return Message.UNIT_CANT_STRENGTHS;
+
+    }
+
 
     public void ColdWar() {
     }

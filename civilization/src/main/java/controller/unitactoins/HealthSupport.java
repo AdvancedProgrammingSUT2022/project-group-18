@@ -11,6 +11,6 @@ public class HealthSupport extends AbstarctActoin {
         super(unit);
     }
     public void healthSupport(){
-        unit.health++;
+        unit.hitPoints++;
     }
 }

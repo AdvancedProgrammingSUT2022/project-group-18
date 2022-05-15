@@ -35,6 +35,7 @@ public class Unit {
     public int hitPoints = 10;
     protected float x, y;
     public boolean getCommand = true;
+    private boolean strengths ;
 
     public Unit(String name, int movement, int productionCost) {
         this.name = name;
@@ -101,7 +102,19 @@ public class Unit {
 
     }
 
-/*
+    public void setStrengths(boolean strengths) {
+        this.strengths = strengths;
+    }
+
+    public boolean getStrengths() {
+        return strengths;
+    }
+
+    public void increaseHitPoints(int hitPoints) {
+        this.hitPoints += hitPoints;
+    }
+
+    /*
     public Hex getPosition() {
         return curPos;
     }
@@ -204,6 +217,8 @@ public class Unit {
     public int getHitPoints() {
         return hitPoints;
     }
+
+
 
     public void decreaseHealth(int amount) {
         hitPoints -= amount;
