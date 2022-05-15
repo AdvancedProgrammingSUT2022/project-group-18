@@ -3,12 +3,8 @@ import model.unit.Unit;
 import controller.GameController;
 import enums.Message;
 import enums.Regexes;
-<<<<<<< HEAD
 import model.BaseCivilization;
 import model.City;
-=======
->>>>>>> origin
-import model.unit.Unit;
 
 import java.util.regex.Matcher;
 
@@ -28,12 +24,16 @@ public class GameMenuView extends View {
         else if (Regexes.getCommand(input, Regexes.EXIT_GAME) != null)
             controller.exitMenu();
         else if ((matcher = Regexes.getCommand(input, Regexes.INCREASE_TURN)) != null) {
-
+            increaseTurn(matcher);
         } else if ((matcher = Regexes.getCommand(input, Regexes.INCREASE_GOLD)) != null) {
-
-        } else if ((matcher = Regexes.getCommand(input, Regexes.INCREASE_BEAKERS)) != null) {
-
-        } else if (Regexes.getCommand(input, Regexes.RESEARCH) != null) {
+            increaseGold(matcher);
+        } else if ((matcher = Regexes.getCommand(input, Regexes.INCREASE_HAPPINESS)) != null) {
+            increaseHappiness(matcher);
+        }else if (Regexes.getCommand(input, Regexes.INCREAS_CITY_HP) != null)
+            increaseCityHP(matcher);
+        else if (Regexes.getCommand(input, Regexes.INCREASE_CITY_STRENGTH) != null)
+            increaseCityStrength(matcher);
+        else if (Regexes.getCommand(input, Regexes.RESEARCH) != null) {
         } else if (Regexes.getCommand(input, Regexes.UNITS) != null) {
             System.out.println("created new unit");
         } else if (Regexes.getCommand(input, Regexes.CITIES) != null) {
@@ -175,5 +175,26 @@ public class GameMenuView extends View {
     }
     public void diplimacypanel(){
         System.out.println(controller.Score);
+    }
+    public void increaseTurn(Matcher matcher) {
+        int amount = Integer.parseInt(matcher.group("amount"));
+        controller.turn+=amount;
+    }
+    public void increaseGold(Matcher matcher) {
+        int amount = Integer.parseInt(matcher.group("amount"));
+        View.getInCity().setCityGold(View.getInCity().getCityGold() + amount);
+    }
+    public void increaseHappiness(Matcher matcher) {
+        int amount = Integer.parseInt(matcher.group("amount"));
+        View.getInCity().setHappiness(View.getInCity().getHappiness() +amount);
+    }
+    public void increaseCityHP(Matcher matcher  ){
+        int amount = Integer.parseInt(matcher.group("amount"));
+        View.getInCity().setCityHitPoint(View.getInCity().getCityHitPoint()+ amount);
+    }
+
+    public void increaseCityStrength(Matcher matcher  ){
+        int amount = Integer.parseInt(matcher.group("amount"));
+        View.getInCity().setcityStrength(View.getInCity().getCityStrength()+ amount);
     }
 }

@@ -203,7 +203,6 @@ public class CombatController extends Controller {
         Message message = null;
         return message; // just for run code and don't have errors
     }
-<<<<<<< HEAD
     public void reducePointOfCity(){}
     public void cityCapture(){}
     public void AttackMode(){}
@@ -217,20 +216,4 @@ public class CombatController extends Controller {
         if (unit.hitPoints == 0) civilization.deleteUnit(unit);
         if (city.hitPoints == 0) city.winCombat(civilization);
     }
-
-
-=======
-
-    public void reducePointOfCity() {
-    }
-
-    public void cityCapture() {
-    }
-
-    public void AttackMode() {
-    }
-
-    public void DamageRepair() {
-    }
->>>>>>> origin
 }

@@ -21,6 +21,7 @@ public class City {
     private int cityProduction;
     private int cityBeakers;
     private int cityStrength;
+    private int happiness;
     private BaseCivilization owner;
     private ArrayList<Worker> unemployedCitizen;
     private HashMap<Tile, Worker> citizenWorkers;
@@ -32,6 +33,7 @@ public class City {
     private boolean isCapital;
     private BaseCivilization Creator;
     public int hitPoints = 20;
+    private int cityStrength = 10;
     private ArrayList<Resources> resources = new ArrayList<>();
     public static ArrayList<City> allCitis = new ArrayList<>();
 
@@ -42,6 +44,7 @@ public class City {
         allCitis.add(this);
         View.setInCity(this);
     }
+    public void setHappiness(int amount){this.happiness = amount;}
 
     public void setCityName(String cityName) {
         this.cityName = cityName;
@@ -89,6 +92,10 @@ public class City {
         } else return false;//transport unit to out of city
     }
 
+    public void setcityStrength(int amount){cityStrength = amount;}
+
+    public void setCityHitPoint(int amount){hitPoints = amount;}
+
     public String getCityName() {
         return cityName;
     }
@@ -129,8 +136,11 @@ public class City {
         return civilianUnit;
     }
 
+    public int getHappiness(){return happiness;}
 
+    public int getcityStrength(){return cityStrength;}
 
+    public int getCityHitPoint(){return hitPoints;}
     public ArrayList<Worker> getUnemployedCitizen() {
         return unemployedCitizen;
     }
