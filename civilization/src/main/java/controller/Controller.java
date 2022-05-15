@@ -83,7 +83,7 @@ public abstract class Controller {
         if (i == 0)
             hex.cc(hex.Unit, hex.City);
         hex.getInfo(hex.Unit, hex.City, i);
-        hex.printMap(hex.Unit, hex.City, i, hex.randFeature, hex.randLend, hex.featuresType);
+        hex.printMap(hex.Unit, hex.City, i, hex.randFeature, hex.randLand, hex.featuresType);
         System.out.println(hex.getFeature());
     }
 

@@ -9,7 +9,7 @@ public class hex {
    public static  String[] Unit=new String[18];
    public static String[] City=new String[18];
    public static  int [] randFeature=new int[18];
-    public static int [] randLend=new int[18];
+    public static int [] randLand =new int[18];
     public static int [] featuresType=new int[18];
 
    public static void cc(String[] Unit,String[] City){

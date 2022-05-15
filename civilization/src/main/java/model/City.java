@@ -1,5 +1,6 @@
 package model;
 
+import controller.CombatController;
 import enums.UnitEnum;
 import model.Resource.Resources;
 
@@ -272,6 +273,7 @@ public class City {
         return false;
     }
     public void nextTurn() {
+        CombatController controller = new CombatController();
         if(!haveEnoughFood()) {
             int food = cityFood/2;
             for (int i = 0; i < food; i++) {
@@ -284,8 +286,14 @@ public class City {
             View.getInCity().setCityFood((int)(cityFood * (0.33)));
         if(canMakeANewCitizen())
             UnitEnum.getUnits(UnitEnum.WORKER);
+        controller.safeDeleteCity();
+    }
 
-
+    public int getHitPoints() {
+        return hitPoints;
+    }
+    public void decreaseHealth(int amount) {
+        hitPoints -= amount;
     }
 
     public void unitPurchase(Unit unit){

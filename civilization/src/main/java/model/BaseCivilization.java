@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BaseCivilization {
-    private final String name;
+    private String name;
     private Integer numberOfCities = 0;
     private Integer sciencePT = 0;
     private Integer scienceTotal = 0;
@@ -21,18 +21,40 @@ public class BaseCivilization {
     private Integer cultureRequired = 0;
     private Integer culturePT = 0;
     private static Integer happiness = 0;
-    private ArrayList<Unit> units;
+    private ArrayList<Unit> units = new ArrayList<>();
     private String[] cityNames;
-    private ArrayList<City> cities;
+    private ArrayList<City> cities = new ArrayList<>();
+    public static ArrayList<City> allCities  = new ArrayList<>();//It's a list of all cities without considering their civilization
+    public static ArrayList<Unit> allUnits = new ArrayList<>();// the same as previous
     private static ArrayList<Resources> resources = new ArrayList<>();
     public static ArrayList<String> notifications = new ArrayList<>();
 
-    public City findCityByName(City city) {
-        for (City city1 : cities) {
-            if (city.getCityName().equals(city1.getCityName()))
-                return city;
+    public BaseCivilization () {
+        View.setCivilization(this);
+    }
+
+    public static City findCityByName(String cityName) {
+        for (City city1 : allCities) {
+            if (cityName.equals(city1.getCityName()))
+                return city1;
         }
         return null;
+    }
+
+    public static Unit findUnitByName(String name) {
+        for (Unit unit : allUnits) {
+            if(unit.getName().equals(name))
+                return unit;
+        }
+        return null;
+    }
+
+    public int findIndexOfUnit (Unit myUnit) {
+        for (Unit unit : units) {
+            if(myUnit.equals(unit))
+                return units.indexOf(unit);
+        }
+        return units.size();//there isn't any unit in units that matches with myUnit;
     }
 
     public BaseCivilization(String name, String[] cityNames) {
@@ -83,11 +105,11 @@ public class BaseCivilization {
 
     }
 
-    public List<Unit> getUnits() {
+    public ArrayList<Unit> getUnits() {
         return units;
     }
 
-    public List<City> getCities() {
+    public ArrayList<City> getCities() {
         return cities;
     }
 

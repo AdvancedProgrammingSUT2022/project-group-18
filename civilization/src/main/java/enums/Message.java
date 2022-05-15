@@ -29,8 +29,13 @@ public enum Message {
     POSITION_INVALID(""),
     COMBAT_UNIT_DONT_EXIST(""),
     NONCOMBAT_UNIT_DONT_EXIST(""),
-    UNIT_NOT_EXIST(""),
-    CITY_NOT_EXIST_WITH_NAME(""),
+    UNIT_NOT_EXIST("no units exists with this name"),
+    CITY_NOT_EXIST_WITH_NAME("no city exists with this name"),
+    COMBAT_SUCCESSFUL("combat was successful!"),
+    DESTROYED_CITY("you destroyed the city!"),
+    KILL_UNIT("you killed a unit!"),
+    STRENGTHS("strengths on until you don't move"),
+    UNIT_CANT_STRENGTHS("strengths isn't for this kind of units!"),
     CITY_NOT_EXIST_IN_POSITION("");
 
 

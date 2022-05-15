@@ -4,7 +4,7 @@ import model.BaseCivilization;
 import model.unit.*;
 import model.unit.Unit;
 
-public abstract class AbstarctActoin extends Unit {
+public abstract class AbstarctActoin {
     protected Unit unit;
 
     public AbstarctActoin(Melee unit) {

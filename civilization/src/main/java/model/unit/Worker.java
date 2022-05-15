@@ -3,24 +3,22 @@ import model.Tile;
 import model.hex;
 public class Worker extends  Unit{
     public Worker(String name, int movement, int productionCost) {
-        this.name = name;
-        this.movement = movement;
+        super(name , movement, productionCost);
         this.movementTemp = movement;
         this.movementPotential = movement;
-        this.productionCost = productionCost;
     }
 
 
-    public static booleanfoundRoad(int tile,hex map) {
+    public static boolean foundRoad(int tile,hex map) {
         if((hex.randLand[tile]!=3 )&&(hex.randLand[tile]!= 5 ) &&(hex.randLand[tile]!=6)){
             //creat road
+            int s = hex.randLand[2];
             //graphic
             return  true;
 
         }
         else
             return false;
-
 
     }
     public static boolean foundRailway(int tileId,hex map,Tile tile) {
@@ -46,16 +44,14 @@ public class Worker extends  Unit{
     public static void foundTradingPost(int tileId,hex map,Tile tile) {
         //creat railway
         //graphic
+<<<<<<< HEAD
         tile.incraerseGoldOutput(1);
+=======
+        //tile.incraerseGold(1);
+>>>>>>> origin
 
     }
-    public static void foundFarm(int tileId,hex map,Tile tile) {
 
-        //creat railway
-        //graphic
-
-
-    }
     public static void foundWoodCuting(int tileId,hex map,Tile tile) {
         //creat railway
         //graphic
@@ -80,29 +76,29 @@ public class Worker extends  Unit{
         //graphic
 
     }
-    public static void deleteJungle(int tileId,hex map,Tile tile) {
-        if(map.randFeature[tile]==5){
-            map.randFeature[tile]=7;
+    public static void deleteJungle(int tileId,hex map,int tile) {
+        if(hex.randFeature[tile]==5){
+            hex.randFeature[tile]=7;
         }
 
     }
     public static boolean deleteForest(int tileId,hex map,Tile tile) {
-        if (map.randFeature[tileId] == 4) {
-            map.randFeature[tileId] = 7;
+        if (hex.randFeature[tileId] == 4) {
+            hex.randFeature[tileId] = 7;
             return true;
         }
         else
             return false;
     }
     public static void deleteMarsh(int tileId,hex map,Tile tile) {
-            if(map.randFeature[tileId]==2){
-                map.randFeature[tileId]=7;
+            if(hex.randFeature[tileId]==2){
+                hex.randFeature[tileId]=7;
         }
 
     }
     public static boolean deleteRoad(int tileId,hex map,Tile tile) {
-        if (map.randFeature[tileId] == 6) {
-            map.randFeature[tileId] = 7;
+        if (hex.randFeature[tileId] == 6) {
+            hex.randFeature[tileId] = 7;
             return true;
 
         }
@@ -114,4 +110,4 @@ public class Worker extends  Unit{
         }
 
     }
-}
+

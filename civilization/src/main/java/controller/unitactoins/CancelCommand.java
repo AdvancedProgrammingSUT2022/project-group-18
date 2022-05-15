@@ -30,7 +30,7 @@ public class CancelCommand extends AbstarctActoin {
 
     public void cancelCommand() {
         if (nameOfCommand.equals("HealthSupport")) {
-            unit.health--;
+            unit.hitPoints--;
         }
         if (nameOfCommand.equals("RangedAttack")) {
             unit.target = Integer.parseInt(null);

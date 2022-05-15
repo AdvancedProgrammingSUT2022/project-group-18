@@ -6,7 +6,14 @@ import model.City;
 
 public class Melee extends Unit {
     public Melee(String name, int movement,int combatStrength, int productionCost, boolean isMilitary) {
+<<<<<<< HEAD
         super();
+=======
+        super(name, movement, productionCost);
+        this.isMilitary = isMilitary;
+        this.combatStrength=combatStrength;
+
+>>>>>>> origin
     }
     public void  MELEEATTACK (){
     }

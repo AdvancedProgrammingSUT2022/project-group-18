@@ -3,8 +3,11 @@ package view;
 import controller.GameController;
 import enums.Message;
 import enums.Regexes;
+<<<<<<< HEAD
 import model.BaseCivilization;
 import model.City;
+=======
+>>>>>>> origin
 import model.unit.Unit;
 
 import java.util.regex.Matcher;
@@ -64,19 +67,19 @@ public class GameMenuView extends View {
             economicOverview(city);
             View.setInCity(city);
         } else if ((matcher = Regexes.getCommand(input, Regexes.MOVETO_POSITION)) != null) {
-            //if(Unit.canMove=={
+            if(1 == 1){//Unit.canMove
             System.out.println( "movement mission was successful" );
-            // }
+             }
             else
-            System.out.println( "movement mission was'nt successful" );
+            System.out.println( "movement mission wasn't successful" );
         } else if (Regexes.getCommand(input, Regexes.SLEEP) != null) {
-            System.out.println("sleep mood was turned on");
+            System.out.println("sleep mode was turned on");
         } else if (Regexes.getCommand(input, Regexes.ALERT) != null) {
-            System.out.println("ready mood was turned on");
+            System.out.println("ready mode was turned on");
         } else if (Regexes.getCommand(input, Regexes.FORTIFY) != null) {
-            System.out.println("unit defensive power incraased");
+            System.out.println("unit defensive power increased");
         } else if (Regexes.getCommand(input, Regexes.FORTIFY_HEAL) != null) {
-            System.out.println("unit health incraased");
+            System.out.println("unit health increased");
         } else if (Regexes.getCommand(input, Regexes.GARRISON) != null) {
             System.out.println("the unit is ready to defensive it's city ");
         } else if (Regexes.getCommand(input, Regexes.SETUP_RANGED) != null) {
@@ -94,7 +97,7 @@ public class GameMenuView extends View {
         } else if (Regexes.getCommand(input, Regexes.BUILD_ROAD) != null) {
             //if(Worker,foundRoad())
             System.out.println("the road was built");
-        } else if (Regexes.getCommand(input, Regexes.BUILD_RAILWAy) != null) {
+        } else if (Regexes.getCommand(input, Regexes.BUILD_RAILWAY) != null) {
             //if(Worker.railWay)
             System.out.println("the railway was built");
         } else if (Regexes.getCommand(input, Regexes.BUILD_FARM) != null) {
@@ -115,11 +118,11 @@ public class GameMenuView extends View {
             System.out.println("the quarry was built");
         } else if (Regexes.getCommand(input, Regexes.REMOVE_JUNGLE) != null) {
             System.out.println("the jungle was removed");
-        } else if (Regexes.getCommand(input, Regexes.REMOVE_forest) != null) {
+        } else if (Regexes.getCommand(input, Regexes.REMOVE_FOREST) != null) {
             System.out.println("the forest was removed");
         } else if (Regexes.getCommand(input, Regexes.REMOVE_MARSH) != null) {
             System.out.println("the marsh was removed");
-        } else if (Regexes.getCommand(input, Regexes.REMOVE_ROUD) != null) {
+        } else if (Regexes.getCommand(input, Regexes.REMOVE_ROAD) != null) {
             //if(worker.deleteRoad)
             System.out.println("the road was removed");
         } else if (Regexes.getCommand(input, Regexes.REPAIR) != null) {
