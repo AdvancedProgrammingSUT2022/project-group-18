@@ -27,7 +27,11 @@ public class CityController extends Controller{
         //TODO get building's name and build it
         //city.setBuilding;
     }
-
+    public boolean canMakeANewCitizen() {
+        if(View.getInCity().getCityFood() > View.getInCity().getCityPopulation() * 2 + 25)
+            return true;
+        return false;
+    }
 
 
 }

@@ -1,8 +1,11 @@
 package model.unit;
 
+import controller.CombatController;
 import controller.Controller;
 import controller.LoginMenuController;
 import controller.unitactoins.Delete;
+import enums.Message;
+import enums.UnitEnum;
 import model.BaseCivilization;
 import model.City;
 import view.View;
@@ -23,7 +26,7 @@ public class Unit {
     public int combatStrength = 0;
     public int combatStrengthRanged = 0;
     protected int ranged = 1;
-    public int health = 10;
+    //public int health = 10;
     protected int productionCost = 0;
     protected boolean isMilitary = false;
     protected boolean isMoving = false;
@@ -33,10 +36,13 @@ public class Unit {
     protected float x, y;
     public boolean getCommand = true;
 
-
-    public Unit () {
+    public Unit(String name, int movement, int productionCost) {
+        this.name = name;
+        this.movement = movement;
+        this.productionCost = productionCost;
         View.getInCity().addCityPopulation(1);
     }
+
     public static void attack(City city, Unit unit, BaseCivilization civilization) {
         unit.isAttacking = true;
         while (unit.hitPoints != 0 && city.hitPoints != 0) {
@@ -66,9 +72,6 @@ public class Unit {
     }
 
 
-    public int getHealth() {
-        return health;
-    }
 
     public boolean ableToMove() {
         return true;
@@ -198,17 +201,24 @@ public class Unit {
                 this.movementPotential != this.movement ? this.movementPotential : this.movement;
     }
 
+    public int getHitPoints() {
+        return hitPoints;
+    }
+
+    public void decreaseHealth(int amount) {
+        hitPoints -= amount;
+    }
 
     public void nextTurn() {
-        Controller.turn++ ;
+        Controller.turn++;
         resetMovementTemp();
         resetMovementPotential();
         LoginMenuController controller = new LoginMenuController();
         controller.printMap(Controller.turn);
-        if(hitPoints == 0) {
-            //TODO delete unit;
-        }
+        CombatController combatController = new CombatController();
+        combatController.safeDeleteUnits();
     }
+
 
 /*    public void moveUnit(Hex hh) {
 
