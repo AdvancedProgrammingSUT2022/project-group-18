@@ -1,12 +1,27 @@
-package Model.unit.unitactoins;
+package model.unit.unitactoins;
 
-import Model.unit.Unit;
+import model.BaseCivilization;
+import model.unit.*;
+import model.unit.Unit;
 
 public abstract class AbstarctActoin extends Unit {
     protected Unit unit;
 
-    public AbstarctActoin(Unit unit) {
+    public AbstarctActoin(Melee unit) {
         this.unit = unit;
+    }
+    public AbstarctActoin(Worker unit) {
+        this.unit = unit;
+    }
+    public AbstarctActoin(Settler unit) {
+        this.unit = unit;
+    }
+    public AbstarctActoin(Ranged unit) {
+        this.unit = unit;
+    }
+
+    public AbstarctActoin(BaseCivilization b) {
+
     }
 
     public Unit getUnit() {

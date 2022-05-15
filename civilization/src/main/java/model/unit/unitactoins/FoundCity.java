@@ -1,15 +1,18 @@
-package Model.unit.unitactoins;
+package model.unit.unitactoins;
 
-import Model.unit.Settler;
+import model.BaseCivilization;
+import model.City;
+import model.unit.Settler;
+import model.unit.Unit;
 
 public class FoundCity extends AbstarctActoin{
-    public FoundCity(Settler unit,BaseCivilization b){
+    public FoundCity(Settler unit, BaseCivilization b){
         super(unit);
-        super(b);
+        //super(b);
     }
-    public void foundCity(){
-        b.cities.add(new city());
-        Delete(unit,b,unit.id);
+    public void foundCity(BaseCivilization b, Unit unit){
+        b.setCities(new City());
+        //Delete(unit,b,unit.id);
 
     }
 

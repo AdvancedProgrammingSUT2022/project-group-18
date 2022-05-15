@@ -1,9 +1,10 @@
-package Model.unit.unitactoins;
+package model.unit.unitactoins;
 
-import Model.unit.Melee;
-import Model.unit.Ranged;
+import model.unit.Melee;
+import model.unit.Ranged;
+import model.unit.unitactoins.AbstarctActoin;
 
-public class HealthSupport extends AbstarctActoin{
+public class HealthSupport extends AbstarctActoin {
     public HealthSupport(Ranged unit) {
         super(unit);
     }

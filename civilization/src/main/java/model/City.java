@@ -2,8 +2,9 @@ package model;
 
 import enums.Message;
 import model.Resource.Resources;
-import model.unit.Civilian;
+
 import model.unit.Unit;
+import model.unit.Worker;
 import view.CityView;
 import view.View;
 
@@ -20,8 +21,8 @@ public class City {
     private int cityBeakers;
     private int cityStrength;
     private BaseCivilization owner;
-    private ArrayList<Civilian> unemployedCitizen;
-    private HashMap<Tile, Civilian> citizenWorkers;
+    private ArrayList<Worker> unemployedCitizen;
+    private HashMap<Tile, Worker> citizenWorkers;
     private ArrayList<Unit> units = new ArrayList<>();
     private ArrayList<Building> buildings = new ArrayList<>();
     private Unit militaryUnit;
@@ -126,11 +127,11 @@ public class City {
         return civilianUnit;
     }
 
-    public ArrayList<Civilian> getUnemployedCitizen() {
+    public ArrayList<Worker> getUnemployedCitizen() {
         return unemployedCitizen;
     }
 
-    public void lockCitizen(Civilian citizen){
+    public void lockCitizen(Worker citizen){
         Tile tile = this.originTile;
         citizenWorkers.put(tile, citizen);
         tile.isUnderWork = true;
@@ -138,12 +139,12 @@ public class City {
     public void unemployedMenu(String choice){
         //TODO specialist choice
         if (this.unemployedCitizen.size()!=0){
-            Civilian citizen = cityView.showUnemployed(this);
+            Worker citizen = cityView.showUnemployed(this);
             unemployedCitizen.remove(citizen);
             lockCitizen(citizen);
         }else return;
     }
-    public void unlockCitizen(Civilian citizen){
+    public void unlockCitizen(Worker citizen){
         unemployedCitizen.add(citizen);
         citizenWorkers.remove(this.originTile);
         this.originTile.isUnderWork=false;
@@ -187,13 +188,12 @@ public class City {
         return resources;
     }
 
-<<<<<<< HEAD
     public ArrayList<Unit> getUnits() {
         return units;
     }
     public void removeUnit(int index) {
         units.remove(index);
-=======
+    }
     public void destroy(){
         if (Creator!=owner&&!isCapital){
             buildings.clear();
@@ -227,6 +227,6 @@ public class City {
     public void puppetCity(BaseCivilization owner){
         this.owner = owner;
         owner.increaseHappiness();
->>>>>>> d79b208b91c85a4a00bdf9052493a78527d11933
+
     }
 }

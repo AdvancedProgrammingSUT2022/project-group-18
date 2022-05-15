@@ -1,11 +1,12 @@
-package Model.unit.unitactoins;
+package model.unit.unitactoins;
 
-import Model.unit.Melee;
-import Model.unit.Ranged;
-import Model.unit.Settler;
-import Model.unit.Worker;
+import model.unit.Melee;
+import model.unit.Ranged;
+import model.unit.Settler;
+import model.unit.Worker;
+import model.unit.unitactoins.AbstarctActoin;
 
-public class ReadyMood extends AbstarctActoin   {
+public class ReadyMood extends AbstarctActoin {
 
     public ReadyMood(Settler unit) {
         super(unit);

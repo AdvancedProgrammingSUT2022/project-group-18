@@ -2,16 +2,16 @@ package view;
 
 import model.City;
 import model.Tile;
-import model.unit.Civilian;
+import model.unit.Worker;
 
 import java.util.ArrayList;
 
 public class CityView {
-    public Civilian showUnemployed(City city){
-        ArrayList<Civilian> unemployeds = city.getUnemployedCitizen();
+    public Worker showUnemployed(City city){
+        ArrayList<Worker> unemployeds = city.getUnemployedCitizen();
         System.out.println(unemployeds);
         //TODO get citizen number by click & enter here
-        Civilian citizen = unemployeds.get(2);//fix it
+        Worker citizen = unemployeds.get(2);//fix it
         return citizen;
     }
     public void show(City city){

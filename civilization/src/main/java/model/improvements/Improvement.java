@@ -3,7 +3,6 @@ package model.improvements;
 
 import enums.ImprovementsEnum;
 import model.Tile;
-import model.unit.Civilian;
 
 public class Improvement {
     private String name;

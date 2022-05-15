@@ -1,9 +1,9 @@
-package Model.unit.unitactoins;
+package model.unit.unitactoins;
 
-import Model.unit.Melee;
-import Model.unit.Ranged;
-import Model.unit.Settler;
-import Model.unit.Worker;
+import model.unit.Melee;
+import model.unit.Ranged;
+import model.unit.Settler;
+import model.unit.Worker;
 
 public class Sleep extends AbstarctActoin  {
     public Sleep(Settler unit) {
@@ -20,6 +20,6 @@ public class Sleep extends AbstarctActoin  {
     }
    public void sleep(){
        unit.getCommand=false;
-       unit.sleepmood=true;
+       unit.sleepMode=true;
    }
 }

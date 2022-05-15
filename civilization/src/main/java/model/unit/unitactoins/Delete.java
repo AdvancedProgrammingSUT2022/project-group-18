@@ -1,13 +1,11 @@
-package Model.unit.unitactoins;
+package model.unit.unitactoins;
 
-import Model.unit.Melee;
-import Model.unit.Ranged;
-import Model.unit.Settler;
-import Model.unit.Worker;
+import model.BaseCivilization;
+import model.unit.*;
 
 public class Delete extends AbstarctActoin{
     int id;
-    public Delete(Ranged unit, int id,BaseCivilization b ) {
+    public Delete(Ranged unit, int id, BaseCivilization b ) {
         super(unit);
         this.id = id;
     }
@@ -26,8 +24,9 @@ public class Delete extends AbstarctActoin{
         super(unit);
         this.id = id;
     }
+
     public void delete(){
-        b.units(id);
+       // b.units(id);
 
 
     }

@@ -1,4 +1,4 @@
-package Model.unit;
+package model.unit;
 
 public class Settler extends Unit {
 

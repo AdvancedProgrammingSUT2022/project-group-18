@@ -1,6 +1,5 @@
 package model;
 
-import enums.Message;
 import enums.UnitEnum;
 import model.Resource.Resources;
 import model.unit.Unit;
@@ -127,12 +126,6 @@ public class BaseCivilization {
 
     }
 
-
-    public ArrayList<UnitEnum> getAvailableUnits() {
-        //WE DONT KNOW
-        return new ArrayList<UnitEnum>(); // just for no errors
-    }
-
     public void nextTurn() {
 
     }
@@ -148,27 +141,9 @@ public class BaseCivilization {
     public static void addResource(Resources resources) {
         BaseCivilization.resources.add(resources);
     }
-
-<<<<<<< HEAD
     public static ArrayList<Resources> getResources() {
         return resources;
     }
-=======
-  public Integer getCultureRequired() {
-    return cultureRequired;
-  }
-
-  public Integer getCulturePT() {
-    return culturePT;
-  }
-
-  public void addUnit() {
-
-  }
-
-  public void replaceUnit() {
-
-  }
 
   public void deleteUnit(Unit unit) {
     units.remove(unit);
@@ -180,25 +155,11 @@ public class BaseCivilization {
     return new ArrayList<UnitEnum>(); // just for no errors
   }
 
-  public void nextTurn() {
+    public void setCities(City cities) {
+        this.cities.add(cities);
+    }
 
-  }
-
-  public void addNotifications(String notification) {
-    notifications.add(notification);
-  }
-
-  public static ArrayList<String> getNotifications() {
-    return notifications;
-  }
-
-  public static void addResource(Resources resources) {BaseCivilization.resources.add(resources);}
-
-  public static ArrayList<Resources> getResources() {
-    return resources;
-  }
-
-  public void decreaseHappiness(){
+    public void decreaseHappiness(){
     happiness -= 10;
   }
 
@@ -213,5 +174,4 @@ public class BaseCivilization {
     goldTotal-=10;
   }
 
->>>>>>> d79b208b91c85a4a00bdf9052493a78527d11933
 }

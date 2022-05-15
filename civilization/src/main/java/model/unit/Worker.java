@@ -1,4 +1,4 @@
-package Model.unit;
+package model.unit;
 
 public class Worker extends  Unit{
     public Worker(String name, int movement, int productionCost) {

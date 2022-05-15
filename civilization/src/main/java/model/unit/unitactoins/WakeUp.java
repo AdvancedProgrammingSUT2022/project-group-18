@@ -1,11 +1,12 @@
-package Model.unit.unitactoins;
+package model.unit.unitactoins;
 
-import Model.unit.Melee;
-import Model.unit.Ranged;
-import Model.unit.Settler;
-import Model.unit.Worker;
+import model.unit.Melee;
+import model.unit.Ranged;
+import model.unit.Settler;
+import model.unit.Worker;
+import model.unit.unitactoins.AbstarctActoin;
 
-public class WakeUp extends AbstarctActoin{
+public class WakeUp extends AbstarctActoin {
     public static boolean x=true;
     public static boolean y=true;
     public WakeUp(Settler unit) {
@@ -21,7 +22,7 @@ public class WakeUp extends AbstarctActoin{
         super(unit);
     }
     public  void wakeUp(){
-        if(unit.sleepmood==true){
+        if(unit.sleepMode==true){
             unit.getCommand=true;
         }
     }

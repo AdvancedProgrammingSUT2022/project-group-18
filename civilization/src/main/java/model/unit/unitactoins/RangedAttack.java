@@ -1,22 +1,23 @@
-package Model.unit.unitactoins;
+package model.unit.unitactoins;
 
-import Model.unit.Ranged;
-import Model.unit.Unit;
-import Model.info;
+import model.BaseCivilization;
+import model.unit.Ranged;
+import model.unit.unitactoins.AbstarctActoin;
 
-public class RangedAttack extends AbstarctActoin{
-    public RangedAttack(Ranged unit,BaseCivilization b){
+
+public class RangedAttack extends AbstarctActoin {
+    public RangedAttack(Ranged unit, BaseCivilization b){
         super(unit);
 
     }
     public void rangedAttack(){
-        if(unit.combatStrengthRanged>info.allUnit.get(unit.target).combatStrength){
+/*        if(unit.combatStrengthRanged>info.allUnit.get(unit.target).combatStrength){
             unit.combatStrengthRanged=unit.combatStrengthRanged-b.units.get(unit.target).combatStrength;
 
 
         }
         else{
            b.units.get(unit.target).combatStrength=b.units.get(unit.target).combatStrength-unit.combatStrengthRanged;
-        }
+        }*/
     }
 }

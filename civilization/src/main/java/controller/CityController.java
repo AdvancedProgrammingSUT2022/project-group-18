@@ -3,15 +3,10 @@ package controller;
 import enums.Message;
 import enums.UnitEnum;
 import model.BaseCivilization;
-import model.City;
-import model.Tile;
-<<<<<<< HEAD
+
 import view.View;
 
 import java.util.regex.Matcher;
-=======
-import model.unit.Unit;
->>>>>>> d79b208b91c85a4a00bdf9052493a78527d11933
 
 
 public class CityController extends Controller{

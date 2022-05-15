@@ -1,10 +1,11 @@
-package Model.unit.unitactoins;
+package model.unit.unitactoins;
 
-import Model.unit.Melee;
-import Model.unit.Ranged;
-import Model.unit.Unit;
-import Model.hex;
-public class Settle extends AbstarctActoin{
+import model.hex;
+import model.unit.Melee;
+import model.unit.Ranged;
+import model.unit.unitactoins.AbstarctActoin;
+
+public class Settle extends AbstarctActoin {
 
     public Settle(Ranged unit) {
         super(unit);

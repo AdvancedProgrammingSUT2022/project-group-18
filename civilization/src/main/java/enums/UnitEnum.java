@@ -72,14 +72,14 @@ public enum UnitEnum {
             case SCOUT:
                 return new Melee("Scout", 2, 4, 25, true);
             case SETTLER:
-                return new Civilian("Settler", 2, 89);
+                return new Settler("Settler", 2, 89);
             case SPEARMAN:
                 if (TechsEnum.technologyCheck(TechsEnum.BRONZE_WORKING))
                     return new Melee("Spearman", 2, 7, 50, true);
             case WARRIOR:
                 return new Melee("Warrior", 2, 6, 40, true);
             case WORKER:
-                return new Civilian("Worker", 2, 70);
+                return new Worker("Worker", 2, 70);
             case CATAPULT:
                 if (checkResourceExist(ResourcesEnum.IRON) &&
                         TechsEnum.technologyCheck(TechsEnum.MATHEMATICS))

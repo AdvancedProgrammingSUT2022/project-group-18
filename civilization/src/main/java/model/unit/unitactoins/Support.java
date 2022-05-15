@@ -1,7 +1,7 @@
-package Model.unit.unitactoins;
+package model.unit.unitactoins;
 
-import Model.unit.Melee;
-import Model.unit.Ranged;
+import model.unit.Melee;
+import model.unit.Ranged;
 
 public class Support extends AbstarctActoin{
     public Support(Ranged unit) {

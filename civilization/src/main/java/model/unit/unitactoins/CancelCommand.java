@@ -1,8 +1,9 @@
-package Model.unit.unitactoins;
-import Model.unit.Melee;
-import Model.unit.Ranged;
-import Model.unit.Settler;
-import Model.unit.Worker;
+package model.unit.unitactoins;
+import model.unit.Melee;
+import model.unit.Ranged;
+import model.unit.Settler;
+import model.unit.Worker;
+
 
 public class CancelCommand extends AbstarctActoin {
     String nameOfCommand;

@@ -1,25 +1,26 @@
-package Model.unit.unitactoins;
+package model.unit.unitactoins;
 
-import Model.unit.Melee;
-import Model.unit.Ranged;
-import Model.unit.Settler;
-import Model.unit.Worker;
+import model.unit.Melee;
+import model.unit.Ranged;
+import model.unit.Settler;
+import model.unit.Worker;
+import model.unit.unitactoins.AbstarctActoin;
 
 
 public class ReadyForRangedAttack extends AbstarctActoin {
-    public ReadyForRangedAttack(Settler unit,int target) {
+    public ReadyForRangedAttack(Settler unit, int target) {
         super(unit);
         this.unit.target=target;
     }
-    public ReadyForRangedAttack(Worker unit,int target) {
+    public ReadyForRangedAttack(Worker unit, int target) {
         super(unit);
         this.unit.target=target;
     }
-    public ReadyForRangedAttack(Ranged unit,int target) {
+    public ReadyForRangedAttack(Ranged unit, int target) {
         super(unit);
         this.unit.target=target;
     }
-    public ReadyForRangedAttack(Melee unit,int target) {
+    public ReadyForRangedAttack(Melee unit, int target) {
         super(unit);
         this.unit.target=target;
 
