@@ -1,11 +1,27 @@
+<<<<<<< HEAD
 import model.BaseCivilization;
 import model.City;
 import model.unit.Settler;
+=======
+package model.unit;
+
+import controller.Controller;
+import controller.LoginMenuController;
+import controller.unitactoins.Delete;
+import model.BaseCivilization;
+import model.City;
+import view.View;
+
+>>>>>>> origin
 
 public class Unit {
 
     //protected String combatType;
+<<<<<<< HEAD
     public boolean sleepmood = false;
+=======
+    public boolean sleepMode = false;
+>>>>>>> origin
     public Settler City;
     public int target;
     public int tileId;
@@ -27,6 +43,13 @@ public class Unit {
     protected float x, y;
     public boolean getCommand = true;
 
+<<<<<<< HEAD
+=======
+
+    public Unit () {
+        View.getInCity().addCityPopulation(1);
+    }
+>>>>>>> origin
     public static void attack(City city, Unit unit, BaseCivilization civilization) {
         unit.isAttacking = true;
         while (unit.hitPoints != 0 && city.hitPoints != 0) {
@@ -41,6 +64,7 @@ public class Unit {
         unit.hitPoints--;
         city.hitPoints--;
     }
+<<<<<<< HEAD
 }
 /*
 =======
@@ -48,12 +72,15 @@ public class Unit {
     public boolean getIsMilitary() {
         return isMilitary;
     }
+=======
+
+>>>>>>> origin
 
     public int getcombatStrength() {
         return combatStrength;
     }
 
-    public int getcombatStrengthRanged(){
+    public int getcombatStrengthRanged() {
         return combatStrengthRanged;
     }
 
@@ -66,31 +93,6 @@ public class Unit {
         return health;
     }
 
-
-    public boolean isBeingMoved() {
-        return isMoving;
-    }
-
-    public void toggleBeingMoved() {
-        this.isMoving = !this.isMoving;
-    }
-
-    public void setBeingMoved(boolean moved) {
-        this.isMoving = moved;
-    }
-
-    public boolean isBeingAttacked() {
-        return isAttacking;
-    }
-
-    public void toggleBeingAttacked() {
-        this.isMoving = !this.isMoving;
-    }
-
-    public void setBeingAttacked(boolean attack) {
-
-    }
-
     public boolean ableToMove() {
         return true;
     }
@@ -99,28 +101,15 @@ public class Unit {
 
     }
 
-    public void resetMovementTemp() {
-
-    }
-
-    public void resetMovementPotential() {
-
-    }
-
-    public void setMovementTempForMultiMove() {
-
-    }
-
-    public void nextTurn() {
-
-    }
 
     public void moveUnit() {
 
     }
-    public void checksSameLocstion(){
+
+    public void checksSameLocstion() {
 
     }
+
     public void addToMapAndCiv() {
     }
 
@@ -132,6 +121,7 @@ public class Unit {
 
     }
 
+/*
     public Hex getPosition() {
         return curPos;
     }
@@ -139,18 +129,15 @@ public class Unit {
     public boolean getSpawned() {
         return isSpawned;
     }
+*/
 
     public boolean getIsMilitary() {
         return isMilitary;
     }
 
-    public double getStrength() {
+/*    public double getStrength() {
         return strength;
-    }
-
-    public String getName() {
-        return name;
-    }
+    }*/
 
 
     public double getTotalMovement() {
@@ -161,26 +148,22 @@ public class Unit {
         return movementPotential;
     }
 
-    public BaseCivilization getOwner() {
+/*    public BaseCivilization getOwner() {
         return civOwner;
-    }
-
-    public int getHealth() {
-        return health;
-    }
+    }*/
 
 
     public int getProductionCost() {
         return productionCost;
     }
 
-    public int getCurrentProduction() {
+/*    public int getCurrentProduction() {
         return currentProduction;
     }
 
     public void addProductionToBuild(int productionToAdd) {
         currentProduction += productionToAdd;
-    }
+    }*/
 
     public boolean isBeingMoved() {
         return isMoving;
@@ -207,17 +190,15 @@ public class Unit {
     }
 
 
-        return this.actionMenu;
-    }
 
-    public void setIsSpawned() {
+/*    public void setIsSpawned() {
         isSpawned = true;
     }
 
 
     public void setPosition(Hex h) {
         this.curPos = h;
-    }
+    }*/
 
     public boolean ableToMove(double hexCost) {
         return ((movementTemp -= hexCost) >= 0D) && (movementPotential - hexCost >= 0D);
@@ -241,14 +222,18 @@ public class Unit {
     }
 
 
-
     public void nextTurn() {
-
+        Controller.turn++ ;
         resetMovementTemp();
         resetMovementPotential();
+        LoginMenuController controller = new LoginMenuController();
+        controller.printMap(Controller.turn);
+        if(hitPoints == 0) {
+            //TODO delete unit;
+        }
     }
 
-    public void moveUnit(Hex hh) {
+/*    public void moveUnit(Hex hh) {
 
             Hex toHex = hexMap.getHex(h);
 
@@ -276,10 +261,10 @@ public class Unit {
                 moveUnitOnMap(fromHex, toHex, cu != null ? cu : mu, pathTotal);
             }
             ui.setFocusedUnitPath(null);
-        }
-    }
+        }*/
 
-    private void moveUnitOnMap(Hex fromHex, Hex toHex, Unit u, double totalHexCost) {
+
+/*    private void moveUnitOnMap(Hex fromHex, Hex toHex, Unit u, double totalHexCost) {
         HexCoordinate newLocation = toHex.getPosition();
         u.decreaseMovement(totalHexCost);
 
@@ -326,14 +311,14 @@ public class Unit {
         c1.replaceUnit(currentFromUnit, tempFromUnit);
         c1.replaceUnit(currentToUnit, tempToUnit);
         civs.set(0, c1);
-    }
+    }*/
 
-    private boolean sameOwner(Unit fromU, Unit toU) {
+/*    private boolean sameOwner(Unit fromU, Unit toU) {
         return fromU.getOwner().sameCivilization(toU.getOwner().getID());
-    }
+    }*/
 
-    public List<PathHex> validUnitMove(List<HexCoordinate> path) {
-        List<PathHex> finalPath = new ArrayList<>();
+/*    public ArrayList<PathHex> validUnitMove(ArrayList<HexCoordinate> path) {
+        ArrayList<PathHex> finalPath = new ArrayList<>();
         Hex currentHex = hexMap.getHex(ui.getFocusHex());
 
         boolean unitBlocking = false;
@@ -373,10 +358,6 @@ public class Unit {
         }
         currentUnit.setMovementTempForMultiMove();
         return finalPath;
-    }
-
-
-
-
+    }*/
 
 }

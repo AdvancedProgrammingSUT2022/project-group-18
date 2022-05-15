@@ -99,7 +99,9 @@ public enum Regexes {
     MOVE_RIGHT("move right (?<amount>\\d+)"),
     MOVE_LEFT("move left (?<amount>\\d+)"),
     MOVE_UP("move up (?<amount>\\d+)"),
-    MOVE_DOWN("move down (?<amount>\\d+)");
+    MOVE_DOWN("move down (?<amount>\\d+)"),
+    MAKE_UNIT("^make unit (?<unitName>.*)$"),
+    CHANGE_CONSTRUCTION("^change construction make unit (?<unitName>.*)$");
 
 
 

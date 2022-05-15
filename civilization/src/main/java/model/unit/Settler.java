@@ -1,4 +1,7 @@
-package Model.unit;
+package model.unit;
+
+import model.City;
+import view.View;
 
 public class Settler extends Unit {
 
@@ -8,7 +11,6 @@ public class Settler extends Unit {
         this.movementTemp = movement;
         this.movementPotential = movement;
         this.productionCost = productionCost;
-
-
+        View.getInCity().setCityFood(0);
     }
 }

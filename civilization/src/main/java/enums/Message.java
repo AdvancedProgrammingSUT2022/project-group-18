@@ -25,6 +25,7 @@ public enum Message {
     CANT_CHANG_USERNAME("you can't chang your username!"),
     GAME_WITH_NO_PLAYER("you don't choose any player to play game!"),
     NO_NOTIFICATIONS("no notifications yet..."),
+    MAKE_UNIT("the unit was made"),
     POSITION_INVALID(""),
     COMBAT_UNIT_DONT_EXIST(""),
     NONCOMBAT_UNIT_DONT_EXIST(""),
