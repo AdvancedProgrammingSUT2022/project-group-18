@@ -10,7 +10,7 @@ import java.util.regex.Matcher;
 
 
 public abstract class Controller {
-
+    public static int turn = 0;
     public void exitMenu() {
         System.exit(0);
     }
@@ -75,14 +75,16 @@ public abstract class Controller {
     public void startGame() {
         View.setInMenu("Game Menu");
         GameMenuView view = new GameMenuView();
-
-        hex.cc(hex.Unit, hex.City);
-        for (int i = 0; i < 18; i++) {
-            hex.getInfo(hex.Unit, hex.City, i);
-            hex.printMap(hex.Unit, hex.City, i, hex.randFeature, hex.randLend, hex.featuresType);
-            System.out.println(hex.getFeature());
-        }
+        printMap(0);
         view.run();
+    }
+
+    public void printMap(int i) {
+        if (i == 0)
+            hex.cc(hex.Unit, hex.City);
+        hex.getInfo(hex.Unit, hex.City, i);
+        hex.printMap(hex.Unit, hex.City, i, hex.randFeature, hex.randLend, hex.featuresType);
+        System.out.println(hex.getFeature());
     }
 
 }
