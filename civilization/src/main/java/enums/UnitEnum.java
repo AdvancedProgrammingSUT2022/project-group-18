@@ -3,6 +3,7 @@ package enums;
 import model.City;
 import model.Resource.Resources;
 import model.unit.*;
+import view.View;
 
 import java.util.Locale;
 
@@ -52,7 +53,7 @@ public enum UnitEnum {
     }
 
     private static boolean checkResourceExist(ResourcesEnum resourcesEnum) {
-        for (Resources resources : City.getResources()) {
+        for (Resources resources : View.getInCity().getResources()) {
             if (resources.getName().toLowerCase(Locale.ROOT).equals(resourcesEnum.toString()))
                 return true;
         }

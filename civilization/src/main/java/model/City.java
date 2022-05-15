@@ -30,8 +30,8 @@ public class City {
     private CityView cityView = new CityView();
     private boolean isCapital;
     private BaseCivilization Creator;
-    public int hitPoints =10;
-    private static ArrayList<Resources> resources = new ArrayList<>();
+    public int hitPoints = 10;
+    private ArrayList<Resources> resources = new ArrayList<>();
 
 
     public City() {
@@ -72,19 +72,18 @@ public class City {
         this.owner = owner;
     }
 
-    public boolean setMilitaryUnit(Unit militaryUnit){
-        if (militaryUnit!=null){
+    public boolean setMilitaryUnit(Unit militaryUnit) {
+        if (militaryUnit != null) {
             this.militaryUnit = militaryUnit;
             return true;
-        }
-        else return false;//transport unit to out of city
+        } else return false;//transport unit to out of city
     }
-    public boolean setCivilianUnit (Unit militaryUnit){
-        if (civilianUnit!=null){
+
+    public boolean setCivilianUnit(Unit militaryUnit) {
+        if (civilianUnit != null) {
             this.civilianUnit = militaryUnit;
             return true;
-        }
-        else return false;//transport unit to out of city
+        } else return false;//transport unit to out of city
     }
 
     public String getCityName() {
@@ -131,32 +130,38 @@ public class City {
         return unemployedCitizen;
     }
 
-    public void lockCitizen(Worker citizen){
+    public void lockCitizen(Worker citizen) {
         Tile tile = this.originTile;
         citizenWorkers.put(tile, citizen);
         tile.isUnderWork = true;
     }
-    public void unemployedMenu(String choice){
+
+    public void unemployedMenu(String choice) {
         //TODO specialist choice
-        if (this.unemployedCitizen.size()!=0){
+        if (this.unemployedCitizen.size() != 0) {
             Worker citizen = cityView.showUnemployed(this);
             unemployedCitizen.remove(citizen);
             lockCitizen(citizen);
-        }else return;
+        } else return;
     }
-    public void unlockCitizen(Worker citizen){
+
+    public void unlockCitizen(Worker citizen) {
         unemployedCitizen.add(citizen);
         citizenWorkers.remove(this.originTile);
-        this.originTile.isUnderWork=false;
+        this.originTile.isUnderWork = false;
     }
-    public void buyTile(Tile tile ){
+
+    public void buyTile(Tile tile) {
         owner.decreaseGold();
         cityView.showCostOfTile(tile);
         tile.incraerseCost(10);//TODO check the amount
-        this.cityGold-=10;
+        this.cityGold -= 10;
     }
 
-    public void returnToMap(){return;}
+    public void returnToMap() {
+        return;
+    }
+
     public void setBuildings(Building buildings) {
         this.buildings.add(buildings);
     }
@@ -169,47 +174,50 @@ public class City {
         return originTile;
     }
 
-    public void workOnTile(){
+    public void workOnTile() {
         this.cityFood++;
         this.cityGold++;
         this.cityProduction++;
         this.cityBeakers++;
         //TODO set the proper amount
     }
-    public void setSpecialist(){
+
+    public void setSpecialist() {
         //TODO complete after completing buldings
     }
 
-    public static void setResources(Resources resources) {
-        City.resources.add(resources);
+    public void setResources(Resources resources) {
+        this.resources.add(resources);
     }
 
-    public static ArrayList<Resources> getResources() {
+    public ArrayList<Resources> getResources() {
         return resources;
     }
 
     public ArrayList<Unit> getUnits() {
         return units;
     }
+
     public void removeUnit(int index) {
         units.remove(index);
     }
-    public void destroy(){
-        if (Creator!=owner&&!isCapital){
+
+    public void destroy() {
+        if (Creator != owner && !isCapital) {
             buildings.clear();
-            cityProduction=0;
-            cityGold=0;
-            cityFood=0;
+            cityProduction = 0;
+            cityGold = 0;
+            cityFood = 0;
             citizenWorkers.clear();
-            cityPopulation=0;
+            cityPopulation = 0;
             unemployedCitizen.clear();
             citizenWorkers.clear();
             units.clear();
         }
     }
 
-    public void winCombat(BaseCivilization owner){
-        switch (cityView.afterWinInCombat()){
+    public void winCombat(BaseCivilization owner) {
+        switch (cityView.afterWinInCombat()) {
             case 1:
                 destroy();
             case 2:
@@ -220,11 +228,13 @@ public class City {
                 puppetCity(owner);
         }
     }
-    public void appendixCity(BaseCivilization owner){
+
+    public void appendixCity(BaseCivilization owner) {
         this.owner = owner;
         owner.decreaseHappiness();
     }
-    public void puppetCity(BaseCivilization owner){
+
+    public void puppetCity(BaseCivilization owner) {
         this.owner = owner;
         owner.increaseHappiness();
 

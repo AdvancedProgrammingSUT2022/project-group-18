@@ -1,10 +1,9 @@
 package model.Resource;
 
 import model.BaseCivilization;
-import model.City;
+import view.View;
 
 import java.util.ArrayList;
-import java.util.Base64;
 
 public class Resources {
     private String name;
@@ -26,7 +25,10 @@ public class Resources {
         this.type = type;
         this.note = note;
         BaseCivilization.addResource(this);
-        City.setResources(this);
+        View.getInCity().setResources(this);
+        if(type.equals("BonusResources"))
+            View.getInCity().setCityFood(View.getInCity().getCityFood() + 10);
+
     }
 
     public void setName(String name) {

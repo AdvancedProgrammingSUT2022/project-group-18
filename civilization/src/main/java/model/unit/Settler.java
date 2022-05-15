@@ -1,5 +1,8 @@
 package model.unit;
 
+import model.City;
+import view.View;
+
 public class Settler extends Unit {
 
     public Settler(String name, int movement, int productionCost) {
@@ -8,7 +11,6 @@ public class Settler extends Unit {
         this.movementTemp = movement;
         this.movementPotential = movement;
         this.productionCost = productionCost;
-
-
+        View.getInCity().setCityFood(0);
     }
 }

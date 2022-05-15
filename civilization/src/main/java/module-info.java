@@ -8,7 +8,7 @@ module civilization {
         opens model to javafx.fxml, com.google.gson;
         opens view to javafx.fxml , com.google.gson;
         opens civilization to javafx.fxml;
-        opens model.unit.unitactoins to javafx.fxml , com.google.gson;
+        opens controller.unitactoins to javafx.fxml , com.google.gson;
         opens model.improvements to javafx.fxml;
         opens model.unit to javafx.fxml;
         opens model.techs to javafx.fxml;
@@ -24,5 +24,5 @@ module civilization {
         exports model.unit;
         exports model.techs;
         exports model.Resource;
-        exports model.unit.unitactoins;
+        exports controller.unitactoins;
 }
