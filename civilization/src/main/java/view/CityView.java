@@ -2,6 +2,7 @@ package view;
 
 import model.City;
 import model.Tile;
+import model.unit.Unit;
 import model.unit.Worker;
 
 import java.util.ArrayList;
@@ -42,4 +43,6 @@ public class CityView {
         System.out.println("enter 3 to puupet city");
         return Integer.parseInt(View.getInput());
     }
+
+
 }

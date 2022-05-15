@@ -1,9 +1,9 @@
-<<<<<<< HEAD
+package model.unit;
+
 import model.BaseCivilization;
 import model.City;
+import model.techs.Technology;
 import model.unit.Settler;
-=======
-package model.unit;
 
 import controller.Controller;
 import controller.LoginMenuController;
@@ -12,16 +12,14 @@ import model.BaseCivilization;
 import model.City;
 import view.View;
 
->>>>>>> origin
+import java.io.File;
+import java.util.ArrayList;
 
 public class Unit {
 
+    public static ArrayList<Unit> allUnits;
     //protected String combatType;
-<<<<<<< HEAD
     public boolean sleepmood = false;
-=======
-    public boolean sleepMode = false;
->>>>>>> origin
     public Settler City;
     public int target;
     public int tileId;
@@ -43,30 +41,24 @@ public class Unit {
     protected float x, y;
     public boolean getCommand = true;
 
-<<<<<<< HEAD
-=======
 
     public Unit () {
+        allUnits.add(this);
         View.getInCity().addCityPopulation(1);
     }
->>>>>>> origin
-    public static void attack(City city, Unit unit, BaseCivilization civilization) {
-        unit.isAttacking = true;
-        while (unit.hitPoints != 0 && city.hitPoints != 0) {
-            unit.hitPoints--;
-            city.hitPoints--;
-        }
-        if (unit.hitPoints == 0) civilization.deleteUnit(unit);
-        if (city.hitPoints == 0) city.destroy();
+
+    public void unitUpdate(Technology technology , City city){
+        //TODO upgrade units
+        city.decreaseCityGold();
     }
 
-    public static void farAttack(City city, Unit unit, BaseCivilization civilization) {
-        unit.hitPoints--;
-        city.hitPoints--;
+    public String getName(){return name;}
+    public float getX(){return x;}
+
+    public float getY() {
+        return y;
     }
-<<<<<<< HEAD
-}
-/*
+    /*
 =======
 >>>>>>> origin
     public boolean getIsMilitary() {

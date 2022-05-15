@@ -46,7 +46,7 @@ public class Worker extends  Unit{
     public static void foundTradingPost(int tileId,hex map,Tile tile) {
         //creat railway
         //graphic
-        tile.incraerseGold(1);
+        tile.incraerseGoldOutput(1);
 
     }
     public static void foundFarm(int tileId,hex map,Tile tile) {

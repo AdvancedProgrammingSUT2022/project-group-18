@@ -1,6 +1,9 @@
 package controller;
 
 import enums.Message;
+import model.BaseCivilization;
+import model.City;
+import model.unit.Unit;
 
 public class CombatController extends Controller{
     public Message AnnouncementCombat(){ //اعلان جنگ
@@ -26,4 +29,15 @@ public class CombatController extends Controller{
     public void cityCapture(){}
     public void AttackMode(){}
     public void DamageRepair(){}
+    public static void attack(City city, Unit unit, BaseCivilization civilization) {
+        unit.isAttacking = true;
+        while (unit.hitPoints != 0 && city.hitPoints != 0) {
+            unit.hitPoints--;
+            city.hitPoints--;
+        }
+        if (unit.hitPoints == 0) civilization.deleteUnit(unit);
+        if (city.hitPoints == 0) city.winCombat(civilization);
+    }
+
+
 }

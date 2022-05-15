@@ -2,6 +2,8 @@ package model;
 
 import enums.UnitEnum;
 import model.Resource.Resources;
+import model.unit.Melee;
+import model.unit.Ranged;
 import model.unit.Unit;
 import view.View;
 
@@ -67,6 +69,9 @@ public class BaseCivilization {
 
     }
 
+    public Integer getScienceTotal() {
+        return scienceTotal;
+    }
 
     private boolean canCreateCity() {
 
@@ -123,10 +128,6 @@ public class BaseCivilization {
 
     }
 
-    public void deleteUnit() {
-
-    }
-
     public void nextTurn() {
         View.getInCity().addCityFood(View.getInCity().getCityPopulation() * 2);
     }
@@ -141,11 +142,18 @@ public class BaseCivilization {
 
     public static void addResource(Resources resources) {
         BaseCivilization.resources.add(resources);
+        if (resources.getType().equals("LuxuryResources") && !resourceExist(resources)) happiness+=10;
     }
     public static ArrayList<Resources> getResources() {
         return resources;
     }
 
+    public static boolean resourceExist(Resources resource){
+        for (Resources resources1 : resources){
+            if (resource == resources1) return true;
+        }
+        return false;
+    }
   public void deleteUnit(Unit unit) {
     units.remove(unit);
   }
@@ -172,7 +180,19 @@ public class BaseCivilization {
     goldTotal+=10;
   }
   public void decreaseGold(){
-    goldTotal-=10;
+        if (goldTotal==0) scienceTotal-=10;
+        else goldTotal-=10;
   }
 
+  public void losingCity(City city){
+        cities.remove(city);
+        goldTotal--;
+  }
+
+    public void unHappy(){
+        for (Unit unit : units){
+            if (unit instanceof Ranged || unit instanceof Melee)
+                unit.combatStrength -= unit.combatStrength*0.25;
+        }
+    }
 }

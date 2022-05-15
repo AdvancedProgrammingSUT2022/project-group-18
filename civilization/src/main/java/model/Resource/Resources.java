@@ -28,7 +28,6 @@ public class Resources {
         View.getInCity().setResources(this);
         if(type.equals("BonusResources"))
             View.getInCity().setCityFood(View.getInCity().getCityFood() + 10);
-
     }
 
     public void setName(String name) {

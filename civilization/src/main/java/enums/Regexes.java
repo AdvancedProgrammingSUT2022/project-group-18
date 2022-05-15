@@ -65,10 +65,10 @@ public enum Regexes {
     ECONOMIC("economics"),
     DIPLOMATIC("diplomatic"),//what is differences between diplomatic and diplomacy?
     DEALS("deals"),
-    UNIT_COMBAT_POSITION("unit combat position (?<amount>\\d[,]\\d{2})"),
+    UNIT_COMBAT_POSITION("unit combat position (?<X>\\d)(?<Y>\\d)"),
     UNIT_NONCOMBAT_POSITION("unit noncombat position (?<amount>\\d[,]\\d{2})"),
     CITY_NAME("city (?<name>\\S+)"),
-    CITY_POSITION("city position (?<amount>\\d[,]\\d{2})"),
+    CITY_POSITION("city position ((?<X>\\d)(?<Y>\\d)"),
     MOVETO_POSITION("move to position (?<amount>\\d[,]\\d{2})"),
     SLEEP("sleep"),
     ALERT("alert"),

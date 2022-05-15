@@ -32,11 +32,13 @@ public class City {
     private BaseCivilization Creator;
     public int hitPoints = 20;
     private ArrayList<Resources> resources = new ArrayList<>();
+    public static ArrayList<City> allCitis = new ArrayList<>();
 
 
     public City() {
         this.unemployedCitizen = new ArrayList<>();
         this.citizenWorkers = new HashMap<>();
+        allCitis.add(this);
         View.setInCity(this);
     }
 
@@ -126,10 +128,20 @@ public class City {
         return civilianUnit;
     }
 
+
+
     public ArrayList<Worker> getUnemployedCitizen() {
         return unemployedCitizen;
     }
 
+    public void decreaseCityGold(){
+        cityGold-=10;
+    }
+
+    public void increasPopulation(BaseCivilization civilization){
+        cityPopulation+=10;
+        civilization.decreaseHappiness();
+    }
     public void lockCitizen(Worker citizen) {
         Tile tile = this.originTile;
         citizenWorkers.put(tile, citizen);
@@ -156,7 +168,7 @@ public class City {
         owner.decreaseGold();
         cityView.showCostOfTile(tile);
         tile.incraerseCost(10);//TODO check the amount
-        this.cityGold -= 10;
+        this.cityGold --;
     }
 
     public void returnToMap() {
@@ -238,7 +250,6 @@ public class City {
     public void puppetCity(BaseCivilization owner) {
         this.owner = owner;
         owner.increaseHappiness();
-
     }
 
     public void addCityPopulation(int amount) {
@@ -269,15 +280,19 @@ public class City {
         } else {
             cityFood -= 2 * cityPopulation;
         }
-/*        if(unHappiness)
-            View.getInCity().setCityFood((int)(cityFood * (0.33)));*/
+        if(owner.getHappiness()<0)
+            View.getInCity().setCityFood((int)(cityFood * (0.33)));
         if(canMakeANewCitizen())
             UnitEnum.getUnits(UnitEnum.WORKER);
 
 
     }
 
-    public void unitPurchase(Model.unit.Unit u){
-
+    public void unitPurchase(Unit unit){
+        units.add(unit);
+        cityGold--;
     }
+
+
+
 }

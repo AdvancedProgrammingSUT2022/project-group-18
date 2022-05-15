@@ -3,6 +3,9 @@ package view;
 import controller.GameController;
 import enums.Message;
 import enums.Regexes;
+import model.BaseCivilization;
+import model.City;
+import model.unit.Unit;
 
 import java.util.regex.Matcher;
 
@@ -13,7 +16,6 @@ public class GameMenuView extends View {
     public void run() {
         String input = getInput();
         Matcher matcher;
-
         if (Regexes.getCommand(input, Regexes.EXIT_MENU) != null)
             controller.goToMainMenu();
         else if ((matcher = Regexes.getCommand(input, Regexes.MENU_ENTER)) != null)
@@ -32,21 +34,35 @@ public class GameMenuView extends View {
         } else if (Regexes.getCommand(input, Regexes.UNITS) != null) {
             System.out.println("created new unit");
         } else if (Regexes.getCommand(input, Regexes.CITIES) != null) {
+            citiesPanel();
         } else if (Regexes.getCommand(input, Regexes.DIPLOMACY) != null) {
+            diplimacypanel();
         } else if (Regexes.getCommand(input, Regexes.VICTORY) != null) {
+            System.out.println("there is a long way to victory");
         } else if (Regexes.getCommand(input, Regexes.DEMOGRAPHICS) != null) {
+            demographicPanel(getInCity());
         } else if (Regexes.getCommand(input, Regexes.NOTIFICATIONS) != null)
             System.out.println(controller.showNotificationsHistory());
         else if (Regexes.getCommand(input, Regexes.MILITARY) != null) {
+            militaryOverview(getInCity());
         } else if (Regexes.getCommand(input, Regexes.ECONOMIC) != null) {
+            economicOverview(getInCity());
         } else if (Regexes.getCommand(input, Regexes.DIPLOMATIC) != null) {
+            System.out.println();
         } else if (Regexes.getCommand(input, Regexes.DEALS) != null) {
+            System.out.println("we have no deals in first phase");
         } else if ((matcher = Regexes.getCommand(input, Regexes.UNIT_COMBAT_POSITION)) != null) {
-
+            controller.getUnMilitaryUnitByGPS(Integer.parseInt(matcher.group("X")) , Integer.parseInt(matcher.group("Y")));
         } else if ((matcher = Regexes.getCommand(input, Regexes.UNIT_NONCOMBAT_POSITION)) != null) {
-
+            controller.getMilitaryUnitByGPS(Integer.parseInt(matcher.group("X")) , Integer.parseInt(matcher.group("Y")));
         } else if ((matcher = Regexes.getCommand(input, Regexes.CITY_NAME)) != null) {
+            City city = controller.getCityByName(matcher.group("name"));
+            economicOverview(city);
+            View.setInCity(city);
         } else if ((matcher = Regexes.getCommand(input, Regexes.CITY_POSITION)) != null) {
+            City city = controller.getCityByGps(Integer.parseInt(matcher.group("X")) , Integer.parseInt(matcher.group("Y")));
+            economicOverview(city);
+            View.setInCity(city);
         } else if ((matcher = Regexes.getCommand(input, Regexes.MOVETO_POSITION)) != null) {
             //if(Unit.canMove=={
             System.out.println( "movement mission was successful" );
@@ -109,8 +125,9 @@ public class GameMenuView extends View {
         } else if (Regexes.getCommand(input, Regexes.REPAIR) != null) {
             System.out.println("the worker is repairing");
         } else if ((matcher = Regexes.getCommand(input, Regexes.SHOW_POSITION)) != null) {
-
+            System.out.println("it is just graphic and you want me this in this phase? shame on you");
         } else if ((matcher = Regexes.getCommand(input, Regexes.SHOW_CITY_NAME)) != null) {
+            controller.getCityByName(matcher.group("name"));
         } else if ((matcher = Regexes.getCommand(input, Regexes.MOVE_RIGHT)) != null) {
         } else if ((matcher = Regexes.getCommand(input, Regexes.MOVE_LEFT)) != null) {
         } else if ((matcher = Regexes.getCommand(input, Regexes.MOVE_UP)) != null) {
@@ -118,5 +135,34 @@ public class GameMenuView extends View {
         } else
             System.out.println(Message.INVALID);
         this.run();
+    }
+
+
+    public void economicOverview(City city){
+        System.out.println("Population : " + city.getCityPopulation() + " Strength : " + city.getCityStrength()+
+                " Food : "+ city.getCityFood() +" Science : " + city.getOwner().getScienceTotal() +
+                " Gold : " + city.getCityGold()+  " p" + CityView.);
+    }
+
+    public void militaryOverview(City city){
+        for (Unit unit : city.getUnits()){
+            System.out.println(unit.getName());
+        }
+    }
+    public void demographicPanel(City city){
+        System.out.println(city.getCityPopulation());
+        System.out.println(city.getCityGold());
+    }
+    public void citiesPanel(){
+        System.out.println(City.allCitis);
+    }
+    public void unitsPanel(BaseCivilization civilization){
+        System.out.println(civilization.getUnits());
+    }
+    public void researchPanel(){
+        //TODO complete after research completed
+    }
+    public void diplimacypanel(){
+        System.out.println(controller.Score);
     }
 }
