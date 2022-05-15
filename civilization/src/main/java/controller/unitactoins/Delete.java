@@ -26,7 +26,7 @@ public class Delete extends AbstarctActoin{
     }
 
     public void delete(){
-       // b.units(id);
+       // b.units.remove(id);
 
 
     }
