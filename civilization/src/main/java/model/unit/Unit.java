@@ -1,7 +1,11 @@
 package model.unit;
 
+import controller.Controller;
+import controller.LoginMenuController;
+import controller.unitactoins.Delete;
 import model.BaseCivilization;
 import model.City;
+import view.View;
 
 
 public class Unit {
@@ -30,6 +34,9 @@ public class Unit {
     public boolean getCommand = true;
 
 
+    public Unit () {
+        View.getInCity().addCityPopulation(1);
+    }
     public static void attack(City city, Unit unit, BaseCivilization civilization) {
         unit.isAttacking = true;
         while (unit.hitPoints != 0 && city.hitPoints != 0) {
@@ -193,9 +200,14 @@ public class Unit {
 
 
     public void nextTurn() {
-
+        Controller.turn++ ;
         resetMovementTemp();
         resetMovementPotential();
+        LoginMenuController controller = new LoginMenuController();
+        controller.printMap(Controller.turn);
+        if(hitPoints == 0) {
+            //TODO delete unit;
+        }
     }
 
 /*    public void moveUnit(Hex hh) {

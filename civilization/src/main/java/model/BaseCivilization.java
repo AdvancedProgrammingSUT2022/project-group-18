@@ -3,6 +3,7 @@ package model;
 import enums.UnitEnum;
 import model.Resource.Resources;
 import model.unit.Unit;
+import view.View;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -127,7 +128,7 @@ public class BaseCivilization {
     }
 
     public void nextTurn() {
-
+        View.getInCity().addCityFood(View.getInCity().getCityPopulation() * 2);
     }
 
     public void addNotifications(String notification) {

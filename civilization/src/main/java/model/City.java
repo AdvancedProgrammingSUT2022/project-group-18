@@ -1,6 +1,6 @@
 package model;
 
-import enums.Message;
+import enums.UnitEnum;
 import model.Resource.Resources;
 
 import model.unit.Unit;
@@ -30,7 +30,7 @@ public class City {
     private CityView cityView = new CityView();
     private boolean isCapital;
     private BaseCivilization Creator;
-    public int hitPoints = 10;
+    public int hitPoints = 20;
     private ArrayList<Resources> resources = new ArrayList<>();
 
 
@@ -134,6 +134,7 @@ public class City {
         Tile tile = this.originTile;
         citizenWorkers.put(tile, citizen);
         tile.isUnderWork = true;
+        cityFood += 5;
     }
 
     public void unemployedMenu(String choice) {
@@ -237,6 +238,42 @@ public class City {
     public void puppetCity(BaseCivilization owner) {
         this.owner = owner;
         owner.increaseHappiness();
+
+    }
+
+    public void addCityPopulation(int amount) {
+        this.cityPopulation += amount;
+    }
+
+    public void addCityFood(int amount) {
+        this.cityFood += amount;
+    }
+
+    public boolean haveEnoughFood() {
+        if(this.cityFood < this.cityPopulation * 2) {
+            return false;
+        }
+        return true;
+    }
+    public boolean canMakeANewCitizen() {
+        if(cityFood > cityPopulation * 2 + 25)
+            return true;
+        return false;
+    }
+    public void nextTurn() {
+        if(!haveEnoughFood()) {
+            int food = cityFood/2;
+            for (int i = 0; i < food; i++) {
+                units.remove(units.size()-1); // is it true?
+            }
+        } else {
+            cityFood -= 2 * cityPopulation;
+        }
+/*        if(unHappiness)
+            View.getInCity().setCityFood((int)(cityFood * (0.33)));*/
+        if(canMakeANewCitizen())
+            UnitEnum.getUnits(UnitEnum.WORKER);
+
 
     }
 }
