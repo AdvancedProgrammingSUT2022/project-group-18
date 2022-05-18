@@ -1,0 +1,79 @@
+package model.techs;
+
+import java.util.ArrayList;
+
+public class Technology {
+    private String name;
+    private Integer cast;
+    private String prerequisiteTechs;
+    private String leadsToTechs;
+    private String unlocks;
+    private static ArrayList<Technology> technologies = new ArrayList<>();
+
+    public Technology(String name, Integer cast, String prerequisiteTechs, String leadsToTechs, String unlocks, String type, String note) {
+        this.name = name;
+        this.cast = cast;
+        this.prerequisiteTechs = prerequisiteTechs;
+        this.leadsToTechs = leadsToTechs;
+        this.unlocks = unlocks;
+
+        Technology.technologies.add(this);
+    }
+
+    public Technology(String name, Integer cast, String prerequisiteTechs, String leadsToTechs, String unlocks) {
+        this.name = name;
+        this.cast = cast;
+        this.prerequisiteTechs = prerequisiteTechs;
+        this.leadsToTechs = leadsToTechs;
+        this.unlocks = unlocks;
+        technologies.add(this);
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setCast(Integer cast) {
+        this.cast = cast;
+    }
+
+    public void setPrerequisiteTechs(String prerequisiteTechs) {
+        this.prerequisiteTechs = prerequisiteTechs;
+    }
+
+    public void setLeadsToTechs(String leadsToTechs) {
+        this.leadsToTechs = leadsToTechs;
+    }
+
+    public void setUnlocks(String unlocks) {
+        this.unlocks = unlocks;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Integer getCast() {
+        return cast;
+    }
+
+    public String getPrerequisiteTechs() {
+        return prerequisiteTechs;
+    }
+
+    public String getLeadsToTechs() {
+        return leadsToTechs;
+    }
+
+    public String getUnlocks() {
+        return unlocks;
+    }
+
+    public static void setTechnologies(Technology technologies) {
+        Technology.technologies.add(technologies);
+    }
+
+    public static ArrayList<Technology> getTechnologies() {
+        return technologies;
+    }
+}
