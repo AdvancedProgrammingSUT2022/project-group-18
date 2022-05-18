@@ -33,7 +33,6 @@ public class City {
     private boolean isCapital;
     private BaseCivilization Creator;
     public int hitPoints = 20;
-    private int cityStrength = 10;
     private ArrayList<Resources> resources = new ArrayList<>();
     public static ArrayList<City> allCitis = new ArrayList<>();
 

@@ -19,7 +19,7 @@ public class Unit {
 
     public static ArrayList<Unit> allUnits;
     //protected String combatType;
-    public boolean sleepmood = false;
+    public boolean sleepMode = false;
     public Settler City;
     public int target;
     public int tileId;
@@ -42,42 +42,38 @@ public class Unit {
     public boolean getCommand = true;
 
 
-    public Unit () {
+    public Unit(String name, int movement, int productionCost) {
+        this.name = name;
+        this.movement = movement;
+        this.productionCost = productionCost;
         allUnits.add(this);
         View.getInCity().addCityPopulation(1);
     }
 
-    public void unitUpdate(Technology technology , City city){
+    public int getCombatStrength() {
+        return combatStrength;
+    }
+
+    public void unitUpdate(Technology technology, City city) {
         //TODO upgrade units
         city.decreaseCityGold();
     }
 
-    public String getName(){return name;}
-    public float getX(){return x;}
+    public String getName() {
+        return name;
+    }
+
+    public float getX() {
+        return x;
+    }
 
     public float getY() {
         return y;
     }
-    /*
-=======
->>>>>>> origin
-    public boolean getIsMilitary() {
-        return isMilitary;
-    }
-=======
 
->>>>>>> origin
-
-    public int getcombatStrength() {
-        return combatStrength;
-    }
 
     public int getcombatStrengthRanged() {
         return combatStrengthRanged;
-    }
-
-    public String getName() {
-        return name;
     }
 
 
@@ -93,10 +89,6 @@ public class Unit {
 
     }
 
-
-    public void moveUnit() {
-
-    }
 
     public void checksSameLocstion() {
 
@@ -215,19 +207,27 @@ public class Unit {
 
 
     public void nextTurn() {
-        Controller.turn++ ;
+        Controller.turn++;
         resetMovementTemp();
         resetMovementPotential();
         LoginMenuController controller = new LoginMenuController();
         controller.printMap(Controller.turn);
-        if(hitPoints == 0) {
+        if (hitPoints == 0) {
             //TODO delete unit;
         }
     }
 
-   public void moveUnit(){}
+    public static void moveUnit() {
+    }
 
-           /* Hex toHex = hexMap.getHex(h);
+    public void decreaseHealth(int amount) {
+        this.hitPoints -= amount;
+    }
+
+    public int getHitPoints() {
+        return hitPoints;
+    }
+    /* Hex toHex = hexMap.getHex(h);
 
             Unit cu = fromHex.getCivilianUnit();
             Unit mu = fromHex.getMilitaryUnit();
@@ -718,3 +718,4 @@ public class Unit {
 //
 //>>>>>>> origin
 //}
+}

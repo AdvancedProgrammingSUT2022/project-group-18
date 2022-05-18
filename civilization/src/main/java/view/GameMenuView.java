@@ -152,7 +152,7 @@ public class GameMenuView extends View {
     public void economicOverview(City city){
         System.out.println("Population : " + city.getCityPopulation() + " Strength : " + city.getCityStrength()+
                 " Food : "+ city.getCityFood() +" Science : " + city.getOwner().getScienceTotal() +
-                " Gold : " + city.getCityGold()+  " p" + CityView.);
+                " Gold : " + city.getCityGold()/*+  " p" + CityView*/);
     }
 
     public void militaryOverview(City city){

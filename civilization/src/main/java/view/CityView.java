@@ -15,7 +15,7 @@ public class CityView {
         Worker citizen = unemployeds.get(2);//fix it
         return citizen;
     }
-    public void show(City city){
+    public static void show(City city){
         System.out.println(city.getCityFood()+
                 city.getCityProduction()+
                 city.getCityGold()+
