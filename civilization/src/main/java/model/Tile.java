@@ -59,4 +59,8 @@ public class Tile {
 
 	public void setResources(Resources resources){this.resources = resources;}
 	public Resources getResources(){return resources;}
+
+	public void incraerseGoldOutput(int amount) {
+		goldOutput+=amount;
+	}
 }

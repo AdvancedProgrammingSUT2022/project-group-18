@@ -25,7 +25,7 @@ public enum Regexes {
     USER_LOGIN4("^user login -u (?<username>.*) -p (?<password>.*)$"),
     USER_LOGOUT("^user logout$"),
 
-    //profile menu
+    //profile menu 
     CHANGE_NICKNAME("^change [-][-]nickname (?<nickname>.*)$"),
     CHANGE_USERNAME("^change --username (?<username>.*)$"),
     CHANGE_PASSWORD1("^change [-][-]password [-][-]current (?<currentPass>.*) --new (?<newPass>.*)$"),
@@ -45,13 +45,15 @@ public enum Regexes {
 
 
 
-    //game menu regexes
+    //game menu regexes 
     PLAY_GAME("^play game [([-][-]player[0-9] \\S+)]+$"),
     EXIT_GAME("^exit game$"),
-    //kod haye taghalob
+
+    //kod haye taghalob 
     INCREASE_TURN("^increase --turn (?<amount>\\d+)$"),
     INCREASE_GOLD("^increase --gold (?<amount>\\d+)$"),
     INCREASE_BEAKERS("^increase --beakers (?<amount>\\d+)$"),
+<<<<<<< HEAD
     INCREASE_HAPPINESS(""),
     INCREASE_FOOD(""),
     INCREASE_HP(""),
@@ -59,8 +61,18 @@ public enum Regexes {
     INCREASE_CITY_STRENGTH(""),
     INCREASE_MOVEMENT(""),
     
+=======
+    INCREASE_FOOD("^increase --food (?<amount>\\d+)$"),
+    INCREASE_HAPPINESS("^increase --happiness (?<amount>\\d+)$"),
+    INCREASE_MELEE_COMBAT_STRENGTH("^increase --combatstrength (?<amount>\\d+)$"),
+    INCREASE_RANGED_COMBAT_STRENGTH("^increase --combatstrength (?<amount>\\d+)$"),
+    INCREAS_CITY_HP("^increase --cityHP (?<amount>\\d+)$"),
+    INCREASE_UNIT_HP("^increase --unitHP (?<amount>\\d+)$"),
+    INCREASE_CITY_STRENGTH("^increase --citystrength (?<amount>\\d+)$"),
+>>>>>>> origin
 
-    //dastourat bazi
+
+    //dastourat bazi 
     RESEARCH("^research$"),
     UNITS("units"),
     CITIES("cities"),
@@ -70,9 +82,9 @@ public enum Regexes {
     NOTIFICATIONS("notification history"),
     MILITARY("military"),
     ECONOMIC("economics"),
-    DIPLOMATIC("diplomatic"),//what is differences between diplomatic and diplomacy?
+    DIPLOMATIC("diplomatic"),//what is differences between diplomatic and diplomacy? 
     DEALS("deals"),
-    UNIT_COMBAT_POSITION("unit combat position (?<amount>\\d[,]\\d{2})"),
+    UNIT_COMBAT_POSITION("unit combat position (?<X>\\d)(?<Y>\\d)"),
     UNIT_NONCOMBAT_POSITION("unit noncombat position (?<amount>\\d[,]\\d{2})"),
     CITY_NAME("city (?<name>\\S+)"),
     CITY_POSITION("city position (?<amount>\\d[,]\\d{2})"),
@@ -88,6 +100,7 @@ public enum Regexes {
     CANCEL_MISSION("cancel mission"),
     WAKE("wake"),
     DELETE("delete"),
+    CANCEL_COMMAND("cancel command"),
     BUILD_ROAD("build road"),
     BUILD_RAILROAD("build railroad"),
     BUILD_FARM("build farm"),
@@ -98,13 +111,12 @@ public enum Regexes {
     BUILD_CAMP("build camp"),
     BUILD_PLANTATION("build plantation"),
     BUILD_QUARRY("build quarry"),
-    BUILD_RAILWAY("build railway"),
     REMOVE_JUNGLE("build jungle"),
+    BUILD_RAILWAY("build railway"),
     REMOVE_ROUTE("remove route"),
     REMOVE_FOREST("remove forest"),
     REMOVE_MARSH("remove marsh"),
     REMOVE_ROAD("remove road"),
-    CANCEL_COMMAND("cancel command"),
     REPAIR("repair"),
     SHOW_POSITION("show position \\d[,]\\d{2}"),
     SHOW_CITY_NAME("show city (?<name>\\S+)"),
@@ -131,4 +143,4 @@ public enum Regexes {
         }
         return null;
     }
-}
+    }

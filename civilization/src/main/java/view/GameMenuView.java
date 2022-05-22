@@ -1,9 +1,10 @@
 package view;
-
+import model.unit.Unit;
 import controller.GameController;
 import enums.Message;
 import enums.Regexes;
-import model.unit.Unit;
+import model.BaseCivilization;
+import model.City;
 
 import java.util.regex.Matcher;
 
@@ -14,7 +15,6 @@ public class GameMenuView extends View {
     public void run() {
         String input = getInput();
         Matcher matcher;
-
         if (Regexes.getCommand(input, Regexes.EXIT_MENU) != null)
             controller.goToMainMenu();
         else if ((matcher = Regexes.getCommand(input, Regexes.MENU_ENTER)) != null)
@@ -24,30 +24,48 @@ public class GameMenuView extends View {
         else if (Regexes.getCommand(input, Regexes.EXIT_GAME) != null)
             controller.exitMenu();
         else if ((matcher = Regexes.getCommand(input, Regexes.INCREASE_TURN)) != null) {
-
+            increaseTurn(matcher);
         } else if ((matcher = Regexes.getCommand(input, Regexes.INCREASE_GOLD)) != null) {
-
-        } else if ((matcher = Regexes.getCommand(input, Regexes.INCREASE_BEAKERS)) != null) {
-
-        } else if (Regexes.getCommand(input, Regexes.RESEARCH) != null) {
+            increaseGold(matcher);
+        } else if ((matcher = Regexes.getCommand(input, Regexes.INCREASE_HAPPINESS)) != null) {
+            increaseHappiness(matcher);
+        }else if (Regexes.getCommand(input, Regexes.INCREAS_CITY_HP) != null)
+            increaseCityHP(matcher);
+        else if (Regexes.getCommand(input, Regexes.INCREASE_CITY_STRENGTH) != null)
+            increaseCityStrength(matcher);
+        else if (Regexes.getCommand(input, Regexes.RESEARCH) != null) {
         } else if (Regexes.getCommand(input, Regexes.UNITS) != null) {
             System.out.println("created new unit");
         } else if (Regexes.getCommand(input, Regexes.CITIES) != null) {
+            citiesPanel();
         } else if (Regexes.getCommand(input, Regexes.DIPLOMACY) != null) {
+            diplimacypanel();
         } else if (Regexes.getCommand(input, Regexes.VICTORY) != null) {
+            System.out.println("there is a long way to victory");
         } else if (Regexes.getCommand(input, Regexes.DEMOGRAPHICS) != null) {
+            demographicPanel(getInCity());
         } else if (Regexes.getCommand(input, Regexes.NOTIFICATIONS) != null)
             System.out.println(controller.showNotificationsHistory());
         else if (Regexes.getCommand(input, Regexes.MILITARY) != null) {
+            militaryOverview(getInCity());
         } else if (Regexes.getCommand(input, Regexes.ECONOMIC) != null) {
+            economicOverview(getInCity());
         } else if (Regexes.getCommand(input, Regexes.DIPLOMATIC) != null) {
+            System.out.println();
         } else if (Regexes.getCommand(input, Regexes.DEALS) != null) {
+            System.out.println("we have no deals in first phase");
         } else if ((matcher = Regexes.getCommand(input, Regexes.UNIT_COMBAT_POSITION)) != null) {
-
+            controller.getUnMilitaryUnitByGPS(Integer.parseInt(matcher.group("X")) , Integer.parseInt(matcher.group("Y")));
         } else if ((matcher = Regexes.getCommand(input, Regexes.UNIT_NONCOMBAT_POSITION)) != null) {
-
+            controller.getMilitaryUnitByGPS(Integer.parseInt(matcher.group("X")) , Integer.parseInt(matcher.group("Y")));
         } else if ((matcher = Regexes.getCommand(input, Regexes.CITY_NAME)) != null) {
+            City city = controller.getCityByName(matcher.group("name"));
+            economicOverview(city);
+            View.setInCity(city);
         } else if ((matcher = Regexes.getCommand(input, Regexes.CITY_POSITION)) != null) {
+            City city = controller.getCityByGps(Integer.parseInt(matcher.group("X")) , Integer.parseInt(matcher.group("Y")));
+            economicOverview(city);
+            View.setInCity(city);
         } else if ((matcher = Regexes.getCommand(input, Regexes.MOVETO_POSITION)) != null) {
             if(1 == 1){//Unit.canMove
             System.out.println( "movement mission was successful" );
@@ -110,14 +128,73 @@ public class GameMenuView extends View {
         } else if (Regexes.getCommand(input, Regexes.REPAIR) != null) {
             System.out.println(Message.REPAIR);
         } else if ((matcher = Regexes.getCommand(input, Regexes.SHOW_POSITION)) != null) {
-
+            System.out.println("it is just graphic and you want me this in this phase? shame on you");
         } else if ((matcher = Regexes.getCommand(input, Regexes.SHOW_CITY_NAME)) != null) {
+            controller.getCityByName(matcher.group("name"));
         } else if ((matcher = Regexes.getCommand(input, Regexes.MOVE_RIGHT)) != null) {
+            Unit.moveUnit();
+            System.out.println("move to right");
         } else if ((matcher = Regexes.getCommand(input, Regexes.MOVE_LEFT)) != null) {
+             Unit.moveUnit();
+            System.out.println("move to right");
         } else if ((matcher = Regexes.getCommand(input, Regexes.MOVE_UP)) != null) {
+             Unit.moveUnit();
+            System.out.println("move to right");
         } else if ((matcher = Regexes.getCommand(input, Regexes.MOVE_DOWN)) != null) {
+             Unit.moveUnit();
+            System.out.println("move to right");
         } else
             System.out.println(Message.INVALID);
         this.run();
+    }
+
+
+    public void economicOverview(City city){
+        System.out.println("Population : " + city.getCityPopulation() + " Strength : " + city.getCityStrength()+
+                " Food : "+ city.getCityFood() +" Science : " + city.getOwner().getScienceTotal() +
+                " Gold : " + city.getCityGold()/*+  " p" + CityView*/);
+    }
+
+    public void militaryOverview(City city){
+        for (Unit unit : city.getUnits()){
+            System.out.println(unit.getName());
+        }
+    }
+    public void demographicPanel(City city){
+        System.out.println(city.getCityPopulation());
+        System.out.println(city.getCityGold());
+    }
+    public void citiesPanel(){
+        System.out.println(City.allCitis);
+    }
+    public void unitsPanel(BaseCivilization civilization){
+        System.out.println(civilization.getUnits());
+    }
+    public void researchPanel(){
+        //TODO complete after research completed
+    }
+    public void diplimacypanel(){
+        System.out.println(controller.Score);
+    }
+    public void increaseTurn(Matcher matcher) {
+        int amount = Integer.parseInt(matcher.group("amount"));
+        controller.turn+=amount;
+    }
+    public void increaseGold(Matcher matcher) {
+        int amount = Integer.parseInt(matcher.group("amount"));
+        View.getInCity().setCityGold(View.getInCity().getCityGold() + amount);
+    }
+    public void increaseHappiness(Matcher matcher) {
+        int amount = Integer.parseInt(matcher.group("amount"));
+        View.getInCity().setHappiness(View.getInCity().getHappiness() +amount);
+    }
+    public void increaseCityHP(Matcher matcher  ){
+        int amount = Integer.parseInt(matcher.group("amount"));
+        View.getInCity().setCityHitPoint(View.getInCity().getCityHitPoint()+ amount);
+    }
+
+    public void increaseCityStrength(Matcher matcher  ){
+        int amount = Integer.parseInt(matcher.group("amount"));
+        View.getInCity().setcityStrength(View.getInCity().getCityStrength()+ amount);
     }
 }

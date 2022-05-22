@@ -67,30 +67,30 @@ public class CombatController extends Controller {
             case 4:
             case 5:
             case 6:
-                city.decreaseHealth((int) (unit.getcombatStrength() * 1.33));
+                city.decreaseHealth((int) (unit.getCombatStrength() * 1.33));
                 break;
             case 3:
             case 7:
-                city.decreaseHealth((int) (unit.getcombatStrength() * 0.75));
+                city.decreaseHealth((int) (unit.getCombatStrength() * 0.75));
                 break;
             default:
-                city.decreaseHealth(unit.getcombatStrength());
+                city.decreaseHealth(unit.getCombatStrength());
                 break;
         }
         switch (hex.getFeature()) {
             case 0:
             case 2:
             case 3:
-                city.decreaseHealth((int) (unit.getcombatStrength() * 1.33));
+                city.decreaseHealth((int) (unit.getCombatStrength() * 1.33));
                 break;
             case 1:
             case 6:
             default:
-                city.decreaseHealth(unit.getcombatStrength());
+                city.decreaseHealth(unit.getCombatStrength());
                 break;
             case 4:
             case 5:
-                city.decreaseHealth((int) (unit.getcombatStrength() * 0.75));
+                city.decreaseHealth((int) (unit.getCombatStrength() * 0.75));
                 break;
 
         }
@@ -132,7 +132,7 @@ public class CombatController extends Controller {
         }
     }
 
-    public Message setStrength(Unit unit) {
+/*    public Message setStrength(Unit unit) {
         //when this method calls for a unit, unit go's to sleep
         if(unit instanceof Ranged || unit instanceof Melee) {
             if(!unit.getStrengths()) {
@@ -147,7 +147,7 @@ public class CombatController extends Controller {
         }
         return Message.UNIT_CANT_STRENGTHS;
 
-    }
+    }*/
 
 
     public void ColdWar() {
@@ -203,16 +203,17 @@ public class CombatController extends Controller {
         Message message = null;
         return message; // just for run code and don't have errors
     }
-
-    public void reducePointOfCity() {
-    }
-
-    public void cityCapture() {
-    }
-
-    public void AttackMode() {
-    }
-
-    public void DamageRepair() {
+    public void reducePointOfCity(){}
+    public void cityCapture(){}
+    public void AttackMode(){}
+    public void DamageRepair(){}
+    public static void attack(City city, Unit unit, BaseCivilization civilization) {
+        unit.isAttacking = true;
+        while (unit.hitPoints != 0 && city.hitPoints != 0) {
+            unit.hitPoints--;
+            city.hitPoints--;
+        }
+        if (unit.hitPoints == 0) civilization.deleteUnit(unit);
+        if (city.hitPoints == 0) city.winCombat(civilization);
     }
 }

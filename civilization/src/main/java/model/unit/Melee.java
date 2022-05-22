@@ -1,5 +1,6 @@
 package model.unit;
 
+import controller.CombatController;
 import model.BaseCivilization;
 import model.City;
 
@@ -8,14 +9,13 @@ public class Melee extends Unit {
         super(name, movement, productionCost);
         this.isMilitary = isMilitary;
         this.combatStrength=combatStrength;
-
     }
     public void  MELEEATTACK (){
     }
     public void  meleeCombat (City city , BaseCivilization civilization){
         this.x = city.getOriginTile().getX();
         this.y = city.getOriginTile().getY();
-        Unit.attack(city , this , civilization);
+        CombatController.attack(city , this , civilization);
     }
 }
 

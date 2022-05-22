@@ -21,6 +21,7 @@ public class City {
     private int cityProduction;
     private int cityBeakers;
     private int cityStrength;
+    private int happiness;
     private BaseCivilization owner;
     private ArrayList<Worker> unemployedCitizen;
     private HashMap<Tile, Worker> citizenWorkers;
@@ -33,13 +34,16 @@ public class City {
     private BaseCivilization Creator;
     public int hitPoints = 20;
     private ArrayList<Resources> resources = new ArrayList<>();
+    public static ArrayList<City> allCitis = new ArrayList<>();
 
 
     public City() {
         this.unemployedCitizen = new ArrayList<>();
         this.citizenWorkers = new HashMap<>();
+        allCitis.add(this);
         View.setInCity(this);
     }
+    public void setHappiness(int amount){this.happiness = amount;}
 
     public void setCityName(String cityName) {
         this.cityName = cityName;
@@ -87,6 +91,10 @@ public class City {
         } else return false;//transport unit to out of city
     }
 
+    public void setcityStrength(int amount){cityStrength = amount;}
+
+    public void setCityHitPoint(int amount){hitPoints = amount;}
+
     public String getCityName() {
         return cityName;
     }
@@ -127,10 +135,23 @@ public class City {
         return civilianUnit;
     }
 
+    public int getHappiness(){return happiness;}
+
+    public int getcityStrength(){return cityStrength;}
+
+    public int getCityHitPoint(){return hitPoints;}
     public ArrayList<Worker> getUnemployedCitizen() {
         return unemployedCitizen;
     }
 
+    public void decreaseCityGold(){
+        cityGold-=10;
+    }
+
+    public void increasPopulation(BaseCivilization civilization){
+        cityPopulation+=10;
+        civilization.decreaseHappiness();
+    }
     public void lockCitizen(Worker citizen) {
         Tile tile = this.originTile;
         citizenWorkers.put(tile, citizen);
@@ -157,7 +178,7 @@ public class City {
         owner.decreaseGold();
         cityView.showCostOfTile(tile);
         tile.incraerseCost(10);//TODO check the amount
-        this.cityGold -= 10;
+        this.cityGold --;
     }
 
     public void returnToMap() {
@@ -239,7 +260,6 @@ public class City {
     public void puppetCity(BaseCivilization owner) {
         this.owner = owner;
         owner.increaseHappiness();
-
     }
 
     public void addCityPopulation(int amount) {
@@ -271,8 +291,8 @@ public class City {
         } else {
             cityFood -= 2 * cityPopulation;
         }
-/*        if(unHappiness)
-            View.getInCity().setCityFood((int)(cityFood * (0.33)));*/
+        if(owner.getHappiness()<0)
+            View.getInCity().setCityFood((int)(cityFood * (0.33)));
         if(canMakeANewCitizen())
             UnitEnum.getUnits(UnitEnum.WORKER);
         controller.safeDeleteCity();
@@ -284,4 +304,12 @@ public class City {
     public void decreaseHealth(int amount) {
         hitPoints -= amount;
     }
+
+    public void unitPurchase(Unit unit){
+        units.add(unit);
+        cityGold--;
+    }
+
+
+
 }

@@ -2,6 +2,7 @@ package view;
 
 import model.City;
 import model.Tile;
+import model.unit.Unit;
 import model.unit.Worker;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class CityView {
         Worker citizen = unemployeds.get(2);//fix it
         return citizen;
     }
-    public void show(City city){
+    public static void show(City city){
         System.out.println(city.getCityFood()+
                 city.getCityProduction()+
                 city.getCityGold()+
@@ -42,4 +43,6 @@ public class CityView {
         System.out.println("enter 3 to puupet city");
         return Integer.parseInt(View.getInput());
     }
+
+
 }
