@@ -52,6 +52,13 @@ public enum Regexes {
     INCREASE_TURN("^increase --turn (?<amount>\\d+)$"),
     INCREASE_GOLD("^increase --gold (?<amount>\\d+)$"),
     INCREASE_BEAKERS("^increase --beakers (?<amount>\\d+)$"),
+    INCREASE_HAPPINESS(""),
+    INCREASE_FOOD(""),
+    INCREASE_HP(""),
+    INCREASE_COMBAT_STRENGTH(""),
+    INCREASE_CITY_STRENGTH(""),
+    INCREASE_MOVEMENT(""),
+    
 
     //dastourat bazi
     RESEARCH("^research$"),
@@ -107,6 +114,7 @@ public enum Regexes {
     MOVE_DOWN("move down (?<amount>\\d+)"),
     MAKE_UNIT("^make unit (?<unitName>.*)$"),
     CHANGE_CONSTRUCTION("^change construction make unit (?<unitName>.*)$");
+
 
 
 

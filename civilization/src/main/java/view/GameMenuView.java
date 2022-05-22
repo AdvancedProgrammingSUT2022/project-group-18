@@ -55,60 +55,60 @@ public class GameMenuView extends View {
             else
             System.out.println( "movement mission wasn't successful" );
         } else if (Regexes.getCommand(input, Regexes.SLEEP) != null) {
-            System.out.println("sleep mode was turned on");
+            System.out.println(Message.SLEEP);
         } else if (Regexes.getCommand(input, Regexes.ALERT) != null) {
-            System.out.println("ready mode was turned on");
+            System.out.println(Message.ALERT);
         } else if (Regexes.getCommand(input, Regexes.FORTIFY) != null) {
-            System.out.println("unit defensive power increased");
+            System.out.println(Message.FORTIFY);
         } else if (Regexes.getCommand(input, Regexes.FORTIFY_HEAL) != null) {
-            System.out.println("unit health increased");
+            System.out.println(Message.FORTIFY_HEAL);
         } else if (Regexes.getCommand(input, Regexes.GARRISON) != null) {
-            System.out.println("the unit is ready to defensive it's city ");
+            System.out.println(Message.GARRISON);
         } else if (Regexes.getCommand(input, Regexes.SETUP_RANGED) != null) {
-            System.out.println("the unit chose it's enemy");
+            System.out.println(Message.SETUP_RANGED);
         } else if ((matcher = Regexes.getCommand(input, Regexes.ATTACK_POSITION)) != null) {
-            System.out.println("enter your command");
+            System.out.println(Message.ATTACK_POSITION);
         } else if (Regexes.getCommand(input, Regexes.FOUND_CITY) != null) {
-            System.out.println("the settler unit found a new city");
+            System.out.println(Message.FOUND_CITY);
         } else if (Regexes.getCommand(input, Regexes.CANCEL_COMMAND) != null) {
-            System.out.println("This mission canceled");
+            System.out.println(Message.CANCEL_COMMAND);
         } else if (Regexes.getCommand(input, Regexes.WAKE) != null) {
-            System.out.println("This unit woke up");
+            System.out.println(Message.WAKE);
         } else if (Regexes.getCommand(input, Regexes.DELETE) != null) {
-            System.out.println("This unit was removed ");
+            System.out.println(Message.DELETE);
         } else if (Regexes.getCommand(input, Regexes.BUILD_ROAD) != null) {
             //if(Worker,foundRoad())
-            System.out.println("the road was built");
+            System.out.println(Message.BUILD_ROAD);
         } else if (Regexes.getCommand(input, Regexes.BUILD_RAILWAY) != null) {
             //if(Worker.railWay)
-            System.out.println("the railway was built");
+            System.out.println(Message.BUILD_ROAD);
         } else if (Regexes.getCommand(input, Regexes.BUILD_FARM) != null) {
-            System.out.println("the farm was built");
+            System.out.println(Message.BUILD_FARM);
         } else if (Regexes.getCommand(input, Regexes.BUILD_MINE) != null) {
-            System.out.println("the mine was built");
+            System.out.println(Message.BUILD_MINE);
         } else if (Regexes.getCommand(input, Regexes.BUILD_TRADING_POST) != null) {
-            System.out.println("the trading post was built");
+            System.out.println(Message.BUILD_TRADING_POST);
         } else if (Regexes.getCommand(input, Regexes.BUILD_LUMBER_MILL) != null) {
-            System.out.println("the lumber mill was built");
+            System.out.println(Message.BUILD_LUMBER_MILL);
         } else if (Regexes.getCommand(input, Regexes.BUILD_PASTURE) != null) {
-            System.out.println("the pasture was built");
+            System.out.println(Message.BUILD_PASTURE);
         } else if (Regexes.getCommand(input, Regexes.BUILD_CAMP) != null) {
-            System.out.println("the camp was built");
+            System.out.println(Message.BUILD_CAMP);
         } else if (Regexes.getCommand(input, Regexes.BUILD_PLANTATION) != null) {
-            System.out.println("the plantation was built");
+            System.out.println(Message.BUILD_PLANTATION);
         } else if (Regexes.getCommand(input, Regexes.BUILD_QUARRY) != null) {
-            System.out.println("the quarry was built");
+            System.out.println(Message.BUILD_QUARRY);
         } else if (Regexes.getCommand(input, Regexes.REMOVE_JUNGLE) != null) {
-            System.out.println("the jungle was removed");
+            System.out.println(Message.REMOVE_JUNGLE);
         } else if (Regexes.getCommand(input, Regexes.REMOVE_FOREST) != null) {
-            System.out.println("the forest was removed");
+            System.out.println(Message.REMOVE_FOREST);
         } else if (Regexes.getCommand(input, Regexes.REMOVE_MARSH) != null) {
-            System.out.println("the marsh was removed");
+            System.out.println(Message.REMOVE_MARSH);
         } else if (Regexes.getCommand(input, Regexes.REMOVE_ROAD) != null) {
             //if(worker.deleteRoad)
-            System.out.println("the road was removed");
+            System.out.println(Message.REMOVE_ROAD);
         } else if (Regexes.getCommand(input, Regexes.REPAIR) != null) {
-            System.out.println("the worker is repairing");
+            System.out.println(Message.REPAIR);
         } else if ((matcher = Regexes.getCommand(input, Regexes.SHOW_POSITION)) != null) {
 
         } else if ((matcher = Regexes.getCommand(input, Regexes.SHOW_CITY_NAME)) != null) {
