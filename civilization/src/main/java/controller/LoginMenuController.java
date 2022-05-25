@@ -28,7 +28,7 @@ public class LoginMenuController extends Controller {
         else
         {
             User user = new User(username,password,nickname);
-            View.setIsLoggedIn(user);
+            //View.setIsLoggedIn(user);
             return Message.USER_CREAT.toString();
         }
     }

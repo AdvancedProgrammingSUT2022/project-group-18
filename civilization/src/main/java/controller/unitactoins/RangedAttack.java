@@ -9,8 +9,8 @@ public class RangedAttack extends AbstarctActoin {
         super(unit);
 
     }
-    public void rangedAttack(){
-/*        if(unit.combatStrengthRanged>info.allUnit.get(unit.target).combatStrength){
+/*    public void rangedAttack(){
+        if(unit.combatStrengthRanged>info.allUnit.get(unit.target).combatStrength){
             unit.combatStrengthRanged=unit.combatStrengthRanged-b.units.get(unit.target).combatStrength;
 
 
@@ -18,5 +18,5 @@ public class RangedAttack extends AbstarctActoin {
         else{
            b.units.get(unit.target).combatStrength=b.units.get(unit.target).combatStrength-unit.combatStrengthRanged;
         }*/
-    }
+    //}
 }

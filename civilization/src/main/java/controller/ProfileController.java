@@ -6,6 +6,7 @@ import enums.Regexes;
 import model.User;
 import view.View;
 
+import java.io.IOException;
 import java.util.regex.Matcher;
 
 public class ProfileController extends Controller{
@@ -48,7 +49,7 @@ public class ProfileController extends Controller{
             return matcher;
         return null;
     }
-    public Message changePassword(Matcher matcher) {
+    public Message changePassword(Matcher matcher) throws IOException {
         String currentPass= matcher.group("currentPass");
         String newPass = matcher.group("newPass");
         if(!View.getIsLoggedIn().getPassword().equals(currentPass))

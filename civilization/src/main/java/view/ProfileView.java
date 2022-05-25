@@ -4,12 +4,13 @@ import controller.ProfileController;
 import enums.Message;
 import enums.Regexes;
 
+import java.io.IOException;
 import java.util.regex.Matcher;
 
 public class ProfileView extends View{
     ProfileController controller = new ProfileController();
     @Override
-    public void run() {
+    public void run() throws IOException {
         String input = getInput();
         Matcher matcher;
         if((matcher = Regexes.getCommand(input, Regexes.MENU_ENTER)) != null)

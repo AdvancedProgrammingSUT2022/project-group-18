@@ -2,6 +2,7 @@ package model.unit;
 
 import model.BaseCivilization;
 import model.City;
+
 import model.techs.Technology;
 import model.unit.Settler;
 
@@ -28,7 +29,7 @@ public class Unit {
     protected int movement;
     protected int movementTemp;
     protected int movementPotential;
-    public int combatStrength = 0;
+    public int combatStrength = 2;
     public int combatStrengthRanged = 0;
     protected int ranged = 1;
     public int health = 10;
@@ -211,7 +212,7 @@ public class Unit {
         resetMovementTemp();
         resetMovementPotential();
         LoginMenuController controller = new LoginMenuController();
-        controller.printMap(Controller.turn);
+        //controller.printMap(Controller.turn);
         if (hitPoints == 0) {
             //TODO delete unit;
         }
@@ -227,6 +228,7 @@ public class Unit {
     public int getHitPoints() {
         return hitPoints;
     }
+
     /* Hex toHex = hexMap.getHex(h);
 
             Unit cu = fromHex.getCivilianUnit();

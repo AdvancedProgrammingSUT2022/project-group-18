@@ -5,6 +5,7 @@ import model.hex;
 import model.techs.Technology;
 import view.*;
 
+import java.io.IOException;
 import java.util.Locale;
 import java.util.regex.Matcher;
 
@@ -38,7 +39,11 @@ public abstract class Controller {
                 logout();
                 break;
             case "profile menu":
-                goToProfile();
+                try {
+                    goToProfile();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 break;
             case "game menu":
                 return Message.GAME_WITH_NO_PLAYER;
@@ -66,7 +71,7 @@ public abstract class Controller {
         view.run();
     }
 
-    public void goToProfile() {
+    public void goToProfile() throws IOException {
         ProfileView view = new ProfileView();
         View.setInMenu("Profile Menu");
         view.run();
@@ -75,16 +80,13 @@ public abstract class Controller {
     public void startGame() {
         View.setInMenu("Game Menu");
         GameMenuView view = new GameMenuView();
-        printMap(0);
+        for (int i = 0; i < 17; i++) {
+            hex.cc(hex.Unit, hex.City);
+            hex.getInfo(hex.Unit, hex.City, i);
+            hex.printMap(hex.Unit, hex.City, i, hex.randFeature, hex.randLand, hex.featuresType);
+        }
         view.run();
     }
 
-    public void printMap(int i) {
-        if (i == 0)
-            hex.cc(hex.Unit, hex.City);
-        hex.getInfo(hex.Unit, hex.City, i);
-        hex.printMap(hex.Unit, hex.City, i, hex.randFeature, hex.randLand, hex.featuresType);
-        System.out.println(hex.getFeature());
-    }
 
 }

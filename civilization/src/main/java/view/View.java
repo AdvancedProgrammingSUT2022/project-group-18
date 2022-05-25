@@ -4,6 +4,7 @@ import model.BaseCivilization;
 import model.City;
 import model.User;
 
+import java.io.IOException;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -34,5 +35,5 @@ public abstract class View {
         return inMenu;
     }
 
-    public abstract void run();
+    public abstract void run() throws IOException;
 }

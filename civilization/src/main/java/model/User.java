@@ -3,8 +3,11 @@ package model;
 import com.google.gson.Gson;
 import controller.DataBase;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class User {
@@ -36,7 +39,22 @@ public class User {
     public String getUsername(){return username;}
     public void setNickname(String nickname) {this.nickname = nickname;}
     public String getNickname() {return nickname;}
-    public void passChange(String newPass){this.password = newPass;}
+    public void passChange(String newPass) throws IOException {
+        ArrayList<User> users = getUsersFromDataBase();
+        for (int i = 0; i < DataBase.numberOfUsers(); i++) {
+            if (users.get(i).getPassword().equals(this.getPassword())) {
+                File file = new File("user" + i +".json");
+                String json = new String(Files.readAllBytes(Paths.get("user" + i + ".json")));
+                User user = new Gson().fromJson(json, User.class);
+                user.password = newPass;
+                file.delete();
+                FileWriter writer = new FileWriter("user" + i + ".json");
+                writer.write(new Gson().toJson(user));
+                writer.close();//TODO fix it
+                break;
+            }
+        }
+    }
     public static void removeAccount(User user){users.remove(user);}
     public static void setPlayers(User players) {User.players.add(players);}
     public static ArrayList<User> getPlayers() {return players;}

@@ -53,15 +53,6 @@ public enum Regexes {
     INCREASE_TURN("^increase --turn (?<amount>\\d+)$"),
     INCREASE_GOLD("^increase --gold (?<amount>\\d+)$"),
     INCREASE_BEAKERS("^increase --beakers (?<amount>\\d+)$"),
-<<<<<<< HEAD
-    INCREASE_HAPPINESS(""),
-    INCREASE_FOOD(""),
-    INCREASE_HP(""),
-    INCREASE_COMBAT_STRENGTH(""),
-    INCREASE_CITY_STRENGTH(""),
-    INCREASE_MOVEMENT(""),
-    
-=======
     INCREASE_FOOD("^increase --food (?<amount>\\d+)$"),
     INCREASE_HAPPINESS("^increase --happiness (?<amount>\\d+)$"),
     INCREASE_MELEE_COMBAT_STRENGTH("^increase --combatstrength (?<amount>\\d+)$"),
@@ -69,7 +60,6 @@ public enum Regexes {
     INCREAS_CITY_HP("^increase --cityHP (?<amount>\\d+)$"),
     INCREASE_UNIT_HP("^increase --unitHP (?<amount>\\d+)$"),
     INCREASE_CITY_STRENGTH("^increase --citystrength (?<amount>\\d+)$"),
->>>>>>> origin
 
 
     //dastourat bazi 
