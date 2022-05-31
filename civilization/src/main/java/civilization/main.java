@@ -1,15 +1,17 @@
 package civilization;
 
-import controller.DataBase;
-import view.LoginMenuView;
+import view.MainMenuController;
 
-import java.io.IOException;
+import static javafx.application.Application.launch;
 
 public class main {
     public static void main(String[] args) {
-        System.out.println("besme Allahe ghaseme aljabbarin");
-        LoginMenuView view = new LoginMenuView();
-        view.run();
+        try {
+            launch(MainMenuController.class, args);
+            //new ProfileMenuGraphics().start(new Stage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

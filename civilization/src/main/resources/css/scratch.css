@@ -1,0 +1,8 @@
+.rectangle {
+    -fx-fill: purple;
+    -fx-font-weight: bold;
+    -fx-background-color: blue;
+    -fx-background-fill: blue;
+    -fx-min-width: 203;
+    -fx-min-height: 52;
+}

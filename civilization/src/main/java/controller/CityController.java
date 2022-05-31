@@ -3,13 +3,13 @@ package controller;
 import enums.Message;
 import enums.UnitEnum;
 import model.BaseCivilization;
-
+import view.Controller;
 import view.View;
 
 import java.util.regex.Matcher;
 
 
-public class CityController extends Controller{
+public class CityController extends Controller {
 
     public void backToMainMap(){}
     public void changeConstruction(Matcher matcher){

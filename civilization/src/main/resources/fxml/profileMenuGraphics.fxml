@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane prefHeight="720.0" prefWidth="1080.0" styleClass="id" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ProfileMenuGraphics">
+
+    <stylesheets>
+        <URL value="@../css/hello.css" />
+    </stylesheets>
+    <center>
+        <VBox alignment="CENTER" spacing="20">
+            <Button prefHeight="80" prefWidth="500" styleClass="button" text="Change Profile Photo" onMouseClicked="#changeProfilePhoto"/>
+            <Button prefHeight="80" prefWidth="500" styleClass="button" text="Change Password" onMouseClicked="#changePass"/>
+            <Button prefHeight="80" prefWidth="500" styleClass="button" text="Change Nickname" onMouseClicked="#changeNickname"/>
+            <Button prefHeight="80" prefWidth="500" styleClass="button" text="Delete Account" onMouseClicked="#deleteAccount"/>
+            <Button prefHeight="80" prefWidth="500" styleClass="button" text="Back To Main Menu" onMouseClicked="#backToMainMenu"/>
+        </VBox>
+
+    </center>
+</BorderPane>

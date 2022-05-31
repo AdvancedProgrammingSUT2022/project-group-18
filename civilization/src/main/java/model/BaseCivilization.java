@@ -8,7 +8,6 @@ import model.unit.Unit;
 import view.View;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class BaseCivilization {
     private String name;

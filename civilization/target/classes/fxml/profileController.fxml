@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+
+<?import javafx.scene.control.Button?>
+<BorderPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ProfileController">
+    <Rectangle height="720.0" styleClass="background" width="1080.0">
+      <fill>
+         <LinearGradient endX="1.0" endY="1.0">
+            <stops>
+               <Stop>
+                  <color>
+                     <Color red="0.14579999446868896" green="0.8100000023841858" blue="0.3262473940849304" />
+                  </color>
+               </Stop>
+               <Stop offset="0.2749615975422427">
+                  <color>
+                     <Color red="0.14579999446868896" green="0.8100000023841858" blue="0.3262473940849304" />
+                  </color>
+               </Stop>
+               <Stop offset="0.5654023395958879">
+                  <color>
+                     <Color red="0.12150000035762787" green="0.8078111410140991" blue="0.8100000023841858" />
+                  </color>
+               </Stop>
+               <Stop offset="0.5685631572728348">
+                  <color>
+                     <Color red="0.7343844175338745" green="0.8100000023841858" blue="0.12150000035762787" />
+                  </color>
+               </Stop>
+               <Stop offset="0.9524104927330737">
+                  <color>
+                     <Color red="0.8060202598571777" green="0.12150000035762787" blue="0.8100000023841858" />
+                  </color>
+               </Stop>
+               <Stop offset="1.0">
+                  <color>
+                     <Color red="0.20905491709709167" green="0.12150000035762787" blue="0.8100000023841858" />
+                  </color>
+               </Stop>
+            </stops>
+         </LinearGradient>
+      </fill></Rectangle>
+    <stylesheets>
+        <URL value="@../css/profileController.css" />
+    </stylesheets>
+<bottom>
+   <HBox alignment="CENTER_RIGHT">
+      <Button text="back" styleClass="button" onMouseClicked="#backToMenu"/>
+   </HBox>
+</bottom>
+
+
+</BorderPane>

@@ -1,0 +1,5 @@
+.back {
+    -fx-background-image: url("/monsters.jpg");
+    -fx-min-width: 720;
+    -fx-min-height: 1080;
+}

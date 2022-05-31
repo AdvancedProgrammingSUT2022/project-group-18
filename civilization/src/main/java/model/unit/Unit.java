@@ -1,19 +1,13 @@
 package model.unit;
 
-import model.BaseCivilization;
+import controller.GameController;
 import model.City;
 
 import model.techs.Technology;
-import model.unit.Settler;
-
-import controller.Controller;
-import controller.LoginMenuController;
-import controller.unitactoins.Delete;
-import model.BaseCivilization;
-import model.City;
+import view.Controller;
+import view.LoginMenuController;
 import view.View;
 
-import java.io.File;
 import java.util.ArrayList;
 
 public class Unit {
@@ -208,7 +202,7 @@ public class Unit {
 
 
     public void nextTurn() {
-        Controller.turn++;
+        GameController.turn++;
         resetMovementTemp();
         resetMovementPotential();
         LoginMenuController controller = new LoginMenuController();

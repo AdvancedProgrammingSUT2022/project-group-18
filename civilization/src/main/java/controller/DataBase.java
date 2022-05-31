@@ -1,12 +1,14 @@
 package controller;
 
 import com.google.gson.Gson;
-import model.User;
+import model.graphicModel.User;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Scanner;
 
 public class DataBase {
 
@@ -39,8 +41,7 @@ public class DataBase {
         String fileName = "user" + n + ".json";
         try {
             String json = new String(Files.readAllBytes(Paths.get(fileName)));
-            User user = new Gson().fromJson(json,User.class);
-            return user;
+            return new Gson().fromJson(json, User.class);
         } catch (IOException e) {
             e.printStackTrace();
             return null;

@@ -1,0 +1,36 @@
+.background {
+
+    -fx-background-size: 600 400;
+}
+
+.photo {
+    -fx-border-color: blue;
+}
+
+.button:pressed {
+    -fx-effect: dropshadow(gaussian, rgba(50, 231, 210, 0.7), 10, 0, 0, 1);
+    -fx-cursor: hand;
+    -fx-effect: innershadow(gaussian, rgba(49, 204, 192, 0.7), 20, 0, 0, 0);
+}
+
+.button {
+    -fx-cell-size: 100 50;
+    -fx-background-size: 100 50;
+    -fx-font-size: 23;
+    -fx-cursor: hand;
+    -fx-font-family: "Droid Serif";
+}
+
+.textField {
+    -fx-min-height: 30;
+    -fx-max-width: 500;
+    -fx-alignment: CENTER;
+    -fx-font-size: 34;
+    -fx-font-family: "Imprint MT Shadow";
+}
+
+.text {
+    -fx-font-size: 20;
+    -fx-font-family: "Imprint MT Shadow";
+    -fx-wrap-text: 400;
+}

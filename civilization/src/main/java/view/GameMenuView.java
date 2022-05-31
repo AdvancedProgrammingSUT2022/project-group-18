@@ -1,6 +1,7 @@
 package view;
 import model.unit.Unit;
 import controller.GameController;
+import view.Controller;
 import enums.Message;
 import enums.Regexes;
 import model.BaseCivilization;
@@ -11,19 +12,10 @@ import java.util.regex.Matcher;
 public class GameMenuView extends View {
     GameController controller = new GameController();
 
-    @Override
     public void run() {
         String input = getInput();
         Matcher matcher;
-        if (Regexes.getCommand(input, Regexes.EXIT_MENU) != null)
-            controller.goToMainMenu();
-        else if ((matcher = Regexes.getCommand(input, Regexes.MENU_ENTER)) != null)
-            System.out.println(controller.enterMenu(matcher).toString());
-        else if (Regexes.getCommand(input, Regexes.SHOW_CURRENT_MENU) != null)
-            System.out.println(controller.showCurrentMenu());
-        else if (Regexes.getCommand(input, Regexes.EXIT_GAME) != null)
-            controller.exitMenu();
-        else if ((matcher = Regexes.getCommand(input, Regexes.INCREASE_TURN)) != null) {
+        if ((matcher = Regexes.getCommand(input, Regexes.INCREASE_TURN)) != null) {
             increaseTurn(matcher);
         } else if ((matcher = Regexes.getCommand(input, Regexes.INCREASE_GOLD)) != null) {
             increaseGold(matcher);

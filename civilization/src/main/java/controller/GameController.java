@@ -9,7 +9,8 @@ import model.unit.Unit;
 
 import java.util.ArrayList;
 
-public class GameController extends Controller {
+public class GameController {
+    public static int turn = 0;
     public int Score;
     public ArrayList<String> showNotificationsHistory() {
         ArrayList<String> notifs = new ArrayList<>();

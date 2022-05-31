@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<?import java.net.URL?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="view.LoginMenuController"
+            prefHeight="720.0" prefWidth="1080.0">
+
+    <stylesheets>
+        <URL value="@../css/profileController.css"/>
+    </stylesheets>
+    <center>
+        <VBox spacing="15" alignment="CENTER" maxWidth="200" >
+            <Text text="Username" wrappingWidth="500" styleClass="textField"/>
+            <TextField fx:id="username1" promptText="Enter your username" styleClass="textField"/>
+            <Text text="Password" wrappingWidth="500" styleClass="textField"/>
+            <PasswordField  fx:id="password1" promptText="Enter your password" styleClass="textField"/>
+            <HBox spacing="20" alignment="CENTER">
+                <Button styleClass="button" text="login" onMouseClicked="#login" minWidth="200"/>
+            </HBox>
+
+        </VBox>
+
+    </center>
+    <bottom>
+        <HBox alignment="BASELINE_RIGHT">
+            <Button styleClass="button" text="back" onMouseClicked="#goToMainMenu" minWidth="200"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

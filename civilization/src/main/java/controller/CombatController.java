@@ -10,7 +10,7 @@ import view.View;
 
 import java.util.regex.Matcher;
 
-public class CombatController extends Controller {
+public class CombatController {
     public Message AnnouncementCombat() { //اعلان جنگ
         Message message = null;
         return message; // just for run code and don't have errors
