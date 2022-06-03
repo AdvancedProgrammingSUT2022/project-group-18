@@ -16,14 +16,16 @@ module civilization {
         opens enums to javafx.fxml , com.google.gson;
         opens model to javafx.fxml, com.google.gson;
         opens view to javafx.fxml , com.google.gson;
-        opens civilization to javafx.fxml;
+        opens civilization to javafx.fxml, com.google.gson;
         opens controller.unitactoins to javafx.fxml , com.google.gson;
-        opens model.improvements to javafx.fxml;
-        opens model.unit to javafx.fxml;
-        opens model.techs to javafx.fxml;
-        opens model.Resource to javafx.fxml;
+        opens model.improvements to javafx.fxml, com.google.gson;
+        opens model.unit to javafx.fxml, com.google.gson;
+        opens model.techs to javafx.fxml, com.google.gson;
+        opens model.Resource to javafx.fxml, com.google.gson;
+        opens model.graphicModel to javafx.fxml, com.google.gson;
 
 
+        exports model.graphicModel;
         exports civilization;
         exports controller;
         exports enums;

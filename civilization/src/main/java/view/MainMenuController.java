@@ -77,14 +77,18 @@ public class MainMenuController extends Controller {
     }
     private ObservableList<User> getUserList() {
         ArrayList<User> users = getUsersFromDataBase();
-
-
         return FXCollections.observableArrayList(users);
     }
 
     public void registeredScoreBord(BorderPane pane) {
         if (View.getIsLoggedIn() != null) {
             Button button = new Button("Score Table");
+            Button logout = new Button("logout");
+            Button newGame = new Button("new Game");
+            newGame.setMinWidth(500);
+            newGame.getStyleClass().add("button");
+            logout.setMinWidth(500);
+            logout.getStyleClass().add("button");
             button.setMinWidth(500);
             button.getStyleClass().add("button");
             button.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -99,6 +103,30 @@ public class MainMenuController extends Controller {
             });
             VBox vBox = (VBox) pane.getChildren().get(0);
             vBox.getChildren().add(vBox.getChildren().size() - 2, button);
+            vBox.getChildren().add(vBox.getChildren().size() - 2 , logout);
+            vBox.getChildren().add(0, newGame);
+            logout.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    try {
+                        View.setIsLoggedIn(null);
+                        goToRegister(event);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+            newGame.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    try {
+                        newGame(event);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
         }
 
     }
@@ -140,7 +168,6 @@ public class MainMenuController extends Controller {
 
     public void goToRegister(MouseEvent event) throws Exception {
         View.setIsLoggedIn(null);
-        View.setInMenu("Login Menu");
         LoginMenuController.getInstance().register(ProfileMenuGraphics.getStage());
     }
 

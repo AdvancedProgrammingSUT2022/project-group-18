@@ -167,8 +167,21 @@ public class User {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        boolean bool = false;
         for (int i = 0; i < n; i++) {
+            for (User allUser : allUsers) {
+                if(allUser.username.equals(DataBase.getUserFromDataBase(i).username)) {
+                    bool = true;
+                    break;
+                }
+            }
+            if(bool)
+                break;
             allUsers.add(DataBase.getUserFromDataBase(i));
+        }
+        System.out.println(n);
+        for (User allUser : allUsers) {
+            System.out.println(allUser.username);
         }
         return allUsers;
     }
