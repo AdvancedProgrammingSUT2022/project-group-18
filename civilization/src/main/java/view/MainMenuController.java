@@ -6,11 +6,13 @@ import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.util.Callback;
 import model.graphicModel.ProfilePhoto;
@@ -21,11 +23,11 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 import static model.graphicModel.User.getUsersFromDataBase;
+import static model.graphicModel.User.setPlayers;
 
 
 public class MainMenuController extends Controller {
     private static MainMenuController controller;
-
     public static MainMenuController getInstance() {
         if (controller == null)
             controller = new MainMenuController();
@@ -48,25 +50,28 @@ public class MainMenuController extends Controller {
         stage = new Stage();
         TableView<UserProfile> table = new TableView<>();
 
+
         TableColumn<UserProfile, ProfilePhoto> photo = new TableColumn<>("photo");
         photo.setCellValueFactory(new PropertyValueFactory<>("photo"));
 
         TableColumn<UserProfile, String> userNameCol = new TableColumn<>("username");
-        userNameCol.setStyle("alignment : CENTER");
         userNameCol.setCellValueFactory(new PropertyValueFactory<>("username"));
 
         TableColumn<UserProfile, Integer> score = new TableColumn<>("score");
         score.setCellValueFactory(new PropertyValueFactory<>("score"));
+
         ObservableList<UserProfile> list = FXCollections.observableArrayList(UserProfile.allUserProfiles);
         table.setItems(list);
 
 
+
         table.getColumns().addAll(photo, userNameCol, score);
+        table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
 
         userNameCol.setSortType(TableColumn.SortType.DESCENDING);
 
-
+        loggedInUserBackground(userNameCol, score);
 
         StackPane root = new StackPane();
         root.setPadding(new Insets(5));
@@ -74,9 +79,71 @@ public class MainMenuController extends Controller {
 
         stage.setTitle("TableView");
 
-        Scene scene = new Scene(root, 400, 500);
+        Scene scene = new Scene(root, 660, 500);
         stage.setScene(scene);
         stage.show();
+    }
+
+    private void loggedInUserBackground(TableColumn<UserProfile, String> userNameCol, TableColumn<UserProfile, Integer> score) {
+
+        userNameCol.setCellFactory(column -> {
+            return new TableCell<>() {
+                @Override
+                protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty); //This is mandatory
+
+                    if (item == null || empty) { //If the cell is empty
+                        setText(null);
+                        setStyle("");
+                    } else {
+                        setText(item);
+                        setAlignment(Pos.CENTER);
+
+                        //We get here all the info of the Person of this row
+                        UserProfile auxPerson = getTableView().getItems().get(getIndex());
+
+                        if (auxPerson.getUsername().equals(View.getIsLoggedIn().getUsername())) {
+                            setTextFill(Color.RED);
+                            setStyle("-fx-background-color: #baffba;");
+                        } else  {
+                            setTextFill(Color.BLACK);
+                            setStyle("");
+                        }
+                    }
+                }
+            };
+        });
+
+
+
+        score.setCellFactory(column -> {
+            return new TableCell<>() {
+                @Override
+                protected void updateItem(Integer item, boolean empty) {
+                    super.updateItem(item, empty); //This is mandatory
+
+                    if (item == null || empty) { //If the cell is empty
+                        setText(null);
+                        setStyle("");
+                    } else {
+
+                        setText(String.valueOf(item));
+                        setAlignment(Pos.CENTER);
+
+                        //We get here all the info of the Person of this row
+                        UserProfile auxPerson = getTableView().getItems().get(getIndex());
+
+                        if (auxPerson.getUsername().equals(View.getIsLoggedIn().getUsername())) {
+                            setTextFill(Color.RED);
+                            setStyle("-fx-background-color: #baffba;");
+                        } else  {
+                            setTextFill(Color.BLACK);
+                            setStyle("");
+                        }
+                    }
+                }
+            };
+        });
     }
 
 

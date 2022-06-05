@@ -69,11 +69,15 @@ public class User {
                 File file = new File("user" + k + ".json");
                 String json = new String(Files.readAllBytes(Paths.get("user" + k + ".json")));
                 User user = new Gson().fromJson(json, User.class);
+                UserProfile.allUserProfiles.remove(user);
+                allUsers.remove(user);
                 user.score = score;
                 file.delete();
                 FileWriter writer = new FileWriter("user" + k + ".json");
                 writer.write(new Gson().toJson(user));
                 writer.close();
+                allUsers.add(k, user);
+                UserProfile.allUserProfiles.add(k, new UserProfile(new ProfilePhoto(user.photoAddress), user.username, user.password, user.nickname, user.photoAddress, user.score));
                 break;
             }
         }

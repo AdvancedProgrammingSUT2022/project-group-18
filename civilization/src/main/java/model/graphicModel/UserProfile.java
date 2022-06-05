@@ -25,6 +25,30 @@ public class UserProfile {
 
     }
 
+    public void setPhoto(ProfilePhoto photo) {
+        this.photo = photo;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public void setScore(Integer score) {
+        this.score = score;
+    }
+
+    public static void setAllUserProfiles(ArrayList<UserProfile> allUserProfiles) {
+        UserProfile.allUserProfiles = allUserProfiles;
+    }
+
     public String getUsername() {
         return username;
     }
