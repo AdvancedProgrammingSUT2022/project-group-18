@@ -18,6 +18,8 @@ import model.graphicModel.UserProfile;
 import java.util.Objects;
 import java.util.Random;
 
+import static view.ProfileController.urls;
+
 public class LoginMenuController extends Controller {
     private static LoginMenuController controller;
     @FXML
@@ -68,12 +70,11 @@ public class LoginMenuController extends Controller {
             ok.setHeaderText(null);
             ok.setContentText(Message.USER_CREAT.toString());
             ok.show();
-            String[] urls = {"blue", "green", "orange", "purple", "red", "shelakhte", "yellow", "lightBlue"};
             Random random = new Random();
-            int rand = random.nextInt(urls.length);
-            System.out.println(urls[rand]);
-            new User(username, password, nickname,urls[rand], 0);
-            UserProfile profile = new UserProfile(new ProfilePhoto(urls[rand]), username, password, nickname, urls[rand], 0 );
+            int rand = random.nextInt(7);
+            System.out.println(urls.get(rand));
+            new User(username, password, nickname, urls.get(rand), 0);
+            UserProfile profile = new UserProfile(new ProfilePhoto(urls.get(rand)), username, password, nickname, urls.get(rand), 0 );
             //new ImageView(new Image(getClass().getResource("/images/" + urls[rand] + ".jpg").toExternalForm()))
             LoginMenuController.getInstance().register(ProfileMenuGraphics.getStage());
 

@@ -11,8 +11,10 @@ module civilization {
         requires org.kordamp.bootstrapfx.core;
         requires eu.hansolo.tilesfx;
         requires javafx.media;
+    requires java.desktop;
+    requires java.logging;
 
-        opens controller to javafx.fxml, com.google.gson;
+    opens controller to javafx.fxml, com.google.gson;
         opens enums to javafx.fxml , com.google.gson;
         opens model to javafx.fxml, com.google.gson;
         opens view to javafx.fxml , com.google.gson;

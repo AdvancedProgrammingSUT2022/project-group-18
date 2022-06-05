@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import controller.DataBase;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import view.View;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -69,7 +70,7 @@ public class User {
                 File file = new File("user" + k + ".json");
                 String json = new String(Files.readAllBytes(Paths.get("user" + k + ".json")));
                 User user = new Gson().fromJson(json, User.class);
-                UserProfile.allUserProfiles.remove(user);
+                UserProfile.allUserProfiles.removeIf(userProfile -> userProfile.getUsername().equals(View.getIsLoggedIn().getUsername()));
                 allUsers.remove(user);
                 user.score = score;
                 file.delete();
@@ -91,7 +92,7 @@ public class User {
                 File file = new File("user" + k + ".json");
                 String json = new String(Files.readAllBytes(Paths.get("user" + k + ".json")));
                 User user = new Gson().fromJson(json, User.class);
-                UserProfile.allUserProfiles.remove(user);
+                UserProfile.allUserProfiles.removeIf(userProfile -> userProfile.getUsername().equals(View.getIsLoggedIn().getUsername()));
                 allUsers.remove(user);
                 user.photoAddress = photoAddress;
                 file.delete();
@@ -126,7 +127,7 @@ public class User {
                 String json = new String(Files.readAllBytes(Paths.get("user" + i + ".json")));
                 User user = new Gson().fromJson(json, User.class);
                 allUsers.remove(user);
-                UserProfile.allUserProfiles.remove(user);
+                UserProfile.allUserProfiles.removeIf(userProfile -> userProfile.getUsername().equals(View.getIsLoggedIn().getUsername()));
                 user.nickname = nickname;
                 file.delete();
                 FileWriter writer = new FileWriter("user" + i + ".json");
@@ -152,7 +153,7 @@ public class User {
                 File file = new File("user" + i + ".json");
                 String json = new String(Files.readAllBytes(Paths.get("user" + i + ".json")));
                 User user = new Gson().fromJson(json, User.class);
-                UserProfile.allUserProfiles.remove(user);
+                UserProfile.allUserProfiles.removeIf(userProfile -> userProfile.getUsername().equals(View.getIsLoggedIn().getUsername()));
                 allUsers.remove(user);
                 user.password = newPass;
                 file.delete();
@@ -174,7 +175,7 @@ public class User {
                 File file = new File("user" + i + ".json");
                 String json = new String(Files.readAllBytes(Paths.get("user" + i + ".json")));
                 User user = new Gson().fromJson(json, User.class);
-                UserProfile.allUserProfiles.remove(user);
+                UserProfile.allUserProfiles.removeIf(userProfile -> userProfile.getUsername().equals(View.getIsLoggedIn().getUsername()));
                 allUsers.remove(user);
                 file.delete();
                 break;

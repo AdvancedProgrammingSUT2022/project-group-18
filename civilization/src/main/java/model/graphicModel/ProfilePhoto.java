@@ -18,7 +18,7 @@ public class ProfilePhoto extends Rectangle {
         super(200, 200);
         this.name = name;
         //this.image = new Image(getClass().getResource("/images/"+name+".jpg").toExternalForm());
-        this.setFill(new ImagePattern(new Image(getClass().getResource("/images/" + name + ".jpg").toExternalForm())));
+        this.setFill(new ImagePattern(new Image(getClass().getResource("/images/" + name).toExternalForm())));
         this.getStyleClass().add("photo");
         photos.add(this);
     }

@@ -14,17 +14,28 @@ import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import model.graphicModel.ProfilePhoto;
 import model.graphicModel.User;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ProfileController extends Controller {
 
     private static ProfileController controller;
+    private static final List<String> anotherList = Arrays.asList("blue.jpg", "green.jpg", "orange.jpg",
+            "purple.jpg", "red.jpg", "shelakhte.jpg", "yellow.jpg", "lightBlue.jpg");
+    public static ArrayList<String> urls = new ArrayList<>(anotherList);
     @FXML
     private TextField nickName;
     @FXML
@@ -69,20 +80,15 @@ public class ProfileController extends Controller {
     private void addPhotos(BorderPane pane) throws IOException {
         GridPane gridPane = new GridPane();
         ArrayList<ProfilePhoto> rectangles = new ArrayList<>();
-        String[] urls = {"blue",
-                "green",
-                "orange",
-                "purple",
-                "red",
-                "shelakhte",
-                "yellow",
-                "lightBlue"};
+
+
         int counter = 0;
+        gridPane.setTranslateY(130);
         gridPane.setHgap(10);
         gridPane.setVgap(10);
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 2; j++) {
-                ProfilePhoto photo = new ProfilePhoto(urls[counter]);
+                ProfilePhoto photo = new ProfilePhoto(urls.get(counter));
                 onMouseClicked(photo);
                 rectangles.add(photo);
                 gridPane.add(rectangles.get(counter), i, j);
@@ -90,9 +96,44 @@ public class ProfileController extends Controller {
 
             }
         }
-        gridPane.setAlignment(Pos.CENTER);
-        pane.setCenter(gridPane);
+        gridPane.setAlignment(Pos.BOTTOM_CENTER);
+        pane.setTop(gridPane);
 
+    }
+    public void browsAndChoosePhoto(MouseEvent event) {
+        FileChooser fileChooser = new FileChooser();
+
+        //Set extension filter
+        FileChooser.ExtensionFilter extFilterJPG = new FileChooser.ExtensionFilter("JPG files (*.jpg)", "*.JPG");
+        FileChooser.ExtensionFilter extFilterPNG = new FileChooser.ExtensionFilter("PNG files (*.png)", "*.PNG");
+        fileChooser.getExtensionFilters().addAll(extFilterJPG, extFilterPNG);
+
+        //Show open file dialog
+        File file = fileChooser.showOpenDialog(null);
+
+        try {
+            BufferedImage bufferedImage = ImageIO.read(file);
+            // Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+            // myImageView.setImage(image);
+            int i = 0;
+            File dest = new File("src/main/resources/images/" + file.getName());
+            i++;
+            ImageIO.write(bufferedImage, "jpg", dest);
+            System.out.println(file.getName());
+            System.out.println("Writing complete.");
+            try {
+                ProfilePhoto photo = new ProfilePhoto(file.getName());
+                View.getIsLoggedIn().setPhotoAddress(photo.getName());
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText(null);
+                alert.setContentText("Profile Photo Changed successfully!");
+                alert.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void onMouseClicked(ProfilePhoto photo) {
@@ -183,6 +224,7 @@ public class ProfileController extends Controller {
         }
 
     }
+
 
 
 }

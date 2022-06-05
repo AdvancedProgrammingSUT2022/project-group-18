@@ -48,10 +48,18 @@
         <URL value="@../css/profileController.css" />
     </stylesheets>
 <bottom>
-   <HBox alignment="CENTER_RIGHT">
+   <HBox alignment="BOTTOM_RIGHT">
       <Button text="back" styleClass="button" onMouseClicked="#backToMenu"/>
-   </HBox>
-</bottom>
 
+   </HBox>
+
+</bottom>
+<center>
+
+      <HBox alignment="BOTTOM_CENTER">
+         <Button text="Browse" styleClass="button" onMouseClicked="#browsAndChoosePhoto" />
+      </HBox>
+
+</center>
 
 </BorderPane>
