@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Text?>
 <BorderPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainMenuController">
 <stylesheets>
-   <URL value="@../css/scratch.css"/>
+   <URL value="@../css/tableView.css"/>
 </stylesheets>
 <center>
     <VBox alignment="CENTER" spacing="10" fx:id="vbox">

@@ -4,21 +4,18 @@ package view;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
+import javafx.util.Callback;
+import model.graphicModel.ProfilePhoto;
 import model.graphicModel.User;
+import model.graphicModel.UserProfile;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -49,36 +46,39 @@ public class MainMenuController extends Controller {
     public void scoreTable(Stage stage) throws Exception {
         //BorderPane root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/scoreTable.fxml")));
         stage = new Stage();
-        TableView<User> table = new TableView<>();
+        TableView<UserProfile> table = new TableView<>();
 
-        TableColumn<User, String> userNameCol = new TableColumn<>("username");
+        TableColumn<UserProfile, ProfilePhoto> photo = new TableColumn<>("photo");
+        photo.setCellValueFactory(new PropertyValueFactory<>("photo"));
 
-        TableColumn<User, Integer> score = new TableColumn<>("score");
-
+        TableColumn<UserProfile, String> userNameCol = new TableColumn<>("username");
+        userNameCol.setStyle("alignment : CENTER");
         userNameCol.setCellValueFactory(new PropertyValueFactory<>("username"));
+
+        TableColumn<UserProfile, Integer> score = new TableColumn<>("score");
         score.setCellValueFactory(new PropertyValueFactory<>("score"));
+        ObservableList<UserProfile> list = FXCollections.observableArrayList(UserProfile.allUserProfiles);
+        table.setItems(list);
+
+
+        table.getColumns().addAll(photo, userNameCol, score);
+
 
         userNameCol.setSortType(TableColumn.SortType.DESCENDING);
 
-        ObservableList<User> list = getUserList();
-        table.setItems(list);
 
-        table.getColumns().addAll(userNameCol, score);
 
         StackPane root = new StackPane();
-        //root.setPadding(new Insets(5));
+        root.setPadding(new Insets(5));
         root.getChildren().add(table);
 
         stage.setTitle("TableView");
 
-        Scene scene = new Scene(root);
+        Scene scene = new Scene(root, 400, 500);
         stage.setScene(scene);
         stage.show();
     }
-    private ObservableList<User> getUserList() {
-        ArrayList<User> users = getUsersFromDataBase();
-        return FXCollections.observableArrayList(users);
-    }
+
 
     public void registeredScoreBord(BorderPane pane) {
         if (View.getIsLoggedIn() != null) {
@@ -103,7 +103,7 @@ public class MainMenuController extends Controller {
             });
             VBox vBox = (VBox) pane.getChildren().get(0);
             vBox.getChildren().add(vBox.getChildren().size() - 2, button);
-            vBox.getChildren().add(vBox.getChildren().size() - 2 , logout);
+            vBox.getChildren().add(vBox.getChildren().size() - 2, logout);
             vBox.getChildren().add(0, newGame);
             logout.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override

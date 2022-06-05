@@ -31,4 +31,10 @@
         </VBox>
 
     </center>
+
+    <bottom>
+        <HBox alignment="BASELINE_RIGHT">
+            <Button styleClass="button" text="back" onMouseClicked="#goToMainMenu" minWidth="200"/>
+        </HBox>
+    </bottom>
 </BorderPane>

@@ -1,7 +1,10 @@
 package model.graphicModel;
 
 import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
 import controller.DataBase;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -11,10 +14,17 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class User {
+    @SerializedName("username")
     private String username;
+    @SerializedName("password")
     private String password;
+    @SerializedName("nickname")
     private String nickname;
+    @SerializedName("address")
     private String photoAddress;
+    @SerializedName("image")
+    //private ProfilePhoto photo;
+
     private static ArrayList<User> users = new ArrayList<>();
     private static ArrayList<User> players = new ArrayList<>();// it should not save it is just for doing changes on users;
     public static ArrayList<User> allUsers = new ArrayList<>();
@@ -26,8 +36,12 @@ public class User {
         this.nickname = nickname;
         this.photoAddress = photoAddress;
         this.score = 0;
+        allUsers.add(this);
         addNewUserToDataBase(this);
+        addNewUserProfile();
+
     }
+
 
     public void setScore(int score) {
         this.score = score;
@@ -36,6 +50,7 @@ public class User {
     public Integer getScore() {
         return score;
     }
+
     public static User getUserByUsernameOrNickname(String name, String identifier) {
         ArrayList<User> savedUsers = getUsersFromDataBase();
         for (User user : savedUsers) {
@@ -170,20 +185,47 @@ public class User {
         boolean bool = false;
         for (int i = 0; i < n; i++) {
             for (User allUser : allUsers) {
-                if(allUser.username.equals(DataBase.getUserFromDataBase(i).username)) {
+                if (allUser.username.equals(DataBase.getUserFromDataBase(i).username)) {
                     bool = true;
                     break;
                 }
             }
-            if(bool)
+            if (bool)
                 break;
+            User user = DataBase.getUserFromDataBase(i);
+
             allUsers.add(DataBase.getUserFromDataBase(i));
         }
-        System.out.println(n);
-        for (User allUser : allUsers) {
-            System.out.println(allUser.username);
-        }
         return allUsers;
+    }
+
+    public void addNewUserProfile() {
+        int n = 0;
+        try {
+            n = DataBase.numberOfUsers();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        boolean bool = false;
+        for (int i = 0; i < n; i++) {
+            User user = DataBase.getUserFromDataBase(i);
+            for (UserProfile allUser : UserProfile.allUserProfiles) {
+                if (allUser.getUsername().equals(user.username)) {
+                    bool = true;
+                    break;
+                }
+            }
+            if (bool)
+                break;
+            try {
+                //new ImageView(new Image(getClass().getResource("/images/" + user.photoAddress + ".jpg").toExternalForm()))
+                UserProfile profile = new UserProfile(new ProfilePhoto(user.photoAddress), user.username, user.password, user.nickname, user.photoAddress, user.score);
+                UserProfile.allUserProfiles.add(profile);
+            } catch (IOException e) {
+                System.out.println("null");
+                e.printStackTrace();
+            }
+        }
     }
 
     public void addNewUserToDataBase(User user) throws IOException {

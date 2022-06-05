@@ -6,10 +6,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
+import model.graphicModel.ProfilePhoto;
 import model.graphicModel.User;
+import model.graphicModel.UserProfile;
 
 import java.util.Objects;
 import java.util.Random;
@@ -69,6 +73,8 @@ public class LoginMenuController extends Controller {
             int rand = random.nextInt(urls.length);
             System.out.println(urls[rand]);
             new User(username, password, nickname,urls[rand], 0);
+            UserProfile profile = new UserProfile(new ProfilePhoto(urls[rand]), username, password, nickname, urls[rand], 0 );
+            //new ImageView(new Image(getClass().getResource("/images/" + urls[rand] + ".jpg").toExternalForm()))
             LoginMenuController.getInstance().register(ProfileMenuGraphics.getStage());
 
         }
@@ -103,6 +109,7 @@ public class LoginMenuController extends Controller {
         }
         else {
             View.setIsLoggedIn(User.getUserByUsernameOrNickname(username, "username"));
+            View.getIsLoggedIn().addNewUserProfile();
             Alert info = new Alert(Alert.AlertType.INFORMATION);
             info.setHeaderText(null);
             info.setContentText("Welcome!");
