@@ -1,6 +1,5 @@
 package model.graphicModel;
 
-import javafx.scene.image.ImageView;
 
 import java.io.IOException;
 import java.util.ArrayList;

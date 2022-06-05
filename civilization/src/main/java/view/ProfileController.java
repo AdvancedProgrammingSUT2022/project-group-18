@@ -175,6 +175,11 @@ public class ProfileController extends Controller {
             ok.setHeaderText(null);
             ok.setContentText(Message.CHANGE_PASSWORD.toString());
             ok.show();
+            try {
+                ProfileMenuGraphics.getInstance().start(ProfileMenuGraphics.getStage());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
     }

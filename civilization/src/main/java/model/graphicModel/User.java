@@ -65,7 +65,7 @@ public class User {
     public void setScoresOnJson(int score) throws IOException {
         ArrayList<User> users = getUsersFromDataBase();
         for (int k = 0; k < DataBase.numberOfUsers(); k++) {
-            if (users.get(k).getScore() == this.getScore()) {
+            if (users.get(k).getUsername().equals(this.getUsername())) {
                 File file = new File("user" + k + ".json");
                 String json = new String(Files.readAllBytes(Paths.get("user" + k + ".json")));
                 User user = new Gson().fromJson(json, User.class);
@@ -83,15 +83,19 @@ public class User {
 
         ArrayList<User> users = getUsersFromDataBase();
         for (int k = 0; k < DataBase.numberOfUsers(); k++) {
-            if (users.get(k).getPhotoAddress().equals(this.getPhotoAddress())) {
+            if (users.get(k).getUsername().equals(this.getUsername())) {
                 File file = new File("user" + k + ".json");
                 String json = new String(Files.readAllBytes(Paths.get("user" + k + ".json")));
                 User user = new Gson().fromJson(json, User.class);
+                UserProfile.allUserProfiles.remove(user);
+                allUsers.remove(user);
                 user.photoAddress = photoAddress;
                 file.delete();
                 FileWriter writer = new FileWriter("user" + k + ".json");
                 writer.write(new Gson().toJson(user));
                 writer.close();
+                allUsers.add(k, user);
+                UserProfile.allUserProfiles.add(k, new UserProfile(new ProfilePhoto(user.photoAddress), user.username, user.password, user.nickname, user.photoAddress, user.score));
                 break;
             }
         }
@@ -113,15 +117,20 @@ public class User {
 
         ArrayList<User> users = getUsersFromDataBase();
         for (int i = 0; i < DataBase.numberOfUsers(); i++) {
-            if (users.get(i).getNickname().equals(this.getNickname())) {
+            if (users.get(i).getUsername().equals(this.getUsername())) {
                 File file = new File("user" + i + ".json");
                 String json = new String(Files.readAllBytes(Paths.get("user" + i + ".json")));
                 User user = new Gson().fromJson(json, User.class);
+                allUsers.remove(user);
+                UserProfile.allUserProfiles.remove(user);
                 user.nickname = nickname;
                 file.delete();
                 FileWriter writer = new FileWriter("user" + i + ".json");
                 writer.write(new Gson().toJson(user));
                 writer.close();
+                allUsers.add(i, user);
+                UserProfile.allUserProfiles.add(i, new UserProfile(new ProfilePhoto(user.photoAddress), user.username, user.password, user.nickname, user.photoAddress, user.score));
+
                 break;
             }
         }
@@ -135,15 +144,19 @@ public class User {
 
         ArrayList<User> users = getUsersFromDataBase();
         for (int i = 0; i < DataBase.numberOfUsers(); i++) {
-            if (users.get(i).getPassword().equals(this.getPassword())) {
+            if (users.get(i).getUsername().equals(this.getUsername())) {
                 File file = new File("user" + i + ".json");
                 String json = new String(Files.readAllBytes(Paths.get("user" + i + ".json")));
                 User user = new Gson().fromJson(json, User.class);
+                UserProfile.allUserProfiles.remove(user);
+                allUsers.remove(user);
                 user.password = newPass;
                 file.delete();
                 FileWriter writer = new FileWriter("user" + i + ".json");
                 writer.write(new Gson().toJson(user));
                 writer.close();
+                allUsers.add(i, user);
+                UserProfile.allUserProfiles.add(i, new UserProfile(new ProfilePhoto(user.photoAddress), user.username, user.password, user.nickname, user.photoAddress, user.score));
                 break;
             }
         }
@@ -157,6 +170,8 @@ public class User {
                 File file = new File("user" + i + ".json");
                 String json = new String(Files.readAllBytes(Paths.get("user" + i + ".json")));
                 User user = new Gson().fromJson(json, User.class);
+                UserProfile.allUserProfiles.remove(user);
+                allUsers.remove(user);
                 file.delete();
                 break;
             }

@@ -158,12 +158,12 @@ public class MainMenuController extends Controller {
             alert.setContentText("Please Login First!");
             alert.show();
         } else {
-            //TODO go to main menu
+            GameMenu.getInstance().start(ProfileMenuGraphics.getStage());
         }
     }
 
     public void newGameWithoutLogin(MouseEvent event) throws Exception {
-        //TODO go to main menu
+        GameMenu.getInstance().start(ProfileMenuGraphics.getStage());
     }
 
     public void goToRegister(MouseEvent event) throws Exception {
