@@ -141,6 +141,10 @@ public class ProfileController extends Controller {
                     alert.setContentText("Profile Photo Changed successfully!");
                     alert.show();
                 } catch (IOException e) {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setHeaderText(null);
+                    alert.setContentText("Something went wrong:{");
+                    alert.show();
                     e.printStackTrace();
                 }
             }
