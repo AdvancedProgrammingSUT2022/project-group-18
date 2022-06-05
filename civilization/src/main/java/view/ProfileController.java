@@ -100,6 +100,7 @@ public class ProfileController extends Controller {
         pane.setTop(gridPane);
 
     }
+
     public void browsAndChoosePhoto(MouseEvent event) {
         FileChooser fileChooser = new FileChooser();
 
@@ -113,24 +114,16 @@ public class ProfileController extends Controller {
 
         try {
             BufferedImage bufferedImage = ImageIO.read(file);
-            // Image image = SwingFXUtils.toFXImage(bufferedImage, null);
-            // myImageView.setImage(image);
-            int i = 0;
             File dest = new File("src/main/resources/images/" + file.getName());
-            i++;
             ImageIO.write(bufferedImage, "jpg", dest);
-            System.out.println(file.getName());
             System.out.println("Writing complete.");
-            try {
-                ProfilePhoto photo = new ProfilePhoto(file.getName());
-                View.getIsLoggedIn().setPhotoAddress(photo.getName());
-                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setHeaderText(null);
-                alert.setContentText("Profile Photo Changed successfully!");
-                alert.show();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+
+            ProfilePhoto photo = new ProfilePhoto(file.getName());
+            View.getIsLoggedIn().setPhotoAddress(photo.getName());
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+            alert.setContentText("Profile Photo Changed successfully!");
+            alert.show();
         } catch (IOException ex) {
             Logger.getLogger(ProfileController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -224,7 +217,6 @@ public class ProfileController extends Controller {
         }
 
     }
-
 
 
 }

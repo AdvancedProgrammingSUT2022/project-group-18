@@ -14,11 +14,12 @@ public class ProfilePhoto extends Rectangle {
     private String name;
     //private Image image;
     private static ArrayList<ProfilePhoto> photos = new ArrayList<>();
+
     public ProfilePhoto(String name) throws IOException {
         super(200, 200);
         this.name = name;
-        //this.image = new Image(getClass().getResource("/images/"+name+".jpg").toExternalForm());
-        this.setFill(new ImagePattern(new Image(getClass().getResource("/images/" + name).toExternalForm())));
+        this.setFill(new ImagePattern(new Image(ProfilePhoto.class.getResource("/images/" + name).toExternalForm())));
+
         this.getStyleClass().add("photo");
         photos.add(this);
     }
@@ -29,7 +30,7 @@ public class ProfilePhoto extends Rectangle {
 
     public static ProfilePhoto getPhotoByName(String name) {
         for (ProfilePhoto photo : photos) {
-            if(photo.getName().equals(name))
+            if (photo.getName().equals(name))
                 return photo;
         }
         return null;
