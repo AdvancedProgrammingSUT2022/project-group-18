@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import controller.DataBase;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import model.BaseCivilization;
 import view.View;
 
 import java.io.File;
@@ -15,21 +16,19 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class User {
-    @SerializedName("username")
     private String username;
-    @SerializedName("password")
     private String password;
-    @SerializedName("nickname")
     private String nickname;
-    @SerializedName("address")
     private String photoAddress;
-    @SerializedName("image")
     //private ProfilePhoto photo;
 
     private static ArrayList<User> users = new ArrayList<>();
     private static ArrayList<User> players = new ArrayList<>();// it should not save it is just for doing changes on users;
     public static ArrayList<User> allUsers = new ArrayList<>();
     private Integer score;
+    private BaseCivilization civilization;
+
+
 
     public User(String username, String password, String nickname, String photoAddress, int score) throws IOException {
         this.username = username;
@@ -40,7 +39,7 @@ public class User {
         allUsers.add(this);
         addNewUserToDataBase(this);
         addNewUserProfile();
-
+        this.civilization = new BaseCivilization();
     }
 
 
@@ -50,6 +49,10 @@ public class User {
 
     public Integer getScore() {
         return score;
+    }
+
+    public BaseCivilization getCivilization() {
+        return civilization;
     }
 
     public static User getUserByUsernameOrNickname(String name, String identifier) {
@@ -257,4 +260,26 @@ public class User {
         writer.close();
         DataBase.setNumOfUsers();
     }
+
+    public void saveCivilization(BaseCivilization civilization) throws IOException {
+        ArrayList<User> users = getUsersFromDataBase();
+        for (int k = 0; k < DataBase.numberOfUsers(); k++) {
+            if (users.get(k).getUsername().equals(this.getUsername())) {
+                File file = new File("user" + k + ".json");
+                String json = new String(Files.readAllBytes(Paths.get("user" + k + ".json")));
+                User user = new Gson().fromJson(json, User.class);
+                UserProfile.allUserProfiles.removeIf(userProfile -> userProfile.getUsername().equals(View.getIsLoggedIn().getUsername()));
+                allUsers.remove(user);
+                user.civilization = civilization;
+                file.delete();
+                FileWriter writer = new FileWriter("user" + k + ".json");
+                writer.write(new Gson().toJson(user));
+                writer.close();
+                allUsers.add(k, user);
+                UserProfile.allUserProfiles.add(k, new UserProfile(new ProfilePhoto(user.photoAddress), user.username, user.password, user.nickname, user.photoAddress, user.score));
+                break;
+            }
+        }
+    }
+
 }

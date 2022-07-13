@@ -1,12 +1,18 @@
 package controller;
 
 import enums.Message;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.util.Duration;
 import model.BaseCivilization;
 import model.City;
+import model.graphicModel.User;
 import model.unit.Melee;
 import model.unit.Ranged;
 import model.unit.Unit;
+import view.View;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class GameController {
@@ -54,4 +60,15 @@ public class GameController {
         }
         return null;
     }
+
+    public void saveGame(int miliSecond){
+        Timeline timeline = new Timeline();
+        timeline.setCycleCount(-1);
+        timeline.getKeyFrames().add(new KeyFrame(Duration.millis(miliSecond), (actionEvent -> {
+            try {
+                View.getIsLoggedIn().saveCivilization(View.getCivilization());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        })));    }
 }

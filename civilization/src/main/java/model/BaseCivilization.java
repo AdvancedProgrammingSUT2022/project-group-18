@@ -1,12 +1,17 @@
 package model;
 
+import com.google.gson.Gson;
+import controller.DataBase;
 import enums.UnitEnum;
 import model.Resource.Resources;
+import model.graphicModel.User;
 import model.unit.Melee;
 import model.unit.Ranged;
 import model.unit.Unit;
 import view.View;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class BaseCivilization {
@@ -215,5 +220,14 @@ public class BaseCivilization {
             if (unit instanceof Ranged || unit instanceof Melee)
                 unit.combatStrength -= unit.combatStrength*0.25;
         }
+    }
+    public void save(BaseCivilization civilization , User user) throws IOException {
+        int n = 0;
+        n = DataBase.numberOfUsers();
+        String fileName = "user" + n + ".json";
+        FileWriter writer = new FileWriter(fileName);
+        writer.write(new Gson().toJson(civilization));
+        writer.close();
+        DataBase.setNumOfUsers();
     }
 }

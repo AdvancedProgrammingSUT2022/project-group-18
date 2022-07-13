@@ -1,5 +1,6 @@
 package model;
 
+import com.google.gson.annotations.SerializedName;
 import controller.CombatController;
 import enums.UnitEnum;
 import model.Resource.Resources;

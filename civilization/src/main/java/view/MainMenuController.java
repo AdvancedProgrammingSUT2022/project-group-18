@@ -1,6 +1,5 @@
 package view;
 
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -24,7 +23,6 @@ import java.util.Objects;
 
 import static model.graphicModel.User.getUsersFromDataBase;
 import static model.graphicModel.User.setPlayers;
-
 
 public class MainMenuController extends Controller {
     private static MainMenuController controller;
