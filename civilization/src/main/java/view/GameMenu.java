@@ -21,7 +21,7 @@ public class GameMenu extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         ProfileMenuGraphics.setStage(stage);
-        BorderPane parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/gameMenu.fxml")));
+        AnchorPane parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/gameMenu.fxml")));
         Scene scene = new Scene(parent);
         stage.setScene(scene);
         stage.show();

@@ -90,9 +90,9 @@ public class MainMenuController extends Controller {
             return new TableCell<>() {
                 @Override
                 protected void updateItem(String item, boolean empty) {
-                    super.updateItem(item, empty); //This is mandatory
+                    super.updateItem(item, empty);
 
-                    if (item == null || empty) { //If the cell is empty
+                    if (item == null || empty) {
                         setText(null);
                         setStyle("");
                     } else {
@@ -120,9 +120,9 @@ public class MainMenuController extends Controller {
             return new TableCell<>() {
                 @Override
                 protected void updateItem(Integer item, boolean empty) {
-                    super.updateItem(item, empty); //This is mandatory
+                    super.updateItem(item, empty);
 
-                    if (item == null || empty) { //If the cell is empty
+                    if (item == null || empty) {
                         setText(null);
                         setStyle("");
                     } else {
@@ -151,7 +151,7 @@ public class MainMenuController extends Controller {
         if (View.getIsLoggedIn() != null) {
             Button button = new Button("Score Table");
             Button logout = new Button("logout");
-            Button newGame = new Button("new Game");
+            Button newGame = new Button("Game Menu");
             newGame.setMinWidth(500);
             newGame.getStyleClass().add("button");
             logout.setMinWidth(500);
