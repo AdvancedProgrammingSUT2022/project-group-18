@@ -4,22 +4,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Ga">
+<BorderPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GameMenu">
 
     <stylesheets>
         <URL value="@../css/background.css" />
     </stylesheets>
-    <center>
-
-    </center>
-   <top>
-       <HBox alignment="CENTER" prefHeight="241.0" prefWidth="1080.0" spacing="600" BorderPane.alignment="CENTER">
-           <ProgressBar prefHeight="22.0" prefWidth="188.0" progress="1.0" />
-         <HBox prefHeight="242.0" prefWidth="316.0" />
-         <HBox prefHeight="242.0" prefWidth="0.0" />
-           <ProgressBar prefHeight="23.0" prefWidth="174.0" />
-       </HBox>
-   </top>
 
 
 </BorderPane>

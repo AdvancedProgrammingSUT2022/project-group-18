@@ -1,16 +1,30 @@
 package view;
-import model.unit.Unit;
+
 import controller.GameController;
-import view.Controller;
 import enums.Message;
 import enums.Regexes;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import model.BaseCivilization;
 import model.City;
+import model.unit.Unit;
 
+import java.util.Objects;
 import java.util.regex.Matcher;
+
 
 public class GameMenuView extends View {
     GameController controller = new GameController();
+    @Override
+    public void start(Stage stage) throws Exception {
+        ProfileMenuGraphics.setStage(stage);
+        AnchorPane parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/game.fxml")));
+        Scene scene = new Scene(parent);
+        stage.setScene(scene);
+        stage.show();
+    }
 
     public void run() {
         String input = getInput();
@@ -157,7 +171,7 @@ public class GameMenuView extends View {
         System.out.println(city.getCityGold());
     }
     public void citiesPanel(){
-        System.out.println(City.allCitis);
+        System.out.println(City.allCities);
     }
     public void unitsPanel(BaseCivilization civilization){
         System.out.println(civilization.getUnits());

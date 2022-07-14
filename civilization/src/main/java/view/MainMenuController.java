@@ -10,19 +10,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 import model.graphicModel.ProfilePhoto;
-import model.graphicModel.User;
 import model.graphicModel.UserProfile;
 
-import java.util.ArrayList;
 import java.util.Objects;
-
-import static model.graphicModel.User.getUsersFromDataBase;
-import static model.graphicModel.User.setPlayers;
 
 public class MainMenuController extends Controller {
     private static MainMenuController controller;

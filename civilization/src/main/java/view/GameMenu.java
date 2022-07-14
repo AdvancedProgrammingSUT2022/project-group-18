@@ -3,7 +3,6 @@ package view;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
@@ -21,7 +20,7 @@ public class GameMenu extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         ProfileMenuGraphics.setStage(stage);
-        AnchorPane parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/gameMenu.fxml")));
+        BorderPane parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/gameMenuController.fxml")));
         Scene scene = new Scene(parent);
         stage.setScene(scene);
         stage.show();

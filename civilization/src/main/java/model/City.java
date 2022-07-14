@@ -1,6 +1,5 @@
 package model;
 
-import com.google.gson.annotations.SerializedName;
 import controller.CombatController;
 import enums.UnitEnum;
 import model.Resource.Resources;
@@ -33,18 +32,42 @@ public class City {
     private CityView cityView = new CityView();
     private boolean isCapital;
     private BaseCivilization Creator;
+    double x, y;
     public int hitPoints = 20;
     private ArrayList<Resources> resources = new ArrayList<>();
-    public static ArrayList<City> allCitis = new ArrayList<>();
+    public static ArrayList<City> allCities = new ArrayList<>();
 
 
     public City() {
         this.unemployedCitizen = new ArrayList<>();
         this.citizenWorkers = new HashMap<>();
-        allCitis.add(this);
+        allCities.add(this);
         View.setInCity(this);
     }
-    public void setHappiness(int amount){this.happiness = amount;}
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public void setY(double y) {
+        this.y = y;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public void setHappiness(int amount) {
+        this.happiness = amount;
+    }
+
+    public void addUnit(Unit unit) {
+        this.units.add(unit);
+    }
 
     public void setCityName(String cityName) {
         this.cityName = cityName;
@@ -92,9 +115,13 @@ public class City {
         } else return false;//transport unit to out of city
     }
 
-    public void setcityStrength(int amount){cityStrength = amount;}
+    public void setcityStrength(int amount) {
+        cityStrength = amount;
+    }
 
-    public void setCityHitPoint(int amount){hitPoints = amount;}
+    public void setCityHitPoint(int amount) {
+        hitPoints = amount;
+    }
 
     public String getCityName() {
         return cityName;
@@ -136,23 +163,31 @@ public class City {
         return civilianUnit;
     }
 
-    public int getHappiness(){return happiness;}
+    public int getHappiness() {
+        return happiness;
+    }
 
-    public int getcityStrength(){return cityStrength;}
+    public int getcityStrength() {
+        return cityStrength;
+    }
 
-    public int getCityHitPoint(){return hitPoints;}
+    public int getCityHitPoint() {
+        return hitPoints;
+    }
+
     public ArrayList<Worker> getUnemployedCitizen() {
         return unemployedCitizen;
     }
 
-    public void decreaseCityGold(){
-        cityGold-=10;
+    public void decreaseCityGold() {
+        cityGold -= 10;
     }
 
-    public void increasPopulation(BaseCivilization civilization){
-        cityPopulation+=10;
+    public void increasPopulation(BaseCivilization civilization) {
+        cityPopulation += 10;
         civilization.decreaseHappiness();
     }
+
     public void lockCitizen(Worker citizen) {
         Tile tile = this.originTile;
         citizenWorkers.put(tile, citizen);
@@ -179,7 +214,7 @@ public class City {
         owner.decreaseGold();
         cityView.showCostOfTile(tile);
         tile.incraerseCost(10);//TODO check the amount
-        this.cityGold --;
+        this.cityGold--;
     }
 
     public void returnToMap() {
@@ -272,29 +307,31 @@ public class City {
     }
 
     public boolean haveEnoughFood() {
-        if(this.cityFood < this.cityPopulation * 2) {
+        if (this.cityFood < this.cityPopulation * 2) {
             return false;
         }
         return true;
     }
+
     public boolean canMakeANewCitizen() {
-        if(cityFood > cityPopulation * 2 + 25)
+        if (cityFood > cityPopulation * 2 + 25)
             return true;
         return false;
     }
+
     public void nextTurn() {
         CombatController controller = new CombatController();
-        if(!haveEnoughFood()) {
-            int food = cityFood/2;
+        if (!haveEnoughFood()) {
+            int food = cityFood / 2;
             for (int i = 0; i < food; i++) {
-                units.remove(units.size()-1); // is it true?
+                units.remove(units.size() - 1); // is it true?
             }
         } else {
             cityFood -= 2 * cityPopulation;
         }
-        if(owner.getHappiness()<0)
-            View.getInCity().setCityFood((int)(cityFood * (0.33)));
-        if(canMakeANewCitizen())
+        if (owner.getHappiness() < 0)
+            View.getInCity().setCityFood((int) (cityFood * (0.33)));
+        if (canMakeANewCitizen())
             UnitEnum.getUnits(UnitEnum.WORKER);
         controller.safeDeleteCity();
     }
@@ -302,15 +339,15 @@ public class City {
     public int getHitPoints() {
         return hitPoints;
     }
+
     public void decreaseHealth(int amount) {
         hitPoints -= amount;
     }
 
-    public void unitPurchase(Unit unit){
+    public void unitPurchase(Unit unit) {
         units.add(unit);
         cityGold--;
     }
-
 
 
 }

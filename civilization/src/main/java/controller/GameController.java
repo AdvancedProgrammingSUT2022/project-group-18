@@ -6,7 +6,6 @@ import javafx.animation.Timeline;
 import javafx.util.Duration;
 import model.BaseCivilization;
 import model.City;
-import model.graphicModel.User;
 import model.unit.Melee;
 import model.unit.Ranged;
 import model.unit.Unit;
@@ -28,7 +27,7 @@ public class GameController {
         return notifs;
     }
     public City getCityByName(String name){
-        for (City city : City.allCitis){
+        for (City city : City.allCities){
             if (city.getCityName().equals(name)) return city;
         }
         return null;
@@ -55,7 +54,7 @@ public class GameController {
         return null;
     }
     public City getCityByGps(int x, int y){
-        for (City city : City.allCitis){
+        for (City city : City.allCities){
             if (city.getOriginTile().getX()==x && city.getOriginTile().getY()==y) return city;
         }
         return null;

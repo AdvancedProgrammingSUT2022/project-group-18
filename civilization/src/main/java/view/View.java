@@ -1,5 +1,6 @@
 package view;
 
+import javafx.application.Application;
 import model.BaseCivilization;
 import model.City;
 import model.graphicModel.User;
@@ -7,7 +8,7 @@ import model.graphicModel.User;
 import java.util.Locale;
 import java.util.Scanner;
 
-public abstract class View {
+public abstract class View extends Application {
     private static final Scanner scanner = new Scanner(System.in);
     private static String inMenu = "Login Menu";
     private static User isLoggedIn = null;
@@ -27,7 +28,7 @@ public abstract class View {
     public static String getInMenu() {
         return inMenu;
     }
-    private static City inCity = null;
+    private static City inCity = new City();
     private static BaseCivilization civilization = null;
 
     public static void setCivilization(BaseCivilization civilization) {View.civilization = civilization;}

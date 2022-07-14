@@ -11,7 +11,6 @@ public class ProfilePhoto extends Rectangle {
 
     @SerializedName("photoName")
     private String name;
-    //private Image image;
     private static ArrayList<ProfilePhoto> photos = new ArrayList<>();
 
     public ProfilePhoto(String name) throws IOException {
@@ -27,13 +26,7 @@ public class ProfilePhoto extends Rectangle {
         return name;
     }
 
-    public static ProfilePhoto getPhotoByName(String name) {
-        for (ProfilePhoto photo : photos) {
-            if (photo.getName().equals(name))
-                return photo;
-        }
-        return null;
-    }
+
 
 
 }
