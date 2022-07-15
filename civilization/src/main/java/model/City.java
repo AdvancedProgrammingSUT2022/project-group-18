@@ -45,6 +45,11 @@ public class City {
         View.setInCity(this);
     }
 
+    public void addBuilding(Building building) {
+        this.buildings.add(building);
+    }
+
+
     public void setX(double x) {
         this.x = x;
     }
@@ -221,9 +226,6 @@ public class City {
         return;
     }
 
-    public void setBuildings(Building buildings) {
-        this.buildings.add(buildings);
-    }
 
     public ArrayList<Building> getBuildings() {
         return buildings;

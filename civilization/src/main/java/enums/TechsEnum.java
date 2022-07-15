@@ -2,6 +2,7 @@ package enums;
 
 
 import model.techs.Technology;
+import view.View;
 
 public enum TechsEnum {
     AGRI_CULTURE("Agriculture"),
@@ -63,7 +64,7 @@ public enum TechsEnum {
     }
 
     public static boolean technologyCheck(TechsEnum name) {
-        for (Technology techs : Technology.getTechnologies()) {
+        for (Technology techs : View.getCivilization().getTechnologies()) {
             if (techs.getName().equals(name.toString()))
                 return true;
         }

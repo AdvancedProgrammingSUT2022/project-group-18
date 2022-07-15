@@ -52,6 +52,12 @@ public class Unit extends ImageView {
 
     }
 
+    public void move(int x, int y) {
+        this.setX(x);
+        this.setY(y);
+    }
+
+
     public int getCombatStrength() {
         return combatStrength;
     }
