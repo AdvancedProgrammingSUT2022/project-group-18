@@ -1,14 +1,17 @@
 package view;
 
 import controller.GameController;
+import enums.BuildingEnum;
 import enums.Message;
 import enums.Regexes;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.BaseCivilization;
+import model.Building;
 import model.City;
 import model.unit.Unit;
 
@@ -24,9 +27,6 @@ public class GameMenuView extends View {
         ProfileMenuGraphics.setStage(stage);
         AnchorPane parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/game.fxml")));
         Scene scene = new Scene(parent);
-        Image image = new Image(GameMenuView.class.getResource("/imag.jpg").toExternalForm());
-        stage.getIcons().add(image);
-
         stage.setScene(scene);
         stage.show();
 
