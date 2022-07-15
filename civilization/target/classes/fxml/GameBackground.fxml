@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.Double?>
+<?import java.net.URL?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Polygon?>
+
+<AnchorPane prefHeight="780.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.BackController">
+   <stylesheets>
+      <URL value="@../css/GameBackground.css" />
+   </stylesheets>
+   <children>
+      <Polygon id="poly" fill="DODGERBLUE" layoutX="278.0" layoutY="236.0" stroke="BLACK" strokeType="INSIDE">
+        <points>
+          <Double fx:value="-50.0" />
+          <Double fx:value="40.0" />
+          <Double fx:value="50.0" />
+          <Double fx:value="40.0" />
+          <Double fx:value="0.0" />
+          <Double fx:value="-60.0" />
+        </points>
+      </Polygon>
+      <ImageView layoutX="826.0" layoutY="207.0">
+         <image>
+            <Image url="@../polygon/grass_12.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>
