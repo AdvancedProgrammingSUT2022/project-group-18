@@ -1,5 +1,7 @@
 package model.techs;
 
+import view.View;
+
 import java.util.ArrayList;
 
 public class Technology {
@@ -8,17 +10,7 @@ public class Technology {
     private String prerequisiteTechs;
     private String leadsToTechs;
     private String unlocks;
-    private static ArrayList<Technology> technologies = new ArrayList<>();
 
-    public Technology(String name, Integer cast, String prerequisiteTechs, String leadsToTechs, String unlocks, String type, String note) {
-        this.name = name;
-        this.cast = cast;
-        this.prerequisiteTechs = prerequisiteTechs;
-        this.leadsToTechs = leadsToTechs;
-        this.unlocks = unlocks;
-
-        Technology.technologies.add(this);
-    }
 
     public Technology(String name, Integer cast, String prerequisiteTechs, String leadsToTechs, String unlocks) {
         this.name = name;
@@ -26,7 +18,7 @@ public class Technology {
         this.prerequisiteTechs = prerequisiteTechs;
         this.leadsToTechs = leadsToTechs;
         this.unlocks = unlocks;
-        technologies.add(this);
+        View.getCivilization().addTechnology(this);
     }
 
     public void setName(String name) {
@@ -69,11 +61,4 @@ public class Technology {
         return unlocks;
     }
 
-    public static void setTechnologies(Technology technologies) {
-        Technology.technologies.add(technologies);
-    }
-
-    public static ArrayList<Technology> getTechnologies() {
-        return technologies;
-    }
 }

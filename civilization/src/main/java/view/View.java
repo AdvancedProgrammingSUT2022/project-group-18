@@ -12,6 +12,8 @@ public abstract class View extends Application {
     private static final Scanner scanner = new Scanner(System.in);
     private static String inMenu = "Login Menu";
     private static User isLoggedIn = null;
+    private static City inCity = null;
+    private static BaseCivilization civilization = null;
 
     public static void setIsLoggedIn(User isLoggedIn) {View.isLoggedIn = isLoggedIn;}
     public static User getIsLoggedIn() {return isLoggedIn;}
@@ -28,8 +30,7 @@ public abstract class View extends Application {
     public static String getInMenu() {
         return inMenu;
     }
-    private static City inCity = new City();
-    private static BaseCivilization civilization = null;
+
 
     public static void setCivilization(BaseCivilization civilization) {View.civilization = civilization;}
     public static BaseCivilization getCivilization() {return civilization;}

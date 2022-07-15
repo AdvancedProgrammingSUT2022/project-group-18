@@ -5,6 +5,7 @@ import controller.DataBase;
 import enums.UnitEnum;
 import model.Resource.Resources;
 import model.graphicModel.User;
+import model.techs.Technology;
 import model.unit.Melee;
 import model.unit.Ranged;
 import model.unit.Unit;
@@ -31,6 +32,7 @@ public class BaseCivilization {
     public static ArrayList<City> allCities  = new ArrayList<>();//It's a list of all cities without considering their civilization
     public static ArrayList<Unit> allUnits = new ArrayList<>();// the same as previous
     private static ArrayList<Resources> resources = new ArrayList<>();
+    public ArrayList<Technology> technologies = new ArrayList<>();
     public static ArrayList<String> notifications = new ArrayList<>();
 
     public BaseCivilization () {
@@ -66,6 +68,14 @@ public class BaseCivilization {
         this.cityNames = cityNames;
         this.name = name;
         this.cities = new ArrayList<>();
+    }
+
+    public void addTechnology(Technology technology) {
+        this.technologies.add(technology);
+    }
+
+    public ArrayList<Technology> getTechnologies() {
+        return technologies;
     }
 
     public boolean sameCivilization() {

@@ -5,6 +5,7 @@ import enums.Message;
 import enums.Regexes;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.BaseCivilization;
@@ -17,13 +18,22 @@ import java.util.regex.Matcher;
 
 public class GameMenuView extends View {
     GameController controller = new GameController();
+
     @Override
     public void start(Stage stage) throws Exception {
         ProfileMenuGraphics.setStage(stage);
         AnchorPane parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/game.fxml")));
         Scene scene = new Scene(parent);
+        Image image = new Image(GameMenuView.class.getResource("/imag.jpg").toExternalForm());
+        stage.getIcons().add(image);
+
         stage.setScene(scene);
         stage.show();
+
+    }
+
+    public void initialize() {
+
     }
 
     public void run() {
@@ -35,7 +45,7 @@ public class GameMenuView extends View {
             increaseGold(matcher);
         } else if ((matcher = Regexes.getCommand(input, Regexes.INCREASE_HAPPINESS)) != null) {
             increaseHappiness(matcher);
-        }else if (Regexes.getCommand(input, Regexes.INCREAS_CITY_HP) != null)
+        } else if (Regexes.getCommand(input, Regexes.INCREAS_CITY_HP) != null)
             increaseCityHP(matcher);
         else if (Regexes.getCommand(input, Regexes.INCREASE_CITY_STRENGTH) != null)
             increaseCityStrength(matcher);
@@ -61,23 +71,22 @@ public class GameMenuView extends View {
         } else if (Regexes.getCommand(input, Regexes.DEALS) != null) {
             System.out.println("we have no deals in first phase");
         } else if ((matcher = Regexes.getCommand(input, Regexes.UNIT_COMBAT_POSITION)) != null) {
-            controller.getUnMilitaryUnitByGPS(Integer.parseInt(matcher.group("X")) , Integer.parseInt(matcher.group("Y")));
+            controller.getUnMilitaryUnitByGPS(Integer.parseInt(matcher.group("X")), Integer.parseInt(matcher.group("Y")));
         } else if ((matcher = Regexes.getCommand(input, Regexes.UNIT_NONCOMBAT_POSITION)) != null) {
-            controller.getMilitaryUnitByGPS(Integer.parseInt(matcher.group("X")) , Integer.parseInt(matcher.group("Y")));
+            controller.getMilitaryUnitByGPS(Integer.parseInt(matcher.group("X")), Integer.parseInt(matcher.group("Y")));
         } else if ((matcher = Regexes.getCommand(input, Regexes.CITY_NAME)) != null) {
             City city = controller.getCityByName(matcher.group("name"));
             economicOverview(city);
             View.setInCity(city);
         } else if ((matcher = Regexes.getCommand(input, Regexes.CITY_POSITION)) != null) {
-            City city = controller.getCityByGps(Integer.parseInt(matcher.group("X")) , Integer.parseInt(matcher.group("Y")));
+            City city = controller.getCityByGps(Integer.parseInt(matcher.group("X")), Integer.parseInt(matcher.group("Y")));
             economicOverview(city);
             View.setInCity(city);
         } else if ((matcher = Regexes.getCommand(input, Regexes.MOVETO_POSITION)) != null) {
-            if(1 == 1){//Unit.canMove
-            System.out.println( "movement mission was successful" );
-             }
-            else
-            System.out.println( "movement mission wasn't successful" );
+            if (1 == 1) {//Unit.canMove
+                System.out.println("movement mission was successful");
+            } else
+                System.out.println("movement mission wasn't successful");
         } else if (Regexes.getCommand(input, Regexes.SLEEP) != null) {
             System.out.println(Message.SLEEP);
         } else if (Regexes.getCommand(input, Regexes.ALERT) != null) {
@@ -141,13 +150,13 @@ public class GameMenuView extends View {
             Unit.moveUnit();
             System.out.println("move to right");
         } else if ((matcher = Regexes.getCommand(input, Regexes.MOVE_LEFT)) != null) {
-             Unit.moveUnit();
+            Unit.moveUnit();
             System.out.println("move to right");
         } else if ((matcher = Regexes.getCommand(input, Regexes.MOVE_UP)) != null) {
-             Unit.moveUnit();
+            Unit.moveUnit();
             System.out.println("move to right");
         } else if ((matcher = Regexes.getCommand(input, Regexes.MOVE_DOWN)) != null) {
-             Unit.moveUnit();
+            Unit.moveUnit();
             System.out.println("move to right");
         } else
             System.out.println(Message.INVALID);
@@ -155,52 +164,61 @@ public class GameMenuView extends View {
     }
 
 
-    public void economicOverview(City city){
-        System.out.println("Population : " + city.getCityPopulation() + " Strength : " + city.getCityStrength()+
-                " Food : "+ city.getCityFood() +" Science : " + city.getOwner().getScienceTotal() +
+    public void economicOverview(City city) {
+        System.out.println("Population : " + city.getCityPopulation() + " Strength : " + city.getCityStrength() +
+                " Food : " + city.getCityFood() + " Science : " + city.getOwner().getScienceTotal() +
                 " Gold : " + city.getCityGold()/*+  " p" + CityView*/);
     }
 
-    public void militaryOverview(City city){
-        for (Unit unit : city.getUnits()){
+    public void militaryOverview(City city) {
+        for (Unit unit : city.getUnits()) {
             System.out.println(unit.getName());
         }
     }
-    public void demographicPanel(City city){
+
+    public void demographicPanel(City city) {
         System.out.println(city.getCityPopulation());
         System.out.println(city.getCityGold());
     }
-    public void citiesPanel(){
+
+    public void citiesPanel() {
         System.out.println(City.allCities);
     }
-    public void unitsPanel(BaseCivilization civilization){
+
+    public void unitsPanel(BaseCivilization civilization) {
         System.out.println(civilization.getUnits());
     }
-    public void researchPanel(){
+
+    public void researchPanel() {
         //TODO complete after research completed
     }
-    public void diplimacypanel(){
+
+    public void diplimacypanel() {
         System.out.println(controller.Score);
     }
+
     public void increaseTurn(Matcher matcher) {
         int amount = Integer.parseInt(matcher.group("amount"));
-        controller.turn+=amount;
+        controller.turn += amount;
     }
+
     public void increaseGold(Matcher matcher) {
         int amount = Integer.parseInt(matcher.group("amount"));
         View.getInCity().setCityGold(View.getInCity().getCityGold() + amount);
     }
+
     public void increaseHappiness(Matcher matcher) {
         int amount = Integer.parseInt(matcher.group("amount"));
-        View.getInCity().setHappiness(View.getInCity().getHappiness() +amount);
-    }
-    public void increaseCityHP(Matcher matcher  ){
-        int amount = Integer.parseInt(matcher.group("amount"));
-        View.getInCity().setCityHitPoint(View.getInCity().getCityHitPoint()+ amount);
+        View.getInCity().setHappiness(View.getInCity().getHappiness() + amount);
     }
 
-    public void increaseCityStrength(Matcher matcher  ){
+    public void increaseCityHP(Matcher matcher) {
         int amount = Integer.parseInt(matcher.group("amount"));
-        View.getInCity().setcityStrength(View.getInCity().getCityStrength()+ amount);
+        View.getInCity().setCityHitPoint(View.getInCity().getCityHitPoint() + amount);
+    }
+
+    public void increaseCityStrength(Matcher matcher) {
+        int amount = Integer.parseInt(matcher.group("amount"));
+        View.getInCity().setcityStrength(View.getInCity().getCityStrength() + amount);
     }
 }
