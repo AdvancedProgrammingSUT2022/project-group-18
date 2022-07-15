@@ -1,12 +1,15 @@
 package model;
 
 import com.google.gson.annotations.SerializedName;
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Polygon;
 import model.Resource.Resources;
 import model.improvements.Improvement;
 import model.unit.Unit;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Tile extends Polygon {
     @SerializedName("tileType")
@@ -80,5 +83,23 @@ public class Tile extends Polygon {
 
     public void incraerseGoldOutput(int amount) {
         goldOutput += amount;
+    }
+
+    public void setCoordinates(double x , double y){
+        this.getPoints().addAll(new Double[]{
+                x, y-90,
+                x+80, y-45,
+                x+80, y+45,
+                x, y+90,
+                x-80, y+45,
+                x-80, y-45,
+        });
+    }
+
+    public void setImage(String name){
+        String[] in = name.split("_");
+        this.setTileType(in[0]);
+        Image image = new Image(Objects.requireNonNull(getClass().getResource("/polygon/"+name+".png")).toExternalForm());
+        this.setFill(new ImagePattern(image));
     }
 }
