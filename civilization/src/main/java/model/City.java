@@ -218,7 +218,7 @@ public class City {
     public void buyTile(Tile tile) {
         owner.decreaseGold();
         cityView.showCostOfTile(tile);
-        tile.incraerseCost(10);//TODO check the amount
+        tile.increaseCost(10);//TODO check the amount
         this.cityGold--;
     }
 
