@@ -3,6 +3,7 @@ package enums;
 import model.Building;
 
 public enum BuildingEnum {
+    PALACE("Palace"),
     BARRACKS("Barracks"),
     GRANARY("Granary"),
     LIBRARY("Library"),
@@ -157,6 +158,8 @@ public enum BuildingEnum {
             case STOCK_EXCHANGE:
                 if (TechsEnum.technologyCheck(TechsEnum.ELECTRICITY))
                     return new Building(STOCK_EXCHANGE.toString(), 650, 0);
+            case PALACE:
+                return new Building(PALACE.toString(), 0, 0);
         }
         return null;
     }

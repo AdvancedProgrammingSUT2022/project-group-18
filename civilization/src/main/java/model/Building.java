@@ -1,7 +1,9 @@
 package model;
 
+import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import view.View;
 
 
 public class Building {
@@ -15,6 +17,7 @@ public class Building {
         this.cost = cost;
         this.maintenance = maintenance;
         this.icon.setImage(new Image(Building.class.getResource("/BuildingIcons/" + name + ".png").toExternalForm()));
+        View.getInCity().addBuilding(this);
 
     }
 

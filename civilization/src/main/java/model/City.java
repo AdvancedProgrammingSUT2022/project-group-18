@@ -43,7 +43,6 @@ public class City {
         this.unemployedCitizen = new ArrayList<>();
         this.citizenWorkers = new HashMap<>();
         allCities.add(this);
-        View.setInCity(this);
     }
 
     public void addTileToCity(Tile tile) {
