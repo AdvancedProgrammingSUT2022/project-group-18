@@ -59,11 +59,7 @@ public enum BuildingEnum {
                     return new Building(BARRACKS.toString(), 80, 1);
             case GRANARY:
                 if (TechsEnum.technologyCheck(TechsEnum.POTTERY))
-<<<<<<< HEAD
-                return new Building(GRANARY.toString(), 100, 1);
-=======
                     return new Building(GRANARY.toString(), 100, 1);
->>>>>>> origin
             case LIBRARY:
                 if (TechsEnum.technologyCheck(TechsEnum.WRITING))
                     return new Building(LIBRARY.toString(), 80, 1);
