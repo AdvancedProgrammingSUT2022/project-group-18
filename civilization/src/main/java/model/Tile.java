@@ -25,9 +25,10 @@ public class Tile extends Polygon {
     private static ArrayList<Tile> tiles = new ArrayList<>();
     private static ArrayList<Improvement> improvements = new ArrayList<>();
 
-    public Tile(int x, int y) {
+    public Tile(int x, int y, String tileType) {
         this.x = x;
         this.y = y;
+        this.tileType = tileType;
         this.tiles.add(this);
     }
 

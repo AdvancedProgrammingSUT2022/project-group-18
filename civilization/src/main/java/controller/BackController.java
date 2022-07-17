@@ -12,6 +12,7 @@ import model.Tile;
 import model.unit.Settler;
 
 import java.util.Objects;
+import java.util.Set;
 
 public class BackController extends Application {
 
@@ -26,26 +27,27 @@ public class BackController extends Application {
         Scene scene = new Scene(pane);
         //makingPolygons();
         foor();
-        Settler settler = (Settler) UnitEnum.getUnits(UnitEnum.SETTLER);
-        settler.setX(400);
-        settler.setY(500);
+
         scene.setOnMouseClicked(event -> {
             System.out.println("--------");
-            Tile tile;
-            if((tile = Tile.getTileFromCoordinate(settler.getX(), settler.getY())) != null) {
-                System.out.println("yes");
-                System.out.println(tile.getX());
-                System.out.println(event.getX());
-                System.out.println(settler.getX());
-                settler.setX(tile.getX());
-            }
+            System.out.println(event.getX());
+            System.out.println(event.getY());
             System.out.println();
         });
-        pane.getChildren().add(settler);
+
+        Settler settler = (Settler) UnitEnum.getUnits(UnitEnum.SETTLER);
+        Tile tile = Tile.getTileFromCoordinate(500, 500);
+        settler.setX(tile.getX() - 40);
+        settler.setY(tile.getY() - 40);
+        System.out.println(tile.getTileType());
         Button button = new Button("found  city");
         button.setLayoutX(1);
         button.setLayoutY(406);
-        pane.getChildren().add(button);
+        button.setPrefHeight(63);
+        button.setPrefWidth(77);
+        int size = pane.getChildren().size() - 1;
+        pane.getChildren().add(size, button);
+        pane.getChildren().add(size + 1, settler);
 
         stage.setResizable(false);
 
@@ -113,17 +115,17 @@ public class BackController extends Application {
                     if (j % 2 == 0) {
                         int x = 100 + (i * 160);
                         int y = 100 + (j * 135);
-                        Tile tile = new Tile(x, y);
+                        Tile tile = new Tile(x, y, back);
                         if (x + 80 < 1500 && x - 80 > 0 && y - 45 > 0)
-                        tile.setCoordinates(x, y);
+                            tile.setCoordinates(x, y);
                         tile.setImage(back);
                         pane.getChildren().add(tile);
                     } else {
                         int x = 180 + (i * 160);
                         int y = 100 + (j * 135);
-                        Tile tile = new Tile(x, y);
-                        if (x+80 < 1500 && x-80 > 0 && y+45 < 780 && y-45 > 0)
-                        tile.setCoordinates(x, y);
+                        Tile tile = new Tile(x, y, back);
+                        if (x + 80 < 1500 && x - 80 > 0 && y + 45 < 780 && y - 45 > 0)
+                            tile.setCoordinates(x, y);
                         tile.setImage(back);
                         pane.getChildren().add(tile);
                     }
