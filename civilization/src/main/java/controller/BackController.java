@@ -15,7 +15,6 @@ import model.Tile;
 import model.unit.Settler;
 
 import java.util.Objects;
-import java.util.Set;
 
 public class BackController extends Application {
 
@@ -68,6 +67,8 @@ public class BackController extends Application {
             double x = settler.getX();
             double y = settler.getY();
             Tile capital = Tile.getTileFromCoordinate(x, y);
+            x = capital.getX();
+            y = capital.getY();
             City city = new City();
             city.addTileToCity(capital);
             capital = Tile.getTileFromCoordinate(x - 80, y - 135);
@@ -93,8 +94,8 @@ public class BackController extends Application {
             Building building = BuildingEnum.makeBuilding(BuildingEnum.PALACE);
             building.getIcon().setFitHeight(120);
             building.getIcon().setFitWidth(120);
-            building.getIcon().setX(x - 20);
-            building.getIcon().setY(y - 20);
+            building.getIcon().setX(x - 55);
+            building.getIcon().setY(y - 60);
             pane.getChildren().add(size, building.getIcon());
             pane.getChildren().remove(button);
 
