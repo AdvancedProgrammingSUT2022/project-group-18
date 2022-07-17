@@ -58,7 +58,7 @@ public enum BuildingEnum {
                 if (TechsEnum.technologyCheck(TechsEnum.BRONZE_WORKING))
                     return new Building(BARRACKS.toString(), 80, 1);
             case GRANARY:
-                if (TechsEnum.technologyCheck(TechsEnum.POTTERY)
+                if (TechsEnum.technologyCheck(TechsEnum.POTTERY))
                 return new Building(GRANARY.toString(), 100, 1);
             case LIBRARY:
                 if (TechsEnum.technologyCheck(TechsEnum.WRITING))

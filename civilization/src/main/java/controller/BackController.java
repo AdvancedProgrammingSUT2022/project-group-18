@@ -81,8 +81,8 @@ public class BackController extends Application {
     public void foor() {
         String[] name = {"dirt", "grass", "sand", "stone"};
         int rand =0;
-        for (int i = -1; i < 12; i++) {
-            for (int j = -2; j < 6; j++) {
+        for (int i = 1; i < 12; i++) {
+            for (int j = 1; j < 6; j++) {
                 rand = (int) Math.floor(Math.random()*100);
                 if (rand%6!=0){
                     String back = name[rand % 4 ] + (rand % 4 +1);
