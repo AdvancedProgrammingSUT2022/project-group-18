@@ -30,8 +30,12 @@ public class BackController extends Application {
 
         scene.setOnMouseClicked(event -> {
             System.out.println("--------");
-            System.out.println(event.getX());
-            System.out.println(event.getY());
+            Tile ti ;
+            if((ti = Tile.getTileFromCoordinate(event.getX(), event.getY()) )!= null) {
+                System.out.println(ti.getX() + " " + ti.getY());
+            }
+            /*System.out.println(event.getX());
+            System.out.println(event.getY());*/
             System.out.println();
         });
 
@@ -45,6 +49,10 @@ public class BackController extends Application {
         button.setLayoutY(406);
         button.setPrefHeight(63);
         button.setPrefWidth(77);
+        button.setOnMouseClicked(event -> {
+            Tile capital = Tile.getTileFromCoordinate(settler.getX(), settler.getY());
+
+        });
         int size = pane.getChildren().size() - 1;
         pane.getChildren().add(size, button);
         pane.getChildren().add(size + 1, settler);
@@ -109,7 +117,6 @@ public class BackController extends Application {
         for (int i = -1; i < 12; i++) {
             for (int j = -2; j < 6; j++) {
                 rand = (int) Math.floor(Math.random() * 100);
-                if (rand % 6 != 0) {
                     String back = name[rand % 4] + (rand % 4 + 1);
 
                     if (j % 2 == 0) {
@@ -130,7 +137,7 @@ public class BackController extends Application {
                         pane.getChildren().add(tile);
                     }
 
-                }
+
 
             }
         }

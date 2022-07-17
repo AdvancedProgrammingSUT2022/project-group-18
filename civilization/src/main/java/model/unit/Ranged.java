@@ -4,8 +4,8 @@ import model.BaseCivilization;
 import model.City;
 
 public class Ranged extends Unit{
-    public Ranged(String name, int movement, int combatStrength,int combatStrengthRanged,int ranged, int productionCost, boolean isMilitary,  boolean hasTerrainCost) {
-       super(name, movement, productionCost);
+    public Ranged(String name, int movement, int combatStrength,int combatStrengthRanged,int ranged, int productionCost, boolean isMilitary,  boolean hasTerrainCost, City city) {
+       super(name, movement, productionCost, city);
        this.combatStrength = combatStrength;
        this.combatStrengthRanged = combatStrengthRanged;
        this.ranged = ranged;

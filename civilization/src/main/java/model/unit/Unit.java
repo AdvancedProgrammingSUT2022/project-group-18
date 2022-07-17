@@ -38,7 +38,7 @@ public class Unit extends ImageView {
     public boolean getCommand = true;
 
 
-    public Unit(String name, int movement, int productionCost) {
+    public Unit(String name, int movement, int productionCost, City city) {
         this.name = name;
         this.movement = movement;
         this.productionCost = productionCost;

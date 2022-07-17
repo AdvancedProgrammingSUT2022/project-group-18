@@ -23,10 +23,6 @@ public class City {
     private int cityStrength;
     private int happiness;
     private BaseCivilization owner;
-    private ArrayList<Worker> unemployedCitizen;
-    private HashMap<Tile, Worker> citizenWorkers;
-    private ArrayList<Unit> units = new ArrayList<>();
-    private ArrayList<Building> buildings = new ArrayList<>();
     private Unit militaryUnit;
     private Unit civilianUnit;
     private CityView cityView = new CityView();
@@ -34,8 +30,13 @@ public class City {
     private BaseCivilization Creator;
     double x, y;
     public int hitPoints = 20;
+    private HashMap<Tile, Worker> citizenWorkers;
+    private ArrayList<Worker> unemployedCitizen;
+    private ArrayList<Unit> units = new ArrayList<>();
+    private ArrayList<Building> buildings = new ArrayList<>();
     private ArrayList<Resources> resources = new ArrayList<>();
     public static ArrayList<City> allCities = new ArrayList<>();
+    private ArrayList<Tile> cityTiles = new ArrayList<>();
 
 
     public City() {
@@ -43,6 +44,14 @@ public class City {
         this.citizenWorkers = new HashMap<>();
         allCities.add(this);
         View.setInCity(this);
+    }
+
+    public void addTileToCity(Tile tile) {
+        cityTiles.add(tile);
+    }
+
+    public ArrayList<Tile> getCityTiles() {
+        return cityTiles;
     }
 
     public void addBuilding(Building building) {
