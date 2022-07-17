@@ -1,6 +1,5 @@
 package enums;
 
-
 import model.techs.Technology;
 import view.View;
 

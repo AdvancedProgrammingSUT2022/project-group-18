@@ -5,8 +5,8 @@ import model.BaseCivilization;
 import model.City;
 
 public class Melee extends Unit {
-    public Melee(String name, int movement,int combatStrength, int productionCost, boolean isMilitary) {
-        super(name, movement, productionCost);
+    public Melee(String name, int movement,int combatStrength, int productionCost, boolean isMilitary, City city) {
+        super(name, movement, productionCost, city);
         this.isMilitary = isMilitary;
         this.combatStrength=combatStrength;
     }

@@ -12,26 +12,29 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Tile extends Polygon {
-    @SerializedName("tileType")
+
     private String tileType;
-    @SerializedName("isUnderWork")
     public boolean isUnderWork = false;
-    @SerializedName("coordinate")
     private float x, y, width, height;
-    @SerializedName("city")
     private City city;
-    @SerializedName("units")
     private ArrayList<Unit> units;
-    @SerializedName("cost")
     private int cost;
-    @SerializedName("resources")
     private Resources resources = null;
-    @SerializedName("goldOutput")
     public int goldOutput;
-    @SerializedName("foodOutput")
     public int foodOutput;
-    @SerializedName("improvments")
+    private static ArrayList<Tile> tiles = new ArrayList<>();
     private static ArrayList<Improvement> improvements = new ArrayList<>();
+
+    public Tile(int x, int y, String tileType) {
+        this.x = x;
+        this.y = y;
+        this.tileType = tileType;
+        this.tiles.add(this);
+    }
+
+    public ArrayList<Tile> getTiles() {
+        return tiles;
+    }
 
     public static void setImprovements(Improvement improvements) {
         Tile.improvements.add(improvements);
@@ -53,7 +56,7 @@ public class Tile extends Polygon {
         return cost;
     }
 
-    public void incraerseCost(int amount) {
+    public void increaseCost(int amount) {
         cost += amount;
     }
 
@@ -73,19 +76,17 @@ public class Tile extends Polygon {
         return resources;
     }
 
-    public void incraerseGoldOutput(int amount) {
+    public void increaseGoldOutput(int amount) {
         goldOutput += amount;
     }
 
     public void setCoordinates(double x , double y){
-        this.getPoints().addAll(new Double[]{
-                x, y-90,
+        this.getPoints().addAll(x, y-90,
                 x+80, y-45,
                 x+80, y+45,
                 x, y+90,
                 x-80, y+45,
-                x-80, y-45,
-        });
+                x-80, y-45);
     }
 
     public void setImage(String name){
@@ -93,5 +94,25 @@ public class Tile extends Polygon {
         this.setTileType(in[0]);
         Image image = new Image(Objects.requireNonNull(getClass().getResource("/polygon/"+name+".png")).toExternalForm());
         this.setFill(new ImagePattern(image));
+    }
+
+    public static Tile getTileFromCoordinate(double x, double y) {
+        int n = 0;
+        GFG.Point p = new GFG.Point((int) x,(int) y);
+
+        for (Tile tile : tiles) {
+            GFG.Point polygon[] = {new GFG.Point((int) tile.getX(), (int) tile.getY() -90),
+                    new GFG.Point((int) tile.getX() + 80 , (int) tile.getY() - 45),
+                    new GFG.Point((int) tile.getX() + 80 , (int) tile.getY() + 45),
+                    new GFG.Point((int) tile.getX(), (int) tile.getY() + 90),
+                    new GFG.Point((int) tile.getX() -80, (int) tile.getY() + 45),
+                    new GFG.Point((int) tile.getX() - 80, (int) tile.getY() - 45)};
+            n = polygon.length;
+            if(GFG.isInside(polygon, n, p))
+                return tile;
+
+
+        }
+        return null;
     }
 }

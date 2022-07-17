@@ -3,7 +3,9 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane prefHeight="780" prefWidth="1500" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.GameMenuView">
+<?import javafx.scene.control.Button?>
+<AnchorPane prefHeight="780" prefWidth="1500" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="view.GameMenuView">
 
 
 </AnchorPane>

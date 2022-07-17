@@ -5,6 +5,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.City;
 
+import model.Tile;
 import model.techs.Technology;
 import view.LoginMenuController;
 import view.View;
@@ -37,7 +38,7 @@ public class Unit extends ImageView {
     public boolean getCommand = true;
 
 
-    public Unit(String name, int movement, int productionCost) {
+    public Unit(String name, int movement, int productionCost, City city) {
         this.name = name;
         this.movement = movement;
         this.productionCost = productionCost;
@@ -45,16 +46,16 @@ public class Unit extends ImageView {
         View.getInCity().addCityPopulation(1);
         View.getInCity().addUnit(this);
         this.setImage(new Image(Unit.class.getResource("/assest/Units/" + name + ".png").toExternalForm()));
-        this.setFitHeight(200);
-        this.setFitWidth(200);
+        this.setFitHeight(100);
+        this.setFitWidth(100);
         this.setX(View.getInCity().getX());
         this.setY(View.getInCity().getY());
 
     }
 
-    public void move(int x, int y) {
-        this.setX(x);
-        this.setY(y);
+    public void move(double x, double y) {
+        this.setX(x + this.getX());
+        this.setY(y + this.getY());
     }
 
 

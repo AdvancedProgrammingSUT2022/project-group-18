@@ -1,9 +1,9 @@
 package enums;
 
 import model.Building;
-import model.techs.Technology;
 
 public enum BuildingEnum {
+    PALACE("Palace"),
     BARRACKS("Barracks"),
     GRANARY("Granary"),
     LIBRARY("Library"),
@@ -30,7 +30,7 @@ public enum BuildingEnum {
     MUSEUM("Museum"),
     OPERA_HOUSE("OperaHouse"),
     PUBLIC_SCHOOL("PublicSchool"),
-    SATRAP_COURT("Satrap’sCourt"),
+    SATRAP_COURT("SatrapsCourt"),
     THEATER("Theater"),
     WINDMILL("Windmill"),
     ARSENAL("Arsenal"),
@@ -59,7 +59,11 @@ public enum BuildingEnum {
                     return new Building(BARRACKS.toString(), 80, 1);
             case GRANARY:
                 if (TechsEnum.technologyCheck(TechsEnum.POTTERY))
+<<<<<<< HEAD
                 return new Building(GRANARY.toString(), 100, 1);
+=======
+                    return new Building(GRANARY.toString(), 100, 1);
+>>>>>>> origin
             case LIBRARY:
                 if (TechsEnum.technologyCheck(TechsEnum.WRITING))
                     return new Building(LIBRARY.toString(), 80, 1);
@@ -158,6 +162,8 @@ public enum BuildingEnum {
             case STOCK_EXCHANGE:
                 if (TechsEnum.technologyCheck(TechsEnum.ELECTRICITY))
                     return new Building(STOCK_EXCHANGE.toString(), 650, 0);
+            case PALACE:
+                return new Building(PALACE.toString(), 0, 0);
         }
         return null;
     }

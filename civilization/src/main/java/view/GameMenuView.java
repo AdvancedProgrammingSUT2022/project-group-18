@@ -3,13 +3,21 @@ package view;
 import controller.GameController;
 import enums.Message;
 import enums.Regexes;
+import enums.UnitEnum;
+import javafx.animation.Animation;
+import javafx.animation.PathTransition;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
+import javafx.scene.control.Button;
+import javafx.scene.effect.Glow;
+import javafx.scene.effect.Shadow;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import model.BaseCivilization;
 import model.City;
+import model.unit.Settler;
 import model.unit.Unit;
 
 import java.util.Objects;
@@ -22,11 +30,26 @@ public class GameMenuView extends View {
     @Override
     public void start(Stage stage) throws Exception {
         ProfileMenuGraphics.setStage(stage);
-        AnchorPane parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/game.fxml")));
-        Scene scene = new Scene(parent);
-        Image image = new Image(GameMenuView.class.getResource("/imag.jpg").toExternalForm());
-        stage.getIcons().add(image);
+        AnchorPane pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/game.fxml")));
 
+        Settler settler = (Settler) UnitEnum.getUnits(UnitEnum.SETTLER);
+        settler.setX(200);
+        settler.setY(400);
+        Settler settler1 = (Settler) UnitEnum.getUnits(UnitEnum.SETTLER);
+        settler1.setX(400);
+        settler1.setY(700);
+        settler.setOnMouseClicked(event -> {
+            View.setSelectedUnit(settler);
+            //View.getSelectedUnit().setEffect(new Shadow());
+        });
+        settler1.setOnMouseClicked(event -> {
+            View.setSelectedUnit(settler1);
+
+        });
+        if(View.getSelectedUnit() != null)
+            View.getSelectedUnit().setEffect(new Shadow());
+        pane.getChildren().addAll(settler, settler1);
+        Scene scene = new Scene(pane);
         stage.setScene(scene);
         stage.show();
 
