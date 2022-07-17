@@ -22,10 +22,10 @@ public class Tile extends Polygon {
     private Resources resources = null;
     public int goldOutput;
     public int foodOutput;
-    private ArrayList<Tile> tiles = new ArrayList<>();
+    private static ArrayList<Tile> tiles = new ArrayList<>();
     private static ArrayList<Improvement> improvements = new ArrayList<>();
 
-    public Tile(City city, int x, int y) {
+    public Tile(int x, int y) {
         this.x = x;
         this.y = y;
         this.tiles.add(this);
@@ -101,5 +101,25 @@ public class Tile extends Polygon {
         this.setTileType(in[0]);
         Image image = new Image(Objects.requireNonNull(getClass().getResource("/polygon/"+name+".png")).toExternalForm());
         this.setFill(new ImagePattern(image));
+    }
+
+    public static Tile getTileFromCoordinate(double x, double y) {
+        int n = 0;
+        GFG.Point p = new GFG.Point((int) x,(int) y);
+
+        for (Tile tile : tiles) {
+            GFG.Point polygon[] = {new GFG.Point((int) tile.getX(), (int) tile.getY() -90),
+                    new GFG.Point((int) tile.getX() + 80 , (int) tile.getY() - 45),
+                    new GFG.Point((int) tile.getX() + 80 , (int) tile.getY() + 45),
+                    new GFG.Point((int) tile.getX(), (int) tile.getY() + 90),
+                    new GFG.Point((int) tile.getX() -80, (int) tile.getY() + 45),
+                    new GFG.Point((int) tile.getX() - 80, (int) tile.getY() - 45)};
+            n = polygon.length;
+            if(GFG.isInside(polygon, n, p))
+                return tile;
+
+
+        }
+        return null;
     }
 }

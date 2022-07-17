@@ -2,17 +2,14 @@ package controller;
 
 import enums.UnitEnum;
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import model.Tile;
 import model.unit.Settler;
-import view.View;
 
 import java.util.Objects;
 
@@ -34,21 +31,28 @@ public class BackController extends Application {
         settler.setY(500);
         scene.setOnMouseClicked(event -> {
             System.out.println("--------");
-            System.out.println(event.getX());
-            System.out.println(event.getY());
+            Tile tile;
+            if((tile = Tile.getTileFromCoordinate(settler.getX(), settler.getY())) != null) {
+                System.out.println("yes");
+                System.out.println(tile.getX());
+                System.out.println(event.getX());
+                System.out.println(settler.getX());
+                settler.setX(tile.getX());
+            }
             System.out.println();
         });
         pane.getChildren().add(settler);
         Button button = new Button("found  city");
         button.setLayoutX(1);
         button.setLayoutY(406);
-
         pane.getChildren().add(button);
+
         stage.setResizable(false);
 
         stage.setScene(scene);
         stage.show();
     }
+
 
 
 /*    public void makingPolygons() {
@@ -109,16 +113,16 @@ public class BackController extends Application {
                     if (j % 2 == 0) {
                         int x = 100 + (i * 160);
                         int y = 100 + (j * 135);
-                        Tile tile = new Tile(View.getInCity(), x, y);
-                        //if (x + 80 < 1500 && x - 80 > 0 && y - 45 > 0)
-                            tile.setCoordinates(x, y);
+                        Tile tile = new Tile(x, y);
+                        if (x + 80 < 1500 && x - 80 > 0 && y - 45 > 0)
+                        tile.setCoordinates(x, y);
                         tile.setImage(back);
                         pane.getChildren().add(tile);
                     } else {
                         int x = 180 + (i * 160);
                         int y = 100 + (j * 135);
-                        Tile tile = new Tile(View.getInCity(), x, y);
-                        //if (x+80 < 1500 && x-80 > 0 && y+45 < 780 && y-45 > 0)
+                        Tile tile = new Tile(x, y);
+                        if (x+80 < 1500 && x-80 > 0 && y+45 < 780 && y-45 > 0)
                         tile.setCoordinates(x, y);
                         tile.setImage(back);
                         pane.getChildren().add(tile);
