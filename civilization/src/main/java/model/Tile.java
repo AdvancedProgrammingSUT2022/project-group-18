@@ -68,14 +68,6 @@ public class Tile extends Polygon {
         return y;
     }
 
-    public float getWidth() {
-        return width;
-    }
-
-    public float getHeight() {
-        return height;
-    }
-
     public void setResources(Resources resources) {
         this.resources = resources;
     }
