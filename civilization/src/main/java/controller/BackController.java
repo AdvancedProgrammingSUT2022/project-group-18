@@ -7,12 +7,18 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.effect.Bloom;
+import javafx.scene.effect.Glow;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import model.Building;
 import model.City;
 import model.Tile;
 import model.unit.Settler;
+import model.unit.Unit;
+import view.View;
 
 import java.util.Objects;
 
@@ -22,14 +28,23 @@ public class BackController extends Application {
     private Button found;
     private AnchorPane pane;
     int size = 0;
+    int counter = 0;
+    boolean flag = false;
+    boolean moveFlag = false;
 
 
     @Override
     public void start(Stage stage) throws Exception {
         this.pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/GameBackground.fxml")));
         Scene scene = new Scene(pane);
-        //makingPolygons();
+
+
         foor();
+
+        foundCity(pane);
+        moving(scene, pane);
+
+
 
         scene.setOnMouseClicked(event -> {
             System.out.println("--------");
@@ -42,13 +57,45 @@ public class BackController extends Application {
             System.out.println();
         });
 
-        foundCity(pane);
-
 
         stage.setResizable(false);
-
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void moving(Scene scene, AnchorPane pane) {
+
+        Button move = new Button("move");
+        move.setLayoutX(1);
+        move.setLayoutY(469);
+        move.setPrefHeight(63);
+        move.setPrefWidth(77);
+        for (Unit unit : View.getInCity().getUnits()) {
+            unit.setOnMouseClicked(event -> {
+                if (!flag) {
+                    move.setOnMouseClicked(event1 -> {
+                        if (!moveFlag) {
+                            scene.setOnMouseClicked(event2 -> {
+                                Tile tile = Tile.getTileFromCoordinate(event2.getX(), event2.getY());
+                                unit.move(tile.getX() - 25, tile.getY() - 50);
+                                moveFlag = true;
+                            });
+                        } else {
+                            moveFlag = false;
+                        }
+                    });
+                    unit.setEffect(new Glow());
+                    flag = true;
+                } else {
+                    unit.setEffect(null);
+                    flag = false;
+                }
+            });
+        }
+        pane.getChildren().add(move);
+
+
+
     }
 
     public void foundCity(AnchorPane pane) {
@@ -70,6 +117,9 @@ public class BackController extends Application {
             x = capital.getX();
             y = capital.getY();
             City city = new City();
+            city.setX(x);
+            city.setY(y);
+
             city.addTileToCity(capital);
             capital = Tile.getTileFromCoordinate(x - 80, y - 135);
             System.out.println(capital.getX() + " " + capital.getY());

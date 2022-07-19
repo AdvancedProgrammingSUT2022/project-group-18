@@ -3,21 +3,14 @@ package view;
 import controller.GameController;
 import enums.Message;
 import enums.Regexes;
-import enums.UnitEnum;
-import javafx.animation.Animation;
-import javafx.animation.PathTransition;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.effect.Glow;
-import javafx.scene.effect.Shadow;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import model.BaseCivilization;
 import model.City;
-import model.unit.Settler;
 import model.unit.Unit;
 
 import java.util.Objects;
@@ -26,29 +19,31 @@ import java.util.regex.Matcher;
 
 public class GameMenuView extends View {
     GameController controller = new GameController();
-
+    boolean flag = true;
     @Override
     public void start(Stage stage) throws Exception {
         ProfileMenuGraphics.setStage(stage);
         AnchorPane pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/game.fxml")));
 
-        Settler settler = (Settler) UnitEnum.getUnits(UnitEnum.SETTLER);
-        settler.setX(200);
-        settler.setY(400);
-        Settler settler1 = (Settler) UnitEnum.getUnits(UnitEnum.SETTLER);
-        settler1.setX(400);
-        settler1.setY(700);
-        settler.setOnMouseClicked(event -> {
-            View.setSelectedUnit(settler);
-            //View.getSelectedUnit().setEffect(new Shadow());
-        });
-        settler1.setOnMouseClicked(event -> {
-            View.setSelectedUnit(settler1);
+        Circle circle = new Circle(39);
+        circle.setCenterX(200);
+        circle.setCenterY(500);
+        pane.getChildren().add(circle);
 
-        });
-        if(View.getSelectedUnit() != null)
-            View.getSelectedUnit().setEffect(new Shadow());
-        pane.getChildren().addAll(settler, settler1);
+
+            circle.setOnMouseClicked(event -> {
+                if(flag) {
+                    circle.setFill(new Color(0.9, 0.6, 0.5, 0.4));
+                    System.out.println("first click");
+                    flag = false;
+                }
+                else  {
+                        circle.setFill(new Color(0.9, 0.8, 0.1, 0.9));
+                        flag = true;
+                }
+            });
+
+
         Scene scene = new Scene(pane);
         stage.setScene(scene);
         stage.show();

@@ -48,14 +48,14 @@ public class Unit extends ImageView {
         this.setImage(new Image(Unit.class.getResource("/assest/Units/" + name + ".png").toExternalForm()));
         this.setFitHeight(100);
         this.setFitWidth(100);
-        this.setX(View.getInCity().getX());
-        this.setY(View.getInCity().getY());
+        this.setX(View.getInCity().getX() - 50);
+        this.setY(View.getInCity().getY() - 50);
 
     }
 
     public void move(double x, double y) {
-        this.setX(x + this.getX());
-        this.setY(y + this.getY());
+        this.setX(x);
+        this.setY(y);
     }
 
 
