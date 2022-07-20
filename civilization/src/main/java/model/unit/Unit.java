@@ -36,6 +36,7 @@ public class Unit extends ImageView {
     public int hitPoints = 10;
     protected double x, y;
     public boolean getCommand = true;
+    private Tile unitTile;
 
 
     public Unit(String name, int movement, int productionCost, City city) {
@@ -46,11 +47,27 @@ public class Unit extends ImageView {
         View.getInCity().addCityPopulation(1);
         View.getInCity().addUnit(this);
         this.setImage(new Image(Unit.class.getResource("/assest/Units/" + name + ".png").toExternalForm()));
+
         this.setFitHeight(100);
         this.setFitWidth(100);
         this.setX(View.getInCity().getX() - 50);
         this.setY(View.getInCity().getY() - 50);
+        unitTile = Tile.getTileFromCoordinate(this.getX(), this.getY());
+        System.out.println(unitTile.getX());
 
+    }
+
+    public int distance(double x, double y) {
+        double one = (Math.sqrt(Math.pow((this.getUnitTile().getX() - x), 2) + Math.pow((this.getUnitTile().getY() - y), 2)));
+        return (int) ((one / 160) + 0.5);
+    }
+
+    public void setUnitTile(Tile unitTile) {
+        this.unitTile = unitTile;
+    }
+
+    public Tile getUnitTile() {
+        return unitTile;
     }
 
     public void move(double x, double y) {
@@ -58,6 +75,13 @@ public class Unit extends ImageView {
         this.setY(y);
     }
 
+    public void minesMovement(int move) {
+        this.movement -= move;
+    }
+
+    public int getProductionCost() {
+        return productionCost;
+    }
 
     public int getCombatStrength() {
         return combatStrength;
@@ -71,14 +95,10 @@ public class Unit extends ImageView {
         return name;
     }
 
-    public double getInX() {
-        return x;
-    }
 
-    public double getInY() {
-        return y;
+    public int getMovement() {
+        return movement;
     }
-
 
     public boolean ableToMove(double hexCost) {
         return ((movementTemp -= hexCost) >= 0D) && (movementPotential - hexCost >= 0D);

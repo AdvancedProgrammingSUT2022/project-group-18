@@ -3,16 +3,17 @@ package controller;
 import enums.BuildingEnum;
 import enums.UnitEnum;
 import javafx.application.Application;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.effect.Bloom;
+import javafx.scene.control.Label;
 import javafx.scene.effect.Glow;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import model.Building;
 import model.City;
 import model.Tile;
@@ -42,9 +43,7 @@ public class BackController extends Application {
         foor();
 
         foundCity(pane);
-        moving(scene, pane);
-
-
+        moving(scene, pane, stage);
 
         scene.setOnMouseClicked(event -> {
             System.out.println("--------");
@@ -63,7 +62,7 @@ public class BackController extends Application {
         stage.show();
     }
 
-    public void moving(Scene scene, AnchorPane pane) {
+    public void moving(Scene scene, AnchorPane pane, Stage stage) {
 
         Button move = new Button("move");
         move.setLayoutX(1);
@@ -77,7 +76,16 @@ public class BackController extends Application {
                         if (!moveFlag) {
                             scene.setOnMouseClicked(event2 -> {
                                 Tile tile = Tile.getTileFromCoordinate(event2.getX(), event2.getY());
-                                unit.move(tile.getX() - 25, tile.getY() - 50);
+                                int distance = unit.distance(tile.getX(), tile.getY());
+                                if (distance <= unit.getMovement()) {
+                                    unit.move(tile.getX() - 25, tile.getY() - 50);
+                                    unit.setUnitTile(tile);
+                                    unit.minesMovement(distance);
+                                } else {
+                                    System.out.println("you can't go there!");
+                                }
+
+
                                 moveFlag = true;
                             });
                         } else {
@@ -93,7 +101,6 @@ public class BackController extends Application {
             });
         }
         pane.getChildren().add(move);
-
 
 
     }
@@ -116,7 +123,7 @@ public class BackController extends Application {
             Tile capital = Tile.getTileFromCoordinate(x, y);
             x = capital.getX();
             y = capital.getY();
-            City city = new City();
+            City city = new City(x, y);
             city.setX(x);
             city.setY(y);
 

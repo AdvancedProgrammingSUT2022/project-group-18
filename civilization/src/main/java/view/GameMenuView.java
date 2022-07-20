@@ -5,14 +5,17 @@ import enums.Message;
 import enums.Regexes;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 import model.BaseCivilization;
 import model.City;
 import model.unit.Unit;
 
+import javax.swing.*;
 import java.util.Objects;
 import java.util.regex.Matcher;
 
@@ -20,29 +23,11 @@ import java.util.regex.Matcher;
 public class GameMenuView extends View {
     GameController controller = new GameController();
     boolean flag = true;
+
     @Override
     public void start(Stage stage) throws Exception {
         ProfileMenuGraphics.setStage(stage);
         AnchorPane pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/game.fxml")));
-
-        Circle circle = new Circle(39);
-        circle.setCenterX(200);
-        circle.setCenterY(500);
-        pane.getChildren().add(circle);
-
-
-            circle.setOnMouseClicked(event -> {
-                if(flag) {
-                    circle.setFill(new Color(0.9, 0.6, 0.5, 0.4));
-                    System.out.println("first click");
-                    flag = false;
-                }
-                else  {
-                        circle.setFill(new Color(0.9, 0.8, 0.1, 0.9));
-                        flag = true;
-                }
-            });
-
 
         Scene scene = new Scene(pane);
         stage.setScene(scene);

@@ -39,7 +39,9 @@ public class City {
     private ArrayList<Tile> cityTiles = new ArrayList<>();
 
 
-    public City() {
+    public City(double x, double y) {
+        this.x = x;
+        this.y = y;
         this.unemployedCitizen = new ArrayList<>();
         this.citizenWorkers = new HashMap<>();
         allCities.add(this);

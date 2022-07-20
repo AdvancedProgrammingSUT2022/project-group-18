@@ -1,6 +1,7 @@
 package model.trrain;
 
 
+import javax.swing.*;
 
 public enum Feature {
 
