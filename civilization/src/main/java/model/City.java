@@ -1,16 +1,19 @@
 package model;
 
 import controller.CombatController;
+import controller.GameController;
 import enums.UnitEnum;
 import model.Resource.Resources;
 
 import model.unit.Unit;
 import model.unit.Worker;
 import view.CityView;
+import view.Controller;
 import view.View;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.regex.Matcher;
 
 public class City {
     private Tile originTile;
@@ -101,6 +104,40 @@ public class City {
         this.cityGold = cityGold;
     }
 
+    public void increaseTurn(Matcher matcher) {
+        int amount = Integer.parseInt(matcher.group("amount"));
+        GameController.turn += amount;
+    }
+
+    public void increaseGold(Matcher matcher) {
+        int amount = Integer.parseInt(matcher.group("amount"));
+        View.getInCity().setCityGold(View.getInCity().getCityGold() + amount);
+    }
+
+    public void increaseHappiness(Matcher matcher) {
+        int amount = Integer.parseInt(matcher.group("amount"));
+        View.getInCity().setHappiness(View.getInCity().getHappiness() + amount);
+    }
+
+    public void increaseCityHP(Matcher matcher) {
+        int amount = Integer.parseInt(matcher.group("amount"));
+        View.getInCity().setCityHitPoint(View.getInCity().getCityHitPoint() + amount);
+    }
+
+    public void increaseFood(Matcher matcher) {
+        int amount = Integer.parseInt(matcher.group("amount"));
+        View.getInCity().setCityFood(View.getInCity().getCityFood() + amount);
+    }
+
+    public void increaseCityStrength(Matcher matcher) {
+        int amount = Integer.parseInt(matcher.group("amount"));
+        View.getInCity().setcityStrength(View.getInCity().getCityStrength() + amount);
+    }
+    public void increaseBeakers(Matcher matcher) {
+        int amount = Integer.parseInt(matcher.group("amount"));
+        View.getInCity().setCityBeakers(View.getInCity().getCityBeakers() + amount);
+    }
+
     public void setCityProduction(int cityProduction) {
         this.cityProduction = cityProduction;
     }
@@ -108,6 +145,7 @@ public class City {
     public void setCityBeakers(int cityScience) {
         this.cityBeakers = cityScience;
     }
+
 
     public void setCityStrength(int cityStrength) {
         this.cityStrength = cityStrength;
