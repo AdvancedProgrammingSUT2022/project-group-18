@@ -1,6 +1,5 @@
 package model;
 
-import com.google.gson.annotations.SerializedName;
 import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Polygon;
@@ -13,12 +12,13 @@ import java.util.Objects;
 
 public class Tile extends Polygon {
 
+    public int prodution;
     private String tileType;
     public boolean isUnderWork = false;
-    private float x, y, width, height;
+    private float x, y;
     private City city;
     private ArrayList<Unit> units;
-    private int cost;
+    public int cost , cm;
     private Resources resources = null;
     public int goldOutput;
     public int foodOutput;
@@ -30,9 +30,57 @@ public class Tile extends Polygon {
         this.y = y;
         this.tileType = tileType;
         this.tiles.add(this);
+//        String[] name = {"dasht", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "kavir", "kooh", "ocean", "sand", "sand"
+//                , "sand", "grass", "snow", "tappe", "tappe", "tondra"};
+        switch (tileType){
+            case "kavir":
+            case "snow":
+                this.goldOutput=0;
+                this.prodution=0;
+                this.foodOutput=0;
+                this.cost=1;
+                this.cm =-33;
+                break;
+            case "grass":
+                this.goldOutput=0;
+                this.foodOutput=2;
+                this.prodution=0;
+                this.cost=1;
+                this.cm =-33;
+                break;
+            case "tappe":
+                this.goldOutput=0;
+                this.foodOutput=0;
+                this.prodution=2;
+                this.cost=2;
+                this.cm =+25;
+                break;
+            case "kooh":
+            case "ocean":
+                this.goldOutput=0;
+                this.foodOutput=0;
+                this.prodution=0;
+                this.cost=100;
+                this.cm =0;
+                break;
+            case "dasht":
+                this.goldOutput=0;
+                this.foodOutput=1;
+                this.prodution=1;
+                this.cost=1;
+                this.cm =-33;
+                break;
+            case "tondra":
+                this.goldOutput=0;
+                this.foodOutput=1;
+                this.prodution=0;
+                this.cost=1;
+                this.cm =-33;
+                break;
+        }
     }
 
-    public ArrayList<Tile> getTiles() {
+    public static ArrayList<Tile> getTiles() {
         return tiles;
     }
 
@@ -115,4 +163,7 @@ public class Tile extends Polygon {
         }
         return null;
     }
+
+
+
 }
