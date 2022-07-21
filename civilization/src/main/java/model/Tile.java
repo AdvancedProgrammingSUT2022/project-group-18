@@ -29,7 +29,7 @@ public class Tile extends Polygon {
         this.x = x;
         this.y = y;
         this.tileType = tileType;
-        this.tiles.add(this);
+        tiles.add(this);
 //        String[] name = {"dasht", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "kavir", "kooh", "ocean", "sand", "sand"
 //                , "sand", "grass", "snow", "tappe", "tappe", "tondra"};
         switch (tileType){

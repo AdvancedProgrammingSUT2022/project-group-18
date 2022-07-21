@@ -86,6 +86,8 @@ public class GameMenuView extends View {
                     View.getInCity().increaseCityStrength(matcher);
                 } else if ((matcher = Regexes.getCommand(code, Regexes.INCREASE_CITY_HP)) != null) {
                     View.getInCity().increaseCityHP(matcher);
+                } else {
+                    System.out.println("nothing");
                 }
             });
 

@@ -8,7 +8,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-<<<<<<< HEAD
 import javafx.scene.control.Label;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.effect.GaussianBlur;
@@ -16,9 +15,8 @@ import javafx.scene.effect.SepiaTone;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-=======
+
 import javafx.scene.effect.Glow;
->>>>>>> origin
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.text.Font;
@@ -49,22 +47,16 @@ public class BackController extends Application {
     private Button found;
     private AnchorPane pane;
     int size = 0;
-<<<<<<< HEAD
-    int numOfRight =0;
-=======
+    int numOfRight = 0;
     int counter = 0;
     boolean flag = false;
     boolean moveFlag = false;
->>>>>>> origin
 
 
     @Override
     public void start(Stage stage) throws Exception {
         this.pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/GameBackground.fxml")));
         Scene scene = new Scene(pane);
-<<<<<<< HEAD
-        foor();
-=======
 
 
         foor();
@@ -72,7 +64,6 @@ public class BackController extends Application {
         foundCity(pane);
         moving(scene, pane, stage);
 
->>>>>>> origin
         scene.setOnMouseClicked(event -> {
             System.out.println("--------");
             Tile ti;
@@ -83,8 +74,6 @@ public class BackController extends Application {
             System.out.println(event.getY());*/
             System.out.println();
         });
-<<<<<<< HEAD
-        foundCity(pane);
         pane.requestFocus();
         pane.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
@@ -105,22 +94,25 @@ public class BackController extends Application {
                 }
             }
         });
-        scene.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                popup(mouseEvent.getX(),mouseEvent.getY(),stage);
-            }
-        });        stage.setResizable(false);
-=======
 
+
+        for (Tile tile : Tile.getTiles()) {
+                Popup popup = popup(tile.getX(), tile.getY());
+                tile.setOnMouseEntered(event-> {
+                    popup.show(stage);
+                });
+                tile.setOnMouseExited(event -> {
+                    popup.hide();
+                });
+        }
 
         stage.setResizable(false);
->>>>>>> origin
+
         stage.setScene(scene);
         stage.show();
     }
 
-<<<<<<< HEAD
+
     @FXML
     private void moveDown() {
         numOfDown++;
@@ -154,272 +146,271 @@ public class BackController extends Application {
         for (Tile tile : Tile.getTiles()) {
             tile.setLayoutX(tile.getLayoutX() + 10);
         }
-=======
-    public void moving(Scene scene, AnchorPane pane, Stage stage) {
+    }
 
-        Button move = new Button("move");
-        move.setLayoutX(1);
-        move.setLayoutY(469);
-        move.setPrefHeight(63);
-        move.setPrefWidth(77);
-        for (Unit unit : View.getInCity().getUnits()) {
-            unit.setOnMouseClicked(event -> {
-                if (!flag) {
-                    move.setOnMouseClicked(event1 -> {
-                        if (!moveFlag) {
-                            scene.setOnMouseClicked(event2 -> {
-                                Tile tile = Tile.getTileFromCoordinate(event2.getX(), event2.getY());
-                                int distance = unit.distance(tile.getX(), tile.getY());
-                                if (distance <= unit.getMovement()) {
-                                    unit.move(tile.getX() - 25, tile.getY() - 50);
-                                    unit.setUnitTile(tile);
-                                    unit.minesMovement(distance);
-                                } else {
-                                    System.out.println("you can't go there!");
-                                }
+        public void moving (Scene scene, AnchorPane pane, Stage stage){
+
+            Button move = new Button("move");
+            move.setLayoutX(1);
+            move.setLayoutY(469);
+            move.setPrefHeight(63);
+            move.setPrefWidth(77);
+            for (Unit unit : View.getInCity().getUnits()) {
+                unit.setOnMouseClicked(event -> {
+                    if (!flag) {
+                        move.setOnMouseClicked(event1 -> {
+                            if (!moveFlag) {
+                                scene.setOnMouseClicked(event2 -> {
+                                    Tile tile = Tile.getTileFromCoordinate(event2.getX(), event2.getY());
+                                    int distance = unit.distance(tile.getX(), tile.getY());
+                                    if (distance <= unit.getMovement()) {
+                                        unit.move(tile.getX() - 25, tile.getY() - 50);
+                                        unit.setUnitTile(tile);
+                                        unit.minesMovement(distance);
+                                    } else {
+                                        System.out.println("you can't go there!");
+                                    }
 
 
-                                moveFlag = true;
-                            });
-                        } else {
-                            moveFlag = false;
-                        }
-                    });
-                    unit.setEffect(new Glow());
-                    flag = true;
-                } else {
-                    unit.setEffect(null);
-                    flag = false;
-                }
+                                    moveFlag = true;
+                                });
+                            } else {
+                                moveFlag = false;
+                            }
+                        });
+                        unit.setEffect(new Glow());
+                        flag = true;
+                    } else {
+                        unit.setEffect(null);
+                        flag = false;
+                    }
+                });
+            }
+            pane.getChildren().add(move);
+
+        }
+
+        public void foundCity (AnchorPane pane){
+            Settler settler = (Settler) UnitEnum.getUnits(UnitEnum.SETTLER);
+            Tile tile = Tile.getTileFromCoordinate(500, 500);
+            settler.setX(tile.getX() - 40);
+            settler.setY(tile.getY() - 40);
+            System.out.println(tile.getTileType());
+            Button button = new Button("found  city");
+            button.setLayoutX(1);
+            button.setLayoutY(406);
+            button.setPrefHeight(63);
+            button.setPrefWidth(77);
+
+            button.setOnMouseClicked(event -> {
+                double x = settler.getX();
+                double y = settler.getY();
+                Tile capital = Tile.getTileFromCoordinate(x, y);
+                x = capital.getX();
+                y = capital.getY();
+                City city = new City(x, y);
+                city.setX(x);
+                city.setY(y);
+
+                city.addTileToCity(capital);
+                capital = Tile.getTileFromCoordinate(x - 80, y - 135);
+                System.out.println(capital.getX() + " " + capital.getY());
+                city.addTileToCity(capital);
+                capital = Tile.getTileFromCoordinate(x + 80, y - 135);
+                System.out.println(capital.getX() + " " + capital.getY());
+                city.addTileToCity(capital);
+                capital = Tile.getTileFromCoordinate(x - 160, y);
+                System.out.println(capital.getX() + " " + capital.getY());
+                city.addTileToCity(capital);
+                capital = Tile.getTileFromCoordinate(x + 160, y);
+                System.out.println(capital.getX() + " " + capital.getY());
+                city.addTileToCity(capital);
+                capital = Tile.getTileFromCoordinate(x - 80, y + 135);
+                System.out.println(capital.getX() + " " + capital.getY());
+                city.addTileToCity(capital);
+                capital = Tile.getTileFromCoordinate(x + 80, y + 135);
+                System.out.println(capital.getX() + " " + capital.getY());
+                city.addTileToCity(capital);
+                pane.getChildren().remove(settler);
+                size = pane.getChildren().size() - 1;
+                Building building = BuildingEnum.makeBuilding(BuildingEnum.PALACE);
+                building.getIcon().setFitHeight(120);
+                building.getIcon().setFitWidth(120);
+                building.getIcon().setX(x - 55);
+                building.getIcon().setY(y - 60);
+                pane.getChildren().add(size, building.getIcon());
+                pane.getChildren().remove(button);
+
             });
-        }
-        pane.getChildren().add(move);
-
-
->>>>>>> origin
-    }
-
-    public void foundCity(AnchorPane pane) {
-        Settler settler = (Settler) UnitEnum.getUnits(UnitEnum.SETTLER);
-        Tile tile = Tile.getTileFromCoordinate(500, 500);
-        settler.setX(tile.getX() - 40);
-        settler.setY(tile.getY() - 40);
-        System.out.println(tile.getTileType());
-        Button button = new Button("found  city");
-        button.setLayoutX(1);
-        button.setLayoutY(406);
-        button.setPrefHeight(63);
-        button.setPrefWidth(77);
-
-        button.setOnMouseClicked(event -> {
-            double x = settler.getX();
-            double y = settler.getY();
-            Tile capital = Tile.getTileFromCoordinate(x, y);
-            x = capital.getX();
-            y = capital.getY();
-            City city = new City(x, y);
-            city.setX(x);
-            city.setY(y);
-
-            city.addTileToCity(capital);
-            capital = Tile.getTileFromCoordinate(x - 80, y - 135);
-            System.out.println(capital.getX() + " " + capital.getY());
-            city.addTileToCity(capital);
-            capital = Tile.getTileFromCoordinate(x + 80, y - 135);
-            System.out.println(capital.getX() + " " + capital.getY());
-            city.addTileToCity(capital);
-            capital = Tile.getTileFromCoordinate(x - 160, y);
-            System.out.println(capital.getX() + " " + capital.getY());
-            city.addTileToCity(capital);
-            capital = Tile.getTileFromCoordinate(x + 160, y);
-            System.out.println(capital.getX() + " " + capital.getY());
-            city.addTileToCity(capital);
-            capital = Tile.getTileFromCoordinate(x - 80, y + 135);
-            System.out.println(capital.getX() + " " + capital.getY());
-            city.addTileToCity(capital);
-            capital = Tile.getTileFromCoordinate(x + 80, y + 135);
-            System.out.println(capital.getX() + " " + capital.getY());
-            city.addTileToCity(capital);
-            pane.getChildren().remove(settler);
             size = pane.getChildren().size() - 1;
-            Building building = BuildingEnum.makeBuilding(BuildingEnum.PALACE);
-            building.getIcon().setFitHeight(120);
-            building.getIcon().setFitWidth(120);
-            building.getIcon().setX(x - 55);
-            building.getIcon().setY(y - 60);
-            pane.getChildren().add(size, building.getIcon());
-            pane.getChildren().remove(button);
+            pane.getChildren().add(size, button);
+            pane.getChildren().add(size + 1, settler);
+        }
 
-        });
-        size = pane.getChildren().size() - 1;
-        pane.getChildren().add(size, button);
-        pane.getChildren().add(size + 1, settler);
-    }
+        public void foor () {
 
-    public void foor() {
-
-        String[] name = {"dasht", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "kavir", "kooh", "ocean", "sand", "sand"
-                , "sand", "grass", "snow", "tappe", "tappe", "tondra"};
-        int rand = 0;
-        for (int i = -1; i < 12; i++) {
-            for (int j = -2; j < 6; j++) {
-                rand = (int) Math.floor(Math.random() * 100);
-                String back = name[rand % 19];
-                if (j % 2 == 0) {
-                    int x = 100 + (i * 160);
-                    int y = 100 + (j * 135);
-                    Tile tile = new Tile(x, y, back);
-                    if (x + 80 < 1500 && x - 80 > 0 && y - 45 > 0) {
-                        tile.setCoordinates(x, y);
-                        tile.setImage(back);
-                        if (y > 600 || x > 1200 || y<100 || x<200) {
-                            settingEffect(tile);
+            String[] name = {"dasht", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "kavir", "kooh", "ocean", "sand", "sand"
+                    , "sand", "grass", "snow", "tappe", "tappe", "tondra"};
+            int rand = 0;
+            for (int i = -1; i < 12; i++) {
+                for (int j = -2; j < 6; j++) {
+                    rand = (int) Math.floor(Math.random() * 100);
+                    String back = name[rand % 19];
+                    if (j % 2 == 0) {
+                        int x = 100 + (i * 160);
+                        int y = 100 + (j * 135);
+                        Tile tile = new Tile(x, y, back);
+                        if (x + 80 < 1500 && x - 80 > 0 && y - 45 > 0) {
+                            tile.setCoordinates(x, y);
+                            tile.setImage(back);
+                            if (y > 600 || x > 1200 || y < 100 || x < 200) {
+                                settingEffect(tile);
+                            }
+                            pane.getChildren().add(tile);
                         }
+                    } else {
+                        int x = 180 + (i * 160);
+                        int y = 100 + (j * 135);
+                        Tile tile = new Tile(x, y, back);
+                        if (x + 80 < 1500 && x - 80 > 0 && y + 45 < 780 && y - 45 > 0) {
+                            tile.setCoordinates(x, y);
+                            tile.setImage(back);
+                            if (y > 600 || x > 1200 || y < 200 || x < 200) {
+                                settingEffect(tile);
+                            }
+                            pane.getChildren().add(tile);
+                        }
+
+                    }
+                }
+            }
+        }
+
+        public void settingEffect (Tile tile){
+            GaussianBlur gaussianBlur = new GaussianBlur();
+            gaussianBlur.setRadius(20);
+            tile.setEffect(gaussianBlur);
+        }
+
+        public void popUp () {
+
+        }
+
+        public void newRowOfTiles ( int side){ // side =0 -> up     side =1 -> down
+            String[] name = {"dasht", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "kavir", "kooh", "ocean", "sand", "sand"
+                    , "sand", "grass", "snow", "tappe", "tappe", "tondra"};
+            if (side == 0) {
+                if (oUp % 2 == 0) {
+                    for (int i = 0; i < 9; i++) {
+                        int rand = (int) Math.floor(Math.random() * 100);
+                        String back = name[rand % 19];
+                        Tile tile = new Tile(100 + i * 160, firstOfY, back);
+                        tile.setCoordinates(100 + i * 160, firstOfY);
+                        tile.setImage(back);
                         pane.getChildren().add(tile);
                     }
-                } else {
-                    int x = 180 + (i * 160);
-                    int y = 100 + (j * 135);
-                    Tile tile = new Tile(x, y, back);
-                    if (x + 80 < 1500 && x - 80 > 0 && y + 45 < 780 && y - 45 > 0) {
-                        tile.setCoordinates(x, y);
+                }
+                if (oUp % 2 != 0) {
+                    for (int i = 0; i < 8; i++) {
+                        int rand = (int) Math.floor(Math.random() * 100);
+                        String back = name[rand % 19];
+                        Tile tile = new Tile(180 + i * 160, firstOfY, back);
+                        tile.setCoordinates(180 + i * 160, firstOfY);
                         tile.setImage(back);
-                        if (y > 600 || x > 1200 || y<200 || x<200) {
-                            settingEffect(tile);
-                        }
                         pane.getChildren().add(tile);
                     }
-
                 }
+                oUp++;
+            } else {
+                if (oDown % 2 == 0) {
+                    for (int i = 0; i < 9; i++) {
+                        int rand = (int) Math.floor(Math.random() * 100);
+                        String back = name[rand % 19];
+                        Tile tile = new Tile(100 + i * 160, endOfY, back);
+                        tile.setCoordinates(100 + i * 160, endOfY);
+                        tile.setImage(back);
+                        settingEffect(tile);
+                        pane.getChildren().add(tile);
+                    }
+                }
+                if (oDown % 2 != 0) {
+                    for (int i = 0; i < 8; i++) {
+                        int rand = (int) Math.floor(Math.random() * 100);
+                        String back = name[rand % 19];
+                        Tile tile = new Tile(180 + i * 160, endOfY, back);
+                        tile.setCoordinates(180 + i * 160, endOfY);
+                        tile.setImage(back);
+                        settingEffect(tile);
+                        pane.getChildren().add(tile);
+                    }
+                }
+                oDown++;
             }
+            firstOfY -= 90;
+            endOfY += 90;
         }
-    }
 
-    public void settingEffect(Tile tile) {
-        GaussianBlur gaussianBlur = new GaussianBlur();
-        gaussianBlur.setRadius(20);
-        tile.setEffect(gaussianBlur);
-    }
-
-    public void popUp() {
-
-    }
-
-    public void newRowOfTiles(int side) { // side =0 -> up     side =1 -> down
-        String[] name = {"dasht", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "kavir", "kooh", "ocean", "sand", "sand"
-                , "sand", "grass", "snow", "tappe", "tappe", "tondra"};
-        if (side == 0) {
-            if (oUp % 2 == 0) {
+        public void newColumn ( int side){ //side=0 -> Right      side=0 -> Left
+            String[] name = {"dasht", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "kavir", "kooh", "ocean", "sand", "sand"
+                    , "sand", "grass", "snow", "tappe", "tappe", "tondra"};
+            if (side == 0) {
                 for (int i = 0; i < 9; i++) {
                     int rand = (int) Math.floor(Math.random() * 100);
                     String back = name[rand % 19];
-                    Tile tile = new Tile(100 + i * 160, firstOfY, back);
-                    tile.setCoordinates(100 + i * 160, firstOfY);
+                    Tile tile = new Tile(endOfX, firstOfY + 150 * i, back);
+                    tile.setCoordinates(endOfX, firstOfY + 150 * i);
                     tile.setImage(back);
                     pane.getChildren().add(tile);
                 }
-            }
-            if (oUp % 2 != 0) {
-                for (int i = 0; i < 8; i++) {
-                    int rand = (int) Math.floor(Math.random() * 100);
-                    String back = name[rand % 19];
-                    Tile tile = new Tile(180 + i * 160, firstOfY, back);
-                    tile.setCoordinates(180 + i * 160, firstOfY);
-                    tile.setImage(back);
-                    pane.getChildren().add(tile);
+                oUp++;
+            } else {
+                if (oDown % 2 == 0) {
+                    for (int i = 0; i < 9; i++) {
+                        int rand = (int) Math.floor(Math.random() * 100);
+                        String back = name[rand % 19];
+                        Tile tile = new Tile(100 + i * 160, endOfY, back);
+                        tile.setCoordinates(100 + i * 160, endOfY);
+                        tile.setImage(back);
+                        pane.getChildren().add(tile);
+                    }
                 }
-            }
-            oUp++;
-        } else {
-            if (oDown % 2 == 0) {
-                for (int i = 0; i < 9; i++) {
-                    int rand = (int) Math.floor(Math.random() * 100);
-                    String back = name[rand % 19];
-                    Tile tile = new Tile(100 + i * 160, endOfY, back);
-                    tile.setCoordinates(100 + i * 160, endOfY);
-                    tile.setImage(back);
-                    settingEffect(tile);
-                    pane.getChildren().add(tile);
+                if (oDown % 2 != 0) {
+                    for (int i = 0; i < 8; i++) {
+                        int rand = (int) Math.floor(Math.random() * 100);
+                        String back = name[rand % 19];
+                        Tile tile = new Tile(180 + i * 160, endOfY, back);
+                        tile.setCoordinates(180 + i * 160, endOfY);
+                        tile.setImage(back);
+                        pane.getChildren().add(tile);
+                    }
                 }
+                oDown++;
             }
-            if (oDown % 2 != 0) {
-                for (int i = 0; i < 8; i++) {
-                    int rand = (int) Math.floor(Math.random() * 100);
-                    String back = name[rand % 19];
-                    Tile tile = new Tile(180 + i * 160, endOfY, back);
-                    tile.setCoordinates(180 + i * 160, endOfY);
-                    tile.setImage(back);
-                    settingEffect(tile);
-                    pane.getChildren().add(tile);
-                }
-            }
-            oDown++;
+            firstOfX -= 160;
+            endOfX += 160;
         }
-        firstOfY -= 90;
-        endOfY += 90;
-    }
 
-    public void newColumn(int side) { //side=0 -> Right      side=0 -> Left
-        String[] name = {"dasht", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "kavir", "kooh", "ocean", "sand", "sand"
-                , "sand", "grass", "snow", "tappe", "tappe", "tondra"};
-        if (side == 0) {
-            for (int i = 0; i < 9; i++) {
-                int rand = (int) Math.floor(Math.random() * 100);
-                String back = name[rand % 19];
-                Tile tile = new Tile(endOfX, firstOfY + 150*i, back);
-                tile.setCoordinates(endOfX, firstOfY + 150*i);
-                tile.setImage(back);
-                pane.getChildren().add(tile);
-            }
-            oUp++;
-        } else {
-            if (oDown % 2 == 0) {
-                for (int i = 0; i < 9; i++) {
-                    int rand = (int) Math.floor(Math.random() * 100);
-                    String back = name[rand % 19];
-                    Tile tile = new Tile(100 + i * 160, endOfY, back);
-                    tile.setCoordinates(100 + i * 160, endOfY);
-                    tile.setImage(back);
-                    pane.getChildren().add(tile);
-                }
-            }
-            if (oDown % 2 != 0) {
-                for (int i = 0; i < 8; i++) {
-                    int rand = (int) Math.floor(Math.random() * 100);
-                    String back = name[rand % 19];
-                    Tile tile = new Tile(180 + i * 160, endOfY, back);
-                    tile.setCoordinates(180 + i * 160, endOfY);
-                    tile.setImage(back);
-                    pane.getChildren().add(tile);
-                }
-            }
-            oDown++;
+        public Popup popup ( double x, double y){
+            Tile tile = Tile.getTileFromCoordinate(x, y);
+            Popup popup = new Popup();
+            String gold = String.valueOf(tile.goldOutput);
+            javafx.scene.image.Image image = new javafx.scene.image.Image(Objects.requireNonNull(getClass().getResource("/images/icon.png").toExternalForm()));
+            ImageView imageView = new ImageView(image);
+            Label label = new Label("gold: " + gold +
+                    "\nproduction: " + tile.prodution +
+                    "\nfood: " + tile.foodOutput +
+                    "\ncombat modifiers: " + tile.cm +
+                    "\nmovement cost: " + tile.cost, imageView);
+            popup.getContent().add(label);
+            label.setMinWidth(150);
+            label.setMinHeight(100);
+            label.setStyle(" -fx-text-fill: #851111;");
+            label.setStyle(" -fx-background-color: rgba(255,255,255,0.6);");
+            label.setFont(Font.font(""));
+            popup.setOpacity(1);
+            popup.setX(x);
+            popup.setY(y);
+            popup.setAutoHide(true);
+            return popup;
         }
-        firstOfX -= 160;
-        endOfX += 160;
     }
-
-    public void popup(double x , double y , Stage stage){
-        Tile tile = Tile.getTileFromCoordinate(x , y);
-        Popup popup = new Popup();
-        String gold = String.valueOf(tile.goldOutput);
-        javafx.scene.image.Image image = new javafx.scene.image.Image(Objects.requireNonNull(getClass().getResource("/images/icon.png").toExternalForm()));
-        ImageView imageView = new ImageView(image);
-        Label label = new Label("gold: " + gold +
-                "\nproduction: " + tile.prodution +
-                "\nfood: " + tile.foodOutput +
-                "\ncombat modifiers: " + tile.cm +
-                "\nmovement cost: " + tile.cost , imageView);
-        popup.getContent().add(label);
-        label.setMinWidth(150);
-        label.setMinHeight(100);
-        label.setStyle(" -fx-text-fill: #851111;");
-        label.setStyle(" -fx-background-color: rgba(255,255,255,0.6);");
-        label.setFont(Font.font(""));
-        popup.setOpacity(1);
-        popup.setX(x);
-        popup.setY(y);
-        popup.setAutoHide(true);
-        popup.show(stage);
-    }
-}
