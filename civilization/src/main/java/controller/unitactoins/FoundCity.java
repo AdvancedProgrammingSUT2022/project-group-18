@@ -12,7 +12,7 @@ public class FoundCity extends AbstarctActoin{
         //super(b);
     }
     public void foundCity(BaseCivilization b, Unit unit){
-        b.setCities(new City());
+        //b.setCities(new City());
         //Delete(unit,b,unit.id);
 
     }

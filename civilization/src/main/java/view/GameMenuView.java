@@ -3,53 +3,100 @@ package view;
 import controller.GameController;
 import enums.Message;
 import enums.Regexes;
-import enums.UnitEnum;
-import javafx.animation.Animation;
-import javafx.animation.PathTransition;
+import javafx.concurrent.Task;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.effect.Glow;
-import javafx.scene.effect.Shadow;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import model.BaseCivilization;
 import model.City;
-import model.unit.Settler;
 import model.unit.Unit;
 
+import javax.swing.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Objects;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 
 
 public class GameMenuView extends View {
+
     GameController controller = new GameController();
+    boolean flag = true;
+    TextArea textArea = new TextArea("ping www.google.com");
 
     @Override
     public void start(Stage stage) throws Exception {
         ProfileMenuGraphics.setStage(stage);
         AnchorPane pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/game.fxml")));
-
-        Settler settler = (Settler) UnitEnum.getUnits(UnitEnum.SETTLER);
-        settler.setX(200);
-        settler.setY(400);
-        Settler settler1 = (Settler) UnitEnum.getUnits(UnitEnum.SETTLER);
-        settler1.setX(400);
-        settler1.setY(700);
-        settler.setOnMouseClicked(event -> {
-            View.setSelectedUnit(settler);
-            //View.getSelectedUnit().setEffect(new Shadow());
-        });
-        settler1.setOnMouseClicked(event -> {
-            View.setSelectedUnit(settler1);
-
-        });
-        if(View.getSelectedUnit() != null)
-            View.getSelectedUnit().setEffect(new Shadow());
-        pane.getChildren().addAll(settler, settler1);
         Scene scene = new Scene(pane);
+        Button btn = new Button("_Mnemonic");
+        btn.setOnAction(event -> {
+            System.out.println("alt + M is pressed:)");
+        });
+        pane.getChildren().add(btn);
+
+        Button btn1 = new Button("Mnemonic");
+        KeyCombination kc = new KeyCodeCombination(KeyCode.C, KeyCombination.SHIFT_DOWN, KeyCombination.CONTROL_DOWN);
+        //KeyCombination kp = new KeyCharacterCombination("C", KeyCombination.SHIFT_DOWN);
+        Mnemonic mn = new Mnemonic(btn1, kc);
+
+        Runnable rn = () -> {
+            AnchorPane parent = null;
+            try {
+                parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/codeTaghalob.fxml")));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Scene scene1 = new Scene(parent);
+            Stage stage1 = new Stage();
+            stage1.setScene(scene1);
+            stage1.show();
+            TextArea textArea = new TextArea("");
+            textArea.setLayoutX(70);
+            textArea.setLayoutY(100);
+            Button button = new Button("try code");
+            button.setLayoutX(274);
+            button.setLayoutY(308);
+            button.setOnMouseClicked(event -> {
+                String code = textArea.getText();
+                Matcher matcher;
+                if ((matcher = Regexes.getCommand(code, Regexes.INCREASE_TURN)) != null) {
+                    View.getInCity().increaseTurn(matcher);
+                } else if((matcher = Regexes.getCommand(code, Regexes.INCREASE_GOLD)) != null) {
+                    View.getInCity().increaseGold(matcher);
+                } else if((matcher = Regexes.getCommand(code, Regexes.INCREASE_BEAKERS)) != null) {
+                    View.getInCity().increaseBeakers(matcher);
+                } else if ((matcher = Regexes.getCommand(code, Regexes.INCREASE_FOOD)) != null) {
+                    View.getInCity().increaseFood(matcher);
+                } else if((matcher = Regexes.getCommand(code, Regexes.INCREASE_HAPPINESS)) != null) {
+                    View.getInCity().increaseHappiness(matcher);
+                } else if((matcher = Regexes.getCommand(code, Regexes.INCREASE_CITY_STRENGTH)) != null) {
+                    View.getInCity().increaseCityStrength(matcher);
+                } else if ((matcher = Regexes.getCommand(code, Regexes.INCREASE_CITY_HP)) != null) {
+                    View.getInCity().increaseCityHP(matcher);
+                }
+            });
+
+            parent.getChildren().addAll(textArea, button);
+        };
+        scene.getAccelerators().put(kc, rn);
+        btn1.setOnAction(event -> {
+            System.out.println("btn1 action");
+        });
+        scene.addMnemonic(mn);
+
         stage.setScene(scene);
         stage.show();
 
@@ -59,20 +106,32 @@ public class GameMenuView extends View {
 
     }
 
+    Task<Void> printResults(Process process) {
+        textArea.setEditable(false);
+        Task<Void> task = new Task<Void>() {
+            @Override
+            protected Void call() {
+                try {
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+                    String line = "";
+                    while ((line = reader.readLine()) != null) {
+                        updateMessage(line);
+                    }
+                } catch (IOException ex) {
+                    Logger.getLogger(GameMenuView.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                return null;
+            }
+        };
+
+        return task;
+    }
+
     public void run() {
         String input = getInput();
         Matcher matcher;
-        if ((matcher = Regexes.getCommand(input, Regexes.INCREASE_TURN)) != null) {
-            increaseTurn(matcher);
-        } else if ((matcher = Regexes.getCommand(input, Regexes.INCREASE_GOLD)) != null) {
-            increaseGold(matcher);
-        } else if ((matcher = Regexes.getCommand(input, Regexes.INCREASE_HAPPINESS)) != null) {
-            increaseHappiness(matcher);
-        } else if (Regexes.getCommand(input, Regexes.INCREAS_CITY_HP) != null)
-            increaseCityHP(matcher);
-        else if (Regexes.getCommand(input, Regexes.INCREASE_CITY_STRENGTH) != null)
-            increaseCityStrength(matcher);
-        else if (Regexes.getCommand(input, Regexes.RESEARCH) != null) {
+         if (Regexes.getCommand(input, Regexes.RESEARCH) != null) {
         } else if (Regexes.getCommand(input, Regexes.UNITS) != null) {
             System.out.println("created new unit");
         } else if (Regexes.getCommand(input, Regexes.CITIES) != null) {
@@ -220,28 +279,5 @@ public class GameMenuView extends View {
         System.out.println(controller.Score);
     }
 
-    public void increaseTurn(Matcher matcher) {
-        int amount = Integer.parseInt(matcher.group("amount"));
-        controller.turn += amount;
-    }
 
-    public void increaseGold(Matcher matcher) {
-        int amount = Integer.parseInt(matcher.group("amount"));
-        View.getInCity().setCityGold(View.getInCity().getCityGold() + amount);
-    }
-
-    public void increaseHappiness(Matcher matcher) {
-        int amount = Integer.parseInt(matcher.group("amount"));
-        View.getInCity().setHappiness(View.getInCity().getHappiness() + amount);
-    }
-
-    public void increaseCityHP(Matcher matcher) {
-        int amount = Integer.parseInt(matcher.group("amount"));
-        View.getInCity().setCityHitPoint(View.getInCity().getCityHitPoint() + amount);
-    }
-
-    public void increaseCityStrength(Matcher matcher) {
-        int amount = Integer.parseInt(matcher.group("amount"));
-        View.getInCity().setcityStrength(View.getInCity().getCityStrength() + amount);
-    }
 }

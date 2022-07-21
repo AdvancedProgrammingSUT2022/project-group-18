@@ -13,7 +13,7 @@ public abstract class View extends Application {
     private static final Scanner scanner = new Scanner(System.in);
     private static String inMenu = "Login Menu";
     private static User isLoggedIn = null;
-    private static City inCity = new City();
+    private static City inCity = new City(500, 500);
     private static BaseCivilization civilization = null;
     private static Unit selectedUnit = null;
 

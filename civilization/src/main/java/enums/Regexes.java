@@ -55,11 +55,12 @@ public enum Regexes {
     INCREASE_BEAKERS("^increase --beakers (?<amount>\\d+)$"),
     INCREASE_FOOD("^increase --food (?<amount>\\d+)$"),
     INCREASE_HAPPINESS("^increase --happiness (?<amount>\\d+)$"),
+    INCREASE_CITY_STRENGTH("^increase --citystrength (?<amount>\\d+)$"),
     INCREASE_MELEE_COMBAT_STRENGTH("^increase --combatstrength (?<amount>\\d+)$"),
     INCREASE_RANGED_COMBAT_STRENGTH("^increase --combatstrength (?<amount>\\d+)$"),
-    INCREAS_CITY_HP("^increase --cityHP (?<amount>\\d+)$"),
+    INCREASE_CITY_HP("^increase --cityHP (?<amount>\\d+)$"),
     INCREASE_UNIT_HP("^increase --unitHP (?<amount>\\d+)$"),
-    INCREASE_CITY_STRENGTH("^increase --citystrength (?<amount>\\d+)$"),
+
 
 
     //dastourat bazi 
