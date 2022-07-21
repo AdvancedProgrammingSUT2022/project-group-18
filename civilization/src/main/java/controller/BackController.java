@@ -9,16 +9,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.effect.BoxBlur;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.effect.GaussianBlur;
-import javafx.scene.effect.SepiaTone;
+import javafx.scene.effect.Glow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-
-import javafx.scene.effect.Glow;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.ImagePattern;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Font;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
@@ -33,6 +30,8 @@ import java.awt.*;
 import java.util.Objects;
 
 public class BackController extends Application {
+    @FXML
+    private ScrollPane scrollPane;
     int endOfX = 1540;
     int endOfY = 730;
     int firstOfX = 180;
@@ -56,7 +55,8 @@ public class BackController extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         this.pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/GameBackground.fxml")));
-        Scene scene = new Scene(pane);
+        this.scrollPane = createScrollPane(pane);
+        Scene scene = new Scene(this.scrollPane);
 
 
         foor();
@@ -74,7 +74,8 @@ public class BackController extends Application {
             System.out.println(event.getY());*/
             System.out.println();
         });
-        pane.requestFocus();
+        scrollPane.requestFocus();
+        /*pane.requestFocus();
         pane.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
@@ -94,6 +95,7 @@ public class BackController extends Application {
                 }
             }
         });
+*/
 
 
         for (Tile tile : Tile.getTiles()) {
@@ -112,6 +114,15 @@ public class BackController extends Application {
         stage.show();
     }
 
+    private ScrollPane createScrollPane(Pane layout) {
+        ScrollPane scroll = new ScrollPane();
+        scroll.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scroll.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
+        scroll.setPannable(true);
+        scroll.setPrefSize(1500, 780);
+        scroll.setContent(layout);
+        return scroll;
+    }
 
     @FXML
     private void moveDown() {
@@ -252,34 +263,35 @@ public class BackController extends Application {
             String[] name = {"dasht", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "kavir", "kooh", "ocean", "sand", "sand"
                     , "sand", "grass", "snow", "tappe", "tappe", "tondra"};
             int rand = 0;
-            for (int i = -1; i < 12; i++) {
-                for (int j = -2; j < 6; j++) {
+            for (int i = -10; i < 15; i++) {
+                for (int j = -10; j < 9; j++) {
                     rand = (int) Math.floor(Math.random() * 100);
                     String back = name[rand % 19];
                     if (j % 2 == 0) {
                         int x = 100 + (i * 160);
                         int y = 100 + (j * 135);
                         Tile tile = new Tile(x, y, back);
-                        if (x + 80 < 1500 && x - 80 > 0 && y - 45 > 0) {
+                        //if (x + 80 < 1500 && x - 80 > 0 && y - 45 > 0) {
                             tile.setCoordinates(x, y);
                             tile.setImage(back);
                             if (y > 600 || x > 1200 || y < 100 || x < 200) {
                                 settingEffect(tile);
                             }
+
                             pane.getChildren().add(tile);
-                        }
+                        //}
                     } else {
                         int x = 180 + (i * 160);
                         int y = 100 + (j * 135);
                         Tile tile = new Tile(x, y, back);
-                        if (x + 80 < 1500 && x - 80 > 0 && y + 45 < 780 && y - 45 > 0) {
+                        //if (x + 80 < 1500 && x - 80 > 0 && y + 45 < 780 && y - 45 > 0) {
                             tile.setCoordinates(x, y);
                             tile.setImage(back);
                             if (y > 600 || x > 1200 || y < 200 || x < 200) {
                                 settingEffect(tile);
                             }
                             pane.getChildren().add(tile);
-                        }
+                        //}
 
                     }
                 }
@@ -408,8 +420,8 @@ public class BackController extends Application {
             label.setStyle(" -fx-background-color: rgba(255,255,255,0.6);");
             label.setFont(Font.font(""));
             popup.setOpacity(1);
-            popup.setX(x);
-            popup.setY(y);
+            popup.setX(1200);
+            popup.setY(400);
             popup.setAutoHide(true);
             return popup;
         }
