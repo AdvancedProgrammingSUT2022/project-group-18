@@ -1,6 +1,6 @@
 package enums;
 
-import model.improvements.Improvement;
+import client.model.improvements.Improvement;
 
 public enum ImprovementsEnum {
     CAMP("Camp"),

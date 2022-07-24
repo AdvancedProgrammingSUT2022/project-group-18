@@ -10,4 +10,8 @@
     -fx-font-size: 45;
     -fx-text-fill: #150404;
 }
+.background{
+    -fx-background-image: url("/imag.jpg");
+    -fx-background-size: 720 1080;
+}
 

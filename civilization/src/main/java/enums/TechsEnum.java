@@ -1,7 +1,7 @@
 package enums;
 
-import model.techs.Technology;
-import view.View;
+import client.model.techs.Technology;
+import client.view.View;
 
 public enum TechsEnum {
     AGRI_CULTURE("Agriculture"),

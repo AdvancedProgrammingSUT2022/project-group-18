@@ -1,6 +1,6 @@
 package enums;
 
-import model.Building;
+import client.model.Building;
 
 public enum BuildingEnum {
     PALACE("Palace"),

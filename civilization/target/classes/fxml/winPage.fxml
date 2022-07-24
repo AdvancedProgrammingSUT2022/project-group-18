@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Text?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="view.WinPage"
+            fx:controller="client.view.WinPage"
             prefHeight="720.0" prefWidth="1080.0">
 <center>
     <Text text="You Win"/>

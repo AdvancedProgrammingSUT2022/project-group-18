@@ -4,7 +4,6 @@ module civilization {
     requires javafx.fxml;
     requires javafx.web;
     requires com.google.gson;
-
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
     requires validatorfx;
@@ -15,32 +14,64 @@ module civilization {
     requires java.desktop;
     requires java.logging;
 
-    opens controller to javafx.fxml, com.google.gson;
-    opens enums to javafx.fxml, com.google.gson;
-    opens model to javafx.fxml, com.google.gson;
-    opens view to javafx.fxml, com.google.gson;
-    opens civilization to javafx.fxml, com.google.gson;
-    opens controller.unitactoins to javafx.fxml, com.google.gson;
-    opens model.improvements to javafx.fxml, com.google.gson;
-    opens model.unit to javafx.fxml, com.google.gson;
-    opens model.techs to javafx.fxml, com.google.gson;
-    opens model.Resource to javafx.fxml, com.google.gson;
-    opens model.graphicModel to javafx.fxml, com.google.gson, javafx.web, javafx.controls,
+    opens client.controller to javafx.fxml, com.google.gson, javafx.graphics , javafx.web, javafx.controls,
+            org.controlsfx.controls, com.dlsc.formsfx, validatorfx,
+            org.kordamp.ikonli.javafx, org.kordamp.bootstrapfx.core,
+            eu.hansolo.tilesfx, javafx.media;
+    opens enums to javafx.fxml, com.google.gson, javafx.graphics , javafx.web, javafx.controls,
+            org.controlsfx.controls, com.dlsc.formsfx, validatorfx,
+            org.kordamp.ikonli.javafx, org.kordamp.bootstrapfx.core,
+            eu.hansolo.tilesfx, javafx.media;
+    opens client.model to javafx.fxml, com.google.gson, javafx.graphics , javafx.web, javafx.controls,
+            org.controlsfx.controls, com.dlsc.formsfx, validatorfx,
+            org.kordamp.ikonli.javafx, org.kordamp.bootstrapfx.core,
+            eu.hansolo.tilesfx, javafx.media;
+    opens client.view to javafx.fxml, com.google.gson, javafx.graphics , javafx.web, javafx.controls,
+            org.controlsfx.controls, com.dlsc.formsfx, validatorfx,
+            org.kordamp.ikonli.javafx, org.kordamp.bootstrapfx.core,
+            eu.hansolo.tilesfx, javafx.media;
+    opens client.civilization to javafx.fxml, com.google.gson, javafx.graphics , javafx.web, javafx.controls,
+            org.controlsfx.controls, com.dlsc.formsfx, validatorfx,
+            org.kordamp.ikonli.javafx, org.kordamp.bootstrapfx.core,
+            eu.hansolo.tilesfx, javafx.media;
+    opens client.controller.unitactoins to javafx.fxml, com.google.gson, javafx.graphics , javafx.web, javafx.controls,
+            org.controlsfx.controls, com.dlsc.formsfx, validatorfx,
+            org.kordamp.ikonli.javafx, org.kordamp.bootstrapfx.core,
+            eu.hansolo.tilesfx, javafx.media;
+    opens client.model.improvements to javafx.fxml, com.google.gson, javafx.graphics , javafx.web, javafx.controls,
+            org.controlsfx.controls, com.dlsc.formsfx, validatorfx,
+            org.kordamp.ikonli.javafx, org.kordamp.bootstrapfx.core,
+            eu.hansolo.tilesfx, javafx.media;
+    opens client.model.unit to javafx.fxml, com.google.gson, javafx.graphics , javafx.web, javafx.controls,
+            org.controlsfx.controls, com.dlsc.formsfx, validatorfx,
+            org.kordamp.ikonli.javafx, org.kordamp.bootstrapfx.core,
+            eu.hansolo.tilesfx, javafx.media;
+    opens client.model.techs to javafx.fxml, com.google.gson, javafx.graphics , javafx.web, javafx.controls,
+            org.controlsfx.controls, com.dlsc.formsfx, validatorfx,
+            org.kordamp.ikonli.javafx, org.kordamp.bootstrapfx.core,
+            eu.hansolo.tilesfx, javafx.media;
+    opens client.model.Resource to javafx.fxml, com.google.gson, javafx.graphics , javafx.web, javafx.controls,
+            org.controlsfx.controls, com.dlsc.formsfx, validatorfx,
+            org.kordamp.ikonli.javafx, org.kordamp.bootstrapfx.core,
+            eu.hansolo.tilesfx, javafx.media;
+    opens client.model.graphicModel to javafx.fxml, com.google.gson, javafx.web, javafx.controls,
             org.controlsfx.controls, com.dlsc.formsfx, validatorfx,
             org.kordamp.ikonli.javafx, org.kordamp.bootstrapfx.core,
             eu.hansolo.tilesfx, javafx.media;
 
 
-    exports model.graphicModel;
-    exports civilization;
-    exports controller;
+
+    exports client.model.graphicModel;
+    exports client.model.trrain;
+    exports client.model.improvements;
+    exports client.model.unit;
+    exports client.model.techs;
+    exports client.model.Resource;
+    exports client.model;
     exports enums;
-    exports model;
-    exports view;
-    exports model.trrain;
-    exports model.improvements;
-    exports model.unit;
-    exports model.techs;
-    exports model.Resource;
-    exports controller.unitactoins;
+    exports client.civilization;
+    exports client.controller;
+    exports client.view;
+    exports client.controller.unitactoins;
+
 }

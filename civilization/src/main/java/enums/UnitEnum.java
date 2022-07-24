@@ -1,8 +1,8 @@
 package enums;
 
-import model.Resource.Resources;
-import model.unit.*;
-import view.View;
+import client.model.Resource.Resources;
+import client.model.unit.*;
+import client.view.View;
 
 import java.util.Locale;
 

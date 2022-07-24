@@ -6,7 +6,7 @@
 <?import javafx.scene.shape.*?>
 
 <?import javafx.scene.control.Button?>
-<BorderPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ProfileController">
+<BorderPane prefHeight="720.0" prefWidth="1080.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.view.ProfileController">
     <Rectangle height="720.0" styleClass="background" width="1080.0">
       <fill>
          <LinearGradient endX="1.0" endY="1.0">
