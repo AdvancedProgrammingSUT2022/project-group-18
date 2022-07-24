@@ -51,7 +51,6 @@ public class BackController extends Application {
     int numOfDown = 0;
     @FXML
     private Button found;
-    private AnchorPane pane;
     int size = 0;
     int numOfRight = 0;
     int counter = 0;
@@ -63,15 +62,21 @@ public class BackController extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        this.pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/GameBackground.fxml")));
-        this.scrollPane = createScrollPane(pane);
-        Scene scene = new Scene(scrollPane);
-        scrollPane.requestFocus();
-        map();
-        foundCity(pane,scene);
+        AnchorPane pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/GameBackground.fxml")));
+        AnchorPane pane1 = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/test.fxml")));
+
+        map(pane1);
+        Scene scene = new Scene(pane);
+
+        this.scrollPane = createScrollPane(pane1);
+        pane.getChildren().add(scrollPane);
+
+        foundCity(pane,scene, pane1);
         moving(scene, pane);
         handleAudio();
         cheatCode(scene);
+
+        scrollPane.requestFocus();
         scene.setOnMouseClicked(event -> {
             System.out.println("--------");
             Tile ti;
@@ -164,31 +169,20 @@ public class BackController extends Application {
     }
 
 
-        public void foundCity (AnchorPane pane, Scene scene){
+        public void foundCity (AnchorPane pane, Scene scene, AnchorPane pane1){
             Settler settler = (Settler) UnitEnum.getUnits(UnitEnum.SETTLER);
             Tile tile = Tile.getTileFromCoordinate(500, 500);
             settler.setX(tile.getX() - 40);
             settler.setY(tile.getY() - 40);
-            System.out.println(tile.getTileType());
+            pane1.getChildren().add(settler);
+
             Button button = new Button("found  city");
             button.setLayoutX(1);
             button.setLayoutY(406);
             button.setPrefHeight(63);
             button.setPrefWidth(77);
             size = pane.getChildren().size() - 1;
-            pane.getChildren().add(size, button);
 
-
-            scrollPane.hvalueProperty().addListener( (observable, oldValue, newValue) -> {
-                double xTranslate = newValue.doubleValue() * (scrollPane.getViewportBounds().getWidth() - button.getWidth());
-                button.translateXProperty().setValue(xTranslate);
-            });
-
-            scrollPane.vvalueProperty().addListener( (observable, oldValue, newValue) -> {
-
-                double yTranslate = newValue.doubleValue() * (scrollPane.getViewportBounds().getHeight() - button.getHeight());
-                button.translateYProperty().setValue(yTranslate);
-            });
 
             button.setOnMouseClicked(event -> {
                 double x = settler.getX();
@@ -218,7 +212,8 @@ public class BackController extends Application {
                 Melee warrior = (Melee) UnitEnum.getUnits(UnitEnum.WARRIOR);
                 warrior.setX(capital.getX() - 50);
                 warrior.setY(capital.getY() - 50);
-                pane.getChildren().add(warrior);
+
+                pane1.getChildren().add(warrior);
 
                 capital = Tile.getTileFromCoordinate(x - 80, y + 135);
                 System.out.println(capital.getX() + " " + capital.getY());
@@ -226,23 +221,22 @@ public class BackController extends Application {
                 capital = Tile.getTileFromCoordinate(x + 80, y + 135);
                 System.out.println(capital.getX() + " " + capital.getY());
                 city.addTileToCity(capital);
-                pane.getChildren().remove(settler);
-                size = pane.getChildren().size() - 1;
+                pane1.getChildren().remove(settler);
+                size = pane1.getChildren().size() - 1;
                 Building building = BuildingEnum.makeBuilding(BuildingEnum.PALACE);
                 building.getIcon().setFitHeight(120);
                 building.getIcon().setFitWidth(120);
                 building.getIcon().setX(x - 55);
                 building.getIcon().setY(y - 60);
-                pane.getChildren().add(size, building.getIcon());
+                pane1.getChildren().add(size, building.getIcon());
                 pane.getChildren().remove(button);
                 moving(scene, pane);
 
             });
-
-            pane.getChildren().add(size + 1, settler);
+            pane.getChildren().add(button);
         }
 
-        public void map() {
+        public void map(AnchorPane pane) {
 
             String[] name = {"dasht", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "kavir", "kooh", "ocean", "sand", "sand"
                     , "sand", "grass", "snow", "tappe", "tappe", "tondra"};
