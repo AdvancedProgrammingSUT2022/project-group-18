@@ -54,27 +54,27 @@ public class BackController extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        this.pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/GameBackground.fxml")));
+        this.pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/back.fxml")));
         this.scrollPane = createScrollPane(pane);
         Scene scene = new Scene(this.scrollPane);
 
 
         foor();
 
-        foundCity(pane);
-        moving(scene, pane, stage);
-
-        scene.setOnMouseClicked(event -> {
-            System.out.println("--------");
-            Tile ti;
-            if ((ti = Tile.getTileFromCoordinate(event.getX(), event.getY())) != null) {
-                System.out.println(ti.getX() + " " + ti.getY());
-            }
-            /*System.out.println(event.getX());
-            System.out.println(event.getY());*/
-            System.out.println();
-        });
-        scrollPane.requestFocus();
+//        foundCity(pane);
+//        moving(scene, pane, stage);
+//
+//        scene.setOnMouseClicked(event -> {
+//            System.out.println("--------");
+//            Tile ti;
+//            if ((ti = Tile.getTileFromCoordinate(event.getX(), event.getY())) != null) {
+//                System.out.println(ti.getX() + " " + ti.getY());
+//            }
+//            /*System.out.println(event.getX());
+//            System.out.println(event.getY());*/
+//            System.out.println();
+//        });
+//        scrollPane.requestFocus();
         /*pane.requestFocus();
         pane.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
@@ -98,15 +98,15 @@ public class BackController extends Application {
 */
 
 
-        for (Tile tile : Tile.getTiles()) {
-                Popup popup = popup(tile.getX(), tile.getY());
-                tile.setOnMouseEntered(event-> {
-                    popup.show(stage);
-                });
-                tile.setOnMouseExited(event -> {
-                    popup.hide();
-                });
-        }
+//        for (Tile tile : Tile.getTiles()) {
+//                Popup popup = popup(tile.getX(), tile.getY());
+//                tile.setOnMouseEntered(event-> {
+//                    popup.show(stage);
+//                });
+//                tile.setOnMouseExited(event -> {
+//                    popup.hide();
+//                });
+//        }
 
         stage.setResizable(false);
 
@@ -290,7 +290,7 @@ public class BackController extends Application {
                             if (y > 600 || x > 1200 || y < 200 || x < 200) {
                                 settingEffect(tile);
                             }
-                            pane.getChildren().add(tile);
+                            scrollPane.setContent(tile);
                         //}
 
                     }
