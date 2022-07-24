@@ -8,17 +8,19 @@ import client.model.unit.Settler;
 import client.model.unit.Unit;
 import client.view.View;
 import enums.BuildingEnum;
+import enums.Regexes;
 import enums.UnitEnum;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.*;
 import javafx.scene.effect.Bloom;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
@@ -27,7 +29,11 @@ import javafx.scene.text.Font;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.Objects;
+import java.util.regex.Matcher;
+
+import static client.view.View.getInCity;
 
 public class BackController extends Application {
     @FXML
@@ -65,6 +71,7 @@ public class BackController extends Application {
         foundCity(pane,scene);
         moving(scene, pane);
         handleAudio();
+        cheatCode(scene);
         scene.setOnMouseClicked(event -> {
             System.out.println("--------");
             Tile ti;
@@ -111,7 +118,7 @@ public class BackController extends Application {
             move.setLayoutY(469);
             move.setPrefHeight(63);
             move.setPrefWidth(77);
-            new Thread(()->{for (Unit unit : View.getInCity().getUnits()) {
+            new Thread(()->{for (Unit unit : getInCity().getUnits()) {
                 unit.setOnMouseClicked(event -> {
                     if (!flag) {
                         move.setOnMouseClicked(event1 -> {
@@ -300,4 +307,68 @@ public class BackController extends Application {
             popup.setAutoHide(true);
             return popup;
         }
+
+    public void cheatCode(Scene scene) {
+        KeyCombination kc = new KeyCodeCombination(KeyCode.C, KeyCombination.SHIFT_DOWN, KeyCombination.CONTROL_DOWN);
+        Runnable rn = () -> {
+            AnchorPane parent = null;
+            try {
+                parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/codeTaghalob.fxml")));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            Scene scene1 = new Scene(parent);
+            Stage stage1 = new Stage();
+            stage1.setScene(scene1);
+            stage1.show();
+            TextArea textArea = new TextArea("");
+            textArea.setLayoutX(70);
+            textArea.setLayoutY(100);
+            Button button = new Button("try code");
+            button.setLayoutX(274);
+            button.setLayoutY(308);
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(null);
+
+            button.setOnMouseClicked(event -> {
+                String code = textArea.getText();
+                Matcher matcher;
+                if ((matcher = Regexes.getCommand(code, Regexes.INCREASE_TURN)) != null) {
+                    getInCity().increaseTurn(matcher);
+                    alert.setContentText("turn increased successfully!");
+                    alert.show();
+                } else if ((matcher = Regexes.getCommand(code, Regexes.INCREASE_GOLD)) != null) {
+                    getInCity().increaseGold(matcher);
+                    alert.setContentText("successful! your gold is: " + getInCity().getCityGold());
+                    alert.show();
+                } else if ((matcher = Regexes.getCommand(code, Regexes.INCREASE_BEAKERS)) != null) {
+                    getInCity().increaseBeakers(matcher);
+                    alert.setContentText("successful! your beakers are: " + getInCity().getCityBeakers());
+                    alert.show();
+                } else if ((matcher = Regexes.getCommand(code, Regexes.INCREASE_FOOD)) != null) {
+                    getInCity().increaseFood(matcher);
+                    alert.setContentText("successful! your food is: " + getInCity().getCityFood());
+                    alert.show();
+                } else if ((matcher = Regexes.getCommand(code, Regexes.INCREASE_HAPPINESS)) != null) {
+                    getInCity().increaseHappiness(matcher);
+                    alert.setContentText("successful! your happiness is: " + getInCity().getHappiness());
+                    alert.show();
+                } else if ((matcher = Regexes.getCommand(code, Regexes.INCREASE_CITY_STRENGTH)) != null) {
+                    getInCity().increaseCityStrength(matcher);
+                    alert.setContentText("successful! your city strength is: " + getInCity().getCityStrength());
+                    alert.show();
+                } else if ((matcher = Regexes.getCommand(code, Regexes.INCREASE_CITY_HP)) != null) {
+                    getInCity().increaseCityHP(matcher);
+                    alert.setContentText("successful! your city HP is: " + getInCity().getCityHitPoint());
+                    alert.show();
+                } else {
+                    alert.setContentText("not a cheat code:)");
+                    alert.show();
+                }
+            });
+
+            parent.getChildren().addAll(textArea, button);
+        };
+        scene.getAccelerators().put(kc, rn);
+    }
     }

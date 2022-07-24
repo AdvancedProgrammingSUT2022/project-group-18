@@ -34,7 +34,6 @@ public class MainMenuController extends Controller {
     public void start(Stage stage) throws Exception {
         ProfileMenuGraphics.setStage(stage);
         BorderPane parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/mainMenu.fxml")));
-        notRegisteredGame(parent);
         registeredScoreBord(parent);
         Scene scene = new Scene(parent);
         stage.setScene(scene);
@@ -147,7 +146,7 @@ public class MainMenuController extends Controller {
         if (View.getIsLoggedIn() != null) {
             Button button = new Button("Score Table");
             Button logout = new Button("logout");
-            Button newGame = new Button("new Game");
+            Button newGame = new Button("Game Menu");
             newGame.setMinWidth(500);
             newGame.getStyleClass().add("button");
             logout.setMinWidth(500);
@@ -184,7 +183,7 @@ public class MainMenuController extends Controller {
                 @Override
                 public void handle(MouseEvent event) {
                     try {
-                        newGame(event);
+                        new GameMenuView().start(ProfileMenuGraphics.getStage());
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -194,36 +193,6 @@ public class MainMenuController extends Controller {
 
     }
 
-    public void notRegisteredGame(BorderPane parent) {
-        if (View.getIsLoggedIn() == null) {
-            Button button = new Button("new Game without login");
-            button.setMinWidth(500);
-            button.getStyleClass().add("button");
-            button.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    try {
-                        newGameWithoutLogin(event);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-            VBox vBox = (VBox) parent.getChildren().get(0);
-            vBox.getChildren().add(0, button);
-        }
-    }
-
-    public void newGame(MouseEvent event) throws Exception {
-        if (View.getIsLoggedIn() == null) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setContentText("Please Login First!");
-            alert.show();
-        } else {
-            GameMenu.getInstance().start(ProfileMenuGraphics.getStage());
-        }
-    }
 
     public void newGameWithoutLogin(MouseEvent event) throws Exception {
         GameMenu.getInstance().start(ProfileMenuGraphics.getStage());

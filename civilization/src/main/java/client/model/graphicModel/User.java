@@ -2,8 +2,6 @@ package client.model.graphicModel;
 
 import client.controller.DataBase;
 import client.model.BaseCivilization;
-import client.model.graphicModel.ProfilePhoto;
-import client.model.graphicModel.UserProfile;
 import client.view.View;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;

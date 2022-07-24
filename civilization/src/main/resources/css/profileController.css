@@ -1,6 +1,16 @@
 .background {
+    -fx-background-image: url("/backg5.jpg");
 
-    -fx-background-size: 600 400;
+}
+
+.background1 {
+    -fx-background-image: url("/wall.jpg");
+    -fx-background-size: 1080 1080;
+}
+
+.gameMenu{
+    -fx-background-image: url("/best.jpg");
+    -fx-background-size: 1080 1080;
 }
 
 .photo {
@@ -10,9 +20,36 @@
 .button:pressed {
     -fx-effect: dropshadow(gaussian, rgba(50, 231, 210, 0.7), 10, 0, 0, 1);
     -fx-cursor: hand;
-    -fx-effect: innershadow(gaussian, rgba(49, 204, 192, 0.7), 20, 0, 0, 0);
+    -fx-effect: innershadow(gaussian, rgba(40, 24, 192, 0.7), 20, 0, 0, 0);
 }
 
+
+
+.click {
+    align-items: center;
+    -fx-background-color : linear-gradient(#AFD, #ADFFFF, #00DDEB, #AFFFFF);
+    border: 10;
+    -fx-cursor: hand;
+    border-radius: 8px;
+    box-shadow: rgba(151, 65, 252, 0.2) 0 15px 30px -5px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    display: flex;
+    font-family: Phantomsans, sans-serif;
+    font-size: 20px;
+    justify-content: center;
+    line-height: 1em;
+    max-width: 100%;
+    min-width: 140px;
+    padding: 19px 24px;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    cursor: pointer;
+    -fx-font-family: "Droid Serif";
+}
 .button {
     -fx-cell-size: 100 50;
     -fx-background-size: 100 50;
@@ -30,7 +67,7 @@
 }
 
 .text {
-    -fx-font-size: 20;
+    -fx-font-size: 34;
     -fx-font-family: "Imprint MT Shadow";
     -fx-wrap-text: 400;
 }

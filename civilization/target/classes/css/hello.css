@@ -3,15 +3,55 @@
     -fx-background-size: 390 260;
 }
 
-.button{
+.button {
     -fx-background-position: center center;
     -fx-font-family: "Bodoni MT Poster Compressed";
+    -fx-text-fill: black;
     -fx-cursor: hand;
-    -fx-font-size: 45;
-    -fx-text-fill: #150404;
+    -fx-font-size: 40;
 }
-.background{
-    -fx-background-image: url("/imag.jpg");
-    -fx-background-size: 720 1080;
+
+/*.button {
+    align-items: center;
+    background-color: initial;
+    -fx-background-color: linear-gradient(rgba(179, 132, 201, 84), rgba(57, 31, 91, 84) 50%);
+    border-radius: 42px;
+    border-width: 0;
+    box-shadow: rgba(57, 31, 91, 0.24) 0 2px 2px, rgba(179, 132, 201, 0.4) 0 8px 12px;
+
+    cursor: pointer;
+    display: flex;
+    font-family: Quicksand, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    justify-content: center;
+    letter-spacing: .04em;
+    line-height: 16px;
+    margin: 0;
+    padding: 18px 18px;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+
+}*/
+
+.button:hover {
+    background-image: linear-gradient(#B384C9, #391F5B 50%);
 }
+
+@media (min-width: 768px) {
+    .button {
+        font-size: 21px;
+        padding: 18px 34px;
+    }
+}
+
+.background {
+    -fx-background-image: url("/back5.jpg");
+    -fx-background-size: 1080 1080;
+}
+
 

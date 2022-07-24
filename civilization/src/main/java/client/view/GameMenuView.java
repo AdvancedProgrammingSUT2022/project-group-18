@@ -1,11 +1,14 @@
 package client.view;
 
+import client.controller.BackController;
 import client.controller.GameController;
 import enums.Message;
 import enums.Regexes;
 import javafx.concurrent.Task;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.*;
@@ -35,64 +38,6 @@ public class GameMenuView extends View {
         ProfileMenuGraphics.setStage(stage);
         AnchorPane pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/game.fxml")));
         Scene scene = new Scene(pane);
-        Button btn = new Button("_Mnemonic");
-        btn.setOnAction(event -> {
-            System.out.println("alt + M is pressed:)");
-        });
-        pane.getChildren().add(btn);
-
-        Button btn1 = new Button("Mnemonic");
-        KeyCombination kc = new KeyCodeCombination(KeyCode.C, KeyCombination.SHIFT_DOWN, KeyCombination.CONTROL_DOWN);
-        //KeyCombination kp = new KeyCharacterCombination("C", KeyCombination.SHIFT_DOWN);
-        Mnemonic mn = new Mnemonic(btn1, kc);
-
-        Runnable rn = () -> {
-            AnchorPane parent = null;
-            try {
-                parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/codeTaghalob.fxml")));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            Scene scene1 = new Scene(parent);
-            Stage stage1 = new Stage();
-            stage1.setScene(scene1);
-            stage1.show();
-            TextArea textArea = new TextArea("");
-            textArea.setLayoutX(70);
-            textArea.setLayoutY(100);
-            Button button = new Button("try code");
-            button.setLayoutX(274);
-            button.setLayoutY(308);
-            button.setOnMouseClicked(event -> {
-                String code = textArea.getText();
-                Matcher matcher;
-                if ((matcher = Regexes.getCommand(code, Regexes.INCREASE_TURN)) != null) {
-                    getInCity().increaseTurn(matcher);
-                } else if((matcher = Regexes.getCommand(code, Regexes.INCREASE_GOLD)) != null) {
-                    getInCity().increaseGold(matcher);
-                } else if((matcher = Regexes.getCommand(code, Regexes.INCREASE_BEAKERS)) != null) {
-                    getInCity().increaseBeakers(matcher);
-                } else if ((matcher = Regexes.getCommand(code, Regexes.INCREASE_FOOD)) != null) {
-                    getInCity().increaseFood(matcher);
-                } else if((matcher = Regexes.getCommand(code, Regexes.INCREASE_HAPPINESS)) != null) {
-                    getInCity().increaseHappiness(matcher);
-                } else if((matcher = Regexes.getCommand(code, Regexes.INCREASE_CITY_STRENGTH)) != null) {
-                    getInCity().increaseCityStrength(matcher);
-                } else if ((matcher = Regexes.getCommand(code, Regexes.INCREASE_CITY_HP)) != null) {
-                    getInCity().increaseCityHP(matcher);
-                } else {
-                    System.out.println("nothing");
-                }
-            });
-
-            parent.getChildren().addAll(textArea, button);
-        };
-        scene.getAccelerators().put(kc, rn);
-        btn1.setOnAction(event -> {
-            System.out.println("btn1 action");
-        });
-        scene.addMnemonic(mn);
-
         stage.setScene(scene);
         stage.show();
 
@@ -100,6 +45,16 @@ public class GameMenuView extends View {
 
     public void initialize() {
 
+    }
+
+    @FXML
+    private void newGame() {
+        ProfileMenuGraphics.getStage().close();
+        try {
+            new BackController().start(new Stage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     Task<Void> printResults(Process process) {
@@ -127,7 +82,7 @@ public class GameMenuView extends View {
     public void run() {
         String input = getInput();
         Matcher matcher;
-         if (Regexes.getCommand(input, Regexes.RESEARCH) != null) {
+        if (Regexes.getCommand(input, Regexes.RESEARCH) != null) {
         } else if (Regexes.getCommand(input, Regexes.UNITS) != null) {
             System.out.println("created new unit");
         } else if (Regexes.getCommand(input, Regexes.CITIES) != null) {
