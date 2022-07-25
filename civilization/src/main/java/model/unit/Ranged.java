@@ -1,10 +1,9 @@
 package model.unit;
 
 import model.BaseCivilization;
-import model.City;
 
 public class Ranged extends Unit{
-    public Ranged(String name, int movement, int combatStrength,int combatStrengthRanged,int ranged, int productionCost, boolean isMilitary,  boolean hasTerrainCost, City city) {
+    public Ranged(String name, int movement, int combatStrength,int combatStrengthRanged,int ranged, int productionCost, boolean isMilitary,  boolean hasTerrainCost, model.City city) {
        super(name, movement, productionCost, city);
        this.combatStrength = combatStrength;
        this.combatStrengthRanged = combatStrengthRanged;

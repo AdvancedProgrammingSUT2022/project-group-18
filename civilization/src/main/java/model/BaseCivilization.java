@@ -1,7 +1,7 @@
 package model;
 
 import com.google.gson.Gson;
-import controller.DataBase;
+import client.controller.DataBase;
 import enums.UnitEnum;
 import model.Resource.Resources;
 import model.graphicModel.User;
@@ -9,7 +9,7 @@ import model.techs.Technology;
 import model.unit.Melee;
 import model.unit.Ranged;
 import model.unit.Unit;
-import view.View;
+import client.view.View;
 
 import java.io.FileWriter;
 import java.io.IOException;

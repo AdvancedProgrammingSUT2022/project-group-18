@@ -1,15 +1,14 @@
 package model;
 
-import controller.CombatController;
-import controller.GameController;
+import client.controller.CombatController;
+import client.controller.GameController;
 import enums.UnitEnum;
 import model.Resource.Resources;
 
 import model.unit.Unit;
 import model.unit.Worker;
-import view.CityView;
-import view.Controller;
-import view.View;
+import client.view.CityView;
+import client.view.View;
 
 import java.util.ArrayList;
 import java.util.HashMap;

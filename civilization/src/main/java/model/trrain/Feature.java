@@ -1,8 +1,6 @@
 package model.trrain;
 
 
-import javax.swing.*;
-
 public enum Feature {
 
   FLOODPLAINS(new Terrain(2, 0, -0.33, 0,1,true), "Floodplains"),

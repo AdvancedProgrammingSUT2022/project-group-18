@@ -1,12 +1,10 @@
 package model.graphicModel;
 
+import client.controller.DataBase;
+import model.BaseCivilization;
+import client.view.View;
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-import controller.DataBase;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import model.BaseCivilization;
-import view.View;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -16,20 +14,21 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 
 public class User {
+    @SerializedName("username")
     private String username;
+    @SerializedName("password")
     private String password;
+    @SerializedName("nickname")
     private String nickname;
+    @SerializedName("address")
     private String photoAddress;
-    //private ProfilePhoto photo;
+
+
 
     private static ArrayList<User> users = new ArrayList<>();
     private static ArrayList<User> players = new ArrayList<>();// it should not save it is just for doing changes on users;
     public static ArrayList<User> allUsers = new ArrayList<>();
     private Integer score;
-    private BaseCivilization civilization;
-
-
-
     public User(String username, String password, String nickname, String photoAddress, int score) throws IOException {
         this.username = username;
         this.password = password;
@@ -39,7 +38,7 @@ public class User {
         allUsers.add(this);
         addNewUserToDataBase(this);
         addNewUserProfile();
-        this.civilization = new BaseCivilization();
+
     }
 
 
@@ -49,10 +48,6 @@ public class User {
 
     public Integer getScore() {
         return score;
-    }
-
-    public BaseCivilization getCivilization() {
-        return civilization;
     }
 
     public static User getUserByUsernameOrNickname(String name, String identifier) {
@@ -260,9 +255,8 @@ public class User {
         writer.close();
         DataBase.setNumOfUsers();
     }
-
     public void saveCivilization(BaseCivilization civilization) throws IOException {
-        ArrayList<User> users = getUsersFromDataBase();
+/*        ArrayList<User> users = getUsersFromDataBase();
         for (int k = 0; k < DataBase.numberOfUsers(); k++) {
             if (users.get(k).getUsername().equals(this.getUsername())) {
                 File file = new File("user" + k + ".json");
@@ -279,7 +273,6 @@ public class User {
                 UserProfile.allUserProfiles.add(k, new UserProfile(new ProfilePhoto(user.photoAddress), user.username, user.password, user.nickname, user.photoAddress, user.score));
                 break;
             }
-        }
+        }*/
     }
-
 }

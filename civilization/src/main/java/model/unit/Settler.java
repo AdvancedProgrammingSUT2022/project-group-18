@@ -1,7 +1,6 @@
 package model.unit;
 
-import model.City;
-import view.View;
+import client.view.View;
 
 public class Settler extends Unit {
 

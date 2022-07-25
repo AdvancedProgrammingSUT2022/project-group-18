@@ -1,11 +1,11 @@
 package model;
 
-import javafx.scene.image.Image;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Polygon;
 import model.Resource.Resources;
 import model.improvements.Improvement;
 import model.unit.Unit;
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Polygon;
 
 import java.util.ArrayList;
 import java.util.Objects;

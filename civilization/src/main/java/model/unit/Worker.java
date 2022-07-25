@@ -1,11 +1,10 @@
 package model.unit;
 
-import model.City;
 import model.Tile;
 import model.hex;
 
 public class Worker extends Unit {
-    public Worker(String name, int movement, int productionCost, City city) {
+    public Worker(String name, int movement, int productionCost, model.City city) {
         super(name, movement, productionCost, city);
 
     }

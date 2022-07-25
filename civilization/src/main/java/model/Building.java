@@ -1,9 +1,8 @@
 package model;
 
-import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import view.View;
+import client.view.View;
 
 
 public class Building {

@@ -10,7 +10,8 @@
 <?import java.net.URL?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="view.LoginMenuController"
+            fx:controller="client.view.LoginMenuController"
+            styleClass="background1"
             prefHeight="720.0" prefWidth="1080.0">
 
     <stylesheets>

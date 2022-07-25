@@ -3,8 +3,10 @@ package model.improvements;
 
 import enums.ImprovementsEnum;
 import model.Tile;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
-public class Improvement {
+public class Improvement extends ImageView {
     private String name;
     private int food;
     private int production;
@@ -17,7 +19,7 @@ public class Improvement {
         this.food = food;
         this.production = production;
         this.gold = gold;
-        
+        this.setImage(new Image(Improvement.class.getResource("/ImprovementIcons/" + name + ".png").toExternalForm()));
         Tile.setImprovements(this);
     }
 

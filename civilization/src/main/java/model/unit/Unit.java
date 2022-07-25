@@ -1,14 +1,14 @@
 package model.unit;
 
-import controller.GameController;
+import client.controller.GameController;
+import model.City;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import model.City;
 
 import model.Tile;
 import model.techs.Technology;
-import view.LoginMenuController;
-import view.View;
+import client.view.LoginMenuController;
+import client.view.View;
 
 import java.util.ArrayList;
 
@@ -39,7 +39,7 @@ public class Unit extends ImageView {
     private Tile unitTile;
 
 
-    public Unit(String name, int movement, int productionCost, City city) {
+    public Unit(String name, int movement, int productionCost, model.City city) {
         this.name = name;
         this.movement = movement;
         this.productionCost = productionCost;

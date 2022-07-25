@@ -10,19 +10,20 @@
 <?import java.net.URL?>
 <BorderPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="view.LoginMenuController"
-            prefHeight="720.0" prefWidth="1080.0">
+            fx:controller="client.view.LoginMenuController"
+            prefHeight="720.0" prefWidth="1080.0"
+            styleClass="background">
     <stylesheets>
         <URL value="@../css/profileController.css"/>
     </stylesheets>
     <center>
-        <VBox spacing="15" alignment="CENTER" maxWidth="200" >
-            <Text text="Username" wrappingWidth="500" styleClass="textField"/>
+        <VBox spacing="15" alignment="CENTER" maxWidth="200">
+            <Text text="Username" wrappingWidth="500" styleClass="text"/>
             <TextField fx:id="username1" promptText="Enter your username" styleClass="textField"/>
-            <Text text="Nickname" wrappingWidth="500" styleClass="textField"/>
-            <TextField  fx:id="nickname1" promptText="Enter your nickname" styleClass="textField"/>
-            <Text text="Password" wrappingWidth="500" styleClass="textField"/>
-            <TextField  fx:id="password1" promptText="Enter your password" styleClass="textField"/>
+            <Text text="Nickname" wrappingWidth="500" styleClass="text"/>
+            <TextField fx:id="nickname1" promptText="Enter your nickname" styleClass="textField"/>
+            <Text text="Password" wrappingWidth="500" styleClass="text"/>
+            <TextField fx:id="password1" promptText="Enter your password" styleClass="textField"/>
             <HBox spacing="20" alignment="CENTER">
                 <Button styleClass="button" text="register" onMouseClicked="#register" minWidth="200"/>
                 <Button styleClass="button" text="login" onMouseClicked="#goToLogin" minWidth="200"/>

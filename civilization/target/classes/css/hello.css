@@ -3,11 +3,17 @@
     -fx-background-size: 390 260;
 }
 
-.button{
+.button {
     -fx-background-position: center center;
     -fx-font-family: "Bodoni MT Poster Compressed";
+    -fx-text-fill: black;
     -fx-cursor: hand;
-    -fx-font-size: 45;
-    -fx-text-fill: #150404;
+    -fx-font-size: 40;
 }
+
+.background {
+    -fx-background-image: url("/blueOne.jpg");
+    -fx-background-size: 1080 720;
+}
+
 
