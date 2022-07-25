@@ -54,7 +54,7 @@ public class BackController extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        this.pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/back.fxml")));
+        this.pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/GameBackground.fxml")));
         this.scrollPane = createScrollPane(pane);
         Scene scene = new Scene(this.scrollPane);
 
@@ -124,40 +124,6 @@ public class BackController extends Application {
         return scroll;
     }
 
-    @FXML
-    private void moveDown() {
-        numOfDown++;
-        for (Tile tile : Tile.getTiles()) {
-            tile.setLayoutY(tile.getLayoutY() - 10);
-        }
-        if (numOfDown % 5 == 0 && numOfDown < 20)
-            newRowOfTiles(1);
-    }
-
-    private void moveUp() {
-        numOfUp++;
-        for (Tile tile : Tile.getTiles()) {
-            tile.setLayoutY(tile.getLayoutY() + 10);
-
-        }
-        if (numOfUp % 5 == 0 && numOfUp < 20)
-            newRowOfTiles(0);
-    }
-
-    private void moveRight() {
-        numOfRight++;
-        for (Tile tile : Tile.getTiles()) {
-            tile.setLayoutX(tile.getLayoutX() - 10);
-        }
-        if (numOfRight % 5 == 0 && numOfRight < 20)
-            newColumn(0);
-    }
-
-    private void moveLeft() {
-        for (Tile tile : Tile.getTiles()) {
-            tile.setLayoutX(tile.getLayoutX() + 10);
-        }
-    }
 
         public void moving (Scene scene, AnchorPane pane, Stage stage){
 
@@ -290,7 +256,7 @@ public class BackController extends Application {
                             if (y > 600 || x > 1200 || y < 200 || x < 200) {
                                 settingEffect(tile);
                             }
-                            scrollPane.setContent(tile);
+                        pane.getChildren().add(tile);
                         //}
 
                     }
@@ -302,10 +268,6 @@ public class BackController extends Application {
             GaussianBlur gaussianBlur = new GaussianBlur();
             gaussianBlur.setRadius(20);
             tile.setEffect(gaussianBlur);
-        }
-
-        public void popUp () {
-
         }
 
         public void newRowOfTiles ( int side){ // side =0 -> up     side =1 -> down
@@ -424,5 +386,9 @@ public class BackController extends Application {
             popup.setY(400);
             popup.setAutoHide(true);
             return popup;
+        }
+
+        public void infoPanel(Pane pane){
+        Image gold = new javafx.scene.image.Image()
         }
     }
