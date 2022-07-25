@@ -8,10 +8,11 @@ public enum ImprovementsEnum {
     LUMBER_MILL("LumberMill"),
     MINE("Mine"),
     PASTURE("Pasture"),
-    PLANTATION("Plantation"),//kesht va kar
-    QUARRY("Quarry"),//madan sang
+    PLANTATION("Plantation"),
+    QUARRY("Quarry"),
     TRADING_POST("TradingPost"),
     FACTORY("Factory");
+
     private String regex;
     public String toString() {
         return this.regex;

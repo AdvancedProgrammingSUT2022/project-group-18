@@ -1,8 +1,10 @@
 package client.model.techs;
 
 import client.view.View;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
-public class Technology {
+public class Technology extends ImageView {
     private String name;
     private Integer cast;
     private String prerequisiteTechs;
@@ -17,6 +19,7 @@ public class Technology {
         this.leadsToTechs = leadsToTechs;
         this.unlocks = unlocks;
         View.getCivilization().addTechnology(this);
+        this.setImage(new Image(Technology.class.getResource("/technology/" + name + ".png").toExternalForm()));
     }
 
     public void setName(String name) {

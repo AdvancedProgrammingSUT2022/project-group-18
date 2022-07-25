@@ -2,10 +2,12 @@ package client.model.Resource;
 
 import client.model.BaseCivilization;
 import client.view.View;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.util.ArrayList;
 
-public class Resources {
+public class Resources extends ImageView {
     private String name;
     private Integer food;
     private Integer production;
@@ -25,6 +27,7 @@ public class Resources {
         this.type = type;
         this.note = note;
         BaseCivilization.addResource(this);
+        this.setImage(new Image(Resources.class.getResource("/ResourceIcons/" + name + ".png").toExternalForm()));
         View.getInCity().setResources(this);
         if(type.equals("BonusResources"))
             View.getInCity().setCityFood(View.getInCity().getCityFood() + 10);

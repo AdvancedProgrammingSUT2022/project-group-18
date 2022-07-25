@@ -7,9 +7,9 @@ import client.model.Tile;
 
 // inke can be found on ye jaye khas bashan hanuz anjam nashode
 public enum ResourcesEnum {
-    BANANA("Banana"),
+    BANANA("Bananas"),
     DEER("Deer"),
-    CATTLE("Deer"),
+    CATTLE("Cattle"),
     SHEEP("Sheep"),
     WHEAT("Wheat"),
     COAL("Coal"),
@@ -52,7 +52,7 @@ public enum ResourcesEnum {
             case BANANA:
                 if (checkImprovementExists(ImprovementsEnum.PLANTATION) &&
                         hex.getFeature() == 5)
-                    return new Resources("Banana", 1, 0, 0, "farest", "farming", "BonusResources", "");
+                    return new Resources("Bananas", 1, 0, 0, "farest", "farming", "BonusResources", "");
             case CATTLE:
                 if (checkImprovementExists(ImprovementsEnum.PASTURE) &&
                         hex.getRandLand() == 1)
