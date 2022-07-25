@@ -1,15 +1,15 @@
 package client.controller;
 
+import client.view.View;
 import enums.Message;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
-import client.model.BaseCivilization;
-import client.model.City;
-import client.model.unit.Melee;
-import client.model.unit.Ranged;
-import client.model.unit.Unit;
-import client.view.View;
+import model.BaseCivilization;
+import model.City;
+import model.unit.Melee;
+import model.unit.Ranged;
+import model.unit.Unit;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -19,13 +19,11 @@ public class GameController {
     public int Score;
 
     public ArrayList<String> showNotificationsHistory() {
-        ArrayList<String> notifs = new ArrayList<>();
+        ArrayList<String> notify = new ArrayList<>();
         if (BaseCivilization.getNotifications().size() == 0)
-            notifs.add(Message.NO_NOTIFICATIONS.toString());
-        for (String string : BaseCivilization.getNotifications()) {
-            notifs.add(string);
-        }
-        return notifs;
+            notify.add(Message.NO_NOTIFICATIONS.toString());
+        notify.addAll(BaseCivilization.getNotifications());
+        return notify;
     }
 
     public City getCityByName(String name) {
@@ -64,7 +62,7 @@ public class GameController {
     }
 
     public void saveGame(int miliSecond) {
-/*        Timeline timeline = new Timeline();
+        Timeline timeline = new Timeline();
         timeline.setCycleCount(-1);
         timeline.getKeyFrames().add(new KeyFrame(Duration.millis(miliSecond), (actionEvent -> {
             try {
@@ -72,6 +70,6 @@ public class GameController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        })));*/
+        })));
     }
 }

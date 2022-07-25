@@ -1,7 +1,7 @@
 package client.controller.unitactoins;
 
-import client.model.BaseCivilization;
-import client.model.unit.Ranged;
+import model.BaseCivilization;
+import model.unit.Ranged;
 
 
 public class RangedAttack extends AbstarctActoin {

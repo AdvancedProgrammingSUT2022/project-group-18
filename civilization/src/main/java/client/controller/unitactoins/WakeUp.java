@@ -1,9 +1,9 @@
 package client.controller.unitactoins;
 
-import client.model.unit.Melee;
-import client.model.unit.Ranged;
-import client.model.unit.Settler;
-import client.model.unit.Worker;
+import model.unit.Melee;
+import model.unit.Ranged;
+import model.unit.Settler;
+import model.unit.Worker;
 
 public class WakeUp extends AbstarctActoin {
     public static boolean x=true;

@@ -12,9 +12,9 @@
       <VBox alignment="CENTER" layoutX="272.0" layoutY="168.0" spacing="20">
          <children>
             <Button mnemonicParsing="false" onMouseClicked="#newGame" prefHeight="74.0" prefWidth="500.0" styleClass="click" text="Start Game" />
-            <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="500.0" styleClass="click" text="Button" />
-            <Button mnemonicParsing="false" prefHeight="79.0" prefWidth="500.0" styleClass="click" text="Button" />
-            <Button mnemonicParsing="false" prefHeight="84.0" prefWidth="500.0" styleClass="click" text="Button" />
+            <Button mnemonicParsing="false" prefHeight="75.0" prefWidth="500.0" styleClass="click" text="Set Number" />
+            <Button mnemonicParsing="false" prefHeight="79.0" prefWidth="500.0" styleClass="click" text="Send Invitation" />
+            <Button mnemonicParsing="false" prefHeight="84.0" prefWidth="500.0" styleClass="click" text="Back To Main Menu" onMouseClicked="#backToMain"/>
          </children>
       </VBox>
    </children>

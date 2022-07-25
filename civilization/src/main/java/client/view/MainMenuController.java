@@ -1,8 +1,8 @@
 package client.view;
 
 
-import client.model.graphicModel.ProfilePhoto;
-import client.model.graphicModel.UserProfile;
+import model.graphicModel.ProfilePhoto;
+import model.graphicModel.UserProfile;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -19,11 +19,30 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
 import java.util.Objects;
 
 
 public class MainMenuController extends Controller {
     private static MainMenuController controller;
+    public static Socket socket;
+    public static DataInputStream dataInputStream;
+    public static DataOutputStream dataOutputStream;
+    public static int SERVER_PORT = 7889;
+
+    public static void initialize() {
+        try {
+            socket = new Socket("localhost", SERVER_PORT);
+            dataInputStream = new DataInputStream(socket.getInputStream());
+            dataOutputStream = new DataOutputStream(socket.getOutputStream());
+        } catch (IOException e) {
+            System.out.println("wrong in initialize");
+            e.printStackTrace();
+        }
+    }
     public static MainMenuController getInstance() {
         if (controller == null)
             controller = new MainMenuController();

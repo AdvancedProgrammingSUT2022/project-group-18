@@ -1,9 +1,9 @@
 package enums;
 
-import client.model.Resource.Resources;
-import client.model.hex;
-import client.model.improvements.Improvement;
-import client.model.Tile;
+import model.Resource.Resources;
+import model.hex;
+import model.improvements.Improvement;
+import model.Tile;
 
 // inke can be found on ye jaye khas bashan hanuz anjam nashode
 public enum ResourcesEnum {

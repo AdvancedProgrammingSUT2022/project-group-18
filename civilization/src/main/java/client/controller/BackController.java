@@ -1,11 +1,11 @@
 package client.controller;
 
-import client.model.Building;
-import client.model.City;
-import client.model.Tile;
-import client.model.unit.Melee;
-import client.model.unit.Settler;
-import client.model.unit.Unit;
+import model.Building;
+import model.City;
+import model.Tile;
+import model.unit.Melee;
+import model.unit.Settler;
+import model.unit.Unit;
 import client.view.View;
 import enums.BuildingEnum;
 import enums.Regexes;
@@ -71,38 +71,39 @@ public class BackController extends Application {
         this.scrollPane = createScrollPane(pane1);
         pane.getChildren().add(scrollPane);
 
+
         foundCity(pane,scene, pane1);
         moving(scene, pane);
         handleAudio();
         cheatCode(scene);
 
         scrollPane.requestFocus();
+
         scene.setOnMouseClicked(event -> {
             System.out.println("--------");
             Tile ti;
             if ((ti = Tile.getTileFromCoordinate(event.getX(), event.getY())) != null) {
                 System.out.println(ti.getX() + " " + ti.getY());
             }
-            /*System.out.println(event.getX());
-            System.out.println(event.getY());*/
-            System.out.println();
         });
 
-
-        for (Tile tile : Tile.getTiles()) {
-                Popup popup = popup(tile.getX(), tile.getY());
-                tile.setOnMouseEntered(event-> {
-                    popup.show(stage);
-                });
-                tile.setOnMouseExited(event -> {
-                    popup.hide();
-                });
-        }
+        showPopup(stage);
 
         stage.setResizable(false);
-
         stage.setScene(scene);
         stage.show();
+    }
+
+    private void showPopup(Stage stage) {
+        for (Tile tile : Tile.getTiles()) {
+            Popup popup = popup(tile.getX(), tile.getY());
+            tile.setOnMouseEntered(event-> {
+                popup.show(stage);
+            });
+            tile.setOnMouseExited(event -> {
+                popup.hide();
+            });
+        }
     }
 
 

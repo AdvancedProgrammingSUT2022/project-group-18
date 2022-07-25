@@ -11,10 +11,9 @@
     -fx-font-size: 40;
 }
 
-
 .background {
-    -fx-background-image: url("/back5.jpg");
-    -fx-background-size: 1080 1080;
+    -fx-background-image: url("/barf.jpg");
+    -fx-background-size: 1080 720;
 }
 
 

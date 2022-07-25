@@ -1,7 +1,7 @@
 package client.controller.unitactoins;
 
-import client.model.BaseCivilization;
-import client.model.unit.*;
+import model.BaseCivilization;
+import model.unit.*;
 
 public abstract class AbstarctActoin {
     protected Unit unit;

@@ -8,15 +8,13 @@ import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import javafx.scene.input.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import client.model.BaseCivilization;
-import client.model.City;
-import client.model.unit.Unit;
+import model.BaseCivilization;
+import model.City;
+import model.unit.Unit;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -31,7 +29,7 @@ public class GameMenuView extends View {
 
     GameController controller = new GameController();
     boolean flag = true;
-    TextArea textArea = new TextArea("ping www.google.com");
+    TextArea textArea = new TextArea("");
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -40,11 +38,6 @@ public class GameMenuView extends View {
         Scene scene = new Scene(pane);
         stage.setScene(scene);
         stage.show();
-
-    }
-
-    public void initialize() {
-
     }
 
     @FXML
@@ -88,7 +81,7 @@ public class GameMenuView extends View {
         } else if (Regexes.getCommand(input, Regexes.CITIES) != null) {
             citiesPanel();
         } else if (Regexes.getCommand(input, Regexes.DIPLOMACY) != null) {
-            diplimacypanel();
+            diplomacyPanel();
         } else if (Regexes.getCommand(input, Regexes.VICTORY) != null) {
             System.out.println("there is a long way to victory");
         } else if (Regexes.getCommand(input, Regexes.DEMOGRAPHICS) != null) {
@@ -226,9 +219,16 @@ public class GameMenuView extends View {
         //TODO complete after research completed
     }
 
-    public void diplimacypanel() {
+    public void diplomacyPanel() {
         System.out.println(controller.Score);
     }
 
 
+    public void backToMain(MouseEvent event) {
+        try {
+            new MainMenuController().start(ProfileMenuGraphics.getStage());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

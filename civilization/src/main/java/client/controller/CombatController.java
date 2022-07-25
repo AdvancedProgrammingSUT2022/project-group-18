@@ -1,12 +1,12 @@
 package client.controller;
 
 import client.controller.unitactoins.Delete;
-import client.model.unit.*;
 import enums.Message;
-import client.model.BaseCivilization;
-import client.model.City;
-import client.model.hex;
+import model.BaseCivilization;
+import model.City;
+import model.hex;
 import client.view.View;
+import model.unit.*;
 
 import java.util.regex.Matcher;
 
@@ -150,17 +150,6 @@ public class CombatController {
     }*/
 
 
-    public void ColdWar() {
-    }
-
-    public void radiusHealth() {
-    }
-
-    public void MPUse() {
-    }
-
-    public void receiveXP() {
-    }
 
     public Unit unitIsDead(Unit unit) {
         if (unit.getHitPoints() == 0) {

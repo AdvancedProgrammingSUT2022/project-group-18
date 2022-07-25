@@ -1,52 +1,36 @@
 package client.controller;
 
-import client.model.graphicModel.User;
+import client.view.MainMenuController;
 import com.google.gson.Gson;
+import model.graphicModel.User;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 public class DataBase {
 
     public static int numberOfUsers()throws IOException{
-        File file = new File("numberOfUsers.txt");
-        int n = 0;
-        if(file.length() != 0) {
-            FileInputStream inputStream = new FileInputStream(file);
-            String num = new String(inputStream.readAllBytes());
-            inputStream.close();
-            n = Integer.parseInt(num);
-        }
-
-        return n;
+        MainMenuController.dataOutputStream.writeUTF("numberOfUsers");
+        MainMenuController.dataOutputStream.flush();
+        return Integer.parseInt(MainMenuController.dataInputStream.readUTF());
     }
 
     public static void setNumOfUsers(){
         try {
-            File file = new File("numberOfUsers.txt");
-            int n=numberOfUsers()+1;
-            PrintWriter printWriter = new PrintWriter(file);
-            printWriter.write(Integer.toString(n));
-            printWriter.flush();
-            printWriter.close();
+            MainMenuController.dataOutputStream.writeUTF("setNumOfUsers");
+            MainMenuController.dataOutputStream.flush();
+            MainMenuController.dataInputStream.readUTF();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
     public static User getUserFromDataBase(int n){
-        String fileName = "user" + n + ".json";
         try {
-            String json = new String(Files.readAllBytes(Paths.get(fileName)));
-            return new Gson().fromJson(json, User.class);
+            MainMenuController.dataOutputStream.writeUTF("getUserFromDataBase" + " " + n);
+            MainMenuController.dataOutputStream.flush();
+            return new Gson().fromJson(MainMenuController.dataInputStream.readUTF(), User.class);
         } catch (IOException e) {
             e.printStackTrace();
-            return null;
         }
+        return null;
     }
 }
-
-//user create --username fsl --nickname fdd --password 99
