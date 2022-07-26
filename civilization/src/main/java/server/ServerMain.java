@@ -16,6 +16,7 @@ public class ServerMain {
             ServerSocket serverSocket = new ServerSocket(SERVER_PORT);
             while (true) {
                 Socket socket = serverSocket.accept();
+
                 new Thread(() -> {
                     try {
 

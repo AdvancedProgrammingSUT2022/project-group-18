@@ -60,13 +60,15 @@ public class MainMenuController extends Controller {
     }
 
     public void scoreTable(Stage stage) throws Exception {
-        //BorderPane root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/scoreTable.fxml")));
         stage = new Stage();
         TableView<UserProfile> table = new TableView<>();
+        table.setStyle("-fx-background-color: transparent;" +
+                "-fx-border-color: green;");
 
 
         TableColumn<UserProfile, ProfilePhoto> photo = new TableColumn<>("photo");
         photo.setCellValueFactory(new PropertyValueFactory<>("photo"));
+
 
         TableColumn<UserProfile, String> userNameCol = new TableColumn<>("username");
         userNameCol.setCellValueFactory(new PropertyValueFactory<>("username"));
