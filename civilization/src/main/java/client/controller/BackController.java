@@ -1,5 +1,10 @@
 package client.controller;
 
+import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import model.Building;
 import model.City;
 import model.Tile;
@@ -59,7 +64,6 @@ public class BackController extends Application {
     public static final int SERVER_PORT = 9423;
 
 
-
     @Override
     public void start(Stage stage) throws Exception {
         AnchorPane pane = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/fxml/GameBackground.fxml")));
@@ -72,59 +76,11 @@ public class BackController extends Application {
         pane.getChildren().add(scrollPane);
 
 
-        foundCity(pane,scene, pane1);
+        foundCity(pane, scene, pane1);
         moving(scene, pane);
+        infoPanel(pane);
         handleAudio();
         cheatCode(scene);
-
-<<<<<<< HEAD:civilization/src/main/java/controller/BackController.java
-//        foundCity(pane);
-//        moving(scene, pane, stage);
-//
-//        scene.setOnMouseClicked(event -> {
-//            System.out.println("--------");
-//            Tile ti;
-//            if ((ti = Tile.getTileFromCoordinate(event.getX(), event.getY())) != null) {
-//                System.out.println(ti.getX() + " " + ti.getY());
-//            }
-//            /*System.out.println(event.getX());
-//            System.out.println(event.getY());*/
-//            System.out.println();
-//        });
-//        scrollPane.requestFocus();
-        /*pane.requestFocus();
-        pane.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent keyEvent) {
-                switch (keyEvent.getCode().getName()) {
-                    case "Left":
-                        moveLeft();
-                        break;
-                    case "Right":
-                        moveRight();
-                        break;
-                    case "Up":
-                        moveUp();
-                        break;
-                    case "Down":
-                        moveDown();
-                        break;
-                }
-            }
-        });
-*/
-
-
-//        for (Tile tile : Tile.getTiles()) {
-//                Popup popup = popup(tile.getX(), tile.getY());
-//                tile.setOnMouseEntered(event-> {
-//                    popup.show(stage);
-//                });
-//                tile.setOnMouseExited(event -> {
-//                    popup.hide();
-//                });
-//        }
-=======
         scrollPane.requestFocus();
 
         scene.setOnMouseClicked(event -> {
@@ -136,8 +92,6 @@ public class BackController extends Application {
         });
 
         showPopup(stage);
->>>>>>> origin:civilization/src/main/java/client/controller/BackController.java
-
         stage.setResizable(false);
         stage.setScene(scene);
         stage.show();
@@ -146,7 +100,7 @@ public class BackController extends Application {
     private void showPopup(Stage stage) {
         for (Tile tile : Tile.getTiles()) {
             Popup popup = popup(tile.getX(), tile.getY());
-            tile.setOnMouseEntered(event-> {
+            tile.setOnMouseEntered(event -> {
                 popup.show(stage);
             });
             tile.setOnMouseExited(event -> {
@@ -166,19 +120,14 @@ public class BackController extends Application {
         return scroll;
     }
 
-<<<<<<< HEAD:civilization/src/main/java/controller/BackController.java
-
-        public void moving (Scene scene, AnchorPane pane, Stage stage){
-=======
-        public void moving (Scene scene, AnchorPane pane){
->>>>>>> origin:civilization/src/main/java/client/controller/BackController.java
-
-            Button move = new Button("move");
-            move.setLayoutX(1);
-            move.setLayoutY(469);
-            move.setPrefHeight(63);
-            move.setPrefWidth(77);
-            new Thread(()->{for (Unit unit : getInCity().getUnits()) {
+    public void moving(Scene scene, AnchorPane pane) {
+        Button move = new Button("move");
+        move.setLayoutX(1);
+        move.setLayoutY(469);
+        move.setPrefHeight(63);
+        move.setPrefWidth(77);
+        new Thread(() -> {
+            for (Unit unit : getInCity().getUnits()) {
                 unit.setOnMouseClicked(event -> {
                     if (!flag) {
                         move.setOnMouseClicked(event1 -> {
@@ -190,7 +139,7 @@ public class BackController extends Application {
                                         unit.move(tile.getX() - 25, tile.getY() - 50);
                                         unit.setUnitTile(tile);
                                         unit.minesMovement(distance);
-                                        if(tile.getEffect() != null) {
+                                        if (tile.getEffect() != null) {
                                             tile.setEffect(null);
                                         }
                                     } else {
@@ -211,10 +160,12 @@ public class BackController extends Application {
                         flag = false;
                     }
                 });
-            }}).start();
-            pane.getChildren().add(move);
+            }
+        }).start();
+        pane.getChildren().add(move);
 
-        }
+    }
+
     private void handleAudio() {
         Media media = new Media(BackController.class.getResource("/music/BackgroundMusic.mp3").toExternalForm());
         mediaPlayer = new MediaPlayer(media);
@@ -224,246 +175,161 @@ public class BackController extends Application {
     }
 
 
-        public void foundCity (AnchorPane pane, Scene scene, AnchorPane pane1){
-            Settler settler = (Settler) UnitEnum.getUnits(UnitEnum.SETTLER);
-            Tile tile = Tile.getTileFromCoordinate(500, 500);
-            settler.setX(tile.getX() - 40);
-            settler.setY(tile.getY() - 40);
-            pane1.getChildren().add(settler);
+    public void foundCity(AnchorPane pane, Scene scene, AnchorPane pane1) {
+        Settler settler = (Settler) UnitEnum.getUnits(UnitEnum.SETTLER);
+        Tile tile = Tile.getTileFromCoordinate(500, 500);
+        settler.setX(tile.getX() - 40);
+        settler.setY(tile.getY() - 40);
+        pane1.getChildren().add(settler);
 
-            Button button = new Button("found  city");
-            button.setLayoutX(1);
-            button.setLayoutY(406);
-            button.setPrefHeight(63);
-            button.setPrefWidth(77);
-            size = pane.getChildren().size() - 1;
-
-
-            button.setOnMouseClicked(event -> {
-                double x = settler.getX();
-                double y = settler.getY();
-                Tile capital = Tile.getTileFromCoordinate(x, y);
-                x = capital.getX();
-                y = capital.getY();
-                City city = new City(x, y);
-                View.setInCity(city);
-                city.setX(x);
-                city.setY(y);
+        Button button = new Button("found  city");
+        button.setLayoutX(1);
+        button.setLayoutY(406);
+        button.setPrefHeight(63);
+        button.setPrefWidth(77);
+        size = pane.getChildren().size() - 1;
 
 
-                city.addTileToCity(capital);
-                capital = Tile.getTileFromCoordinate(x - 80, y - 135);
-                System.out.println(capital.getX() + " " + capital.getY());
-                city.addTileToCity(capital);
-                capital = Tile.getTileFromCoordinate(x + 80, y - 135);
-                System.out.println(capital.getX() + " " + capital.getY());
-                city.addTileToCity(capital);
-                capital = Tile.getTileFromCoordinate(x - 160, y);
-                System.out.println(capital.getX() + " " + capital.getY());
-                city.addTileToCity(capital);
-                capital = Tile.getTileFromCoordinate(x + 160, y);
-                System.out.println(capital.getX() + " " + capital.getY());
-                city.addTileToCity(capital);
-                Melee warrior = (Melee) UnitEnum.getUnits(UnitEnum.WARRIOR);
-                warrior.setX(capital.getX() - 50);
-                warrior.setY(capital.getY() - 50);
+        button.setOnMouseClicked(event -> {
+            double x = settler.getX();
+            double y = settler.getY();
+            Tile capital = Tile.getTileFromCoordinate(x, y);
+            x = capital.getX();
+            y = capital.getY();
+            City city = new City(x, y);
+            View.setInCity(city);
+            city.setX(x);
+            city.setY(y);
 
-                pane1.getChildren().add(warrior);
 
-                capital = Tile.getTileFromCoordinate(x - 80, y + 135);
-                System.out.println(capital.getX() + " " + capital.getY());
-                city.addTileToCity(capital);
-                capital = Tile.getTileFromCoordinate(x + 80, y + 135);
-                System.out.println(capital.getX() + " " + capital.getY());
-                city.addTileToCity(capital);
-                pane1.getChildren().remove(settler);
-                size = pane1.getChildren().size() - 1;
-                Building building = BuildingEnum.makeBuilding(BuildingEnum.PALACE);
-                building.getIcon().setFitHeight(120);
-                building.getIcon().setFitWidth(120);
-                building.getIcon().setX(x - 55);
-                building.getIcon().setY(y - 60);
-                pane1.getChildren().add(size, building.getIcon());
-                pane.getChildren().remove(button);
-                moving(scene, pane);
+            city.addTileToCity(capital);
+            capital = Tile.getTileFromCoordinate(x - 80, y - 135);
+            System.out.println(capital.getX() + " " + capital.getY());
+            city.addTileToCity(capital);
+            capital = Tile.getTileFromCoordinate(x + 80, y - 135);
+            System.out.println(capital.getX() + " " + capital.getY());
+            city.addTileToCity(capital);
+            capital = Tile.getTileFromCoordinate(x - 160, y);
+            System.out.println(capital.getX() + " " + capital.getY());
+            city.addTileToCity(capital);
+            capital = Tile.getTileFromCoordinate(x + 160, y);
+            System.out.println(capital.getX() + " " + capital.getY());
+            city.addTileToCity(capital);
+            Melee warrior = (Melee) UnitEnum.getUnits(UnitEnum.WARRIOR);
+            warrior.setX(capital.getX() - 50);
+            warrior.setY(capital.getY() - 50);
 
-            });
-            pane.getChildren().add(button);
-        }
+            pane1.getChildren().add(warrior);
 
-        public void map(AnchorPane pane) {
+            capital = Tile.getTileFromCoordinate(x - 80, y + 135);
+            System.out.println(capital.getX() + " " + capital.getY());
+            city.addTileToCity(capital);
+            capital = Tile.getTileFromCoordinate(x + 80, y + 135);
+            System.out.println(capital.getX() + " " + capital.getY());
+            city.addTileToCity(capital);
+            pane1.getChildren().remove(settler);
+            size = pane1.getChildren().size() - 1;
+            Building building = BuildingEnum.makeBuilding(BuildingEnum.PALACE);
+            building.getIcon().setFitHeight(120);
+            building.getIcon().setFitWidth(120);
+            building.getIcon().setX(x - 55);
+            building.getIcon().setY(y - 60);
+            pane1.getChildren().add(size, building.getIcon());
+            pane.getChildren().remove(button);
+            moving(scene, pane);
 
-            String[] name = {"dasht", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "kavir", "kooh", "ocean", "sand", "sand"
-                    , "sand", "grass", "snow", "tappe", "tappe", "tondra"};
-            int rand = 0;
-            for (int i = -10; i < 15; i++) {
-                for (int j = -10; j < 9; j++) {
-                    rand = (int) Math.floor(Math.random() * 100);
-                    String back = name[rand % 19];
-                    if (j % 2 == 0) {
-                        int x = 100 + (i * 160);
-                        int y = 100 + (j * 135);
-                        Tile tile = new Tile(x, y, back);
-                            tile.setCoordinates(x, y);
-                            tile.setImage(back);
-                            if (y > 600 || x > 1200 || y < 100 || x < 200) {
-                                settingEffect(tile);
-                            }
+        });
+        pane.getChildren().add(button);
+    }
 
-                            pane.getChildren().add(tile);
-                    } else {
-                        int x = 180 + (i * 160);
-                        int y = 100 + (j * 135);
-                        Tile tile = new Tile(x, y, back);
-                            tile.setCoordinates(x, y);
-                            tile.setImage(back);
-                            if (y > 600 || x > 1200 || y < 200 || x < 200) {
-                                settingEffect(tile);
-                            }
-<<<<<<< HEAD:civilization/src/main/java/controller/BackController.java
-                        pane.getChildren().add(tile);
-                        //}
-=======
-                            pane.getChildren().add(tile);
->>>>>>> origin:civilization/src/main/java/client/controller/BackController.java
+    public void map(AnchorPane pane) {
 
-                    }
-                }
-            }
-        }
-
-        public void settingEffect (Tile tile){
-            GaussianBlur gaussianBlur = new GaussianBlur();
-            gaussianBlur.setRadius(20);
-            tile.setEffect(gaussianBlur);
-        }
-
-<<<<<<< HEAD:civilization/src/main/java/controller/BackController.java
-        public void newRowOfTiles ( int side){ // side =0 -> up     side =1 -> down
-            String[] name = {"dasht", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "kavir", "kooh", "ocean", "sand", "sand"
-                    , "sand", "grass", "snow", "tappe", "tappe", "tondra"};
-            if (side == 0) {
-                if (oUp % 2 == 0) {
-                    for (int i = 0; i < 9; i++) {
-                        int rand = (int) Math.floor(Math.random() * 100);
-                        String back = name[rand % 19];
-                        Tile tile = new Tile(100 + i * 160, firstOfY, back);
-                        tile.setCoordinates(100 + i * 160, firstOfY);
-                        tile.setImage(back);
-                        pane.getChildren().add(tile);
-                    }
-                }
-                if (oUp % 2 != 0) {
-                    for (int i = 0; i < 8; i++) {
-                        int rand = (int) Math.floor(Math.random() * 100);
-                        String back = name[rand % 19];
-                        Tile tile = new Tile(180 + i * 160, firstOfY, back);
-                        tile.setCoordinates(180 + i * 160, firstOfY);
-                        tile.setImage(back);
-                        pane.getChildren().add(tile);
-                    }
-                }
-                oUp++;
-            } else {
-                if (oDown % 2 == 0) {
-                    for (int i = 0; i < 9; i++) {
-                        int rand = (int) Math.floor(Math.random() * 100);
-                        String back = name[rand % 19];
-                        Tile tile = new Tile(100 + i * 160, endOfY, back);
-                        tile.setCoordinates(100 + i * 160, endOfY);
-                        tile.setImage(back);
-                        settingEffect(tile);
-                        pane.getChildren().add(tile);
-                    }
-                }
-                if (oDown % 2 != 0) {
-                    for (int i = 0; i < 8; i++) {
-                        int rand = (int) Math.floor(Math.random() * 100);
-                        String back = name[rand % 19];
-                        Tile tile = new Tile(180 + i * 160, endOfY, back);
-                        tile.setCoordinates(180 + i * 160, endOfY);
-                        tile.setImage(back);
-                        settingEffect(tile);
-                        pane.getChildren().add(tile);
-                    }
-                }
-                oDown++;
-            }
-            firstOfY -= 90;
-            endOfY += 90;
-        }
-
-        public void newColumn ( int side){ //side=0 -> Right      side=0 -> Left
-            String[] name = {"dasht", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "kavir", "kooh", "ocean", "sand", "sand"
-                    , "sand", "grass", "snow", "tappe", "tappe", "tondra"};
-            if (side == 0) {
-                for (int i = 0; i < 9; i++) {
-                    int rand = (int) Math.floor(Math.random() * 100);
-                    String back = name[rand % 19];
-                    Tile tile = new Tile(endOfX, firstOfY + 150 * i, back);
-                    tile.setCoordinates(endOfX, firstOfY + 150 * i);
+        String[] name = {"dasht", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "kavir", "kooh", "ocean", "sand", "sand"
+                , "sand", "grass", "snow", "tappe", "tappe", "tondra"};
+        int rand = 0;
+        for (int i = -10; i < 15; i++) {
+            for (int j = -10; j < 9; j++) {
+                rand = (int) Math.floor(Math.random() * 100);
+                String back = name[rand % 19];
+                if (j % 2 == 0) {
+                    int x = 100 + (i * 160);
+                    int y = 100 + (j * 135);
+                    Tile tile = new Tile(x, y, back);
+                    tile.setCoordinates(x, y);
                     tile.setImage(back);
+                    if (y > 600 || x > 1200 || y < 100 || x < 200) {
+                        settingEffect(tile);
+                    }
+
+                    pane.getChildren().add(tile);
+                } else {
+                    int x = 180 + (i * 160);
+                    int y = 100 + (j * 135);
+                    Tile tile = new Tile(x, y, back);
+                    tile.setCoordinates(x, y);
+                    tile.setImage(back);
+                    if (y > 600 || x > 1200 || y < 200 || x < 200) {
+                        settingEffect(tile);
+                    }
                     pane.getChildren().add(tile);
                 }
-                oUp++;
-            } else {
-                if (oDown % 2 == 0) {
-                    for (int i = 0; i < 9; i++) {
-                        int rand = (int) Math.floor(Math.random() * 100);
-                        String back = name[rand % 19];
-                        Tile tile = new Tile(100 + i * 160, endOfY, back);
-                        tile.setCoordinates(100 + i * 160, endOfY);
-                        tile.setImage(back);
-                        pane.getChildren().add(tile);
-                    }
-                }
-                if (oDown % 2 != 0) {
-                    for (int i = 0; i < 8; i++) {
-                        int rand = (int) Math.floor(Math.random() * 100);
-                        String back = name[rand % 19];
-                        Tile tile = new Tile(180 + i * 160, endOfY, back);
-                        tile.setCoordinates(180 + i * 160, endOfY);
-                        tile.setImage(back);
-                        pane.getChildren().add(tile);
-                    }
-                }
-                oDown++;
             }
-            firstOfX -= 160;
-            endOfX += 160;
         }
+    }
 
-=======
->>>>>>> origin:civilization/src/main/java/client/controller/BackController.java
-        public Popup popup ( double x, double y){
-            Tile tile = Tile.getTileFromCoordinate(x, y);
-            Popup popup = new Popup();
-            String gold = String.valueOf(tile.goldOutput);
-            javafx.scene.image.Image image = new javafx.scene.image.Image(Objects.requireNonNull(getClass().getResource("/images/icon.png").toExternalForm()));
-            ImageView imageView = new ImageView(image);
-            Label label = new Label("gold: " + gold +
-                    "\nproduction: " + tile.prodution +
-                    "\nfood: " + tile.foodOutput +
-                    "\ncombat modifiers: " + tile.cm +
-                    "\nmovement cost: " + tile.cost, imageView);
-            popup.getContent().add(label);
-            label.setMinWidth(150);
-            label.setMinHeight(100);
-            label.setStyle(" -fx-text-fill: #851111;");
-            label.setStyle(" -fx-background-color: rgba(255,255,255,0.6);");
-            label.setFont(Font.font(""));
-            popup.setOpacity(1);
-            popup.setX(1200);
-            popup.setY(400);
-            popup.setAutoHide(true);
-            return popup;
-        }
+    public void settingEffect(Tile tile) {
+        GaussianBlur gaussianBlur = new GaussianBlur();
+        gaussianBlur.setRadius(20);
+        tile.setEffect(gaussianBlur);
+    }
 
-<<<<<<< HEAD:civilization/src/main/java/controller/BackController.java
-        public void infoPanel(Pane pane){
-        Image gold = new javafx.scene.image.Image()
-        }
-=======
+    public Popup popup(double x, double y) {
+        Tile tile = Tile.getTileFromCoordinate(x, y);
+        Popup popup = new Popup();
+        String gold = String.valueOf(tile.goldOutput);
+        javafx.scene.image.Image image = new javafx.scene.image.Image(Objects.requireNonNull(getClass().getResource("/images/icon.png").toExternalForm()));
+        ImageView imageView = new ImageView(image);
+        Label label = new Label("gold: " + gold +
+                "\nproduction: " + tile.prodution +
+                "\nfood: " + tile.foodOutput +
+                "\ncombat modifiers: " + tile.cm +
+                "\nmovement cost: " + tile.cost, imageView);
+        popup.getContent().add(label);
+        label.setMinWidth(150);
+        label.setMinHeight(100);
+        label.setStyle(" -fx-text-fill: #851111;");
+        label.setStyle(" -fx-background-color: rgba(255,255,255,0.6);");
+        label.setFont(Font.font(""));
+        popup.setOpacity(1);
+        popup.setX(1200);
+        popup.setY(400);
+        popup.setAutoHide(true);
+        return popup;
+    }
+
+    public void infoPanel(Pane pane) {
+        Rectangle rectangle = new Rectangle(10 , 40 , 500 , 30);
+        rectangle.setFill(Color.WHITE);
+        rectangle.setOpacity(0.7);
+        pane.getChildren().add(rectangle);
+        Circle gold = new Circle(50, 50, 40);
+        Image image = new Image(Objects.requireNonNull(getClass().getResource("/images/gold.png")).toExternalForm());
+        gold.setFill(new ImagePattern(image));
+        pane.getChildren().add(gold);
+        Circle Science = new Circle(180, 50, 40);
+        Image Scienceimage = new Image(Objects.requireNonNull(getClass().getResource("/images/Science.png")).toExternalForm());
+        Science.setFill(new ImagePattern(Scienceimage));
+        pane.getChildren().add(Science);
+        Circle crowd = new Circle(310, 50, 40);
+        Image crowdimage = new Image(Objects.requireNonNull(getClass().getResource("/images/crowd.png")).toExternalForm());
+        crowd.setFill(new ImagePattern(crowdimage));
+        pane.getChildren().add(crowd);
+        Circle food = new Circle(440, 50, 40);
+        Image foodimage = new Image(Objects.requireNonNull(getClass().getResource("/images/Food.png")).toExternalForm());
+        food.setFill(new ImagePattern(foodimage));
+        pane.getChildren().add(food);
+    }
+
     public void cheatCode(Scene scene) {
         KeyCombination kc = new KeyCodeCombination(KeyCode.C, KeyCombination.SHIFT_DOWN, KeyCombination.CONTROL_DOWN);
         Runnable rn = () -> {
@@ -527,5 +393,4 @@ public class BackController extends Application {
         };
         scene.getAccelerators().put(kc, rn);
     }
->>>>>>> origin:civilization/src/main/java/client/controller/BackController.java
-    }
+}
