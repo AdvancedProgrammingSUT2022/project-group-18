@@ -1,8 +1,8 @@
 package client.view;
 
-import model.graphicModel.ProfilePhoto;
-import model.graphicModel.User;
-import model.graphicModel.UserProfile;
+import client.model.graphicModel.ProfilePhoto;
+import client.model.graphicModel.User;
+import client.model.graphicModel.UserProfile;
 import enums.Message;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;

@@ -1,10 +1,10 @@
 package client.controller.unitactoins;
 
-import model.BaseCivilization;
-import model.unit.Melee;
-import model.unit.Ranged;
-import model.unit.Settler;
-import model.unit.Worker;
+import client.model.BaseCivilization;
+import client.model.unit.Melee;
+import client.model.unit.Ranged;
+import client.model.unit.Settler;
+import client.model.unit.Worker;
 
 public class Delete extends AbstarctActoin{
     int id;

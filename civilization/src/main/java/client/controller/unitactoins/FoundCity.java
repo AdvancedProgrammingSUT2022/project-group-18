@@ -1,8 +1,8 @@
 package client.controller.unitactoins;
 
-import model.BaseCivilization;
-import model.unit.Settler;
-import model.unit.Unit;
+import client.model.BaseCivilization;
+import client.model.unit.Settler;
+import client.model.unit.Unit;
 
 public class FoundCity extends AbstarctActoin{
     public FoundCity(Settler unit, BaseCivilization b){

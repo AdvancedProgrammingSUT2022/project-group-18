@@ -1,8 +1,8 @@
 package client.view;
 
 
-import model.graphicModel.ProfilePhoto;
-import model.graphicModel.UserProfile;
+import client.model.graphicModel.ProfilePhoto;
+import client.model.graphicModel.UserProfile;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;

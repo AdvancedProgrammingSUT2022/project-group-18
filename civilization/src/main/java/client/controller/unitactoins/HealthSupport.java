@@ -1,7 +1,7 @@
 package client.controller.unitactoins;
 
-import model.unit.Melee;
-import model.unit.Ranged;
+import client.model.unit.Melee;
+import client.model.unit.Ranged;
 
 public class HealthSupport extends AbstarctActoin {
     public HealthSupport(Ranged unit) {

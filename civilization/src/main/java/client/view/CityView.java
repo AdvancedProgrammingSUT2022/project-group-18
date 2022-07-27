@@ -1,8 +1,8 @@
 package client.view;
 
-import model.City;
-import model.Tile;
-import model.unit.Worker;
+import client.model.City;
+import client.model.Tile;
+import client.model.unit.Worker;
 
 import java.util.ArrayList;
 

@@ -12,9 +12,9 @@ import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import model.BaseCivilization;
-import model.City;
-import model.unit.Unit;
+import client.model.BaseCivilization;
+import client.model.City;
+import client.model.unit.Unit;
 
 import java.io.BufferedReader;
 import java.io.IOException;

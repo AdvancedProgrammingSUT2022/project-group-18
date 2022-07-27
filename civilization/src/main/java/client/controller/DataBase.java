@@ -2,7 +2,7 @@ package client.controller;
 
 import client.view.MainMenuController;
 import com.google.gson.Gson;
-import model.graphicModel.User;
+import client.model.graphicModel.User;
 
 import java.io.IOException;
 

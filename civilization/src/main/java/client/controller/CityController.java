@@ -2,7 +2,7 @@ package client.controller;
 
 import enums.Message;
 import enums.UnitEnum;
-import model.BaseCivilization;
+import client.model.BaseCivilization;
 import client.view.Controller;
 import client.view.View;
 
