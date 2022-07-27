@@ -1,7 +1,7 @@
 package client;
 
-import client.Model.Request;
-import client.Model.Response;
+import client.model.Request;
+import client.model.Response;
 import client.controller.NetworkController;
 import client.controller.SceneController;
 import client.view.Database;

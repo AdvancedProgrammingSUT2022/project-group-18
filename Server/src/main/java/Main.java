@@ -7,8 +7,8 @@ import java.net.Socket;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        ServerSocket serverSocket = new ServerSocket(8000);
-        System.out.println("Listening on port 8000");
+        ServerSocket serverSocket = new ServerSocket(8080);
+        System.out.println("Listening on port 8080");
         while (true) {
             Socket socket = serverSocket.accept();
             System.out.println("New connection made");

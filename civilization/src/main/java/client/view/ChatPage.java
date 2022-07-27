@@ -1,9 +1,9 @@
 package client.view;
 
 import client.ChatMain;
-import client.Model.Message;
-import client.Model.Request;
-import client.Model.Response;
+import client.model.Message;
+import client.model.Request;
+import client.model.Response;
 import client.controller.ChatController;
 import client.controller.NetworkController;
 import client.controller.SceneController;
@@ -15,11 +15,8 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 
 import java.io.IOException;
 import java.util.ArrayList;

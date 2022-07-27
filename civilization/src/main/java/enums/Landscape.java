@@ -1,6 +1,6 @@
 package enums;
 
-import client.model.trrain.Terrain;
+import model.trrain.Terrain;
 
 public enum Landscape {
 

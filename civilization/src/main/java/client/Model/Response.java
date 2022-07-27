@@ -1,4 +1,4 @@
-package client.Model;
+package client.model;
 
 import com.google.gson.Gson;
 

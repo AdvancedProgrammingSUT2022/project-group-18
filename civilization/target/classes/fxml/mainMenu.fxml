@@ -11,7 +11,7 @@
 
     <center>
 
-        <VBox alignment="CENTER" spacing="20">
+        <VBox alignment="CENTER" spacing="15">
 
                 <Button onMouseClicked="#goToProfile" prefWidth="500" styleClass="button" text="Profile Menu" />
                 <Button onMouseClicked="#goToRegister" prefWidth="500" styleClass="button" text="Register" />

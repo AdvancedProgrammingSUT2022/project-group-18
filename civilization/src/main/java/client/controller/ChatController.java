@@ -1,7 +1,7 @@
 package client.controller;
 
-import client.Model.Chat;
-import client.Model.Message;
+import client.model.Chat;
+import client.model.Message;
 import client.view.ChatPage;
 import client.view.Database;
 import javafx.application.Platform;

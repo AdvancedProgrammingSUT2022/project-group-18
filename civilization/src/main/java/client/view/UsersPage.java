@@ -1,8 +1,8 @@
 package client.view;
 
-import client.Model.Chat;
-import client.Model.Request;
-import client.Model.Response;
+import client.model.Chat;
+import client.model.Request;
+import client.model.Response;
 import client.controller.NetworkController;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;

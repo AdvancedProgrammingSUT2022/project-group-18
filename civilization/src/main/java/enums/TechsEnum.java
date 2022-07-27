@@ -1,6 +1,6 @@
 package enums;
 
-import client.model.techs.Technology;
+import model.techs.Technology;
 import client.view.View;
 
 public enum TechsEnum {

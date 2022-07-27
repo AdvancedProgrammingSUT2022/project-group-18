@@ -1,6 +1,6 @@
 package client.view;
 
-import client.Model.Chat;
+import client.model.Chat;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;

@@ -2,8 +2,8 @@ package client.view;
 
 
 import client.ChatMain;
-import client.model.graphicModel.ProfilePhoto;
-import client.model.graphicModel.UserProfile;
+import model.graphicModel.ProfilePhoto;
+import model.graphicModel.UserProfile;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -170,7 +170,6 @@ public class MainMenuController extends Controller {
             Button logout = new Button("logout");
             Button newGame = new Button("Game Menu");
             Button chat = new Button("Chat");
-
             newGame.setMinWidth(500);
             newGame.getStyleClass().add("button");
             logout.setMinWidth(500);
@@ -216,6 +215,7 @@ public class MainMenuController extends Controller {
                     }
                 }
             });
+
             chat.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {

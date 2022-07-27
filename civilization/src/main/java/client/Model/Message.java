@@ -1,6 +1,4 @@
-package client.Model;
-
-import java.time.LocalDateTime;
+package client.model;
 
 public class Message {
     private int senderId;

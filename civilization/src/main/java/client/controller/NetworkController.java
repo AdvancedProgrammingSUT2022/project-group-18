@@ -1,19 +1,15 @@
 package client.controller;
 
-import client.Model.Message;
-import client.Model.Request;
-import client.Model.Response;
+import client.model.Message;
+import client.model.Request;
+import client.model.Response;
 import client.view.Database;
 import com.google.gson.*;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.lang.reflect.Type;
 import java.net.Socket;
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
 
 public class NetworkController {
 
@@ -24,7 +20,7 @@ public class NetworkController {
 
     public static boolean connect() {
         try {
-            socket = new Socket("localhost", 8000);
+            socket = new Socket("localhost", 8080);
             inputStream = new DataInputStream(socket.getInputStream());
             outputStream = new DataOutputStream(socket.getOutputStream());
         } catch (IOException ignored) {
