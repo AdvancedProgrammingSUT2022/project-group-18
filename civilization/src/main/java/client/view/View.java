@@ -1,10 +1,10 @@
 package client.view;
 
 import javafx.application.Application;
-import model.BaseCivilization;
-import model.City;
-import model.graphicModel.User;
-import model.unit.Unit;
+import client.model.BaseCivilization;
+import client.model.City;
+import client.model.graphicModel.User;
+import client.model.unit.Unit;
 
 import java.util.Locale;
 import java.util.Scanner;

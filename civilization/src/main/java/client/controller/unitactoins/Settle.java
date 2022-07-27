@@ -1,8 +1,8 @@
 package client.controller.unitactoins;
 
-import model.hex;
-import model.unit.Melee;
-import model.unit.Ranged;
+import client.model.hex;
+import client.model.unit.Melee;
+import client.model.unit.Ranged;
 
 public class Settle extends AbstarctActoin {
 

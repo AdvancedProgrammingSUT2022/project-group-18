@@ -1,12 +1,12 @@
 package client.controller;
 
 import client.controller.unitactoins.Delete;
+import client.model.unit.*;
 import enums.Message;
-import model.BaseCivilization;
-import model.City;
-import model.hex;
+import client.model.BaseCivilization;
+import client.model.City;
+import client.model.hex;
 import client.view.View;
-import model.unit.*;
 
 import java.util.regex.Matcher;
 

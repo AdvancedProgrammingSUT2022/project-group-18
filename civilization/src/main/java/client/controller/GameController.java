@@ -5,11 +5,11 @@ import enums.Message;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;
-import model.BaseCivilization;
-import model.City;
-import model.unit.Melee;
-import model.unit.Ranged;
-import model.unit.Unit;
+import client.model.BaseCivilization;
+import client.model.City;
+import client.model.unit.Melee;
+import client.model.unit.Ranged;
+import client.model.unit.Unit;
 
 import java.io.IOException;
 import java.util.ArrayList;

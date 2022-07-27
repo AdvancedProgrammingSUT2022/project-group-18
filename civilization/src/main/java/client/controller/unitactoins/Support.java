@@ -1,7 +1,7 @@
 package client.controller.unitactoins;
 
-import model.unit.Melee;
-import model.unit.Ranged;
+import client.model.unit.Melee;
+import client.model.unit.Ranged;
 
 public class Support extends AbstarctActoin{
     public Support(Ranged unit) {

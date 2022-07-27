@@ -1,5 +1,6 @@
 package client.controller;
 
+<<<<<<< HEAD
 import client.view.GameMenuView;
 import enums.TechsEnum;
 import eu.hansolo.tilesfx.addons.Switch;
@@ -22,6 +23,16 @@ import model.techs.Technology;
 import model.unit.Melee;
 import model.unit.Settler;
 import model.unit.Unit;
+=======
+import javafx.scene.effect.*;
+import client.model.Building;
+import client.model.City;
+import client.model.Tile;
+import client.model.techs.Technology;
+import client.model.unit.Melee;
+import client.model.unit.Settler;
+import client.model.unit.Unit;
+>>>>>>> origin
 import client.view.View;
 import enums.BuildingEnum;
 import enums.Regexes;
@@ -31,6 +42,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
@@ -42,8 +54,10 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
-import model.unit.Worker;
+import client.model.unit.Worker;
 
+import javax.swing.*;
+import javax.swing.text.LabelView;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -100,6 +114,11 @@ public class BackController extends Application {
         infoPanel(pane , stage);
         handleAudio();
         cheatCode(scene);
+<<<<<<< HEAD
+=======
+        setting(pane, stage);
+
+>>>>>>> origin
         scrollPane.requestFocus();
 
 /*        scene.setOnMouseClicked(event -> {
@@ -211,16 +230,16 @@ public class BackController extends Application {
                 Tile capital;
                 capital = Tile.getTileFromCoordinate(x - 80, y - 135);
                 assert capital != null;
-                if(capital.getEffect() != null) capital.setEffect(null);
+                if (capital.getEffect() != null) capital.setEffect(null);
                 capital = Tile.getTileFromCoordinate(x + 80, y - 135);
                 assert capital != null;
-                if(capital.getEffect() != null) capital.setEffect(null);
+                if (capital.getEffect() != null) capital.setEffect(null);
                 capital = Tile.getTileFromCoordinate(x - 160, y);
                 assert capital != null;
-                if(capital.getEffect() != null) capital.setEffect(null);
+                if (capital.getEffect() != null) capital.setEffect(null);
                 capital = Tile.getTileFromCoordinate(x + 160, y);
                 assert capital != null;
-                if(capital.getEffect() != null) capital.setEffect(null);
+                if (capital.getEffect() != null) capital.setEffect(null);
                 break;
             case 2:
                 getInCity().setCityPopulation(getInCity().getCityPopulation() + 1);
@@ -229,7 +248,7 @@ public class BackController extends Application {
                 getInCity().setCityGold(getInCity().getCityGold() + 10);
                 break;
             case 4:
-                if(two == 1) {
+                if (two == 1) {
                     Worker worker = (Worker) UnitEnum.getUnits(UnitEnum.WORKER);
                     worker.setX(getInCity().getX());
                     worker.setY(getInCity().getY());
@@ -355,6 +374,69 @@ public class BackController extends Application {
         GaussianBlur gaussianBlur = new GaussianBlur();
         gaussianBlur.setRadius(20);
         tile.setEffect(gaussianBlur);
+    }
+
+    public void setting(AnchorPane pane, Stage stage) {
+        ImageView setting = new ImageView();
+        setting.setImage(new Image(BackController.class.getResource("/icon/setting.png").toExternalForm()));
+        setting.setFitWidth(35);
+        setting.setFitHeight(35);
+        setting.setX(1465);
+        setting.setY(1);
+        setting.setOnMouseClicked(event -> {
+
+            Button button1 = new Button("mute audio");
+            button1.setOnMouseClicked(event1 -> {
+                mediaPlayer.stop();
+            });
+            Button play = new Button(" play audio ");
+            play.setOnMouseClicked(event1 -> {
+                mediaPlayer.play();
+            });
+            Button exit = new Button("      Exit      ");
+
+            Popup popup0 = new Popup();
+            Popup popup = new Popup();
+            Popup popup1 = new Popup();
+            Popup popup2 = new Popup();
+            popup0.setX(700);
+            popup0.setY(300);
+            popup.setX(737);
+            popup.setY(350);
+            popup1.setX(737);
+            popup1.setY(400);
+            popup2.setX(737);
+            popup2.setY(450);
+            Label label0 = new Label("              " );
+            label0.setPrefWidth(150);
+            label0.setPrefHeight(300);
+            Label label = new Label("", button1);
+            Label label1 = new Label("", play);
+            Label label2 = new Label("", exit);
+
+            popup0.getContent().add(label0);
+            popup1.getContent().add(label);
+            popup.getContent().add(label1);
+            popup2.getContent().add(label2);
+
+            label0.setStyle(" -fx-background-color: rgba(255,255,255,0.6);");
+            label.setFont(Font.font(""));
+            popup.setOpacity(1);
+
+            popup.setAutoHide(true);
+            popup0.show(stage);
+            popup.show(stage);
+            popup1.show(stage);
+            popup2.show(stage);
+
+            exit.setOnMouseClicked(event1 -> {
+                popup0.hide();
+                popup.hide();
+                popup1.hide();
+                popup2.hide();
+            });
+        });
+        pane.getChildren().add(setting);
     }
 
     public Popup popup(double x, double y) {
