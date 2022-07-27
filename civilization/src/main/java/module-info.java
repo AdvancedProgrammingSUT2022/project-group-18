@@ -15,7 +15,6 @@ module civilization {
     requires java.logging;
 
     opens Chatserver.Model to  com.google.gson ;
-    opens client.Model to com.google.gson;
     opens client to javafx.fxml;
     opens client.controller to javafx.fxml, com.google.gson, javafx.graphics , javafx.web, javafx.controls,
             org.controlsfx.controls, com.dlsc.formsfx, validatorfx,
@@ -81,6 +80,8 @@ module civilization {
     exports client.controller;
     exports client.view;
     exports client.controller.unitactoins;
-    exports client.Model;
+    exports Chatserver;
+    exports Chatserver.Controller;
+    exports Chatserver.Model;
 
 }

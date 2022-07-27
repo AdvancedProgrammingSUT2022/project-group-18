@@ -1,20 +1,5 @@
 package client.controller;
 
-import client.view.GameMenuView;
-import enums.TechsEnum;
-import eu.hansolo.tilesfx.addons.Switch;
-import eu.hansolo.tilesfx.tools.Smoke;
-import javafx.scene.Node;
-import javafx.scene.effect.*;
-import javafx.scene.image.Image;
-import javafx.scene.paint.Color;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Rectangle;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
-import javafx.scene.effect.*;
 import client.model.Building;
 import client.model.City;
 import client.model.Tile;
@@ -22,6 +7,8 @@ import client.model.techs.Technology;
 import client.model.unit.Melee;
 import client.model.unit.Settler;
 import client.model.unit.Unit;
+import client.model.unit.Worker;
+import client.view.GameMenuView;
 import client.view.View;
 import enums.BuildingEnum;
 import enums.Regexes;
@@ -29,8 +16,11 @@ import enums.UnitEnum;
 import javafx.application.Application;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.effect.Bloom;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
@@ -40,13 +30,17 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
-import client.model.unit.Worker;
 
-import javax.swing.*;
-import javax.swing.text.LabelView;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Objects;
@@ -99,7 +93,7 @@ public class BackController extends Application {
         button.setLayoutY(1);
         pane.getChildren().add(button);
         foundCity(pane, scene, pane1 , stage);
-        moving(scene, pane1);
+        moving(pane,scene, pane1);
         infoPanel(pane , stage);
         handleAudio();
         cheatCode(scene);
@@ -143,7 +137,7 @@ public class BackController extends Application {
         return scroll;
     }
 
-    public void moving(Scene scene, AnchorPane pane) {
+    public void moving(AnchorPane pane1, Scene scene, AnchorPane pane) {
         Button move = new Button("move");
         move.setLayoutX(1);
         move.setLayoutY(469);
@@ -190,7 +184,7 @@ public class BackController extends Application {
                 });
             }
         }).start();
-        pane.getChildren().add(move);
+        pane1.getChildren().add(move);
 
     }
 
@@ -308,7 +302,7 @@ public class BackController extends Application {
             building.getIcon().setY(y - 60);
             pane1.getChildren().add(size, building.getIcon());
             pane.getChildren().remove(button);
-            moving(scene, pane1);
+            moving(pane, scene, pane1);
             firstInfoPanel = false;
             infoPanel(pane , stage);
         });
