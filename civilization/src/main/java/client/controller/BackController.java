@@ -1,17 +1,20 @@
 package client.controller;
 
-<<<<<<< HEAD
+import client.view.GameMenuView;
+import enums.TechsEnum;
+import eu.hansolo.tilesfx.addons.Switch;
+import eu.hansolo.tilesfx.tools.Smoke;
+import javafx.scene.Node;
+import javafx.scene.effect.*;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
-=======
-import enums.TechsEnum;
-import javafx.scene.effect.*;
-import javafx.scene.image.Image;
-import javafx.scene.paint.ImagePattern;
->>>>>>> origin
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import model.BaseCivilization;
 import model.Building;
 import model.City;
 import model.Tile;
@@ -42,6 +45,7 @@ import javafx.stage.Stage;
 import model.unit.Worker;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Random;
 import java.util.regex.Matcher;
@@ -50,6 +54,10 @@ import static client.view.View.getInCity;
 import static enums.TechsEnum.AGRI_CULTURE;
 
 public class BackController extends Application {
+    BaseCivilization baseCivilization = View.getCivilization();
+    ArrayList<Node> infopanelNodes = new ArrayList<Node>();
+    ArrayList<Node> panels = new ArrayList<>();
+    boolean firstInfoPanel = true;
     @FXML
     private ScrollPane scrollPane;
     private static MediaPlayer mediaPlayer;
@@ -83,20 +91,13 @@ public class BackController extends Application {
 
         this.scrollPane = createScrollPane(pane1);
         pane.getChildren().add(scrollPane);
-
-<<<<<<< HEAD
-
-        foundCity(pane, scene, pane1);
-        moving(scene, pane);
-        infoPanel(pane);
-=======
         Button button = new Button("Research Panel");
         button.setLayoutX(1);
         button.setLayoutY(1);
         pane.getChildren().add(button);
-        foundCity(pane, scene, pane1);
+        foundCity(pane, scene, pane1 , stage);
         moving(scene, pane1);
->>>>>>> origin
+        infoPanel(pane , stage);
         handleAudio();
         cheatCode(scene);
         scrollPane.requestFocus();
@@ -139,10 +140,6 @@ public class BackController extends Application {
     }
 
     public void moving(Scene scene, AnchorPane pane) {
-<<<<<<< HEAD
-=======
-
->>>>>>> origin
         Button move = new Button("move");
         move.setLayoutX(1);
         move.setLayoutY(469);
@@ -207,80 +204,6 @@ public class BackController extends Application {
         Random random = new Random();
         int rand = random.nextInt(5);
         int two = random.nextInt(2);
-
-<<<<<<< HEAD
-    public void foundCity(AnchorPane pane, Scene scene, AnchorPane pane1) {
-        Settler settler = (Settler) UnitEnum.getUnits(UnitEnum.SETTLER);
-        Tile tile = Tile.getTileFromCoordinate(500, 500);
-        settler.setX(tile.getX() - 40);
-        settler.setY(tile.getY() - 40);
-        pane1.getChildren().add(settler);
-
-        Button button = new Button("found  city");
-        button.setLayoutX(1);
-        button.setLayoutY(406);
-        button.setPrefHeight(63);
-        button.setPrefWidth(77);
-        size = pane.getChildren().size() - 1;
-
-
-        button.setOnMouseClicked(event -> {
-            double x = settler.getX();
-            double y = settler.getY();
-            Tile capital = Tile.getTileFromCoordinate(x, y);
-            x = capital.getX();
-            y = capital.getY();
-            City city = new City(x, y);
-            View.setInCity(city);
-            city.setX(x);
-            city.setY(y);
-
-
-            city.addTileToCity(capital);
-            capital = Tile.getTileFromCoordinate(x - 80, y - 135);
-            System.out.println(capital.getX() + " " + capital.getY());
-            city.addTileToCity(capital);
-            capital = Tile.getTileFromCoordinate(x + 80, y - 135);
-            System.out.println(capital.getX() + " " + capital.getY());
-            city.addTileToCity(capital);
-            capital = Tile.getTileFromCoordinate(x - 160, y);
-            System.out.println(capital.getX() + " " + capital.getY());
-            city.addTileToCity(capital);
-            capital = Tile.getTileFromCoordinate(x + 160, y);
-            System.out.println(capital.getX() + " " + capital.getY());
-            city.addTileToCity(capital);
-            Melee warrior = (Melee) UnitEnum.getUnits(UnitEnum.WARRIOR);
-            warrior.setX(capital.getX() - 50);
-            warrior.setY(capital.getY() - 50);
-
-            pane1.getChildren().add(warrior);
-
-            capital = Tile.getTileFromCoordinate(x - 80, y + 135);
-            System.out.println(capital.getX() + " " + capital.getY());
-            city.addTileToCity(capital);
-            capital = Tile.getTileFromCoordinate(x + 80, y + 135);
-            System.out.println(capital.getX() + " " + capital.getY());
-            city.addTileToCity(capital);
-            pane1.getChildren().remove(settler);
-            size = pane1.getChildren().size() - 1;
-            Building building = BuildingEnum.makeBuilding(BuildingEnum.PALACE);
-            building.getIcon().setFitHeight(120);
-            building.getIcon().setFitWidth(120);
-            building.getIcon().setX(x - 55);
-            building.getIcon().setY(y - 60);
-            pane1.getChildren().add(size, building.getIcon());
-            pane.getChildren().remove(button);
-            moving(scene, pane);
-
-        });
-        pane.getChildren().add(button);
-    }
-
-    public void map(AnchorPane pane) {
-
-        String[] name = {"dasht", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "kavir", "kooh", "ocean", "sand", "sand"
-                , "sand", "grass", "snow", "tappe", "tappe", "tondra"};
-=======
         switch (rand) {
             case 0:
                 new Technology(AGRI_CULTURE.toString(), 20, "None", "Pottery, Animal Husbandry, Archery, Mining", "farm");
@@ -320,7 +243,7 @@ public class BackController extends Application {
 
     }
 
-    public void foundCity(AnchorPane pane, Scene scene, AnchorPane pane1) {
+    public void foundCity(AnchorPane pane, Scene scene, AnchorPane pane1 , Stage stage) {
         Settler settler = (Settler) UnitEnum.getUnits(UnitEnum.SETTLER);
         Tile tile = Tile.getTileFromCoordinate(500, 500);
         settler.setX(tile.getX() - 40);
@@ -382,7 +305,8 @@ public class BackController extends Application {
             pane1.getChildren().add(size, building.getIcon());
             pane.getChildren().remove(button);
             moving(scene, pane1);
-
+            firstInfoPanel = false;
+            infoPanel(pane , stage);
         });
         pane.getChildren().add(button);
     }
@@ -391,35 +315,23 @@ public class BackController extends Application {
 
         String[] name = {"dasht", "grass", "grass", "grass", "grass", "grass", "grass", "grass", "kavir", "kooh", "ocean", "sand", "sand"
                 , "sand", "grass", "snow", "tappe", "tappe", "tondra", "grassRuin"};
->>>>>>> origin
         int rand = 0;
         for (int i = -10; i < 15; i++) {
             for (int j = -10; j < 9; j++) {
                 rand = (int) Math.floor(Math.random() * 100);
-<<<<<<< HEAD
-                String back = name[rand % 19];
-=======
                 String back = name[rand % 20];
->>>>>>> origin
                 if (j % 2 == 0) {
                     int x = 100 + (i * 160);
                     int y = 100 + (j * 135);
                     Tile tile = new Tile(x, y, back);
                     tile.setCoordinates(x, y);
                     tile.setImage(back);
-<<<<<<< HEAD
-                    if (y > 600 || x > 1200 || y < 100 || x < 200) {
-                        settingEffect(tile);
-                    }
-=======
                     if (tile.getTileType().equals("grassRuin")) {
                         settingEffect(tile);
                     }
                     if (y > 600 || x > 1200 || y < 100 || x < 200) {
                         settingEffect(tile);
                     }
->>>>>>> origin
-
                     pane.getChildren().add(tile);
                 } else {
                     int x = 180 + (i * 160);
@@ -427,20 +339,13 @@ public class BackController extends Application {
                     Tile tile = new Tile(x, y, back);
                     tile.setCoordinates(x, y);
                     tile.setImage(back);
-<<<<<<< HEAD
-=======
-                    if (tile.getTileType().equals("grassRuin")) {
+           if (tile.getTileType().equals("grassRuin")) {
                         settingEffect(tile);
                     }
->>>>>>> origin
                     if (y > 600 || x > 1200 || y < 200 || x < 200) {
                         settingEffect(tile);
                     }
                     pane.getChildren().add(tile);
-<<<<<<< HEAD
-=======
-
->>>>>>> origin
                 }
             }
         }
@@ -475,33 +380,139 @@ public class BackController extends Application {
         popup.setAutoHide(true);
         return popup;
     }
-<<<<<<< HEAD
-
-    public void infoPanel(Pane pane) {
-        Rectangle rectangle = new Rectangle(10 , 40 , 500 , 30);
+    public void infoPanel(Pane pane , Stage stage) {
+        if (firstInfoPanel==false){
+            for (Node node : infopanelNodes){
+                pane.getChildren().remove(node);
+            }
+        }
+        Rectangle rectangle = new Rectangle(20 , 60 , 500 , 30);
         rectangle.setFill(Color.WHITE);
         rectangle.setOpacity(0.7);
         pane.getChildren().add(rectangle);
-        Circle gold = new Circle(50, 50, 40);
-        Image image = new Image(Objects.requireNonNull(getClass().getResource("/images/gold.png")).toExternalForm());
+        infopanelNodes.add(rectangle);
+        String data = baseCivilization.getGoldTotal() + "               " +
+                baseCivilization.getScienceTotal() + "               " +
+                baseCivilization.getPopulation() + "               " +
+                View.getInCity().getCityFood();
+        Text text = new Text(90 , 80 ,  data);
+        text.setFont(Font.font("verdana", FontWeight.LIGHT, FontPosture.REGULAR, 20));
+        Circle gold = new Circle(50, 70, 35);
+        Image image = new Image(Objects.requireNonNull(getClass().getResource("/images/goldAsset 2.png")).toExternalForm());
         gold.setFill(new ImagePattern(image));
         pane.getChildren().add(gold);
-        Circle Science = new Circle(180, 50, 40);
-        Image Scienceimage = new Image(Objects.requireNonNull(getClass().getResource("/images/Science.png")).toExternalForm());
+        infopanelNodes.add(gold);
+        Circle Science = new Circle(180, 70, 35);
+        Image Scienceimage = new Image(Objects.requireNonNull(getClass().getResource("/images/ScienceAsset 1.png")).toExternalForm());
         Science.setFill(new ImagePattern(Scienceimage));
         pane.getChildren().add(Science);
-        Circle crowd = new Circle(310, 50, 40);
-        Image crowdimage = new Image(Objects.requireNonNull(getClass().getResource("/images/crowd.png")).toExternalForm());
+        infopanelNodes.add(Science);
+        Circle crowd = new Circle(310, 70, 35);
+        Image crowdimage = new Image(Objects.requireNonNull(getClass().getResource("/images/crowdAsset 4.png")).toExternalForm());
         crowd.setFill(new ImagePattern(crowdimage));
         pane.getChildren().add(crowd);
-        Circle food = new Circle(440, 50, 40);
-        Image foodimage = new Image(Objects.requireNonNull(getClass().getResource("/images/Food.png")).toExternalForm());
+        infopanelNodes.add(crowd);
+        Circle food = new Circle(440, 70, 35);
+        Image foodimage = new Image(Objects.requireNonNull(getClass().getResource("/images/foodAsset 3.png")).toExternalForm());
         food.setFill(new ImagePattern(foodimage));
         pane.getChildren().add(food);
-    }
-=======
->>>>>>> origin
+        infopanelNodes.add(food);
+        pane.getChildren().add(text);
+        infopanelNodes.add(text);
 
+        Circle happiness = new Circle(1410, 70, 35);
+        Image hapimage = new Image(Objects.requireNonNull(getClass().getResource("/images/Happiness.png")).toExternalForm());
+        happiness.setFill(new ImagePattern(hapimage));
+        Rectangle hadata = new Rectangle(1330 , 60 , 70 , 30);
+        hadata.setFill(Color.WHITE);
+        hadata.setOpacity(0.7);
+        pane.getChildren().add(hadata);
+        infopanelNodes.add(hadata);
+        String happ = String.valueOf(baseCivilization.getHappiness()) ;
+        Text hatext = new Text(1335 , 80 ,  happ);
+        hatext.setFont(Font.font("verdana", FontWeight.LIGHT, FontPosture.REGULAR, 20));
+        pane.getChildren().add(hatext);
+        pane.getChildren().add(happiness);
+        infopanelNodes.add(hatext);
+        infopanelNodes.add(happiness);
+        Rectangle back = new Rectangle(50 , 720 , 1400 , 30);
+        back.setFill(Color.WHITE);
+        back.setOpacity(0.7);
+        pane.getChildren().add(back);
+        makePanel(30 , 700 , "search" , pane , stage);
+        makePanel(180 , 700 , "unit" , pane , stage);
+        makePanel(330 , 700 , "city" , pane , stage);
+        makePanel(480 , 700 , "diplomacy" , pane ,stage);
+        makePanel(630 , 700 , "win" , pane , stage);
+        makePanel(780 , 700 , "crowda" , pane , stage);
+        makePanel(930 , 700 , "notif" , pane , stage);
+        makePanel(1080 , 700 , "military" , pane , stage);
+        makePanel(1230 , 700 , "economy" , pane , stage);
+        makePanel(1380 , 700 , "exchange" , pane , stage);
+    }
+
+    public void makePanel(int x , int y , String name , Pane pane , Stage stage){
+        Rectangle rectangle = new Rectangle(x, y , 90 , 70);
+        Image image = new Image(Objects.requireNonNull(getClass().getResource("/images/"+ name + ".png")).toExternalForm());
+        rectangle.setFill(new ImagePattern(image));
+        Popup popup = new Popup();
+        Image popimage = new Image(Objects.requireNonNull(getClass().getResource("/images/loc.png").toExternalForm()));
+        ImageView imageView = new ImageView(popimage);
+        String data = "";
+        switch(name){
+            case "search":
+                data = "net yet set";
+                break;
+            case "unit":
+                data = GameMenuView.unitsPanel(baseCivilization);
+                break;
+            case "city":
+                for (City city : GameMenuView.citiesPanel())
+                data += "\n" + city.getCityName();
+                break;
+            case "diplomacy":
+                data = GameMenuView.demographicPanel(GameMenuView.getInCity());
+                break;
+            case "win":
+                data = "it is the first of the trip\nwait & be patient!";
+                break;
+            case "crowda":
+                data = String.valueOf(baseCivilization.getPopulation());
+                break;
+            case "notif":
+                data = "empty";
+                break;
+            case "military":
+                data = GameMenuView.militaryOverview(View.getInCity());
+                break;
+            case "economy":
+                data = GameMenuView.economicOverview(View.getInCity());
+                break;
+            case "exchange":
+                data = "not exchange yet";
+                break;
+            default: data = "empty";
+        }
+        Label label = new Label(data, imageView);
+        popup.getContent().add(label);
+        label.setMinWidth(150);
+        label.setMinHeight(100);
+        label.setStyle(" -fx-text-fill: #851111;");
+        label.setStyle(" -fx-background-color: rgba(255,255,255,0.6);");
+        label.setFont(Font.font(""));
+        popup.setOpacity(1);
+        popup.setX(x);
+        popup.setY(y);
+        popup.setAutoHide(true);
+        rectangle.setOnMouseEntered(event -> {
+            popup.show(stage);
+        });
+//        rectangle.setOnMouseExited(event -> {
+//            popup.hide();
+//        });
+        pane.getChildren().add(rectangle);
+
+    }
     public void cheatCode(Scene scene) {
         KeyCombination kc = new KeyCodeCombination(KeyCode.C, KeyCombination.SHIFT_DOWN, KeyCombination.CONTROL_DOWN);
         Runnable rn = () -> {

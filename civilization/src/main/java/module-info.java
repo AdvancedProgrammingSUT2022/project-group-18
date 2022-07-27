@@ -14,6 +14,9 @@ module civilization {
     requires java.desktop;
     requires java.logging;
 
+    opens Chatserver.Model to  com.google.gson ;
+    opens client.Model to com.google.gson;
+    opens client to javafx.fxml;
     opens client.controller to javafx.fxml, com.google.gson, javafx.graphics , javafx.web, javafx.controls,
             org.controlsfx.controls, com.dlsc.formsfx, validatorfx,
             org.kordamp.ikonli.javafx, org.kordamp.bootstrapfx.core,
@@ -73,9 +76,11 @@ module civilization {
     exports model.Resource;
     exports model;
     exports enums;
+    exports client;
     exports client.civilization;
     exports client.controller;
     exports client.view;
     exports client.controller.unitactoins;
+    exports client.Model;
 
 }

@@ -39,15 +39,21 @@ public class City {
     private ArrayList<Resources> resources = new ArrayList<>();
     public static ArrayList<City> allCities = new ArrayList<>();
     private ArrayList<Tile> cityTiles = new ArrayList<>();
+    private String[] nameOfCities = {"Tehran" , "Mashhad" , "Qom" , "Tabriz"};
+    private int cityNum = 0;
 
 
     public City(double x, double y) {
+        this.cityName = nameOfCities[cityNum];
+        cityNum++;
         this.x = x;
         this.y = y;
         this.unemployedCitizen = new ArrayList<>();
         this.citizenWorkers = new HashMap<>();
         allCities.add(this);
         View.setInCity(this);
+        View.getCivilization().decreaseGold();
+        View.getCivilization().decreaseHappiness();
     }
 
     public void addTileToCity(Tile tile) {

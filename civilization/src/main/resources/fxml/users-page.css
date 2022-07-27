@@ -1,0 +1,37 @@
+.header {
+    -fx-background-color: #1e2a33;
+}
+
+.header-text {
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bolder;
+
+}
+
+.header-button {
+    -fx-pref-width: 10;
+    -fx-pref-height: 10;
+    -fx-background-color: transparent;
+    -fx-background-image: url('../images/refresh.png');
+    -fx-background-size: 28;
+    -fx-background-position: 2 2;
+    -fx-background-repeat: no-repeat;
+}
+
+.TextField{
+    -fx-text-fill: #0009a9;
+    /*-fx-background-image: url('../images/sky.jpg');*/
+}
+.backChat{
+    -fx-background-image: url('../images/sky.jpg');
+}
+.back-button {
+    -fx-pref-width: 10;
+    -fx-pref-height: 10;
+    -fx-background-color: transparent;
+    -fx-background-image: url('../images/back.png');
+    -fx-background-size: 16;
+    -fx-background-position: 2 2;
+    -fx-background-repeat: no-repeat;
+}
+

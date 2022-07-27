@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ddd912cf-c660-44c1-b456-21ad6ed73d23" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_9_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controller/ChatController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controller/SocketHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Model/Chat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Model/Database.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Model/Message.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Model/Request.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Model/Response.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Model/User.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../client/client.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../server/server.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../resources/fxml/chat-page.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../resources/fxml/login-dialog.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../resources/fxml/users-page.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../resources/fxml/users-page.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../resources/images/back.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../resources/images/refresh.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../resources/images/sky.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/controller/BackController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/controller/BackController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/view/GameMenuView.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/view/GameMenuView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../client/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/../client/view/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../model/BaseCivilization.java" beforeDir="false" afterPath="$PROJECT_DIR$/../model/BaseCivilization.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../model/City.java" beforeDir="false" afterPath="$PROJECT_DIR$/../model/City.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/../module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../target/classes/client/controller/BackController.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../target/classes/client/controller/BackController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../target/classes/client/view/GameMenuView$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../target/classes/client/view/GameMenuView$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../target/classes/client/view/GameMenuView.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../target/classes/client/view/GameMenuView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../target/classes/client/view/View.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../target/classes/client/view/View.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../target/classes/model/BaseCivilization.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../target/classes/model/BaseCivilization.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../target/classes/model/City.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../target/classes/model/City.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../target/classes/module-info.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2CWq3VKbTDeAje06eWDwJ8blvOq" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\project-group-18\project-group-18\civilization\src\main\java\Chatserver\src" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ddd912cf-c660-44c1-b456-21ad6ed73d23" name="Changes" comment="" />
+      <created>1658928493912</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1658928493912</updated>
+      <workItem from="1658928495074" duration="378000" />
+      <workItem from="1658928900382" duration="60000" />
+      <workItem from="1658928982752" duration="2000" />
+      <workItem from="1658929000405" duration="52000" />
+      <workItem from="1658929417421" duration="34000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
