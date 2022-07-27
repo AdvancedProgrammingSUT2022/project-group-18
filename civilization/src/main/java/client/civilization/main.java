@@ -9,7 +9,6 @@ public class main {
         try {
             MainMenuController.initialize();
             launch(MainMenuController.class, args);
-            //new ProfileMenuGraphics().start(new Stage());
         } catch (Exception e) {
             e.printStackTrace();
         }

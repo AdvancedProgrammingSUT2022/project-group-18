@@ -1,6 +1,7 @@
 package client.view;
 
 
+import client.ChatMain;
 import client.model.graphicModel.ProfilePhoto;
 import client.model.graphicModel.UserProfile;
 import javafx.collections.FXCollections;
@@ -168,12 +169,16 @@ public class MainMenuController extends Controller {
             Button button = new Button("Score Table");
             Button logout = new Button("logout");
             Button newGame = new Button("Game Menu");
+            Button chat = new Button("Chat");
+
             newGame.setMinWidth(500);
             newGame.getStyleClass().add("button");
             logout.setMinWidth(500);
             logout.getStyleClass().add("button");
             button.setMinWidth(500);
             button.getStyleClass().add("button");
+            chat.setMinWidth(500);
+            chat.getStyleClass().add("button");
             button.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
@@ -188,6 +193,7 @@ public class MainMenuController extends Controller {
             vBox.getChildren().add(vBox.getChildren().size() - 2, button);
             vBox.getChildren().add(vBox.getChildren().size() - 2, logout);
             vBox.getChildren().add(0, newGame);
+            vBox.getChildren().add(1, chat);
             logout.setOnMouseClicked(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
@@ -206,6 +212,17 @@ public class MainMenuController extends Controller {
                     try {
                         new GameMenuView().start(ProfileMenuGraphics.getStage());
                     } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            chat.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    try {
+                        ProfileMenuGraphics.getStage().close();
+                        new ChatMain().start(new Stage());
+                    } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
