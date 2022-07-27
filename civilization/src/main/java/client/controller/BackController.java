@@ -1,6 +1,5 @@
 package client.controller;
 
-<<<<<<< HEAD
 import client.view.GameMenuView;
 import enums.TechsEnum;
 import eu.hansolo.tilesfx.addons.Switch;
@@ -15,15 +14,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.FontPosture;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
-import model.BaseCivilization;
-import model.Building;
-import model.City;
-import model.Tile;
-import model.techs.Technology;
-import model.unit.Melee;
-import model.unit.Settler;
-import model.unit.Unit;
-=======
 import javafx.scene.effect.*;
 import client.model.Building;
 import client.model.City;
@@ -32,7 +22,6 @@ import client.model.techs.Technology;
 import client.model.unit.Melee;
 import client.model.unit.Settler;
 import client.model.unit.Unit;
->>>>>>> origin
 import client.view.View;
 import enums.BuildingEnum;
 import enums.Regexes;
@@ -68,7 +57,7 @@ import static client.view.View.getInCity;
 import static enums.TechsEnum.AGRI_CULTURE;
 
 public class BackController extends Application {
-    BaseCivilization baseCivilization = View.getCivilization();
+    client.model.BaseCivilization baseCivilization = View.getCivilization();
     ArrayList<Node> infopanelNodes = new ArrayList<Node>();
     ArrayList<Node> panels = new ArrayList<>();
     boolean firstInfoPanel = true;
@@ -114,11 +103,7 @@ public class BackController extends Application {
         infoPanel(pane , stage);
         handleAudio();
         cheatCode(scene);
-<<<<<<< HEAD
-=======
         setting(pane, stage);
-
->>>>>>> origin
         scrollPane.requestFocus();
 
 /*        scene.setOnMouseClicked(event -> {
