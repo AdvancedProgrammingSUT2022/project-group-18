@@ -390,7 +390,7 @@ public class BackController extends Application {
             popup.getContent().add(label1);
             popup2.getContent().add(label2);
 
-            label0.setStyle(" -fx-background-color: rgba(255,255,255,0.6);");
+            label0.setStyle(" -fx-background-color: rgba(235,255,200,0.6);");
             label.setFont(Font.font(""));
             popup.setOpacity(1);
 
