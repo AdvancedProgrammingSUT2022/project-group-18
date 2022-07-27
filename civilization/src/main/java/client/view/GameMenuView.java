@@ -19,6 +19,7 @@ import client.model.unit.Unit;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -190,37 +191,40 @@ public class GameMenuView extends View {
     }
 
 
-    public void economicOverview(City city) {
-        System.out.println("Population : " + city.getCityPopulation() + " Strength : " + city.getCityStrength() +
-                " Food : " + city.getCityFood() + " Science : " + city.getOwner().getScienceTotal() +
-                " Gold : " + city.getCityGold()/*+  " p" + CityView*/);
+    public static String economicOverview(City city) {
+         return "Population : " + city.getCityPopulation() + "\nStrength : " + city.getCityStrength() +
+                "\nFood : " + city.getCityFood() + "\nScience : " + View.getCivilization().getScienceTotal() +
+                "\nGold : " + city.getCityGold();
     }
 
-    public void militaryOverview(City city) {
+    public static String militaryOverview(City city) {
+        String re = "";
         for (Unit unit : city.getUnits()) {
-            System.out.println(unit.getName());
+            re += "\n" + unit.getName();
         }
+        return re;
     }
 
-    public void demographicPanel(City city) {
+    public static String demographicPanel(City city) {
         System.out.println(city.getCityPopulation());
         System.out.println(city.getCityGold());
+        return "Population: " + city.getCityPopulation() + "\n Gold: " + city.getCityGold();
     }
 
-    public void citiesPanel() {
-        System.out.println(City.allCities);
+    public static ArrayList<City> citiesPanel() {
+        return City.allCities;
     }
 
-    public void unitsPanel(BaseCivilization civilization) {
-        System.out.println(civilization.getUnits());
+    public static String unitsPanel(BaseCivilization civilization) {
+        return civilization.getUnits().toString();
     }
 
     public void researchPanel() {
         //TODO complete after research completed
     }
 
-    public void diplomacyPanel() {
-        System.out.println(controller.Score);
+    public String diplomacyPanel() {
+        return String.valueOf(controller.Score);
     }
 
 

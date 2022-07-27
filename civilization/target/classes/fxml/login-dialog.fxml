@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            prefHeight="150.0" prefWidth="250.0">
+    <VBox AnchorPane.leftAnchor="24" AnchorPane.rightAnchor="24" AnchorPane.bottomAnchor="16" AnchorPane.topAnchor="16" alignment="BASELINE_CENTER">
+        <Label text="Please enter your nickname" />
+        <TextField fx:id="nicknameField" />
+        <Label fx:id="errorLabel" />
+        <Button text="Confirm" onAction="#confirmClicked"/>
+    </VBox>
+</AnchorPane>

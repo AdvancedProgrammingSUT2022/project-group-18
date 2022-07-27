@@ -42,7 +42,10 @@ public abstract class View extends Application {
     }
 
     public static void setCivilization(BaseCivilization civilization) {View.civilization = civilization;}
-    public static BaseCivilization getCivilization() {return civilization;}
+    public static BaseCivilization getCivilization() {
+        if (civilization== null)
+            civilization = new BaseCivilization();
+            return civilization;}
     public static void setInCity(City inCity) {View.inCity = inCity;}
     public static City getInCity() {return inCity; }
 }

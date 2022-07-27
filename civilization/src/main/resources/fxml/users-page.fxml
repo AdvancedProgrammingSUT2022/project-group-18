@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import java.net.* ?>
+<VBox xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="client.view.UsersPage"
+            prefHeight="600.0" prefWidth="400.0">
+    <AnchorPane styleClass="header" prefHeight="48">
+        <Label styleClass="header-text" text="Users"  AnchorPane.topAnchor="8" AnchorPane.bottomAnchor="8" AnchorPane.rightAnchor="24" AnchorPane.leftAnchor="24"/>
+        <Button styleClass="header-button" onAction="#refreshUsers" AnchorPane.topAnchor="8" AnchorPane.bottomAnchor="8" AnchorPane.rightAnchor="24" AnchorPane.leftAnchor="344" />
+    </AnchorPane>
+    <VBox fx:id="usersList" minHeight="552">
+    </VBox>
+
+    <stylesheets>
+        <URL value="@users-page.css" />
+    </stylesheets>
+
+</VBox>

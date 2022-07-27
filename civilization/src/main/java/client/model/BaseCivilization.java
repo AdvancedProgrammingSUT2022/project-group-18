@@ -16,16 +16,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class BaseCivilization {
+    private Integer population =20;
     private String name;
     private Integer numberOfCities = 0;
     private Integer sciencePT = 0;
-    private Integer scienceTotal = 0;
-    private Integer goldTotal = 0;
+    private Integer scienceTotal = 10;
+    private Integer goldTotal = 20;
     private Integer goldPT = 0;
     private Integer cultureTotal = 0;
     private Integer cultureRequired = 0;
     private Integer culturePT = 0;
-    private static Integer happiness = 0;
+    private static Integer happiness = 50;
     private ArrayList<Unit> units = new ArrayList<>();
     private String[] cityNames;
     private ArrayList<City> cities = new ArrayList<>();
@@ -239,5 +240,12 @@ public class BaseCivilization {
         writer.write(new Gson().toJson(civilization));
         writer.close();
         DataBase.setNumOfUsers();
+    }
+
+    public Integer getPopulation() {
+        for (City city : cities){
+            population+=city.getCityPopulation();
+        }
+        return population;
     }
 }
